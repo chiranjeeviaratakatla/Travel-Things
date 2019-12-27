@@ -67,26 +67,128 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Global.asax" />
+    <Content Include="Images\TravelThingsLogo.jpg" />
+    <Content Include="Images\TravelThingsLogo.png" />
+    <Content Include="Template\blog-single.html" />
+    <Content Include="Template\blog.html" />
+    <Content Include="Template\contact.html" />
+    <Content Include="Template\css\scss\Readme.txt" />
+    <Content Include="Template\css\style.css" />
+    <Content Include="Template\features.html" />
+    <Content Include="Template\forms\contact.php" />
+    <Content Include="Template\forms\Readme.txt" />
+    <Content Include="Template\img\apple-touch-icon.png" />
+    <Content Include="Template\img\favicon.png" />
+    <Content Include="Template\img\hero-bg.jpg" />
+    <Content Include="Template\img\img_1.jpg" />
+    <Content Include="Template\img\img_2.jpg" />
+    <Content Include="Template\img\img_3.jpg" />
+    <Content Include="Template\img\img_4.jpg" />
+    <Content Include="Template\img\person_1.jpg" />
+    <Content Include="Template\img\person_2.jpg" />
+    <Content Include="Template\img\person_3.jpg" />
+    <Content Include="Template\img\phone_1.png" />
+    <Content Include="Template\img\phone_2.png" />
+    <Content Include="Template\img\undraw_svg_1.svg" />
+    <Content Include="Template\img\undraw_svg_2.svg" />
+    <Content Include="Template\img\undraw_svg_3.svg" />
+    <Content Include="Template\img\undraw_svg_4.svg" />
+    <Content Include="Template\index.html" />
+    <Content Include="Template\js\main.js" />
+    <Content Include="Template\pricing.html" />
+    <Content Include="Template\vendor\aos\aos.css" />
+    <Content Include="Template\vendor\aos\aos.js" />
+    <Content Include="Template\vendor\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="Template\vendor\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="Template\vendor\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="Template\vendor\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="Template\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="Template\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Template\vendor\bootstrap\js\bootstrap.bundle.js" />
+    <Content Include="Template\vendor\bootstrap\js\bootstrap.bundle.min.js" />
+    <Content Include="Template\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="Template\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Template\vendor\easing\easing.js" />
+    <Content Include="Template\vendor\easing\easing.min.js" />
+    <Content Include="Template\vendor\icofont\icofont.min.css" />
+    <Content Include="Template\vendor\jquery\jquery-migrate.min.js" />
+    <Content Include="Template\vendor\jquery\jquery.min.js" />
+    <Content Include="Template\vendor\line-awesome\css\line-awesome.css" />
+    <Content Include="Template\vendor\line-awesome\css\line-awesome.min.css" />
+    <Content Include="Template\vendor\line-awesome\fonts\la-brands-400.svg" />
+    <Content Include="Template\vendor\line-awesome\fonts\la-regular-400.svg" />
+    <Content Include="Template\vendor\line-awesome\fonts\la-solid-900.svg" />
+    <Content Include="Template\vendor\owlcarousel\assets\ajax-loader.gif" />
+    <Content Include="Template\vendor\owlcarousel\assets\owl.carousel.css" />
+    <Content Include="Template\vendor\owlcarousel\assets\owl.carousel.min.css" />
+    <Content Include="Template\vendor\owlcarousel\assets\owl.theme.default.css" />
+    <Content Include="Template\vendor\owlcarousel\assets\owl.theme.default.min.css" />
+    <Content Include="Template\vendor\owlcarousel\assets\owl.theme.green.css" />
+    <Content Include="Template\vendor\owlcarousel\assets\owl.theme.green.min.css" />
+    <Content Include="Template\vendor\owlcarousel\assets\owl.video.play.png" />
+    <Content Include="Template\vendor\owlcarousel\owl.carousel.js" />
+    <Content Include="Template\vendor\owlcarousel\owl.carousel.min.js" />
+    <Content Include="Template\vendor\php-email-form\validate.js" />
+    <Content Include="Template\vendor\sticky\sticky.js" />
     <Content Include="Web.config" />
+    <Content Include="Web_Forms\HomePage.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
+    <Compile Include="DAL\Interfaces\Iregistration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Web_Forms\HomePage.aspx.cs">
+      <DependentUpon>HomePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web_Forms\HomePage.aspx.designer.cs">
+      <DependentUpon>HomePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web_Forms\TravelThingMaster.Master.cs">
+      <DependentUpon>TravelThingMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web_Forms\TravelThingMaster.Master.designer.cs">
+      <DependentUpon>TravelThingMaster.Master</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <Content Include="Template\vendor\bootstrap\css\bootstrap-grid.css.map" />
+    <Content Include="Template\vendor\bootstrap\css\bootstrap-grid.min.css.map" />
+    <Content Include="Template\vendor\bootstrap\css\bootstrap-reboot.css.map" />
+    <Content Include="Template\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Template\vendor\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Template\vendor\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Template\vendor\bootstrap\js\bootstrap.bundle.js.map" />
+    <Content Include="Template\vendor\bootstrap\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Template\vendor\bootstrap\js\bootstrap.js.map" />
+    <Content Include="Template\vendor\bootstrap\js\bootstrap.min.js.map" />
+    <Content Include="Template\vendor\icofont\fonts\icofont.woff" />
+    <Content Include="Template\vendor\icofont\fonts\icofont.woff2" />
+    <Content Include="Template\vendor\line-awesome\fonts\la-brands-400.eot" />
+    <Content Include="Template\vendor\line-awesome\fonts\la-brands-400.ttf" />
+    <Content Include="Template\vendor\line-awesome\fonts\la-brands-400.woff" />
+    <Content Include="Template\vendor\line-awesome\fonts\la-brands-400.woff2" />
+    <Content Include="Template\vendor\line-awesome\fonts\la-regular-400.eot" />
+    <Content Include="Template\vendor\line-awesome\fonts\la-regular-400.ttf" />
+    <Content Include="Template\vendor\line-awesome\fonts\la-regular-400.woff" />
+    <Content Include="Template\vendor\line-awesome\fonts\la-regular-400.woff2" />
+    <Content Include="Template\vendor\line-awesome\fonts\la-solid-900.eot" />
+    <Content Include="Template\vendor\line-awesome\fonts\la-solid-900.ttf" />
+    <Content Include="Template\vendor\line-awesome\fonts\la-solid-900.woff" />
+    <Content Include="Template\vendor\line-awesome\fonts\la-solid-900.woff2" />
+    <Content Include="Template\vendor\owlcarousel\LICENSE" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="Web_Forms\TravelThingMaster.Master" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="DAL\BusinessLogic\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
