@@ -7,6 +7,6 @@ namespace TravelThings.DAL.Interfaces
 {
     public class Iregistration
     {
-        internal interface 
+        //internal interface  
     }
 }
