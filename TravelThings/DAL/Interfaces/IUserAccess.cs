@@ -7,6 +7,6 @@ namespace TravelThings.DAL.Interfaces
 {
     internal interface IUserAccess
     {
-        int InsertUserDetails(string UserName, string PhoneNo);
+        string InsertUserDetails(string UserName, string PhoneNo);
     }
 }

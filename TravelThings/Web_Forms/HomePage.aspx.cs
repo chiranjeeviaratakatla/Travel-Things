@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TravelThings.DAL.Interfaces;
+using TravelThings.DAL.BusinessLogic;
+using TravelThings.Helpers;
 
 namespace TravelThings.Web_Forms
 {
@@ -20,7 +23,12 @@ namespace TravelThings.Web_Forms
             {
                 if(!string.IsNullOrEmpty(txtPhoneNo.Text.Trim()))
                 {
-
+                    IUserAccess dal = new UserAccess();
+                    string Result = dal.InsertUserDetails(txtName.Text.ToUpper().Trim(), txtPhoneNo.Text.Trim());
+                    if (Result != "EXISTS USER")
+                        Response.Redirect("");
+                    else
+                        Response.Redirect("");
                 }
             }
         }

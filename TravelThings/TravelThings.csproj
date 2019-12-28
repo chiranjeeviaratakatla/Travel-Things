@@ -134,6 +134,7 @@
     <Content Include="Web_Forms\HomePage.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\BusinessLogic\UserAccess.cs" />
     <Compile Include="DAL\Interfaces\Iregistration.cs" />
     <Compile Include="DAL\Interfaces\IUserAccess.cs" />
     <Compile Include="Helpers\DataProcessing.cs" />
@@ -190,7 +191,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="DAL\BusinessLogic\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
