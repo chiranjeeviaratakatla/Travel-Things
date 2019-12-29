@@ -26,9 +26,9 @@ namespace TravelThings.Web_Forms
                     IUserAccess dal = new UserAccess();
                     string Result = dal.InsertUserDetails(txtName.Text.ToUpper().Trim(), txtPhoneNo.Text.Trim());
                     if (Result != "EXISTS USER")
-                        Response.Redirect("");
+                        Response.Redirect("FromDestination.aspx");
                     else
-                        Response.Redirect("");
+                        Response.Redirect("FromDestination.aspx");
                 }
             }
         }
