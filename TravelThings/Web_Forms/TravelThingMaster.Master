@@ -30,6 +30,10 @@
         <!-- Template Main CSS File -->
         <link href="../Template/css/style.css" rel="stylesheet">
 
+    <!-- Date Picker -->
+   <%-- <link href="../DatePicker/datepicker.css" rel="stylesheet" />
+    <script src="../DatePicker/bootstrap-datepicker.min.js"></script>--%>
+
         <!-- =======================================================
     Template Name: SoftLand
     Template URL: https://bootstrapmade.com/softland-bootstrap-app-landing-page-template/
@@ -84,6 +88,8 @@
                                             </ul>
                                         </li>
                                         <li><a href="contact.html" class="nav-link">Contact</a></li>
+                                        <%--<a href="contact.html" class="nav-link">Login</a>--%>
+                                        <li><asp:HyperLink ID="hlLogin" NavigateUrl="~/Web_Forms/HomePage.aspx" class="nav-link" runat="server">Login</asp:HyperLink></li>
                                     </ul>
                                 </nav>
                             </div>

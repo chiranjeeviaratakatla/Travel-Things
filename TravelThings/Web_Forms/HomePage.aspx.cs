@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using TravelThings.DAL.Interfaces;
 using TravelThings.DAL.BusinessLogic;
 using TravelThings.Helpers;
+using System.Data;
 
 namespace TravelThings.Web_Forms
 {
@@ -19,18 +20,40 @@ namespace TravelThings.Web_Forms
 
         protected void btnTraveler_Click(object sender, EventArgs e)
         {
-            if(!string.IsNullOrEmpty(txtName.Text.Trim()))
+            try
             {
-                if(!string.IsNullOrEmpty(txtPhoneNo.Text.Trim()))
+                string ErrorMessage = string.Empty;
+                if (string.IsNullOrEmpty(ErrorMessage = DataValidation()))
                 {
                     IUserAccess dal = new UserAccess();
-                    string Result = dal.InsertUserDetails(txtName.Text.ToUpper().Trim(), txtPhoneNo.Text.Trim());
-                    if (Result != "EXISTS USER")
-                        Response.Redirect("FromDestination.aspx");
-                    else
-                        Response.Redirect("FromDestination.aspx");
+                    DataTable dt = dal.InsertUserDetails(txtName.Text.ToUpper().Trim(), txtPhoneNo.Text.Trim(), btnSender.Text == "I'm a Travelr" ? "Travelr" : "Sender");
+                    if (dt.Rows.Count > 0)
+                    {
+                        Tools.UserId = Convert.ToInt32(dt.Rows[0]["UD_User_Id"].ToString());
+                        Tools.UserName = dt.Rows[0]["UD_User_Name"].ToString();
+                        //((HyperLink)(this.Master.FindControl("hlLogin"))).Text = Tools.UserName;
+                        Response.Redirect("SenderDetails.aspx", false);
+                    }
                 }
+                else
+                    Response.Write(Tools.Alert(ErrorMessage));
             }
+            catch (Exception ex)
+            {
+                Response.Write(Tools.Alert(ex.Message));
+            }
+
+        }
+
+        private string DataValidation()
+        {
+            string ErrorMessage = string.Empty;
+            if (string.IsNullOrEmpty(txtName.Text))
+                ErrorMessage = "Please Enter Name.";
+            else if (string.IsNullOrEmpty(txtPhoneNo.Text))
+                ErrorMessage = "Please Enter Phone Number.";
+
+            return ErrorMessage;
         }
     }
 }

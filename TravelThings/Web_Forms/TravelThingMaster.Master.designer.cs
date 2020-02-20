@@ -31,6 +31,15 @@ namespace TravelThings.Web_Forms {
         protected global::System.Web.UI.HtmlControls.HtmlForm fromTravelThingMaster;
         
         /// <summary>
+        /// hlLogin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlLogin;
+        
+        /// <summary>
         /// TraverlThingMasterContentPlaceHolder control.
         /// </summary>
         /// <remarks>
