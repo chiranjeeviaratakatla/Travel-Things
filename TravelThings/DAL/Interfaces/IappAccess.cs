@@ -10,6 +10,8 @@ namespace TravelThings.DAL.Interfaces
     internal interface IappAccess
     {
         string GetArea(string Area);
+        DataTable GetAreaList(string Area);
         DataTable GetTravelrDetails(string From, string To, DateTime Staritng);
+
     }
 }

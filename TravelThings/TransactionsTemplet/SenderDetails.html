@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Travel Things</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <!--<link rel="stylesheet" href="C:/Users/user/Downloads/BootstrapTemplet/Css/MasterCss.css">-->
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+		margin-bottom: 0;
+		border-radius: 0;
+		background-repeat: no-repeat;
+		background-image: linear-gradient(to right,#273f7f 0%,#37a0bc 100%);
+		background-blend-mode:normal;
+		
+    }
+    .navbar-inverse .navbar-nav>li>a {
+    color: #ffffff;
+}
+a {
+    color: #ffffff;
+    text-decoration: none;
+}
+th{
+color: #ffffff;
+    text-decoration: none;
+}
+	
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 550px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-repeat: no-repeat;
+	background-image: linear-gradient(to right,#37a0bc 0%,#273f7f 100%);
+	background-blend-mode:normal;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+}
+	.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
+    color: #fff;
+    background-color: #020f4e;
+    }
+	
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Logo</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+	    <li ><a href="MasterPage.html">DashBoard</a></li>
+        <li ><a href="TravelerDetails.html">I Am A Traveler</a></li>
+        <li class="active"><a href="SenderDetails.html">I Am A Sender</a></li>
+        <li><a href="ReceiverDetails.html">I Am A Receiver</a></li>
+        <li><a href="#">Reoprt</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+      <p><a href="#">From</a></p>
+      <p><a href="#">Items</a></p>
+      <p><a href="#">To</a></p>
+    </div>
+    <div class="col-sm-10 text-left"> 
+      
+      <form>
+	  <div style="width: 100%; height: 500px; overflow-y: scroll;">
+	  <div class="form-group col-sm-12">
+      <h1>Welcome</h1>
+    </div>
+	<div class="form-group col-sm-4">
+      <label for="pwd">Name:</label>
+      <input type="text" class="form-control" id="pwd">
+    </div>
+    <div class="form-group col-sm-4">
+      <label for="usr">Start Date:</label>
+      <input type="text" class="form-control" id="usr">
+    </div>
+    <div class="form-group col-sm-4">
+      <label for="pwd">Aternative Phone Number:</label>
+      <input type="text" class="form-control" id="pwd">
+    </div>
+	
+	<div class="form-group col-sm-4">
+      <label for="pwd">Area:</label>
+      <input type="text" class="form-control" id="pwd">
+    </div>
+	<div class="form-group col-sm-4">
+      <label for="pwd">City:</label>
+      <input type="text" class="form-control" id="pwd">
+    </div>
+	<div class="form-group col-sm-4">
+      <label for="pwd">State:</label>
+      <input type="text" class="form-control" id="pwd">
+    </div>
+	<div class="form-group col-sm-4">
+      <label for="pwd">Pin Code:</label>
+      <input type="text" class="form-control" id="pwd">
+    </div>
+	<!--<div class="form-group col-sm-4">
+      <label for="pwd">Password:</label>
+      <input type="text" class="form-control" id="pwd">
+    </div>
+	<div class="form-group col-sm-4">
+      <label for="pwd">Password:</label>
+      <div class="dropdown">
+			<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Please Select Tutorials
+			<span class="caret"></span></button>
+			<ul class="dropdown-menu">
+			  <li><a href="#">Normal</a></li>
+			  <li class="disabled"><a href="#">Disabled</a></li>
+			  <li class="active"><a href="#">Active</a></li>
+			  <li><a href="#">Normal</a></li>
+			</ul>
+			</div>
+	</div>-->
+	
+    <div class="col-sm-12">
+	<div>
+		 <table class="table table-hover">
+		 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#popAddItems">ADD Items</button>
+			<button type="button" class="btn btn-warning">Remove</button>
+    <thead class="navbar">
+      <tr>
+	  <th>Select</th>
+        <th>Item Name</th>
+        <th>Type</th>
+		<th>Weight</th>
+		<th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+	  <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Select</button></td>
+        <td>Pen</td>
+        <td>Platic</td>
+		<td>50 g</td>
+        <td>Please take this as safe.</td>
+      </tr>
+      <tr>
+	  <td><button type="button" class="btn btn-primary">Select</button></td>
+        <td>Pen</td>
+        <td>Platic</td>
+		<td>50 g</td>
+        <td>Please take this as safe.</td>
+      </tr>
+      <tr>
+	  <td><button type="button" class="btn btn-primary">Select</button></td>
+        <td>Pen</td>
+        <td>Platic</td>
+		<td>50 g</td>
+        <td>Please take this as safe.</td>
+      </tr>
+    </tbody>
+  </table>
+	</div>
+	<div class="form-group col-sm-12">
+      <button type="button" class="btn">Basic</button>
+<button type="button" class="btn btn-default">Default</button>
+<button type="button" class="btn btn-primary">Primary</button>
+<button type="button" class="btn btn-success">Success</button>
+<button type="button" class="btn btn-info">Info</button>
+<button type="button" class="btn btn-warning">Warning</button>
+<button type="button" class="btn btn-danger">Danger</button>
+<button type="button" class="btn btn-link">Link</button>
+    </div>
+	<div class="form-group col-sm-12">
+      <h1>Reciver Details</h1>
+    </div>
+	<div class="form-group col-sm-4">
+      <label for="pwd">Name:</label>
+      <input type="text" class="form-control" id="pwd">
+    </div>
+    <div class="form-group col-sm-4">
+      <label for="usr">Phone Number:</label>
+      <input type="text" class="form-control" id="usr">
+    </div>
+    <div class="form-group col-sm-4">
+      <label for="pwd">Aternative Phone Number:</label>
+      <input type="text" class="form-control" id="pwd">
+    </div>
+	<div class="form-group col-sm-4">
+      <label for="pwd">Aadhar Number:</label>
+      <input type="text" class="form-control" id="pwd">
+    </div>
+    <div class="form-group col-sm-4">
+      <label for="usr">Email:</label>
+      <input type="text" class="form-control" id="usr">
+    </div>
+</div>
+</div>
+  </form>
+    </div>
+    <!--<div class="col-sm-2 sidenav">
+      <div class="well">
+        <p>ADS</p>
+      </div>
+      <div class="well">
+        <p>ADS</p>
+      </div>
+    </div>-->
+  </div>
+</div>
+
+<footer class="container-fluid text-center">
+  <p>Footer Text</p>
+</footer>
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">JON </h4><p>+91 9876543210</p>
+        </div>
+        <div class="modal-body">
+			<div class="container-fluid text-center">
+					<div class="col-sm-6">
+						<label>From :</label>
+						  <p>Jayapur</p>
+					</div>
+					 <div class="col-sm-6">
+						<label>To :</label>
+						  <p>Pune</p>
+					</div>
+					<div class="col-sm-6">
+						<label>Wait :</label>
+						  <p>20 kgs</p>
+					</div>
+					 <div class="col-sm-6">
+						<label>Item Type :</label>
+						  <p>Glass Item</p>
+					</div>
+					<div class="col-sm-6">
+						<label>Charges for Item :</label>
+						  <p>Rs 200/-</p>
+					</div>
+			</div>
+		</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="modal fade" id="popAddItems" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">JON </h4><p>+91 9876543210</p>
+        </div>
+        <div class="modal-body">
+			<div class="container-fluid text-center">
+					<div class="col-sm-6">
+						<label>Item Name :</label>						  
+      <input type="text" class="form-control" id="pwd">
+					</div>
+					 <div class="col-sm-6">
+						<label>Description :</label>
+						  <input type="text" class="form-control" id="pwd">
+					</div>
+					<div class="col-sm-6">
+						<label>Wait :</label>
+						  <input type="text" class="form-control" id="pwd">
+					</div>
+					 <div class="col-sm-6">
+						<label>Item Type :</label>
+						  <div class="dropdown" ">
+							<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Please Select Tutorials
+							<span class="caret"></span></button>
+							<ul class="dropdown-menu">
+							  <li><a href="#">Normal</a></li>
+							  <li class="disabled"><a href="#">Disabled</a></li>
+							  <li class="active"><a href="#">Active</a></li>
+							  <li><a href="#">Normal</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-12">
+						<label>Remarks :</label>
+						 <input type="text" class="form-control" id="pwd">
+					</div>
+			</div>
+		</div>
+        <div class="modal-footer">
+		<button type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</body>
+</html>

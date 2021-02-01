@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Travel Things</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <!--<link rel="stylesheet" href="C:/Users/user/Downloads/BootstrapTemplet/Css/MasterCss.css">-->
+  <link rel="stylesheet" href="C:/Users/user/Downloads/BootstrapTemplet/Css/Chat.css">
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+	background-repeat: no-repeat;
+	background-image: linear-gradient(to right,#273f7f 0%,#37a0bc 100%);
+	background-blend-mode:normal;
+    }
+    .navbar-inverse .navbar-nav>li>a {
+    color: #ffffff;
+}
+a {
+    color: #ffffff;
+    text-decoration: none;
+}
+th{
+color: #ffffff;
+    text-decoration: none;
+}
+	
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 550px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-repeat: no-repeat;
+	background-image: linear-gradient(to right,#37a0bc 0%,#273f7f 100%);
+	background-blend-mode:normal;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+}
+	.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
+    color: #fff;
+    background-color: #020f4e;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Logo</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+	    <li ><a href="MasterPage.html">DashBoard</a></li>
+        <li class="active"><a href="TravelerDetails.html">I Am A Traveler</a></li>
+        <li ><a href="SenderDetails.html">I Am A Sender</a></li>
+        <li><a href="ReceiverDetails.html">I Am A Receiver</a></li>
+        <li><a href="#">Reoprt</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  
+<div class="container-fluid text-center">    
+	<div class="row content">
+		<div class="col-sm-2 sidenav">
+		  <p><a href="#">Link</a></p>
+		  <p><a href="#">Link</a></p>
+		  <p><a href="#">Link</a></p>
+		</div>
+    <div class="col-sm-10 text-left"> 
+		<form>
+			<div class="col-sm-12 text-left chat">
+				<h2>Chat Messages</h2>
+
+				<div class="container">
+				  <img src="/w3images/bandmember.jpg" alt="Avatar" style="width:100%;">
+				  <p>Hello. How are you today?</p>
+				  <span class="time-right">11:00</span>
+				</div>
+
+				<div class="container darker">
+				  <img src="/w3images/avatar_g2.jpg" alt="Avatar" class="right" style="width:100%;">
+				  <p>Hey! I'm fine. Thanks for asking!</p>
+				  <span class="time-left">11:01</span>
+				</div>
+
+				<div class="container">
+				  <img src="/w3images/bandmember.jpg" alt="Avatar" style="width:100%;">
+				  <p>Sweet! So, what do you wanna do today?</p>
+				  <span class="time-right">11:02</span>
+				</div>
+
+				<div class="container darker">
+				  <img src="/w3images/avatar_g2.jpg" alt="Avatar" class="right" style="width:100%;">
+				  <p>Nah, I dunno. Play soccer.. or learn more coding perhaps?</p>
+				  <span class="time-left">11:05</span>
+				</div>
+			</div>
+			<div class="col-sm-12 text-left">
+				<div id="divChat" class="col-sm-11 text-left">
+					<input id="txtChatBox" class="form-control"type ="text"></input>
+				</div>
+				<div id="divChat" class="col-sm-1 text-left">
+					<button type="button" class="btn btn-primary">Send</button>
+				</div>
+			</div>
+		</form>
+	</div>
+ </div>
+</div>
+<footer class="container-fluid text-center">
+  <p>Footer Text</p>
+</footer>
+
+</body>
+</html>

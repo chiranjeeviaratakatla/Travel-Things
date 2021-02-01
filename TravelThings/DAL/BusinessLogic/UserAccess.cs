@@ -11,13 +11,43 @@ namespace TravelThings.DAL.BusinessLogic
 {
     internal class UserAccess : DataProcessing, IUserAccess
     {
-        public DataTable InsertUserDetails(string UserName, string PhoneNo,string TypeOfUser)
+        public DataTable InsertUserDetails(string UserName, string PhoneNo)
         {
             SqlCommand cmd = new SqlCommand("usp_Insert_User_Details");
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@User_Name", UserName);
             cmd.Parameters.AddWithValue("@Phone_No", PhoneNo);
-            cmd.Parameters.AddWithValue("@TypeOfUser", TypeOfUser);
+            //cmd.Parameters.AddWithValue("@TypeOfUser", TypeOfUser);
+            return ExecuteReader(cmd);
+        }
+
+        public DataTable GettUserDetails(string UserId)
+        {
+            SqlCommand cmd = new SqlCommand("usp_Get_User_Details");
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@User_Id", UserId);
+            return ExecuteReader(cmd);
+        }
+
+        public bool UpdateUserProfile(string strUserId,string strPassword, string strUserName, string strAltPhoNo, string strAadharNo, string strAddress)
+        {
+            SqlCommand cmd = new SqlCommand("usp_Update_User_Profile");
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@UD_User_Id", strUserId);
+            cmd.Parameters.AddWithValue("@UD_Password", strPassword);
+            cmd.Parameters.AddWithValue("@UD_User_Name", strUserName);
+            cmd.Parameters.AddWithValue("@UD_Alter_Phone_No", string.IsNullOrEmpty(strAltPhoNo) ? (object)DBNull.Value.ToString() : strAltPhoNo);
+            cmd.Parameters.AddWithValue("@UD_Aadhar_No", strAadharNo);
+            cmd.Parameters.AddWithValue("@UD_Address", strAddress);
+            return ExecuteNonQuery(cmd);
+        }
+
+        public DataTable ConfirmCredentials(string strPhoneNo, string strPassword)
+        {
+            SqlCommand cmd = new SqlCommand("usp_Confirm_Credentials");
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@UD_Phone_No", strPhoneNo);
+            cmd.Parameters.AddWithValue("@UD_Password", strPassword);
             return ExecuteReader(cmd);
         }
     }

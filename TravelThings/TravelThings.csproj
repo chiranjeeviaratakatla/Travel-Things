@@ -1,5 +1,5 @@
-﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -43,6 +43,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=3.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -62,11 +67,16 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
+    <Content Include="BackEnd\Css\Chat.css" />
+    <Content Include="BackEnd\Css\CommonControls.css" />
+    <Content Include="BackEnd\Css\MasterCss.css" />
+    <Content Include="BackEnd\Css\pan.txt" />
+    <Content Include="BackEnd\frmDashboard.aspx" />
+    <Content Include="BackEnd\frmLogin.aspx" />
+    <Content Include="BackEnd\frmProfile.aspx" />
+    <Content Include="BackEnd\frmReceiver.aspx" />
+    <Content Include="BackEnd\frmTraveler.aspx" />
+    <Content Include="BackEnd\frmSender.aspx" />
     <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
     <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
     <Content Include="bin\roslyn\csc.exe" />
@@ -92,87 +102,102 @@
     <Content Include="DatePicker\bootstrap-datepicker.min.js" />
     <Content Include="DatePicker\datepicker.css" />
     <Content Include="DatePicker\jquery.min.js" />
+    <Content Include="Images\DashBoardLogo.png" />
     <Content Include="Images\TravelThingsLogo.jpg" />
     <Content Include="Images\TravelThingsLogo.png" />
-    <Content Include="obj\Debug\TravelThings.csproj.FileListAbsolute.txt" />
-    <Content Include="obj\Debug\TravelThings.dll" />
-    <Content Include="obj\Debug\TravelThings.pdb" />
-    <Content Include="Template\blog-single.html" />
-    <Content Include="Template\blog.html" />
-    <Content Include="Template\contact.html" />
-    <Content Include="Template\css\scss\Readme.txt" />
-    <Content Include="Template\css\style.css" />
-    <Content Include="Template\features.html" />
-    <Content Include="Template\forms\contact.php" />
-    <Content Include="Template\forms\Readme.txt" />
-    <Content Include="Template\img\apple-touch-icon.png" />
-    <Content Include="Template\img\favicon.png" />
-    <Content Include="Template\img\hero-bg.jpg" />
-    <Content Include="Template\img\img_1.jpg" />
-    <Content Include="Template\img\img_2.jpg" />
-    <Content Include="Template\img\img_3.jpg" />
-    <Content Include="Template\img\img_4.jpg" />
-    <Content Include="Template\img\person_1.jpg" />
-    <Content Include="Template\img\person_2.jpg" />
-    <Content Include="Template\img\person_3.jpg" />
-    <Content Include="Template\img\phone_1.png" />
-    <Content Include="Template\img\phone_2.png" />
-    <Content Include="Template\img\undraw_svg_1.svg" />
-    <Content Include="Template\img\undraw_svg_2.svg" />
-    <Content Include="Template\img\undraw_svg_3.svg" />
-    <Content Include="Template\img\undraw_svg_4.svg" />
-    <Content Include="Template\index.html" />
-    <Content Include="Template\js\main.js" />
-    <Content Include="Template\pricing.html" />
-    <Content Include="Template\vendor\aos\aos.css" />
-    <Content Include="Template\vendor\aos\aos.js" />
-    <Content Include="Template\vendor\bootstrap\css\bootstrap-grid.css" />
-    <Content Include="Template\vendor\bootstrap\css\bootstrap-grid.min.css" />
-    <Content Include="Template\vendor\bootstrap\css\bootstrap-reboot.css" />
-    <Content Include="Template\vendor\bootstrap\css\bootstrap-reboot.min.css" />
-    <Content Include="Template\vendor\bootstrap\css\bootstrap.css" />
-    <Content Include="Template\vendor\bootstrap\css\bootstrap.min.css" />
-    <Content Include="Template\vendor\bootstrap\js\bootstrap.bundle.js" />
-    <Content Include="Template\vendor\bootstrap\js\bootstrap.bundle.min.js" />
-    <Content Include="Template\vendor\bootstrap\js\bootstrap.js" />
-    <Content Include="Template\vendor\bootstrap\js\bootstrap.min.js" />
-    <Content Include="Template\vendor\easing\easing.js" />
-    <Content Include="Template\vendor\easing\easing.min.js" />
-    <Content Include="Template\vendor\icofont\icofont.min.css" />
-    <Content Include="Template\vendor\jquery\jquery-migrate.min.js" />
-    <Content Include="Template\vendor\jquery\jquery.min.js" />
-    <Content Include="Template\vendor\line-awesome\css\line-awesome.css" />
-    <Content Include="Template\vendor\line-awesome\css\line-awesome.min.css" />
-    <Content Include="Template\vendor\line-awesome\fonts\la-brands-400.svg" />
-    <Content Include="Template\vendor\line-awesome\fonts\la-regular-400.svg" />
-    <Content Include="Template\vendor\line-awesome\fonts\la-solid-900.svg" />
-    <Content Include="Template\vendor\owlcarousel\assets\ajax-loader.gif" />
-    <Content Include="Template\vendor\owlcarousel\assets\owl.carousel.css" />
-    <Content Include="Template\vendor\owlcarousel\assets\owl.carousel.min.css" />
-    <Content Include="Template\vendor\owlcarousel\assets\owl.theme.default.css" />
-    <Content Include="Template\vendor\owlcarousel\assets\owl.theme.default.min.css" />
-    <Content Include="Template\vendor\owlcarousel\assets\owl.theme.green.css" />
-    <Content Include="Template\vendor\owlcarousel\assets\owl.theme.green.min.css" />
-    <Content Include="Template\vendor\owlcarousel\assets\owl.video.play.png" />
-    <Content Include="Template\vendor\owlcarousel\owl.carousel.js" />
-    <Content Include="Template\vendor\owlcarousel\owl.carousel.min.js" />
-    <Content Include="Template\vendor\php-email-form\validate.js" />
-    <Content Include="Template\vendor\sticky\sticky.js" />
+    <Content Include="jquery-ui-1.12.1.custom\AUTHORS.txt" />
+    <Content Include="jquery-ui-1.12.1.custom\external\jquery\jquery.js" />
+    <Content Include="jquery-ui-1.12.1.custom\images\ui-icons_444444_256x240.png" />
+    <Content Include="jquery-ui-1.12.1.custom\images\ui-icons_555555_256x240.png" />
+    <Content Include="jquery-ui-1.12.1.custom\images\ui-icons_777620_256x240.png" />
+    <Content Include="jquery-ui-1.12.1.custom\images\ui-icons_777777_256x240.png" />
+    <Content Include="jquery-ui-1.12.1.custom\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="jquery-ui-1.12.1.custom\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="jquery-ui-1.12.1.custom\index.html" />
+    <Content Include="jquery-ui-1.12.1.custom\jquery-ui.css" />
+    <Content Include="jquery-ui-1.12.1.custom\jquery-ui.js" />
+    <Content Include="jquery-ui-1.12.1.custom\jquery-ui.min.css" />
+    <Content Include="jquery-ui-1.12.1.custom\jquery-ui.min.js" />
+    <Content Include="jquery-ui-1.12.1.custom\jquery-ui.structure.css" />
+    <Content Include="jquery-ui-1.12.1.custom\jquery-ui.structure.min.css" />
+    <Content Include="jquery-ui-1.12.1.custom\jquery-ui.theme.css" />
+    <Content Include="jquery-ui-1.12.1.custom\jquery-ui.theme.min.css" />
+    <Content Include="jquery-ui-1.12.1.custom\LICENSE.txt" />
+    <Content Include="JQueryAutoComplete\images\ui-icons_444444_256x240.png" />
+    <Content Include="JQueryAutoComplete\images\ui-icons_555555_256x240.png" />
+    <Content Include="JQueryAutoComplete\images\ui-icons_777620_256x240.png" />
+    <Content Include="JQueryAutoComplete\images\ui-icons_777777_256x240.png" />
+    <Content Include="JQueryAutoComplete\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="JQueryAutoComplete\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="JQueryAutoComplete\jquery-ui.css" />
+    <Content Include="JQueryAutoComplete\jquery-ui.js" />
+    <Content Include="JQueryAutoComplete\jquery-ui.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web_Forms\SenderDetails.aspx" />
     <Content Include="Web_Forms\HomePage.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BackEnd\AddressHandler.ashx.cs">
+      <DependentUpon>AddressHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\BackEnd.Master.cs">
+      <DependentUpon>BackEnd.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackEnd\BackEnd.Master.designer.cs">
+      <DependentUpon>BackEnd.Master</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\frmDashboard.aspx.cs">
+      <DependentUpon>frmDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackEnd\frmDashboard.aspx.designer.cs">
+      <DependentUpon>frmDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\frmLogin.aspx.cs">
+      <DependentUpon>frmLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackEnd\frmLogin.aspx.designer.cs">
+      <DependentUpon>frmLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\frmProfile.aspx.cs">
+      <DependentUpon>frmProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackEnd\frmProfile.aspx.designer.cs">
+      <DependentUpon>frmProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\frmReceiver.aspx.cs">
+      <DependentUpon>frmReceiver.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackEnd\frmReceiver.aspx.designer.cs">
+      <DependentUpon>frmReceiver.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\frmTraveler.aspx.cs">
+      <DependentUpon>frmTraveler.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackEnd\frmTraveler.aspx.designer.cs">
+      <DependentUpon>frmTraveler.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\frmSender.aspx.cs">
+      <DependentUpon>frmSender.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackEnd\frmSender.aspx.designer.cs">
+      <DependentUpon>frmSender.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DAL\BusinessLogic\AppAccess.cs" />
+    <Compile Include="DAL\BusinessLogic\TransactionAccess.cs" />
     <Compile Include="DAL\BusinessLogic\UserAccess.cs" />
     <Compile Include="DAL\Interfaces\IappAccess.cs" />
     <Compile Include="DAL\Interfaces\Iregistration.cs" />
+    <Compile Include="DAL\Interfaces\ItransactionAccess.cs" />
     <Compile Include="DAL\Interfaces\IUserAccess.cs" />
     <Compile Include="Helpers\DataProcessing.cs" />
     <Compile Include="Helpers\Tools.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Web_Forms\SenderDetails.aspx.cs">
       <DependentUpon>SenderDetails.aspx</DependentUpon>
@@ -206,37 +231,11 @@
     <Content Include="bin\roslyn\vbc.rsp" />
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
     <Content Include="bin\TravelThings.dll.config" />
-    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <Content Include="obj\Debug\TravelThings.csproj.CopyComplete" />
-    <Content Include="obj\Debug\TravelThings.csproj.CoreCompileInputs.cache" />
-    <Content Include="obj\Debug\TravelThings.csprojAssemblyReference.cache" />
-    <Content Include="obj\Release\TravelThings.csproj.CoreCompileInputs.cache" />
-    <None Include="packages.config" />
-    <Content Include="Template\vendor\bootstrap\css\bootstrap-grid.css.map" />
-    <Content Include="Template\vendor\bootstrap\css\bootstrap-grid.min.css.map" />
-    <Content Include="Template\vendor\bootstrap\css\bootstrap-reboot.css.map" />
-    <Content Include="Template\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
-    <Content Include="Template\vendor\bootstrap\css\bootstrap.css.map" />
-    <Content Include="Template\vendor\bootstrap\css\bootstrap.min.css.map" />
-    <Content Include="Template\vendor\bootstrap\js\bootstrap.bundle.js.map" />
-    <Content Include="Template\vendor\bootstrap\js\bootstrap.bundle.min.js.map" />
-    <Content Include="Template\vendor\bootstrap\js\bootstrap.js.map" />
-    <Content Include="Template\vendor\bootstrap\js\bootstrap.min.js.map" />
-    <Content Include="Template\vendor\icofont\fonts\icofont.woff" />
-    <Content Include="Template\vendor\icofont\fonts\icofont.woff2" />
-    <Content Include="Template\vendor\line-awesome\fonts\la-brands-400.eot" />
-    <Content Include="Template\vendor\line-awesome\fonts\la-brands-400.ttf" />
-    <Content Include="Template\vendor\line-awesome\fonts\la-brands-400.woff" />
-    <Content Include="Template\vendor\line-awesome\fonts\la-brands-400.woff2" />
-    <Content Include="Template\vendor\line-awesome\fonts\la-regular-400.eot" />
-    <Content Include="Template\vendor\line-awesome\fonts\la-regular-400.ttf" />
-    <Content Include="Template\vendor\line-awesome\fonts\la-regular-400.woff" />
-    <Content Include="Template\vendor\line-awesome\fonts\la-regular-400.woff2" />
-    <Content Include="Template\vendor\line-awesome\fonts\la-solid-900.eot" />
-    <Content Include="Template\vendor\line-awesome\fonts\la-solid-900.ttf" />
-    <Content Include="Template\vendor\line-awesome\fonts\la-solid-900.woff" />
-    <Content Include="Template\vendor\line-awesome\fonts\la-solid-900.woff2" />
-    <Content Include="Template\vendor\owlcarousel\LICENSE" />
+    <Content Include="BackEnd\BackEnd.Master" />
+    <Content Include="packages.config" />
+    <Content Include="BackEnd\AddressHandler.ashx" />
+    <Content Include="jquery-ui-1.12.1.custom\package.json" />
+    <None Include="Properties\PublishProfiles\local.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -248,7 +247,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -263,9 +261,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>50599</DevelopmentServerPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:50599/</IISUrl>
+          <IISUrl>http://localhost:51129/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
@@ -275,11 +273,12 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -47,7 +47,7 @@ namespace TravelThings.Helpers
             }
             finally
             {
-                cmd.Clone();
+                connection.Close();
             }
             return dt;
         }

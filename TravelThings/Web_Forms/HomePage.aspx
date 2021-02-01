@@ -48,10 +48,10 @@
                                         </div>
 
                                         <div class="col-md-6 form-group">
-                                            <asp:Button ID="btnTraveler" Text="I'm a Travelr" CssClass="btn btn-outline-white" OnClick="btnTraveler_Click" runat="server" />
+                                            <asp:Button ID="btnRegister" Text="Register Now" CssClass="btn btn-outline-white" OnClick="btnRegister_Click" runat="server" />
                                         </div>
                                         <div class="col-md-6 form-group">
-                                            <asp:Button ID="btnSender" Text="I'm a Sender" CssClass="btn btn-outline-white" OnClick="btnTraveler_Click" runat="server" />
+                                            <%--<asp:Button ID="btnSender" Text="I'm a Sender" CssClass="btn btn-outline-white" OnClick="btnTraveler_Click" runat="server" />--%>
                                         </div>
                                     </div>
                                     <%--<img src="../Template/img/phone_1.png" alt="Image" class="phone-1" data-aos="fade-right">

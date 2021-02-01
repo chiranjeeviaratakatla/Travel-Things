@@ -8,6 +8,7 @@ using TravelThings.DAL.Interfaces;
 using TravelThings.DAL.BusinessLogic;
 using TravelThings.Helpers;
 using System.Data;
+using TravelThings.BackEnd;
 
 namespace TravelThings.Web_Forms
 {
@@ -15,34 +16,12 @@ namespace TravelThings.Web_Forms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-        }
-
-        protected void btnTraveler_Click(object sender, EventArgs e)
-        {
-            try
+            if(!this.IsPostBack)
             {
-                string ErrorMessage = string.Empty;
-                if (string.IsNullOrEmpty(ErrorMessage = DataValidation()))
-                {
-                    IUserAccess dal = new UserAccess();
-                    DataTable dt = dal.InsertUserDetails(txtName.Text.ToUpper().Trim(), txtPhoneNo.Text.Trim(), btnSender.Text == "I'm a Travelr" ? "Travelr" : "Sender");
-                    if (dt.Rows.Count > 0)
-                    {
-                        Tools.UserId = Convert.ToInt32(dt.Rows[0]["UD_User_Id"].ToString());
-                        Tools.UserName = dt.Rows[0]["UD_User_Name"].ToString();
-                        //((HyperLink)(this.Master.FindControl("hlLogin"))).Text = Tools.UserName;
-                        Response.Redirect("SenderDetails.aspx", false);
-                    }
-                }
-                else
-                    Response.Write(Tools.Alert(ErrorMessage));
+                Tools.UserId = 0;
+                Tools.UserName = string.Empty;
             }
-            catch (Exception ex)
-            {
-                Response.Write(Tools.Alert(ex.Message));
-            }
-
+            
         }
 
         private string DataValidation()
@@ -54,6 +33,32 @@ namespace TravelThings.Web_Forms
                 ErrorMessage = "Please Enter Phone Number.";
 
             return ErrorMessage;
+        }
+
+        protected void btnRegister_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string ErrorMessage = string.Empty;
+                if (string.IsNullOrEmpty(ErrorMessage = DataValidation()))
+                {
+                    IUserAccess dal = new UserAccess();
+                    DataTable dt = dal.InsertUserDetails(txtName.Text.ToUpper().Trim(), txtPhoneNo.Text.Trim());
+                    if (dt.Rows.Count > 0)
+                    {
+                        Tools.UserId = Convert.ToInt32(dt.Rows[0]["UD_User_Id"].ToString());
+                        Tools.UserName = dt.Rows[0]["UD_User_Name"].ToString();
+                        Response.Redirect("~/BackEnd/frmProfile.aspx");
+                    }
+                }
+                else
+                    Response.Write(Tools.Alert(ErrorMessage));
+            }
+            catch (Exception ex)
+            {
+                Response.Write(Tools.Alert(ex.Message));
+            }
+
         }
     }
 }

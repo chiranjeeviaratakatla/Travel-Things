@@ -18,7 +18,14 @@ namespace TravelThings.DAL.BusinessLogic
             cmd.Parameters.AddWithValue("@Area", Area);
             return Convert.ToString(ExecuteScalar(cmd));
         }
-        
+
+        public DataTable GetAreaList(string Area)
+        {
+            SqlCommand cmd = new SqlCommand("usp_Get_Search_Area");
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@Area", Area);
+            return ExecuteReader(cmd);
+        }
         public DataTable GetTravelrDetails(string From, string To, DateTime Staritng)
         {
             SqlCommand cmd = new SqlCommand("usp_Get_Travelr_Details");

@@ -1,0 +1,197 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="BackEnd.master.cs" Inherits="TravelThings.BackEnd.BackEnd" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <link href="Css/CommonControls.css" rel="stylesheet" />
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <!--<link rel="stylesheet" href="C:/Users/user/Downloads/BootstrapTemplet/Css/MasterCss.css">-->
+    <style>
+        /* Remove the navbar's default margin-bottom and rounded borders */
+        .navbar {
+            margin-bottom: 0;
+            border-radius: 0;
+            background-repeat: no-repeat;
+            background-image: linear-gradient(to right,#273f7f 0%,#37a0bc 100%);
+            background-blend-mode: normal;
+        }
+
+        .frmBackground {
+            background-color: white;
+        }
+
+        .navbar-inverse .navbar-nav > li > a {
+            color: #ffffff;
+        }
+
+        a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        /* th {
+            color: #ffffff;
+            text-decoration: none;
+        }*/
+        th {
+            color: #ffffff;
+            /*text-decoration: none;
+            background-image: linear-gradient(to right,#37a0bc 0%,#273f7f 100%);*/
+            margin-bottom: 0;
+            border-radius: 0;
+            background-repeat: no-repeat;
+            background-image: linear-gradient(to right,#273f7f 0%,#37a0bc 100%);
+            background-blend-mode: normal;
+        }
+
+        /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+        .row.content {
+            height: 490px;
+        }
+
+        /* Set gray background color and 100% height */
+        .sidenav {
+            padding-top: 20px;
+            background-repeat: no-repeat;
+            background-image: linear-gradient(to right,#37a0bc 0%,#273f7f 100%);
+            background-blend-mode: normal;
+            height: 100%;
+        }
+
+        /* Set black background color, white text and some padding */
+        footer {
+            background-color: #555;
+            color: white;
+            padding: 15px;
+        }
+
+        /* On small screens, set height to 'auto' for sidenav and grid */
+        @media screen and (max-width: 767px) {
+            .sidenav {
+                height: auto;
+                padding: 15px;
+            }
+
+            .row.content {
+                height: auto;
+            }
+        }
+
+        .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:focus, .navbar-inverse .navbar-nav > .active > a:hover {
+            color: #fff;
+            background-color: #020f4e;
+        }
+    </style>
+
+    <style type="text/css">
+        .Initial {
+            display: block;
+            padding: 4px 18px 4px 18px;
+            float: left;
+            /*background: url("../Images/InitialImage.png") no-repeat right top;*/
+            color: Black;
+            font-weight: bold;
+        }
+
+            .Initial:hover {
+                color: White;
+                /*background: url("../Images/SelectedButton.png") no-repeat right top;*/
+                /*background-color:blue;*/
+                background-image: linear-gradient(to right,#273f7f 0%,#37a0bc 100%);
+            }
+
+        .Clicked {
+            float: left;
+            display: block;
+            /*background: url("../Images/SelectedButton.png") no-repeat right top;*/
+            /*background-color:blue;*/
+            background-image: linear-gradient(to right,#273f7f 0%,#37a0bc 100%);
+            padding: 4px 18px 4px 18px;
+            color: Black;
+            font-weight: bold;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">
+                            <asp:Image ID="imgLogo" ImageUrl="~/Images/DashBoardLogo.png" runat="server" Height="40px" Width="100px" AlternateText="Travel Things" />
+                        </a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="myNavbar">
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <asp:LinkButton ID="lbDashboard" CssClass="Initial" Text="Dashboard" runat="server" PostBackUrl="~/BackEnd/frmDashboard.aspx"></asp:LinkButton>
+                                <%--<asp:HyperLink ID="hlDashboard" CssClass="Initial" runat="server" NavigateUrl="~/BackEnd/frmDashboard.aspx">Dashboard</asp:HyperLink></li>--%>
+                            </li>
+                            <li>
+                                <%--<asp:HyperLink ID="hlSender" CssClass="Initial" runat="server" NavigateUrl="~/BackEnd/frmSender.aspx">Send</asp:HyperLink>--%>
+                                <asp:LinkButton ID="lbSender" CssClass="Initial" Text="Send" runat="server" PostBackUrl="~/BackEnd/frmSender.aspx"></asp:LinkButton>
+                            </li>
+                            <li>
+                                <%--<asp:HyperLink ID="hlTraveler" CssClass="Initial" runat="server" NavigateUrl="~/BackEnd/frmTraveler.aspx">Travel</asp:HyperLink>--%>
+                                <asp:LinkButton ID="lbTraveler" CssClass="Initial" Text="Travel" runat="server" PostBackUrl="~/BackEnd/frmTraveler.aspx"></asp:LinkButton>
+                            </li>
+                            <li>
+                                <%--<asp:HyperLink ID="hlReciver" CssClass="Initial" runat="server" NavigateUrl="~/BackEnd/frmReceiver.aspx">Receive</asp:HyperLink>--%>
+                                <asp:LinkButton ID="lbReciver" CssClass="Initial" Text="Receive" runat="server" PostBackUrl="~/BackEnd/frmReceiver.aspx"></asp:LinkButton>
+                            </li>
+                            <%--<li><a href="#">Reoprt</a></li>--%>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+
+                            <li>
+                                <asp:LinkButton ID="lbProfile" CssClass="Initial" Text="Profile" runat="server" PostBackUrl="~/BackEnd/frmProfile.aspx"></asp:LinkButton>
+                                <%--<asp:HyperLink ID="hlProfile" NavigateUrl="~/BackEnd/frmProfile.aspx" CssClass="Initial" runat="server"></asp:HyperLink>--%>
+                            </li>
+                            <li>
+                                <%--<asp:HyperLink ID="hlLogout" NavigateUrl="~/Web_Forms/HomePage.aspx" CssClass="Initial" runat="server"><span>Logout</span></asp:HyperLink>--%>
+                                <asp:LinkButton ID="lbLogout" CssClass="Initial" Text="Logout" runat="server" PostBackUrl="~/Web_Forms/HomePage.aspx"></asp:LinkButton>
+                            </li>
+                            <%--<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>--%>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="container-fluid">
+                <div class="row content">
+                    <asp:ScriptManager ID="scriptmanager1" runat="server">
+                    </asp:ScriptManager>
+                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                        <ContentTemplate>
+                            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                            </asp:ContentPlaceHolder>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
+            </div>
+        </div>
+    </form>
+    <footer class="container-fluid text-center">
+        <p>Footer Text</p>
+    </footer>
+</body>
+
+</html>
