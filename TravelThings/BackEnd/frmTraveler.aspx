@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BackEnd/BackEnd.Master" AutoEventWireup="true" CodeBehind="frmTraveler.aspx.cs" Inherits="TravelThings.BackEnd.frmTraveler" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
+  
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
@@ -103,7 +103,7 @@
                                 <asp:BoundField HeaderText="End Date" DataField="TD_Ending_Dt" />
                                 <asp:BoundField HeaderText="Weight" DataField="TD_Item_Weight" />
                                 <%--<asp:BoundField HeaderText="TD_Sno" DataField="TD_Sno"/>--%>
-                                <asp:BoundField HeaderText="Email ID" DataField="TD_Sno" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol"></asp:BoundField>
+                                <asp:BoundField HeaderText="TrasId" DataField="TD_Sno" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol"></asp:BoundField>
                                 <asp:TemplateField HeaderText="Delete">
                                     <ItemTemplate>
                                         <asp:Button ID="btnDeleteJoureny" runat="server" Text="Delete" CssClass="btn btn-danger" CommandName="Delete" CommandArgument="<%# Container.DataItemIndex %>" />

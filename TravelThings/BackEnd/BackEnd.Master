@@ -4,8 +4,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
-
+   <title>Travel Things </title>
+    <link rel="icon" type="image/gif/png" href="../Images/titleLogoSmall.png">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -123,6 +123,7 @@
             font-weight: bold;
             color: white;
         }
+
     </style>
 </head>
 <body>

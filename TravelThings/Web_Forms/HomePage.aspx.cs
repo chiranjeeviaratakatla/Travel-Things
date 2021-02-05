@@ -43,7 +43,7 @@ namespace TravelThings.Web_Forms
                 if (string.IsNullOrEmpty(ErrorMessage = DataValidation()))
                 {
                     IUserAccess dal = new UserAccess();
-                    DataTable dt = dal.InsertUserDetails(txtName.Text.ToUpper().Trim(), txtPhoneNo.Text.Trim());
+                    DataTable dt = dal.InsertUserDetails(txtName.Text.ToUpper().Trim(), txtPhoneNo.Text.Trim(), "", "", "");
                     if (dt.Rows.Count > 0)
                     {
                         Tools.UserId = Convert.ToInt32(dt.Rows[0]["UD_User_Id"].ToString());

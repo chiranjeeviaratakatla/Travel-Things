@@ -45,7 +45,7 @@ namespace TravelThings.Helpers
             return decryptpwd;
         }
 
-        private static string CreateRandomPassword()//int length = 8
+        public static string CreateRandomPassword()//int length = 8
         {
             // Create a string of characters, numbers, special characters that allowed in the password  
             string validChars = "ABCDEFGHJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*?_-";

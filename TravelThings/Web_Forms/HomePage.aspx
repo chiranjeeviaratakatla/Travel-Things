@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Web_Forms/TravelThingMaster.Master" AutoEventWireup="true" CodeBehind="HomePage.aspx.cs" Inherits="TravelThings.Web_Forms.HomePage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <title>Travel Things </title>
+    <link rel="icon" type="image/gif/png" href="../Images/titleLogoSmall.png">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="TraverlThingMasterContentPlaceHolder" runat="server">
     <main id="main">

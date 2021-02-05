@@ -103,6 +103,8 @@
     <Content Include="DatePicker\datepicker.css" />
     <Content Include="DatePicker\jquery.min.js" />
     <Content Include="Images\DashBoardLogo.png" />
+    <Content Include="Images\titleLogo.png" />
+    <Content Include="Images\titleLogoSmall.png" />
     <Content Include="Images\TravelThingsLogo.jpg" />
     <Content Include="Images\TravelThingsLogo.png" />
     <Content Include="jquery-ui-1.12.1.custom\AUTHORS.txt" />

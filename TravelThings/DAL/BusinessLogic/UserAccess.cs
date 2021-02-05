@@ -11,13 +11,15 @@ namespace TravelThings.DAL.BusinessLogic
 {
     internal class UserAccess : DataProcessing, IUserAccess
     {
-        public DataTable InsertUserDetails(string UserName, string PhoneNo)
+        public DataTable InsertUserDetails(string UserName, string strPhoneNo, string strAltPhoneNo, string strEmailId,string strPassword)
         {
             SqlCommand cmd = new SqlCommand("usp_Insert_User_Details");
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@User_Name", UserName);
-            cmd.Parameters.AddWithValue("@Phone_No", PhoneNo);
-            //cmd.Parameters.AddWithValue("@TypeOfUser", TypeOfUser);
+            cmd.Parameters.AddWithValue("@Phone_No", strPhoneNo);
+            cmd.Parameters.AddWithValue("@UD_Alter_Phone_No", strAltPhoneNo);
+            cmd.Parameters.AddWithValue("@UD_EmailId", strEmailId);
+            cmd.Parameters.AddWithValue("@UD_Password", strPassword);
             return ExecuteReader(cmd);
         }
 

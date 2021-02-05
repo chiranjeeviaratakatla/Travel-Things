@@ -8,7 +8,7 @@ namespace TravelThings.DAL.Interfaces
 {
     internal interface IUserAccess
     {
-        DataTable InsertUserDetails(string UserName, string strPhoneNo);
+        DataTable InsertUserDetails(string UserName, string strPhoneNo,string strAltPhoneNo,string strEmailId,string strPassword);
         DataTable GettUserDetails(string strUserId);
         bool UpdateUserProfile(string strUserId, string strPassword, string strUserName, string strAltPhoNo, string strAadharNo, string strAddress);
         DataTable ConfirmCredentials(string strPhoneNo, string strPassword);

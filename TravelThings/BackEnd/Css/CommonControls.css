@@ -68,3 +68,8 @@
   transform: rotate(45deg);
 }
 
+/*hide Grid View column*/
+  .hiddencol
+  {
+    display: none;
+  }
