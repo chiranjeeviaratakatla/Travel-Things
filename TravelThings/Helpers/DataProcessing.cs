@@ -8,7 +8,7 @@ using System.Configuration;
 
 namespace TravelThings.Helpers
 {
-    internal class DataProcessing
+    public class DataProcessing
     {
         private static readonly SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["conString"].ConnectionString.ToString());
         internal bool ExecuteNonQuery(SqlCommand cmd)
@@ -52,6 +52,27 @@ namespace TravelThings.Helpers
             return dt;
         }
 
+        internal DataSet ExecuteAdapter(SqlCommand cmd)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                cmd.Connection = connection;
+                connection.Open();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(ds);
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return ds;
+        }
+
         internal object ExecuteScalar(SqlCommand cmd)
         {
             object res = new object();
@@ -70,5 +91,6 @@ namespace TravelThings.Helpers
             }
             return res;
         }
+       
     }
 }

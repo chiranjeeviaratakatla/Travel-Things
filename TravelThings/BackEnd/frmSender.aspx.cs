@@ -141,7 +141,7 @@ namespace TravelThings.BackEnd
             lblTo.Text = row.Cells[8].Text;
             lblTravelBy.Text = row.Cells[5].Text;
             lblWeight.Text = row.Cells[6].Text;
-            string outlookid = ((Label)row.FindControl("TD_Traveler_Id")).Text;
+            lblTrascId.Text = ((HiddenField)row.FindControl("hfTrancId")).Value.ToString();
             pnlSearchTravelers.Visible = false;
             pnlTravelerAvailablity.Visible = false;
             pnlItemSelection.Visible = true;
@@ -180,6 +180,7 @@ namespace TravelThings.BackEnd
                 Tab3.CssClass = "Clicked";
                 MainView.ActiveViewIndex = 2;
                 Session["TabId"] = 2;
+                btnNext.Visible = true;
             }
 
         }
@@ -203,13 +204,24 @@ namespace TravelThings.BackEnd
                 Tab3.CssClass = "Clicked";
                 MainView.ActiveViewIndex = 2;
                 Session["TabId"] = 2;
+                //AssignTreaveler();
+                AssignItems();
             }
             else if (intTabId == 2)//Reciver
             {
+                string strReceiverId = InsertRecieverDetails();
+                if (!string.IsNullOrEmpty(strReceiverId))
+                    AssignTreaveler(strReceiverId);
+                else
+                    return;
                 btnPayment.CssClass = "Clicked";
                 MainView.ActiveViewIndex = 3;
+                btnNext.Visible = false;
                 Session["TabId"] = 3;
-                //InsertRecieverDetails();
+                if (!string.IsNullOrEmpty(lblTrascId.Text.Trim()))
+                    GetPaymentSummery();
+                else
+                    return;
             }
             else if (intTabId == 3)//Payment
             {
@@ -227,30 +239,96 @@ namespace TravelThings.BackEnd
             pnlTraveler.Visible = false;
             pnlItemSelection.Visible = false;
         }
-        private void InsertRecieverDetails()
+        private string InsertRecieverDetails()
         {
+            string strReceiverId = string.Empty;
             try
             {
                 //string strErrorMsg = Validation();
                 //if (string.IsNullOrEmpty(strErrorMsg))
                 //{
+
                 string strPassword = Tools.CreateRandomPassword();
                 strPassword = Tools.Encryptdata(strPassword);
                 DataTable dtResult = dllUser.InsertUserDetails(txtRecName.Text.Trim(), txtRecPhoneNo.Text.Trim(), txtRecAltPhoneNo.Text.Trim(), txtRecEmail.Text.Trim(), strPassword);
                 if (dtResult.Rows.Count > 0)
                 {
-                    if(dtResult.Rows[0]["USER_TYPE"].ToString() == "CREATED")
+                    if (dtResult.Rows[0]["USER_TYPE"].ToString() == "CREATED")
                     {
-                        lblReceiverId.Text = dtResult.Rows[0]["UD_User_Id"].ToString();
+                        strReceiverId = dtResult.Rows[0]["UD_User_Id"].ToString();
                     }
                     else
                     {
-                        lblReceiverId.Text = dtResult.Rows[0]["UD_User_Id"].ToString();
+                        strReceiverId = dtResult.Rows[0]["UD_User_Id"].ToString();
                     }
                 }
+
                 //}
                 //else
                 //    Response.Write(Tools.Alert(strErrorMsg));
+            }
+            catch (Exception ex)
+            {
+                Response.Write(Tools.Alert(ex.Message));
+            }
+            return strReceiverId;
+        }
+
+        private void AssignTreaveler(string strReceiver)
+        {
+            try
+            {
+                dllTranc.AssignTraveler(lblTrascId.Text.Trim(), Tools.UserId.ToString(), strReceiver);
+            }
+            catch (Exception ex)
+            {
+                Response.Write(Tools.Alert(ex.Message));
+            }
+        }
+        private void AssignItems()
+        {
+            try
+            {
+                Tools.ExecuteQuery("DELETE FROM tbl_Item_Transaction_Details WHERE UTD_Sno = '" + lblTrascId.Text.Trim() + "'");
+                foreach (GridViewRow row in gvItemSelection.Rows)
+                {
+                    if (row.RowType == DataControlRowType.DataRow)
+                    {
+                        CheckBox c = (CheckBox)row.FindControl("chkSelect");
+                        if (c.Checked)
+                        {
+                            string strItemId = ((HiddenField)row.FindControl("hfItemId")).Value.ToString();
+                            dllTranc.AssignItems(lblTrascId.Text.Trim(), strItemId);
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Response.Write(Tools.Alert(ex.Message));
+            }
+        }
+
+        private void GetPaymentSummery()
+        {
+            try
+            {
+                DataSet dsPaymentSummery = dllTranc.GetPaymentSummery(lblTrascId.Text.Trim());
+                if (dsPaymentSummery.Tables.Count > 0)
+                {
+                    //Receiver Summery
+                    lblSmryReceiverId.Text = dsPaymentSummery.Tables[0].Rows[0]["UD_User_Id"].ToString();
+                    lblSmryReceiverName.Text = dsPaymentSummery.Tables[0].Rows[0]["UD_User_Name"].ToString();
+                    lblSmryReceiverAddress.Text = dsPaymentSummery.Tables[0].Rows[0]["TD_Item_To"].ToString();
+                    //Traveler Summery
+                    lblSmryTravelerName.Text = dsPaymentSummery.Tables[1].Rows[0]["UD_User_Name"].ToString();
+                    lblSmryStartJourney.Text = dsPaymentSummery.Tables[1].Rows[0]["TD_Strating_Dt"].ToString();
+                    lblSmryEndJourney.Text = dsPaymentSummery.Tables[1].Rows[0]["TD_Ending_Dt"].ToString();
+                    //Item Summery
+                    gvItemSummery.DataSource = dsPaymentSummery.Tables[2];
+                    gvItemSummery.DataBind();
+                }
             }
             catch (Exception ex)
             {

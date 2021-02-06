@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BackEnd/BackEnd.Master" AutoEventWireup="true" CodeBehind="frmSender.aspx.cs" Inherits="TravelThings.BackEnd.test" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-     
+
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
@@ -100,12 +100,14 @@
                                         <asp:TemplateField HeaderText="Select">
                                             <ItemTemplate>
                                                 <asp:Button ID="gvBtnSelect" runat="server" Text="Select" CssClass="btn btn-primary" OnClick="gvBtnSelect_Click1" />
+                                                <asp:HiddenField ID="hfTrancId" runat="server" Value='<%# Eval("TD_Sno") %>' />
                                             </ItemTemplate>
                                         </asp:TemplateField>
-                                        
+
                                         <%--<asp:BoundField Visible="false" HeaderText="TD_Traveler_Id" DataField="TD_Traveler_Id" />--%>
                                         <%--<asp:BoundField HeaderText="TrasId" DataField="TD_Traveler_Id" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" ></asp:BoundField>--%>
                                         <asp:BoundField HeaderText="Sr No" DataField="SNO" />
+                                        <%--<asp:BoundField HeaderText="I_SlNo" DataField="I_SlNo" />--%>
                                         <asp:BoundField HeaderText="Traveler Name" DataField="UD_User_Name" />
                                         <asp:BoundField HeaderText="Start Date" DataField="TD_Strating_Dt" />
                                         <asp:BoundField HeaderText="End Date" DataField="TD_Ending_Dt" />
@@ -113,17 +115,18 @@
                                         <asp:BoundField HeaderText="Weight" DataField="TD_Item_Weight" />
                                         <asp:BoundField HeaderText="From" DataField="TD_Item_From" />
                                         <asp:BoundField HeaderText="To" DataField="TD_Item_To" />
-                                        <asp:TemplateField>
+                                        <%--<asp:TemplateField Visible="false">
                                             <ItemTemplate>
-                                                <asp:Label ID="lblGvTrvlAbltId" runat="server" Visible="false" Text='<%#Eval("TD_Traveler_Id") %>'></asp:Label>
+                                                
                                             </ItemTemplate>
-                                        </asp:TemplateField>
+                                        </asp:TemplateField>--%>
                                     </Columns>
                                     <EmptyDataTemplate>
                                         <span style="font-size: 15px; font-weight: bold; color: Blue;">No Traveler's are Available on this Road. Please try again later! </span>
                                     </EmptyDataTemplate>
                                 </asp:GridView>
                             </div>
+                            <asp:Label ID="lblTrascId" runat="server" Visible="false"></asp:Label>
                         </div>
                     </div>
                 </asp:Panel>
@@ -175,20 +178,22 @@
                                     <Columns>
                                         <asp:TemplateField HeaderText="Select">
                                             <ItemTemplate>
-                                                <%--<label class="chkContainer">--%>
                                                 <asp:CheckBox ID="chkSelect" runat="server" Checked="true" />
-                                                <%-- <span class="checkmark"></span>
-                                            </label>--%>
-                                                <%--<asp:Button ID="gvBtnSelect" runat="server" Text="Select" CssClass="btn btn-primary" />--%>
+                                                <asp:HiddenField ID="hfItemId" runat="server" Value='<%# Eval("I_SlNo") %>' />
                                             </ItemTemplate>
                                         </asp:TemplateField>
-                                        <asp:BoundField Visible="false" HeaderText="Slno" DataField="I_SlNo" />
+                                        <%--<asp:BoundField Visible="false" HeaderText="Slno" DataField="I_SlNo" />--%>
                                         <asp:BoundField HeaderText="Sr No" DataField="SNO" />
                                         <asp:BoundField HeaderText="Item Name" DataField="I_Item_Name" />
                                         <asp:BoundField HeaderText="Description" DataField="I_Item_Desc" />
                                         <asp:BoundField HeaderText="Weight" DataField="I_Weight" />
                                         <asp:BoundField HeaderText="Type" DataField="I_Item_Type" />
                                         <asp:BoundField HeaderText="Remarks" DataField="I_Remarks" />
+                                        <%--<asp:TemplateField Visible="false">
+                                            <ItemTemplate>
+                                                
+                                            </ItemTemplate>
+                                        </asp:TemplateField>--%>
                                     </Columns>
                                     <EmptyDataTemplate>
                                         <span style="font-size: 12px; font-weight: bold; color: Blue;">No records are available matching your selected filter. Click on "Add" button to enter new data .. </span>
@@ -227,53 +232,17 @@
             <asp:View ID="View4" runat="server">
                 <div class="form-group col-sm-12">
                     <h3>Item Summary</h3>
-
-                    <div class="form-group col-sm-12">
-                        <h4>Delevery Address</h4>
-                        <div class="col-sm-3">
-                            <div class="col-sm-6">
-                                <label>Receiver Name:</label>
-                            </div>
-                            <div class="col-sm-6">
-                                <asp:Label ID="lblSmryReveiverName" runat="server" Text="Santosh"></asp:Label>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="col-sm-6">
-                                <label>Phone No:</label>
-                            </div>
-                            <div class="col-sm-6">
-                                <asp:Label ID="lblSmryPhoneNo" runat="server" Text="+91 7894375063"></asp:Label>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="col-sm-6">
-                                <label>Address:</label>
-                            </div>
-                            <div class="col-sm-6">
-                                <asp:Label ID="lblSmryAddress" runat="server" Text="Tatipatti, Parlakhemundi, Odisha, 761210"></asp:Label>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="col-sm-6">
-                            </div>
-                            <div class="col-sm-6">
-                                <asp:LinkButton ID="LinkButton1" runat="server" Text="Edit" CssClass="Clicked">
-                                <span class="glyphicon glyphicon-pencil"></span>
-                                </asp:LinkButton>
-                            </div>
-                        </div>
-                    </div>
                     <div class="form-group col-sm-12">
                         <h4>Item Details</h4>
                         <div class="form-group col-sm-12">
                             <div style="height: 100%; overflow-x: scroll;">
                                 <asp:GridView ID="gvItemSummery" runat="server" Width="100%" ShowHeaderWhenEmpty="true" EmptyDataText="No Data Found" CssClass="table table-hover" AutoGenerateColumns="false">
                                     <Columns>
-                                        <asp:BoundField HeaderText="Sr No" DataField="SNO" />
+                                        <asp:BoundField HeaderText="Sr No" DataField="SLNO" />
                                         <asp:BoundField HeaderText="Item Name" DataField="I_Item_Name" />
                                         <asp:BoundField HeaderText="Description" DataField="I_Item_Desc" />
                                         <asp:BoundField HeaderText="Weight" DataField="I_Weight" />
+                                        <asp:BoundField HeaderText="Charges" DataField="I_Charges" />
                                     </Columns>
                                     <EmptyDataTemplate>
                                         <span style="font-size: 12px; font-weight: bold; color: Blue;">No records are available matching your selected filter. Click on "Add" button to enter new data .. </span>
@@ -281,45 +250,90 @@
                                 </asp:GridView>
                             </div>
                         </div>
-                        <%--<div class="col-sm-3">
-                            <label>1</label>
-                        </div>
-                        <div class="col-sm-3">
-                            <label>Item1</label>
-                        </div>
-                        <div class="col-sm-3">
-                            <label>Item2 Description</label>
-                        </div>
-                        <div class="col-sm-3">
-                            <label>Rs = 50/-</label>
-                        </div>
-                        <div class="col-sm-3">
-                            <label>2</label>
-                        </div>
-                        <div class="col-sm-3">
-                            <label>Item2</label>
-                        </div>
-                        <div class="col-sm-3">
-                            <label>Item2 Description</label>
-                        </div>
-                        <div class="col-sm-3">
-                            <label>Rs = 30/-</label>
-                        </div>
-                        <div class="col-sm-3">
-                            <label>3</label>
-                        </div>
-                        <div class="col-sm-3">
-                            <label>Item3</label>
-                        </div>
-                        <div class="col-sm-3">
-                            <label>Item3 Description</label>
-                        </div>
-                        <div class="col-sm-3">
-                            <label>Rs = 40/-</label>
-                        </div>--%>
                     </div>
                     <div class="form-group col-sm-12">
-                        <h4>Payment Details</h4>
+                        <h4>Receiver</h4>
+                        <div class="col-sm-3">
+                            <div class="col-sm-6">
+                                <label>Receiver Name:</label>
+                            </div>
+                            <div class="col-sm-6">
+                                <asp:Label ID="lblSmryReceiverName" runat="server" Text=""></asp:Label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="col-sm-6">
+                                <label>Receiver Id:</label>
+                            </div>
+                            <div class="col-sm-6">
+                                <asp:Label ID="lblSmryReceiverId" runat="server" Text=""></asp:Label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="col-sm-6">
+                                <label>Address:</label>
+                            </div>
+                            <div class="col-sm-6">
+                                <asp:Label ID="lblSmryReceiverAddress" runat="server" Text=""></asp:Label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="col-sm-6">
+                                <asp:LinkButton ID="btnReceiverPhone" runat="server" Text="" CssClass="Clicked">
+                                <span class='glyphicon glyphicon-earphone'></span>
+                                </asp:LinkButton>
+                            </div>
+                            <div class="col-sm-6">
+                                <asp:LinkButton ID="btnReceiverChat" runat="server" Text="" CssClass="Clicked">
+                                <span class='glyphicon glyphicon-comment'></span>
+                                </asp:LinkButton>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-12">
+                        <h4>Traveler Details</h4>
+                        <div class="col-sm-3">
+                            <div class="col-sm-6">
+                                <label>Traveler Name:</label>
+                            </div>
+                            <div class="col-sm-6">
+                                <asp:Label ID="lblSmryTravelerName" runat="server" Text=""></asp:Label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                             <div class="col-sm-6">
+                                <label>Start Journey:</label>
+                            </div>
+                            <div class="col-sm-6">
+                                <asp:Label ID="lblSmryStartJourney" runat="server" Text=""></asp:Label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="col-sm-6">
+                                <label>End Journey:</label>
+                            </div>
+                            <div class="col-sm-6">
+                                <asp:Label ID="lblSmryEndJourney" runat="server" Text=""></asp:Label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="col-sm-6">
+                                <asp:LinkButton ID="btnTravelerPhone" runat="server" Text="" CssClass="Clicked">
+                                <span class='glyphicon glyphicon-earphone'></span>
+                                </asp:LinkButton>
+                            </div>
+                            <div class="col-sm-6">
+                                <asp:LinkButton ID="btnTravelerChat" runat="server" Text="" CssClass="Clicked">
+                                <span class='glyphicon glyphicon-comment'></span>
+                                </asp:LinkButton>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            </div>
+                    </div>
+                    
+                    <div class="form-group col-sm-12">
+                        <%--<h4>Payment Details</h4>--%>
                         <div class="col-sm-4">
                             <label></label>
                         </div>
@@ -347,7 +361,7 @@
         </div>
     </div>
     <%-- hiden fields --%>
-    <asp:Label ID="lblReceiverId" runat="server" Visible="false"></asp:Label>
+    <%--<asp:Label ID="lblReceiverId" runat="server" Visible="false"></asp:Label>--%>
     <!-- Modal content-->
     <div class="modal fade" id="popAddItems" role="dialog" data-keyboard="false" data-backdrop="static">
         <div class="modal-dialog">

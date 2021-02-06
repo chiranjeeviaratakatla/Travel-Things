@@ -166,6 +166,15 @@ namespace TravelThings.BackEnd {
         protected global::System.Web.UI.WebControls.GridView gvTravelerAvailablity;
         
         /// <summary>
+        /// lblTrascId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTrascId;
+        
+        /// <summary>
         /// pnlTraveler control.
         /// </summary>
         /// <remarks>
@@ -319,42 +328,6 @@ namespace TravelThings.BackEnd {
         protected global::System.Web.UI.WebControls.View View4;
         
         /// <summary>
-        /// lblSmryReveiverName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSmryReveiverName;
-        
-        /// <summary>
-        /// lblSmryPhoneNo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSmryPhoneNo;
-        
-        /// <summary>
-        /// lblSmryAddress control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSmryAddress;
-        
-        /// <summary>
-        /// LinkButton1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
-        
-        /// <summary>
         /// gvItemSummery control.
         /// </summary>
         /// <remarks>
@@ -362,6 +335,96 @@ namespace TravelThings.BackEnd {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvItemSummery;
+        
+        /// <summary>
+        /// lblSmryReceiverName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSmryReceiverName;
+        
+        /// <summary>
+        /// lblSmryReceiverId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSmryReceiverId;
+        
+        /// <summary>
+        /// lblSmryReceiverAddress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSmryReceiverAddress;
+        
+        /// <summary>
+        /// btnReceiverPhone control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnReceiverPhone;
+        
+        /// <summary>
+        /// btnReceiverChat control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnReceiverChat;
+        
+        /// <summary>
+        /// lblSmryTravelerName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSmryTravelerName;
+        
+        /// <summary>
+        /// lblSmryStartJourney control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSmryStartJourney;
+        
+        /// <summary>
+        /// lblSmryEndJourney control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSmryEndJourney;
+        
+        /// <summary>
+        /// btnTravelerPhone control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnTravelerPhone;
+        
+        /// <summary>
+        /// btnTravelerChat control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnTravelerChat;
         
         /// <summary>
         /// btnContinue control.
@@ -389,15 +452,6 @@ namespace TravelThings.BackEnd {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnNext;
-        
-        /// <summary>
-        /// lblReceiverId control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblReceiverId;
         
         /// <summary>
         /// txtItemName control.

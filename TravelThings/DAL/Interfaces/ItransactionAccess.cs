@@ -21,5 +21,11 @@ namespace TravelThings.DAL.Interfaces
         bool UpdateTransactionDetails(string strTransId, string strTavelFrom, string strTravelTo, int intWeight, DateTime dtJourneyFrom, DateTime dtJourneyTo, string strTravelBy);
 
         bool DeleteTransactionDetails(string strTransId);
+
+        bool AssignTraveler(string strSno, string strSenderId, string StrReceiverId);
+
+        bool AssignItems(string strTrancId, string strItemId);
+
+        DataSet GetPaymentSummery(string strTrancId);
     }
 }

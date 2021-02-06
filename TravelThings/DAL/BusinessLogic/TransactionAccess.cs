@@ -134,5 +134,52 @@ namespace TravelThings.DAL.BusinessLogic
                 throw;
             }
         }
+
+        public bool AssignTraveler(string strSno, string strSenderId, string StrReceiverId)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("usp_Update_Assign_SenderToTraveler");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@TD_Sno", strSno);
+                cmd.Parameters.AddWithValue("@TD_Sender_Id", strSenderId);
+                cmd.Parameters.AddWithValue("@TD_Recever_Id", StrReceiverId);
+                return ExecuteNonQuery(cmd);
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public bool AssignItems(string strTrancId, string strItemId)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("Inset_Items_AssignToTraveler");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@UTD_Sno", strTrancId);
+                cmd.Parameters.AddWithValue("@ITD_Sno", strItemId);
+                return ExecuteNonQuery(cmd);
+            }
+            catch
+            {
+                throw;
+            }
+        }
+        public DataSet GetPaymentSummery(string strTrancId)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("usp_Get_Payment_Summery");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@TD_Sno", strTrancId);
+                return ExecuteAdapter(cmd);
+            }
+            catch
+            {
+                throw;
+            }
+        }
     }
 }

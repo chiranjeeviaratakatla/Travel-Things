@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web;
+using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace TravelThings.Helpers
 {
     public static class Tools
     {
+        private static readonly SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["conString"].ConnectionString.ToString());
         public static string Alert(string Message)
         {
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
@@ -60,6 +64,29 @@ namespace TravelThings.Helpers
                 chars[i] = validChars[random.Next(0, validChars.Length)];
             }
             return new string(chars);
+        }
+
+        public static bool ExecuteQuery(string strQuery)
+        {
+            bool blnRes = false;
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = connection;
+                cmd.CommandText = strQuery;
+                cmd.CommandType = CommandType.Text;
+                connection.Open();
+                blnRes = Convert.ToBoolean(cmd.ExecuteNonQuery());
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return blnRes;
         }
     }
 }
