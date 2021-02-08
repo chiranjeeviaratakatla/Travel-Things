@@ -11,13 +11,13 @@ namespace TravelThings.DAL.BusinessLogic
 {
     internal class UserAccess : DataProcessing, IUserAccess
     {
-        public DataTable InsertUserDetails(string UserName, string strPhoneNo, string strAltPhoneNo, string strEmailId,string strPassword)
+        public DataTable InsertUserDetails(string UserName, string strPhoneNo, string strAltPhoneNo, string strEmailId, string strPassword)
         {
             SqlCommand cmd = new SqlCommand("usp_Insert_User_Details");
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@User_Name", UserName);
             cmd.Parameters.AddWithValue("@Phone_No", strPhoneNo);
-            cmd.Parameters.AddWithValue("@UD_Alter_Phone_No", strAltPhoneNo);
+            cmd.Parameters.AddWithValue("@UD_Alter_Phone_No", string.IsNullOrEmpty(strAltPhoneNo) ? (object)DBNull.Value : strAltPhoneNo);
             cmd.Parameters.AddWithValue("@UD_EmailId", strEmailId);
             cmd.Parameters.AddWithValue("@UD_Password", strPassword);
             return ExecuteReader(cmd);
@@ -31,7 +31,7 @@ namespace TravelThings.DAL.BusinessLogic
             return ExecuteReader(cmd);
         }
 
-        public bool UpdateUserProfile(string strUserId,string strPassword, string strUserName, string strAltPhoNo, string strAadharNo, string strAddress)
+        public bool UpdateUserProfile(string strUserId, string strPassword, string strUserName, string strAltPhoNo, string strAadharNo, string strAddress)
         {
             SqlCommand cmd = new SqlCommand("usp_Update_User_Profile");
             cmd.CommandType = CommandType.StoredProcedure;
