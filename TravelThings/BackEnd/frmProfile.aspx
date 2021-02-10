@@ -312,7 +312,7 @@
             </div>
             <div class="form-group col-sm-4 col-md-3">
                 <label>Email ID:</label>
-                <asp:TextBox ID="txtEmailId" runat="server" MaxLength="10" CssClass="form-control" ToolTip="Please Enter Email ID"></asp:TextBox>
+                <asp:TextBox ID="txtEmailId" runat="server" TextMode="Email" CssClass="form-control" ToolTip="Please Enter Email ID"></asp:TextBox>
             </div>
             <div class="form-group col-sm-4 col-md-3">
                 <label>Aadhar No:</label>
