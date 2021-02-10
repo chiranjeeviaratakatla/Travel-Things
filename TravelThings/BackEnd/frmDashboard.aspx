@@ -133,10 +133,10 @@
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner" role="listbox">
                         <div class="item active">
-                            <img src="https://placehold.it/800x400?text=IMAGE" alt="Image">
+                            <img src="../Images/Dashboard1.jpg" style="width:800px; height:375px" alt="Image">
                             <div class="carousel-caption">
-                                <h3>Sell $</h3>
-                                <p>Money Money.</p>
+                                <h3>Travel Things</h3>
+                                <p>We will Send your Things wherever you want.</p>
                             </div>
                         </div>
 

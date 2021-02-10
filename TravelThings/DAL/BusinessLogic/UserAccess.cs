@@ -31,7 +31,7 @@ namespace TravelThings.DAL.BusinessLogic
             return ExecuteReader(cmd);
         }
 
-        public bool UpdateUserProfile(string strUserId, string strPassword, string strUserName, string strAltPhoNo, string strAadharNo, string strAddress)
+        public bool UpdateUserProfile(string strUserId, string strPassword, string strUserName, string strAltPhoNo, string strAadharNo, string strEmailId, string strPhotoPath, string strAddress)
         {
             SqlCommand cmd = new SqlCommand("usp_Update_User_Profile");
             cmd.CommandType = CommandType.StoredProcedure;
@@ -40,6 +40,8 @@ namespace TravelThings.DAL.BusinessLogic
             cmd.Parameters.AddWithValue("@UD_User_Name", strUserName);
             cmd.Parameters.AddWithValue("@UD_Alter_Phone_No", string.IsNullOrEmpty(strAltPhoNo) ? (object)DBNull.Value.ToString() : strAltPhoNo);
             cmd.Parameters.AddWithValue("@UD_Aadhar_No", strAadharNo);
+            cmd.Parameters.AddWithValue("@UD_EmailId", strEmailId);
+            cmd.Parameters.AddWithValue("@UD_PhotoPath", string.IsNullOrEmpty(strPhotoPath) ? (object)DBNull.Value.ToString() : strPhotoPath);
             cmd.Parameters.AddWithValue("@UD_Address", strAddress);
             return ExecuteNonQuery(cmd);
         }

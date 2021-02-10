@@ -72,7 +72,7 @@
                         <h3>Send your Items</h3>
 
                         <div class="col-sm-3">
-                            <label for="pwd">From Address:</label>
+                            <label>From Address:</label>
                             <asp:TextBox ID="txtFromAdd" runat="server" placeholder="Enter From Address" CssClass="form-control"></asp:TextBox>
                         </div>
                         <div class="col-sm-3">

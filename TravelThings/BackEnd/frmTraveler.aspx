@@ -36,11 +36,11 @@
                 </div>
 
                 <div class="col-sm-4">
-                    <label for="pwd">To:</label>
+                    <label>To:</label>
                     <asp:TextBox ID="txtTo" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
                 <div class="col-sm-4">
-                    <label for="pwd">Travel By:</label>
+                    <label>Travel By:</label>
                     <span></span>
                     <asp:DropDownList ID="ddlTravelBy" CssClass="btn btn-default dropdown-toggle" Style="width: 100%" runat="server">
                         <asp:ListItem Text="Select Travel By Vechicle"></asp:ListItem>
@@ -54,7 +54,7 @@
                 <div class="col-sm-4">
                 </div>
                 <%--<div class="form-group col-sm-4">
-                    <label for="pwd">Travel By:</label>
+                    <label>Travel By:</label>
                   <asp:DropDownList ID="ddlTravelBy" CssClass="btn btn-default dropdown-toggle" Style="width: 100%" runat="server">
                         <asp:ListItem Text="Select Travel By Vechicle"></asp:ListItem>
                         <asp:ListItem Text="Bike"></asp:ListItem>
@@ -63,15 +63,15 @@
                     </asp:DropDownList>
                 </div>--%>
                 <div class="col-sm-4">
-                    <label for="pwd">Starting Date:</label>
+                    <label>Starting Date:</label>
                     <asp:TextBox ID="txtStartDate" TextMode="Date" class="form-control" runat="server"></asp:TextBox>
                 </div>
                 <div class="col-sm-4">
-                    <label for="pwd">Ending Date:</label>
+                    <label>Ending Date:</label>
                     <asp:TextBox ID="txtEndDate" TextMode="Date" class="form-control" runat="server"></asp:TextBox>
                 </div>
                 <div class="col-sm-4">
-                    <label for="pwd">Weight Can Carry:<span></span>(In KGs)</label>
+                    <label>Weight Can Carry:<span></span>(In KGs)</label>
                     <asp:TextBox ID="txtWeightCanCarry" MaxLength="2" class="form-control" runat="server"></asp:TextBox>
                 </div>
             </div>

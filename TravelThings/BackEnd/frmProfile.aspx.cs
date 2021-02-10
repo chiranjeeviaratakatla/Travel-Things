@@ -16,10 +16,13 @@ namespace TravelThings.BackEnd
         IUserAccess dll = new UserAccess();
         protected void Page_Load(object sender, EventArgs e)
         {
+            //MainView.ActiveViewIndex = 0;
             if (Tools.UserId == 0) { Response.Redirect("~/BackEnd/frmLogin.aspx"); }
             if (!IsPostBack)
             {
                 getUserDetails();
+                tabProfile.CssClass = "Clicked";
+                MainViewProfile.ActiveViewIndex = 0;
             }
         }
 
@@ -31,9 +34,24 @@ namespace TravelThings.BackEnd
                 dtUserDetails = dll.GettUserDetails(Tools.UserId.ToString());
                 if (dtUserDetails.Rows.Count > 0)
                 {
+                    lblUserName.Text = dtUserDetails.Rows[0]["UD_User_Name"].ToString();
+                    lblPhoneNo.Text = dtUserDetails.Rows[0]["UD_Phone_No"].ToString();
+                    lblAltPhone.Text = dtUserDetails.Rows[0]["UD_Alter_Phone_No"].ToString();
+                    lblEmailId.Text = dtUserDetails.Rows[0]["UD_EmailId"].ToString();
+                    lblAadharNo.Text = dtUserDetails.Rows[0]["UD_Aadhar_No"].ToString();
+                    if (!string.IsNullOrEmpty(dtUserDetails.Rows[0]["UD_Address"].ToString()))
+                    {
+                        string[] strAddress = dtUserDetails.Rows[0]["UD_Address"].ToString().Split('#');
+                        lblArea.Text = strAddress[0];
+                        lblCity.Text = strAddress[1];
+                        lblState.Text = strAddress[2];
+                        lblPinCode.Text = strAddress[3];
+                    }
+                    //Edit Password
                     txtName.Text = dtUserDetails.Rows[0]["UD_User_Name"].ToString();
                     txtPhoneNo.Text = dtUserDetails.Rows[0]["UD_Phone_No"].ToString();
                     txtAltPhNo.Text = dtUserDetails.Rows[0]["UD_Alter_Phone_No"].ToString();
+                    txtEmailId.Text = dtUserDetails.Rows[0]["UD_EmailId"].ToString();
                     txtAahdar.Text = dtUserDetails.Rows[0]["UD_Aadhar_No"].ToString();
                     if (!string.IsNullOrEmpty(dtUserDetails.Rows[0]["UD_Address"].ToString()))
                     {
@@ -58,17 +76,10 @@ namespace TravelThings.BackEnd
                 string strErrorMsg = Validation();
                 if (string.IsNullOrEmpty(strErrorMsg))
                 {
-                    string strAddress = string.Empty;
-                    strAddress = txtArea.Text.Trim() + "#";
-                    strAddress = strAddress + txtCity.Text.Trim() + "#";
-                    strAddress = strAddress + txtState.Text.Trim() + "#";
-                    strAddress = strAddress + txtPinCode.Text.Trim();
-                    string strPassword = Tools.Encryptdata(txtPassword.Text.Trim());
-                    bool blResult = dll.UpdateUserProfile(Tools.UserId.ToString(), strPassword, txtName.Text.Trim(), txtAltPhNo.Text.Trim(), txtAahdar.Text.Trim(), strAddress);
-                    if (blResult)
+                    if (UpdateUserDetails())
                     {
                         //Response.Write(Tools.Alert("Thank you For Registration"));
-                        Response.Redirect("~/BackEnd/frmLogin.aspx",false);
+                        Response.Redirect("~/BackEnd/frmLogin.aspx", false);
                     }
                 }
                 else
@@ -171,7 +182,16 @@ namespace TravelThings.BackEnd
 
         protected void btnCancel_Click(object sender, EventArgs e)
         {
-            ClearControls();
+            if (btnEdit.Visible)
+            {
+                pnlProfileView.Visible = true;
+                pnlProfileEdit.Visible = false;
+                btnEdit.Visible = false;
+            }
+            else
+            {
+                ClearControls();
+            }
         }
 
         protected void chkShowPws_CheckedChanged(object sender, EventArgs e)
@@ -193,6 +213,137 @@ namespace TravelThings.BackEnd
             {
                 Response.Write(Tools.Alert(ex.Message));
             }
+        }
+
+        protected void tabProfile_Click(object sender, EventArgs e)
+        {
+            tabProfile.CssClass = "Clicked";
+            tabAddress.CssClass = "Initial";
+            tabChangePsw.CssClass = "Initial";
+            MainViewProfile.ActiveViewIndex = 0;
+        }
+
+        protected void tabAddress_Click(object sender, EventArgs e)
+        {
+            tabProfile.CssClass = "Initial";
+            tabAddress.CssClass = "Clicked";
+            tabChangePsw.CssClass = "Initial";
+            MainViewProfile.ActiveViewIndex = 1;
+        }
+
+        protected void tabChangePsw_Click(object sender, EventArgs e)
+        {
+            tabProfile.CssClass = "Initial";
+            tabAddress.CssClass = "Initial";
+            tabChangePsw.CssClass = "Clicked";
+            MainViewProfile.ActiveViewIndex = 2;
+        }
+
+        protected void btnEditProfile_Click(object sender, EventArgs e)
+        {
+            pnlProfileView.Visible = false;
+            pnlProfileEdit.Visible = true;
+            btnSave.Visible = false;
+            btnEdit.Visible = true;
+        }
+
+        protected void btnEdit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string strErrorMsg = Validation();
+                if (string.IsNullOrEmpty(strErrorMsg))
+                {
+                    if (UpdateUserDetails())
+                    {
+                        pnlProfileView.Visible = true;
+                        pnlProfileEdit.Visible = false;
+                        btnEdit.Visible = false;
+                    }
+                }
+                else
+                    Response.Write(Tools.Alert(strErrorMsg));
+            }
+            catch (Exception ex)
+            {
+                Response.Write(Tools.Alert(ex.Message));
+            }
+        }
+
+        private bool UpdateUserDetails()
+        {
+            bool blResult = false;
+            try
+            {
+                string strAddress = string.Empty;
+                strAddress = txtArea.Text.Trim() + "#";
+                strAddress = strAddress + txtCity.Text.Trim() + "#";
+                strAddress = strAddress + txtState.Text.Trim() + "#";
+                strAddress = strAddress + txtPinCode.Text.Trim();
+                string strPassword = Tools.Encryptdata(txtPassword.Text.Trim());
+                blResult = dll.UpdateUserProfile(Tools.UserId.ToString(), strPassword, txtName.Text.Trim(), txtAltPhNo.Text.Trim(), txtAahdar.Text.Trim(), txtEmailId.Text.Trim(), "", strAddress);
+            }
+            catch (Exception ex)
+            {
+                Response.Write(Tools.Alert(ex.Message));
+            }
+            return blResult;
+        }
+
+        protected void btnChangePsw_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string strErrorMessage = string.Empty;
+                if (string.IsNullOrEmpty(txtOldPsw.Text.Trim()) || string.IsNullOrEmpty(txtNewPsw.Text.Trim()) || string.IsNullOrEmpty(txtConformPsw.Text.Trim()))
+                {
+                    if (string.IsNullOrEmpty(txtOldPsw.Text.Trim()))
+                    {
+                        strErrorMessage = "Please Enter Old Password";
+                        txtPassword.Focus();
+                    }
+                    else if (string.IsNullOrEmpty(txtNewPsw.Text.Trim()))
+                    {
+                        strErrorMessage = "Please Enter New Password";
+                        txtPassword.Focus();
+                    }
+                    else
+                    {
+                        strErrorMessage = "Please Enter Conform Password";
+                        txtConPassword.Focus();
+                    }
+                }
+                else
+                {
+                    if (txtNewPsw.Text.Trim() != txtConformPsw.Text.Trim())
+                    {
+                        strErrorMessage = "Password and Confirm Password Must Match";
+                        return;
+                    }
+                    else
+                    {
+                        if (!string.IsNullOrEmpty(strErrorMessage))
+                        {
+                            string strPassword = Tools.Encryptdata(txtNewPsw.Text.Trim());
+                            Tools.ExecuteQuery("UPDATE tbl_User_Details SET UD_Password = '" + strPassword + "' WHERE UD_User_Id = '" + Tools.UserId.ToString() + "'");
+                        }
+                        else
+                            Response.Redirect(Tools.Alert(strErrorMessage));
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Response.Write(Tools.Alert(ex.Message));
+            }
+        }
+
+        protected void btnClearPsw_Click(object sender, EventArgs e)
+        {
+            txtOldPsw.Text = string.Empty;
+            txtNewPsw.Text = string.Empty;
+            txtConformPsw.Text = string.Empty;
         }
     }
 }
