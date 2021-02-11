@@ -122,7 +122,7 @@
                 </div>
 
                 <div class="container" style="background-color: #f1f1f1">
-                    <asp:LinkButton ID="lbCancel" runat="server" PostBackUrl="~/Web_Forms/HomePage.aspx" CssClass="cancelbtn" Text="Cancel"></asp:LinkButton>
+                    <asp:LinkButton ID="lbCancel" runat="server" PostBackUrl="~/Web_Forms/Index.aspx" CssClass="cancelbtn" Text="Cancel"></asp:LinkButton>
                     <%--<asp:n[LinkButton ID="btnCancel" runat="server" CssClass="cancelbtn" Text="Cancel" ></asp:LinkButton>--%>
                     <span class="psw">Forgot
                         <asp:HyperLink ID="hlForgotPsw" runat="server" NavigateUrl="~/BackEnd/frmProfile.aspx" Text="Password ?"></asp:HyperLink></span>

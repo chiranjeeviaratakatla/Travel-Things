@@ -169,7 +169,7 @@
                             </li>
                             <li>
                                 <%--<asp:HyperLink ID="hlLogout" NavigateUrl="~/Web_Forms/HomePage.aspx" CssClass="Initial" runat="server"><span>Logout</span></asp:HyperLink>--%>
-                                <asp:LinkButton ID="lbLogout" CssClass="Initial" Text="Logout" runat="server" PostBackUrl="~/Web_Forms/HomePage.aspx"></asp:LinkButton>
+                                <asp:LinkButton ID="lbLogout" CssClass="Initial" Text="Logout" runat="server" PostBackUrl="~/Web_Forms/Index.aspx"></asp:LinkButton>
                             </li>
                             <%--<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>--%>
                         </ul>

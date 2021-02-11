@@ -71,6 +71,7 @@
     <Content Include="BackEnd\Css\CommonControls.css" />
     <Content Include="BackEnd\Css\MasterCss.css" />
     <Content Include="BackEnd\Css\pan.txt" />
+    <Content Include="BackEnd\Css\styles.css" />
     <Content Include="BackEnd\frmDashboard.aspx" />
     <Content Include="BackEnd\frmLogin.aspx" />
     <Content Include="BackEnd\frmProfile.aspx" />
@@ -136,9 +137,28 @@
     <Content Include="JQueryAutoComplete\jquery-ui.css" />
     <Content Include="JQueryAutoComplete\jquery-ui.js" />
     <Content Include="JQueryAutoComplete\jquery-ui.min.js" />
+    <Content Include="Template\img\apple-touch-icon.png" />
+    <Content Include="Template\img\favicon.png" />
+    <Content Include="Template\img\hero-bg.jpg" />
+    <Content Include="Template\img\img_1.jpg" />
+    <Content Include="Template\img\img_2.jpg" />
+    <Content Include="Template\img\img_3.jpg" />
+    <Content Include="Template\img\img_4.jpg" />
+    <Content Include="Template\img\person_1.jpg" />
+    <Content Include="Template\img\person_2.jpg" />
+    <Content Include="Template\img\person_3.jpg" />
+    <Content Include="Template\img\phone_1.png" />
+    <Content Include="Template\img\phone_2.png" />
+    <Content Include="Template\img\undraw_svg_1.svg" />
+    <Content Include="Template\img\undraw_svg_2.svg" />
+    <Content Include="Template\img\undraw_svg_3.svg" />
+    <Content Include="Template\img\undraw_svg_4.svg" />
     <Content Include="Web.config" />
-    <Content Include="Web_Forms\SenderDetails.aspx" />
-    <Content Include="Web_Forms\HomePage.aspx" />
+    <Content Include="Web_Forms\Blog.aspx" />
+    <Content Include="Web_Forms\BlogSigle.aspx" />
+    <Content Include="Web_Forms\Contact.aspx" />
+    <Content Include="Web_Forms\Features.aspx" />
+    <Content Include="Web_Forms\Index.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BackEnd\AddressHandler.ashx.cs">
@@ -203,19 +223,40 @@
     <Compile Include="Helpers\DataProcessing.cs" />
     <Compile Include="Helpers\Tools.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Web_Forms\SenderDetails.aspx.cs">
-      <DependentUpon>SenderDetails.aspx</DependentUpon>
+    <Compile Include="Web_Forms\Blog.aspx.cs">
+      <DependentUpon>Blog.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Web_Forms\SenderDetails.aspx.designer.cs">
-      <DependentUpon>SenderDetails.aspx</DependentUpon>
+    <Compile Include="Web_Forms\Blog.aspx.designer.cs">
+      <DependentUpon>Blog.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Web_Forms\HomePage.aspx.cs">
-      <DependentUpon>HomePage.aspx</DependentUpon>
+    <Compile Include="Web_Forms\BlogSigle.aspx.cs">
+      <DependentUpon>BlogSigle.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Web_Forms\HomePage.aspx.designer.cs">
-      <DependentUpon>HomePage.aspx</DependentUpon>
+    <Compile Include="Web_Forms\BlogSigle.aspx.designer.cs">
+      <DependentUpon>BlogSigle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web_Forms\Contact.aspx.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web_Forms\Contact.aspx.designer.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web_Forms\Features.aspx.cs">
+      <DependentUpon>Features.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web_Forms\Features.aspx.designer.cs">
+      <DependentUpon>Features.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web_Forms\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web_Forms\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Web_Forms\TravelThingMaster.Master.cs">
       <DependentUpon>TravelThingMaster.Master</DependentUpon>
