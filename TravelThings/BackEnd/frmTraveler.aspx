@@ -23,8 +23,8 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:UpdatePanel runat="server">
-        <ContentTemplate>
+    <%--<asp:UpdatePanel runat="server">
+        <ContentTemplate>--%>
             <div class="form-group col-sm-12">
                 <h3>
                     <asp:Label ID="lblHeading" runat="server" Text="Start your Journey"></asp:Label>
@@ -87,7 +87,7 @@
 
             <div class="form-group col-sm-12">
                 <div class="col-sm-12">
-                    <div style="height: 100%; overflow-x: scroll;">
+                    <div style="width:100%; height:250px; overflow:auto;">
                         <asp:GridView ID="gvJourney" OnRowCommand="gvJourney_RowCommand" runat="server" Width="100%" CssClass="table table-hover" AutoGenerateColumns="false">
                             <Columns>
                                 <asp:TemplateField HeaderText="Select">
@@ -115,6 +115,6 @@
                 </div>
             </div>
 
-        </ContentTemplate>
-    </asp:UpdatePanel>
+        <%--</ContentTemplate>
+    </asp:UpdatePanel>--%>
 </asp:Content>

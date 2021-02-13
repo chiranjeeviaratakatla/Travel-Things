@@ -22,6 +22,8 @@ namespace TravelThings.BackEnd
                 Response.Redirect("~/BackEnd/frmLogin.aspx");
             if (!IsPostBack)
                 GetTravelDetails();
+           LinkButton li = (LinkButton)Master.FindControl("lbTraveler");
+            li.CssClass = "Clicked";
         }
 
         protected void btnAddJourney_Click(object sender, EventArgs e)

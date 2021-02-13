@@ -23,6 +23,8 @@ namespace TravelThings.BackEnd
                 getUserDetails();
                 tabProfile.CssClass = "Clicked";
                 MainViewProfile.ActiveViewIndex = 0;
+                LinkButton li = (LinkButton)Master.FindControl("lbProfile");
+                li.CssClass = "Clicked";
                 //pnlProfileEdit.Visible = true;
                 //pnlProfileView.Enabled = false;
             }

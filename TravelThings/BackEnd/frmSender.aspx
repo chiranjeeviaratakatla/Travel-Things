@@ -42,12 +42,13 @@
                 </div>
                 <div class="form-group col-sm-12">
                     <div class="col-sm-12">
-                        <div style="height: 100%; overflow-x: scroll;">
-                            <asp:GridView ID="gvItems" runat="server" Width="100%" ShowHeaderWhenEmpty="true" EmptyDataText="No Data Found" CssClass="table table-hover" AutoGenerateColumns="false">
+                        <div style="width: 100%; height: 300px; overflow: auto;">
+                            <asp:GridView ID="gvItems" runat="server" OnRowCommand="gvItems_RowCommand" Width="100%" ShowHeaderWhenEmpty="true" EmptyDataText="No Data Found" CssClass="table table-hover" AutoGenerateColumns="false">
                                 <Columns>
                                     <asp:TemplateField HeaderText="Select">
                                         <ItemTemplate>
-                                            <asp:Button ID="gvBtnSelect" runat="server" Text="Select" CssClass="btn btn-primary" />
+                                            <asp:Button ID="gvBtnSelect" runat="server" Text="Select" CssClass="btn btn-primary" OnClick="gvBtnSelect_Click" CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" data-toggle="modal" data-target="#popAddItems" />
+                                            <asp:HiddenField ID="hfSelectedItemId" runat="server" Value='<%# Eval("I_SlNo") %>' />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:BoundField Visible="false" HeaderText="Slno" DataField="I_SlNo" />
@@ -173,10 +174,13 @@
                         <h3>Select Items to Send</h3>
 
                         <div id="divItemSelection" class="form-group col-sm-12">
-                            <div style="height: 100%; overflow-x: scroll;">
+                            <div style="width: 100%; height: 180px; overflow: auto;">
                                 <asp:GridView ID="gvItemSelection" runat="server" Width="100%" ShowHeaderWhenEmpty="true" EmptyDataText="No Data Found" CssClass="table table-hover" AutoGenerateColumns="false">
                                     <Columns>
                                         <asp:TemplateField HeaderText="Select">
+                                            <HeaderTemplate>
+                                                <asp:CheckBox ID="chkSelectAll" OnCheckedChanged="chkSelectAll_CheckedChanged" AutoPostBack="true" Checked="true" Text="Select" runat="server" />
+                                            </HeaderTemplate>
                                             <ItemTemplate>
                                                 <asp:CheckBox ID="chkSelect" runat="server" Checked="true" />
                                                 <asp:HiddenField ID="hfItemId" runat="server" Value='<%# Eval("I_SlNo") %>' />
@@ -301,7 +305,7 @@
                             </div>
                         </div>
                         <div class="col-sm-3">
-                             <div class="col-sm-6">
+                            <div class="col-sm-6">
                                 <label>Start Journey:</label>
                             </div>
                             <div class="col-sm-6">
@@ -329,9 +333,9 @@
                             </div>
                         </div>
                         <div class="col-sm-3">
-                            </div>
+                        </div>
                     </div>
-                    
+
                     <div class="form-group col-sm-12">
                         <%--<h4>Payment Details</h4>--%>
                         <div class="col-sm-4">

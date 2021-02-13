@@ -16,6 +16,11 @@ namespace TravelThings.BackEnd
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Tools.UserId == 0) { Response.Redirect("~/BackEnd/frmLogin.aspx"); }
+            if(!IsPostBack)
+            {
+                LinkButton li = (LinkButton)Master.FindControl("lbDashboard");
+                li.CssClass = "Clicked";
+            }
         }
     }
 }

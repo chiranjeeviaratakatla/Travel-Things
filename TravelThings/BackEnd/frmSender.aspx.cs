@@ -26,6 +26,8 @@ namespace TravelThings.BackEnd
                 MainView.ActiveViewIndex = 0;
                 Session["TabId"] = "0";
                 getItemDetails(gvItems);
+                LinkButton li = (LinkButton)Master.FindControl("lbSender");
+                li.CssClass = "Clicked";
             }
         }
 
@@ -110,11 +112,13 @@ namespace TravelThings.BackEnd
                 {
                     gvItems.DataSource = dtItemDetails;
                     gvItems.DataBind();
+                    //ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "HidePopup", "$('#popAddItems').modal('hide')", true);
+
                 }
             }
             catch (Exception ex)
             {
-                Response.Redirect(Tools.Alert(ex.Message));
+                Response.Write(Tools.Alert(ex.Message));
             }
         }
 
@@ -328,6 +332,69 @@ namespace TravelThings.BackEnd
                     //Item Summery
                     gvItemSummery.DataSource = dsPaymentSummery.Tables[2];
                     gvItemSummery.DataBind();
+                }
+            }
+            catch (Exception ex)
+            {
+                Response.Write(Tools.Alert(ex.Message));
+            }
+        }
+
+        protected void chkSelectAll_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                CheckBox chkSelectAll = (CheckBox)gvItemSelection.HeaderRow.FindControl("chkSelectAll");
+                foreach (GridViewRow row in gvItemSelection.Rows)
+                {
+                   CheckBox chkSelect = (CheckBox)row.FindControl("chkSelect");
+                    if (chkSelectAll.Checked == true)
+                        chkSelect.Checked = true;
+                    else
+                        chkSelect.Checked = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Response.Write(Tools.Alert(ex.Message));
+            }
+        }
+
+        protected void gvBtnSelect_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GridViewRow row = (GridViewRow)((Button)sender).NamingContainer;
+                string strItemId = ((HiddenField)row.FindControl("hfTrancId")).Value.ToString();
+
+            }
+            catch (Exception ex)
+            {
+                Response.Write(Tools.Alert(ex.Message));
+            }
+        }
+
+        protected void gvItems_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                int rowIndex = Convert.ToInt32(e.CommandArgument);
+                GridViewRow row = gvItems.Rows[rowIndex];
+
+                if (e.CommandName == "Select")
+                {
+                    txtItemName.Text = row.Cells[3].Text;
+                    //txtTo.Text = row.Cells[3].Text;
+                    //if (!string.IsNullOrEmpty(row.Cells[4].Text) && row.Cells[4].Text != "&nbsp;")
+                    //    ddlTravelBy.SelectedItem.Text = row.Cells[4].Text;
+                    //txtStartDate.Text = Convert.ToDateTime(row.Cells[5].Text).ToString("yyyy-MM-dd");
+                    //txtEndDate.Text = Convert.ToDateTime(row.Cells[6].Text).ToString("yyyy-MM-dd");
+                    //if (!string.IsNullOrEmpty(row.Cells[7].Text) && row.Cells[7].Text != "&nbsp;")
+                    //    txtWeightCanCarry.Text = row.Cells[7].Text;
+                }
+                else if (e.CommandName == "Delete")
+                {
+                    
                 }
             }
             catch (Exception ex)

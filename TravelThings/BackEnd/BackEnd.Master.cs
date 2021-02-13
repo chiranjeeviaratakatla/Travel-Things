@@ -16,12 +16,12 @@ namespace TravelThings.BackEnd
             if (!this.IsPostBack)
             {
                 lbProfile.Text = Tools.UserName;
-                lbDashboard.CssClass = "Clicked";
+                //lbDashboard.CssClass = "Clicked";
             }
-            else
-                ActiveNavigation();
-            if(!Page.IsPostBack && this.IsPostBack)
-                ActiveNavigation();
+            //else
+            //    ActiveNavigation();
+            //if (!Page.IsPostBack && this.IsPostBack)
+            //    ActiveNavigation();
         }
 
         private void ActiveNavigation()

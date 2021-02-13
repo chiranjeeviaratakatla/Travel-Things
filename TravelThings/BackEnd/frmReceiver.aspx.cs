@@ -11,7 +11,11 @@ namespace TravelThings.BackEnd
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                LinkButton li = (LinkButton)Master.FindControl("lbReciver");
+                li.CssClass = "Clicked";
+            }
         }
     }
 }
