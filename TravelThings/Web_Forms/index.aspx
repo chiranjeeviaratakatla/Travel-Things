@@ -3,6 +3,17 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Travel Things Home</title>
     <link rel="icon" type="image/gif/png" href="../Images/titleLogoSmall.png">
+    <script type="text/javascript" language="javascript">
+        function ConformLogin()
+        {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+                footer: '<a href>Why do I have this issue?</a>'
+            });
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="TraverlThingMasterContentPlaceHolder" runat="server">
     <main id="main">

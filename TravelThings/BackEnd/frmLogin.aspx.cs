@@ -35,10 +35,12 @@ namespace TravelThings.BackEnd
                         Response.Redirect("~/BackEnd/frmDashboard.aspx");
                     }
                     else
-                        Response.Write(Tools.Alert("Phone Number or Password is Incorrect!"));
+                        ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', 'Phone Number or Password is Incorrect!', 'warning')", true);
+                    //Response.Write(Tools.Alert("Phone Number or Password is Incorrect!"));
                 }
                 else
-                    Response.Write(Tools.Alert(strErrorMsg));
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + strErrorMsg + "', 'warning')", true);
+               // Response.Write(Tools.Alert(strErrorMsg));
             }
             catch (Exception ex)
             {
@@ -58,8 +60,8 @@ namespace TravelThings.BackEnd
             }
             catch (Exception ex)
             {
-                strErrorMessage = ex.Message;
-                Response.Write(Tools.Alert(ex.Message));
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
+                //Response.Write(Tools.Alert(ex.Message));
             }
             return strErrorMessage;
         }

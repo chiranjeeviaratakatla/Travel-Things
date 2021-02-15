@@ -31,7 +31,7 @@ namespace TravelThings.BackEnd
             try
             {
                 string strError = ValidateFields();
-                if (!string.IsNullOrEmpty(strError))
+                if (string.IsNullOrEmpty(strError))
                 {
                     bool blnResult = dll.InsertTransactionDetails(Tools.UserId.ToString(), txtFrom.Text.Trim(), txtTo.Text.Trim(), Convert.ToInt32(txtWeightCanCarry.Text.Trim()), Convert.ToDateTime(txtStartDate.Text.Trim()), Convert.ToDateTime(txtEndDate.Text.Trim()), ddlTravelBy.SelectedItem.Text);
                     if (blnResult)
@@ -42,13 +42,15 @@ namespace TravelThings.BackEnd
                 }
                 else
                 {
-                    Response.Write(Tools.Alert(strError));
+                    //Response.Write(Tools.Alert(strError));
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '"+strError+ "', 'warning')", true);
                 }
 
             }
             catch (Exception ex)
             {
-                Response.Write(Tools.Alert(ex.Message));
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
+                //Response.Write(Tools.Alert(ex.Message));
             }
         }
 
@@ -67,7 +69,8 @@ namespace TravelThings.BackEnd
             }
             catch (Exception ex)
             {
-                Response.Write(Tools.Alert(ex.Message));
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
+                //Response.Write(Tools.Alert(ex.Message));
             }
         }
         private void GetTravelDetails()
@@ -87,7 +90,8 @@ namespace TravelThings.BackEnd
             }
             catch (Exception ex)
             {
-                Response.Write(Tools.Alert(ex.Message));
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
+                //Response.Write(Tools.Alert(ex.Message));
             }
         }
 
@@ -130,7 +134,8 @@ namespace TravelThings.BackEnd
             }
             catch (Exception ex)
             {
-                Response.Write(Tools.Alert(ex.Message));
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
+                //Response.Write(Tools.Alert(ex.Message));
             }
         }
 
@@ -154,24 +159,26 @@ namespace TravelThings.BackEnd
                 }
                 else
                 {
-                    Response.Write(Tools.Alert(strError));
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + strError + "', 'warning')", true);
+                    //Response.Write(Tools.Alert(strError));
                 }
             }
             catch (Exception ex)
             {
-                Response.Write(Tools.Alert(ex.Message));
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
+                //Response.Write(Tools.Alert(ex.Message));
             }
         }
 
         private string ValidateFields()
         {
             string strError = string.Empty;
-            if (!string.IsNullOrEmpty(txtFrom.Text.Trim()))
+            if (string.IsNullOrEmpty(txtFrom.Text.Trim()))
             {
                 txtFrom.Focus();
                 strError = "Please Enter From Address";
             }
-            else if (!string.IsNullOrEmpty(txtTo.Text.Trim()))
+            else if (string.IsNullOrEmpty(txtTo.Text.Trim()))
             {
                 txtTo.Focus();
                 strError = "Please Enter To Address";
@@ -181,17 +188,17 @@ namespace TravelThings.BackEnd
                 ddlTravelBy.Focus();
                 strError = "Please Select Travel By Vechicle";
             }
-            else if (!string.IsNullOrEmpty(txtStartDate.Text.Trim()) || txtStartDate.Text == "dd-mm-yyyy")
+            else if (string.IsNullOrEmpty(txtStartDate.Text.Trim()) || txtStartDate.Text == "dd-mm-yyyy")
             {
                 txtStartDate.Focus();
                 strError = "Please Select To Start Date";
             }
-            else if (!string.IsNullOrEmpty(txtEndDate.Text.Trim()) || txtEndDate.Text == "dd-mm-yyyy")
+            else if (string.IsNullOrEmpty(txtEndDate.Text.Trim()) || txtEndDate.Text == "dd-mm-yyyy")
             {
                 txtEndDate.Focus();
                 strError = "Please Select To End Date";
             }
-            else if (!string.IsNullOrEmpty(txtWeightCanCarry.Text.Trim()))
+            else if (string.IsNullOrEmpty(txtWeightCanCarry.Text.Trim()))
             {
                 txtWeightCanCarry.Focus();
                 strError = "Please Enter Weight";

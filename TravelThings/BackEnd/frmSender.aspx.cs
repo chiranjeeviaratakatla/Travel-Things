@@ -85,7 +85,8 @@ namespace TravelThings.BackEnd
             }
             catch (Exception ex)
             {
-                Response.Redirect(Tools.Alert(ex.Message));
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
+                //Response.Redirect(Tools.Alert(ex.Message));
             }
         }
 
@@ -99,7 +100,8 @@ namespace TravelThings.BackEnd
             }
             catch (Exception ex)
             {
-                Response.Redirect(Tools.Alert(ex.Message));
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
+                //Response.Redirect(Tools.Alert(ex.Message));
             }
         }
 
@@ -108,48 +110,57 @@ namespace TravelThings.BackEnd
             try
             {
                 DataTable dtItemDetails = dllTranc.InsertItemDetails(Tools.UserId.ToString(), txtItemName.Text.Trim(), txtItemDesc.Text.Trim(), txtWeight.Text.Trim(), ddlItemType.SelectedItem.Text, txtRemarks.Text.Trim());
-                if (dtItemDetails.Rows.Count > 0)
-                {
-                    gvItems.DataSource = dtItemDetails;
-                    gvItems.DataBind();
-                    //ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "HidePopup", "$('#popAddItems').modal('hide')", true);
+                //if (dtItemDetails.Rows.Count > 0)
+                //{
+                gvItems.DataSource = dtItemDetails;
+                gvItems.DataBind();
+                //ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "HidePopup", "$('#popAddItems').modal('hide')", true);
 
-                }
+                //}
             }
             catch (Exception ex)
             {
-                Response.Write(Tools.Alert(ex.Message));
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
+                //Response.Write(Tools.Alert(ex.Message));
             }
         }
 
         protected void gvBtnSelect_Click1(object sender, EventArgs e)
         {
-            if (Session["PreviousRowIndex"] != null)
+            try
             {
-                var previousRowIndex = (int)Session["PreviousRowIndex"];
-                GridViewRow PreviousRow = gvTravelerAvailablity.Rows[previousRowIndex];
-                //PreviousRow.ForeColor = Color.White;
-                PreviousRow.Attributes.Add("style", "background-image: linear-gradient(to right,#37a0bc00 0%,#273f7f00 100%);color: black;");
-            }
+                if (Session["PreviousRowIndex"] != null)
+                {
+                    var previousRowIndex = (int)Session["PreviousRowIndex"];
+                    GridViewRow PreviousRow = gvTravelerAvailablity.Rows[previousRowIndex];
+                    //PreviousRow.ForeColor = Color.White;
+                    PreviousRow.Attributes.Add("style", "background-image: linear-gradient(to right,#37a0bc00 0%,#273f7f00 100%);color: black;");
+                }
 
-            GridViewRow row = (GridViewRow)((Button)sender).NamingContainer;
-            //row.BackColor = Color.Blue;
-            //row.Attributes.Add("onmouseover", "this.style.cursor='hand';this.style.backgroundColor='yellow'");
-            row.ForeColor = Color.White;
-            row.Attributes.Add("style", "background-image: linear-gradient(to right,#37a0bc 0%,#273f7f 100%); color: white;");
-            Session["PreviousRowIndex"] = row.RowIndex;
-            pnlTraveler.Visible = true;
-            lblTravelerNam.Text = row.Cells[2].Text;
-            lblStartdate.Text = row.Cells[3].Text;
-            lblFrom.Text = row.Cells[7].Text;
-            lblTo.Text = row.Cells[8].Text;
-            lblTravelBy.Text = row.Cells[5].Text;
-            lblWeight.Text = row.Cells[6].Text;
-            lblTrascId.Text = ((HiddenField)row.FindControl("hfTrancId")).Value.ToString();
-            pnlSearchTravelers.Visible = false;
-            pnlTravelerAvailablity.Visible = false;
-            pnlItemSelection.Visible = true;
-            getItemDetails(gvItemSelection);
+                GridViewRow row = (GridViewRow)((Button)sender).NamingContainer;
+                //row.BackColor = Color.Blue;
+                //row.Attributes.Add("onmouseover", "this.style.cursor='hand';this.style.backgroundColor='yellow'");
+                row.ForeColor = Color.White;
+                row.Attributes.Add("style", "background-image: linear-gradient(to right,#37a0bc 0%,#273f7f 100%); color: white;");
+                Session["PreviousRowIndex"] = row.RowIndex;
+                pnlTraveler.Visible = true;
+                lblTravelerNam.Text = row.Cells[2].Text;
+                lblStartdate.Text = row.Cells[3].Text;
+                lblFrom.Text = row.Cells[7].Text;
+                lblTo.Text = row.Cells[8].Text;
+                lblTravelBy.Text = row.Cells[5].Text;
+                lblWeight.Text = row.Cells[6].Text;
+                lblTrascId.Text = ((HiddenField)row.FindControl("hfTrancId")).Value.ToString();
+                pnlSearchTravelers.Visible = false;
+                pnlTravelerAvailablity.Visible = false;
+                pnlItemSelection.Visible = true;
+                getItemDetails(gvItemSelection);
+            }
+            catch (Exception ex)
+            {
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
+                //Response.Write(Tools.Alert(ex.Message));
+            }
 
         }
 
@@ -273,7 +284,8 @@ namespace TravelThings.BackEnd
             }
             catch (Exception ex)
             {
-                Response.Write(Tools.Alert(ex.Message));
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
+                //Response.Write(Tools.Alert(ex.Message));
             }
             return strReceiverId;
         }
@@ -286,7 +298,8 @@ namespace TravelThings.BackEnd
             }
             catch (Exception ex)
             {
-                Response.Write(Tools.Alert(ex.Message));
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
+                //Response.Write(Tools.Alert(ex.Message));
             }
         }
         private void AssignItems()
@@ -310,7 +323,8 @@ namespace TravelThings.BackEnd
             }
             catch (Exception ex)
             {
-                Response.Write(Tools.Alert(ex.Message));
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
+                //Response.Write(Tools.Alert(ex.Message));
             }
         }
 
@@ -336,7 +350,8 @@ namespace TravelThings.BackEnd
             }
             catch (Exception ex)
             {
-                Response.Write(Tools.Alert(ex.Message));
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
+                //Response.Write(Tools.Alert(ex.Message));
             }
         }
 
@@ -347,7 +362,7 @@ namespace TravelThings.BackEnd
                 CheckBox chkSelectAll = (CheckBox)gvItemSelection.HeaderRow.FindControl("chkSelectAll");
                 foreach (GridViewRow row in gvItemSelection.Rows)
                 {
-                   CheckBox chkSelect = (CheckBox)row.FindControl("chkSelect");
+                    CheckBox chkSelect = (CheckBox)row.FindControl("chkSelect");
                     if (chkSelectAll.Checked == true)
                         chkSelect.Checked = true;
                     else
@@ -356,7 +371,8 @@ namespace TravelThings.BackEnd
             }
             catch (Exception ex)
             {
-                Response.Write(Tools.Alert(ex.Message));
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
+                //Response.Write(Tools.Alert(ex.Message));
             }
         }
 
@@ -370,7 +386,8 @@ namespace TravelThings.BackEnd
             }
             catch (Exception ex)
             {
-                Response.Write(Tools.Alert(ex.Message));
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
+                //Response.Write(Tools.Alert(ex.Message));
             }
         }
 
@@ -394,12 +411,13 @@ namespace TravelThings.BackEnd
                 }
                 else if (e.CommandName == "Delete")
                 {
-                    
+
                 }
             }
             catch (Exception ex)
             {
-                Response.Write(Tools.Alert(ex.Message));
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
+                //Response.Write(Tools.Alert(ex.Message));
             }
         }
     }

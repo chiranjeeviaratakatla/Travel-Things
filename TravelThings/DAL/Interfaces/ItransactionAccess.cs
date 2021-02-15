@@ -27,5 +27,7 @@ namespace TravelThings.DAL.Interfaces
         bool AssignItems(string strTrancId, string strItemId);
 
         DataSet GetPaymentSummery(string strTrancId);
+
+        DataTable GetReceivingItem(string strUserId);
     }
 }

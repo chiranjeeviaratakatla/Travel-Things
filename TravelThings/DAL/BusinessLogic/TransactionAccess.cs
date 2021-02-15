@@ -181,5 +181,20 @@ namespace TravelThings.DAL.BusinessLogic
                 throw;
             }
         }
+
+        public DataTable GetReceivingItem(string strUserId)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("usp_Get_Receiving_Items");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@UD_User_Id", strUserId);
+                return ExecuteReader(cmd);
+            }
+            catch
+            {
+                throw;
+            }
+        }
     }
 }

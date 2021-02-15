@@ -9,7 +9,7 @@ using System.Configuration;
 
 namespace TravelThings.Helpers
 {
-    public static class Tools
+    public static class Tools 
     {
         private static readonly SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["conString"].ConnectionString.ToString());
         public static string Alert(string Message)
@@ -25,6 +25,35 @@ namespace TravelThings.Helpers
             return sb.ToString();
         }
 
+        //if (confirm('Are you sure you want to save this thing into the database?')) {
+        //  // Save it!
+        //  console.log('Thing was saved to the database.');
+        //} else {
+        //  // Do nothing!
+        //  console.log('Thing was not saved to the database.');
+        //}
+
+        //<script type = "text/javascript" language="javascript"> 
+        //function confirm_user()
+        //{
+        //    if (confirm("Are you sure you want to go home ?") == true)
+        //        return true;
+        //    else
+        //        return false;
+        //}
+        //</script>
+        public static string AlertConform(string Message)
+        {
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            sb.Append("<script type = 'text/javascript'>");
+            sb.Append("window.onload=function(){");
+            sb.Append("if (confirm('");
+            sb.Append(Message);
+            sb.Append("')){}};");
+            sb.Append("</script>");
+            //ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", sb.ToString());
+            return sb.ToString();
+        }
         public static string UserName { get; set; }
         public static int UserId { get; set; }
 
@@ -88,5 +117,6 @@ namespace TravelThings.Helpers
             }
             return blnRes;
         }
+       
     }
 }

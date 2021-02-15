@@ -16,12 +16,12 @@ namespace TravelThings.Web_Forms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!this.IsPostBack)
+            if (!this.IsPostBack)
             {
                 Tools.UserId = 0;
                 Tools.UserName = string.Empty;
             }
-            
+
         }
 
         private string DataValidation()
@@ -46,17 +46,28 @@ namespace TravelThings.Web_Forms
                     DataTable dt = dal.InsertUserDetails(txtName.Text.ToUpper().Trim(), txtPhoneNo.Text.Trim(), "", "", "");
                     if (dt.Rows.Count > 0)
                     {
-                        Tools.UserId = Convert.ToInt32(dt.Rows[0]["UD_User_Id"].ToString());
-                        Tools.UserName = dt.Rows[0]["UD_User_Name"].ToString();
-                        Response.Redirect("~/BackEnd/frmProfile.aspx");
+                        if (dt.Rows[0]["USER_TYPE"].ToString() == "EXISTS")
+                        {
+                            ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', 'Phone Number Already Registered', 'warning')", true);
+                           // ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "ConformLogin()", true);
+                        }
+                        else
+                        {
+                            Tools.UserId = Convert.ToInt32(dt.Rows[0]["UD_User_Id"].ToString());
+                            Tools.UserName = dt.Rows[0]["UD_User_Name"].ToString();
+                            Response.Redirect("~/BackEnd/frmProfile.aspx");
+                        }
+
                     }
                 }
                 else
-                    Response.Write(Tools.Alert(ErrorMessage));
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ErrorMessage + "', 'warning')", true);
+                //Response.Write(Tools.Alert(ErrorMessage));
             }
             catch (Exception ex)
             {
-                Response.Write(Tools.Alert(ex.Message));
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
+                //Response.Write(Tools.Alert(ex.Message));
             }
 
         }

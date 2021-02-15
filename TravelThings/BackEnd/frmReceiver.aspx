@@ -1,16 +1,50 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BackEnd/BackEnd.Master" AutoEventWireup="true" CodeBehind="frmReceiver.aspx.cs" Inherits="TravelThings.BackEnd.frmReceiver" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-     
+    
+    
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
+                $("#success-alert").slideUp(1000);
+            });
+        });
+    </script>
+
+    <style>
+        .alert {
+            width: 40%;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <%--<div style="width: 100%; height: 515px; overflow-y: scroll;">--%>
-        <div class="col-sm-12">
-            <h3>Get your Item</h3>
+    <div class="col-sm-12">
+        <h3>Get your Item</h3>
+    </div>
+    <asp:Button ID="ButtonLogin" runat="server" CssClass="form-control" Text="Alert" OnClick="ButtonLogin_Click" />
+    <div class="col-sm-12">
+        <div style="width: 100%; height: 300px; overflow: auto;">
+            <asp:GridView ID="gvReceiver" runat="server" Width="100%" ShowHeaderWhenEmpty="true" EmptyDataText="No Data Found" CssClass="table table-hover" AutoGenerateColumns="false">
+                <Columns>
+                    <asp:TemplateField HeaderText="Select">
+                        <ItemTemplate>
+                            <asp:Button ID="gvBtnSelect" runat="server" Text="Select" CssClass="btn btn-primary" CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" data-toggle="modal" data-target="#popAddItems" />
+                            <asp:HiddenField ID="hfTrancId" runat="server" Value='<%# Eval("TD_Sno") %>' />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:BoundField HeaderText="Sr No" DataField="SNO" />
+                    <asp:BoundField HeaderText="Traveler Name" DataField="Traveler_Name" />
+                    <asp:BoundField HeaderText="Sender Name" DataField="Sender_Name" />
+                    <asp:BoundField HeaderText="Start Date" DataField="TD_Strating_Dt" />
+                    <asp:BoundField HeaderText="End Date" DataField="TD_Ending_Dt" />
+                </Columns>
+                <EmptyDataTemplate>
+                    <span style="font-size: 12px; font-weight: bold; color: Blue;">No Items Receive</span>
+                </EmptyDataTemplate>
+            </asp:GridView>
         </div>
-
-        <div class="col-sm-12">
-            <div style="height: 100%; overflow-x: scroll;">
+        <%--<div style="height: 100%; overflow-x: scroll;">
                 <table class="table table-hover">
                     <thead class="navbar">
                         <tr>
@@ -44,8 +78,8 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
-        </div>
+            </div>--%>
+    </div>
     <%--</div>--%>
     <!-- Modal -->
     <div class="modal fade" id="myModal" role="dialog">

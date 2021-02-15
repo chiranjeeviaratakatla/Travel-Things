@@ -69,7 +69,8 @@ namespace TravelThings.BackEnd
             }
             catch (Exception ex)
             {
-                Response.Write(Tools.Alert(ex.Message));
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
+                //Response.Write(Tools.Alert(ex.Message));
             }
         }
 
@@ -87,11 +88,13 @@ namespace TravelThings.BackEnd
                     }
                 }
                 else
-                    Response.Write(Tools.Alert(strErrorMsg));
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + strErrorMsg + "', 'warning')", true);
+                //Response.Write(Tools.Alert(strErrorMsg));
             }
             catch (Exception ex)
             {
-                Response.Write(Tools.Alert(ex.Message));
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
+                //Response.Write(Tools.Alert(ex.Message));
             }
         }
 
@@ -180,7 +183,8 @@ namespace TravelThings.BackEnd
             }
             catch (Exception ex)
             {
-                Response.Write(Tools.Alert(ex.Message));
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
+                //Response.Write(Tools.Alert(ex.Message));
             }
         }
 
@@ -215,7 +219,8 @@ namespace TravelThings.BackEnd
             }
             catch (Exception ex)
             {
-                Response.Write(Tools.Alert(ex.Message));
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
+                //Response.Write(Tools.Alert(ex.Message));
             }
         }
 
@@ -266,11 +271,13 @@ namespace TravelThings.BackEnd
                     }
                 }
                 else
-                    Response.Write(Tools.Alert(strErrorMsg));
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + strErrorMsg + "', 'warning')", true);
+                //Response.Write(Tools.Alert(strErrorMsg));
             }
             catch (Exception ex)
             {
-                Response.Write(Tools.Alert(ex.Message));
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
+                // Response.Write(Tools.Alert(ex.Message));
             }
         }
 
@@ -289,7 +296,8 @@ namespace TravelThings.BackEnd
             }
             catch (Exception ex)
             {
-                Response.Write(Tools.Alert(ex.Message));
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
+                //Response.Write(Tools.Alert(ex.Message));
             }
             return blResult;
         }
@@ -332,14 +340,16 @@ namespace TravelThings.BackEnd
                             Tools.ExecuteQuery("UPDATE tbl_User_Details SET UD_Password = '" + strPassword + "' WHERE UD_User_Id = '" + Tools.UserId.ToString() + "'");
                         }
                         else
-                            Response.Redirect(Tools.Alert(strErrorMessage));
+                            ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + strErrorMessage + "', 'warning')", true);
+                        //Response.Redirect(Tools.Alert(strErrorMessage));
                     }
                 }
 
             }
             catch (Exception ex)
             {
-                Response.Write(Tools.Alert(ex.Message));
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
+                //Response.Write(Tools.Alert(ex.Message));
             }
         }
 
