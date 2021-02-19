@@ -77,45 +77,73 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <div class="container profile">
         <div class="row">
-            <div class="col-md-4 col-xl-3">
+            <div class="col-md-3 col-xl-3">
                 <div class="card bg-c-blue order-card">
+                    <div class="card-block">
+                        <h3 class="m-b-20 text-shadow">Travel Request's</h3>
+                        <h2 class="text-right text-shadow"><i class="fa fa-credit-card f-left"></i><span>486</span></h2>
+                        <a class="m-b-0">More Details<span class="f-right">351</span></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-xl-3">
+                <div class="card bg-c-green order-card">
                     <div class="card-block">
                         <h3 class="m-b-20 text-shadow">Sent Items</h3>
                         <h2 class="text-right text-shadow"><i class="fa fa-paper-plane f-left"></i><span>486</span></h2>
-                        <p class="m-b-0">More Details<span class="f-right">351</span></p>
+                        <a class="m-b-0">More Details<span class="f-right">351</span></a>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4 col-xl-3">
-                <div class="card bg-c-green order-card">
+            <div class="col-md-3 col-xl-3">
+                <div class="card bg-c-yellow order-card">
                     <div class="card-block">
                         <h3 class="m-b-20 text-shadow">Received Items</h3>
                         <h2 class="text-right text-shadow"><i class="fa fa-cubes f-left"></i><span>486</span></h2>
-                        <p class="m-b-0">More Details<span class="f-right">351</span></p>
+                        <a class="m-b-0">More Details<span class="f-right">351</span></a>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4 col-xl-3">
-                <div class="card bg-c-yellow order-card">
+            <div class="col-md-3 col-xl-3">
+                <div class="card bg-c-pink order-card">
                     <div class="card-block">
                         <h3 class="m-b-20 text-shadow">Travel Details</h3>
                         <h2 class="text-right text-shadow"><i class="fa fa-bicycle f-left"></i><span>486</span></h2>
-                        <p class="m-b-0">More Details<span class="f-right">351</span></p>
+                        <a class="m-b-0">More Details<span class="f-right">351</span></a>
                     </div>
                 </div>
             </div>
 
-            <%-- <div class="col-md-3 col-xl-3">
-                <div class="card bg-c-pink order-card">
-                    <div class="card-block">
-                        <h6 class="m-b-20">Orders Received</h6>
-                        <h2 class="text-right"><i class="fa fa-credit-card f-left"></i><span>486</span></h2>
-                        <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
-                    </div>
-                </div>
-            </div>--%>
+             
+        </div>
+        <div class="col-sm-12">
+            <div style="width: 100%; height: 120px; overflow: auto;">
+                <asp:GridView ID="gvTravelRequist" runat="server" Width="100%" CssClass="table table-hover" AutoGenerateColumns="false">
+                    <Columns>
+                        <asp:TemplateField HeaderText="Select">
+                            <ItemTemplate>
+                                <asp:Button ID="gvBtnSelect" runat="server" Text="Accept" CssClass="btn btn-primary" CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:BoundField HeaderText="Sr No" DataField="SNO" />
+                        <asp:BoundField HeaderText="From Address" DataField="TD_Item_From" />
+                        <asp:BoundField HeaderText="To Address" DataField="TD_Item_To" />
+                        <asp:BoundField HeaderText="Travel By" DataField="TD_Travel_by" />
+                        <asp:BoundField HeaderText="Start Date" DataField="TD_Strating_Dt" />
+                        <asp:BoundField HeaderText="End Date" DataField="TD_Ending_Dt" />
+                        <asp:BoundField HeaderText="Weight" DataField="TD_Item_Weight" />
+                        <asp:BoundField HeaderText="TrasId" DataField="TD_Sno" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol"></asp:BoundField>
+                        <asp:TemplateField HeaderText="Delete">
+                            <ItemTemplate>
+                                <asp:Button ID="btnDeleteJoureny" runat="server" Text="Reject" CssClass="btn btn-danger" CommandName="DeleteItem" CommandArgument="<%# Container.DataItemIndex %>" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                </asp:GridView>
+            </div>
         </div>
     </div>
 </asp:Content>

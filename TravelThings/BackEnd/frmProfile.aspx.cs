@@ -349,7 +349,7 @@ namespace TravelThings.BackEnd
             catch (Exception ex)
             {
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
-                //Response.Write(Tools.Alert(ex.Message));
+                // Response.Write(Tools.Alert(ex.Message));
             }
         }
 

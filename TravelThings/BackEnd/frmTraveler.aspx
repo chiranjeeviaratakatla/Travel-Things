@@ -106,7 +106,7 @@
                                 <asp:BoundField HeaderText="TrasId" DataField="TD_Sno" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol"></asp:BoundField>
                                 <asp:TemplateField HeaderText="Delete">
                                     <ItemTemplate>
-                                        <asp:Button ID="btnDeleteJoureny" runat="server" Text="Delete" CssClass="btn btn-danger" CommandName="Delete" CommandArgument="<%# Container.DataItemIndex %>" />
+                                        <asp:Button ID="btnDeleteJoureny" runat="server" Text="Delete" CssClass="btn btn-danger" CommandName="DeleteItem" CommandArgument="<%# Container.DataItemIndex %>" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
                             </Columns>

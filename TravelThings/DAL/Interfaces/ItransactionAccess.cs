@@ -29,5 +29,7 @@ namespace TravelThings.DAL.Interfaces
         DataSet GetPaymentSummery(string strTrancId);
 
         DataTable GetReceivingItem(string strUserId);
+
+        DataTable GetTravelerApprovals(string strUserId);
     }
 }

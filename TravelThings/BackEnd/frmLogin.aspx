@@ -4,11 +4,20 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-     <title>Travel Things </title>
-    <link rel="icon" type="image/gif/png" href="../Images/titleLogoSmall.png">
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
+    <title>Travel Things </title>
+    <link rel="icon" type="image/gif/png" href="../Images/titleLogoSmall.png" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <%-- Bootstrap --%>
+    <link href="Css/Bootstrap_V_3_4_1.css" rel="stylesheet" />
+    <script src="JavaScript/JQuery_V_3_4_1.js" type="text/javascript"></script>
+    <script src="JavaScript/BootstrapCdnMin.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <%-- Sweet Alert --%>
+    <script src="JavaScript/SweetAlert.js" type="text/javascript"></script>
+    <link href="Css/SweetAlert.css" rel="stylesheet" />
+
+    <%-- <style>
         body {
             font-family: Arial, Helvetica, sans-serif;
         }
@@ -92,70 +101,71 @@
         /*#b {
             [[ =[p  nd-color:yellow;
         }*/
+    </style>--%>
+    <style>
+        .form-gap {
+            padding-top: 70px;
+        }
+
+        .imageSelection {
+            user-select: none;
+        }
     </style>
 </head>
 <body style="background-image: linear-gradient(to right,#273f7f 0%,#37a0bc 100%)">
-    <form id="form1" runat="server">
-        <div>
-            <div id="mydiv">
-                <div class="imgcontainer">
-                    <%--<img src="../Images/TravelThingsLogo.png" alt="Avatar" class="avatar">--%>
-                    <asp:Image D="imgLogo" runat="server" AlternateText="Travel Things Logo" CssClass="avatar" ImageUrl="~/Images/TravelThingsLogo.png" />
-                </div>
-
-                <div class="container">
-                    <label for="uname"><b>Phone Number</b></label>
-                    <asp:TextBox ID="txtPhoneNo" runat="server" placeholder="Enter Phone No" CssClass=""></asp:TextBox>
-                    <%--<input type="text" placeholder="Enter Username" name="uname" required>--%>
-
-                    <label for="psw"><b>Password</b></label>
-                    <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" placeholder="Enter Password" CssClass=""></asp:TextBox>
-                    <%--<input type="password" placeholder="Enter Password" name="psw" required>--%>
-
-                    <%--<button type="submit">Login</button>--%>
-                    <asp:Button ID="btnLogin" runat="server" CssClass="button" OnClick="btnLogin_Click" Text="Login" />
-                    <label>
-                        <asp:CheckBox ID="chkRemeber" runat="server" Text="Remember me" />
-                        <%--<input type="checkbox" checked="checked" name="remember">
-                        Remember me--%>
-                    </label>
-                </div>
-
-                <div class="container" style="background-color: #f1f1f1">
-                    <asp:LinkButton ID="lbCancel" runat="server" PostBackUrl="~/Web_Forms/Index.aspx" CssClass="cancelbtn" Text="Cancel"></asp:LinkButton>
-                    <%--<asp:n[LinkButton ID="btnCancel" runat="server" CssClass="cancelbtn" Text="Cancel" ></asp:LinkButton>--%>
-                    <span class="psw">Forgot
-                        <asp:HyperLink ID="hlForgotPsw" runat="server" NavigateUrl="~/BackEnd/frmProfile.aspx" Text="Password ?"></asp:HyperLink></span>
-                    <%--<button type="button" class="cancelbtn">Cancel</button>
-                    <span class="psw">Forgot <a href="#">password?</a></span>--%>
+    <form id="login" runat="server">
+        <div class="form-gap"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="text-center">
+                                <h3>
+                                    <%--<i class="fa fa-lock fa-4x"></i>--%>
+                                    <asp:Image ID="imgLogo" ImageUrl="~/Images/BlackLogo.png" Width="150px" CssClass="imageSelection" runat="server" Height="100px" />
+                                </h3>
+                                <div class="panel-body">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
+                                            <asp:TextBox ID="txtPhoneNo" runat="server" TextMode="Phone" placeholder="Enter Phone No" CssClass="form-control"></asp:TextBox>
+                                            <%--<input id="email" name="email" placeholder="email address" class="form-control" type="email">--%>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-lock fa-1x"></i></span>
+                                            <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" placeholder="Enter Password" CssClass="form-control"></asp:TextBox>
+                                            <%--<input id="email" name="email" placeholder="email address" class="form-control" type="email">--%>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <asp:Button ID="btnLogin" runat="server" CssClass="btn btn-lg btn-primary btn-block" OnClick="btnLogin_Click" Text="Login" />
+                                        <%--<asp:Button ID="btnSendOtp" runat="server" CssClass="btn btn-lg btn-primary btn-block" Text="Reset Password" />--%>
+                                        <%--<input name="recover-submit" class="btn btn-lg btn-primary btn-block" value="Reset Password" type="submit">--%>
+                                    </div>
+                                    <div class="form-group">
+                                        <asp:CheckBox ID="chkRemeber" runat="server" CssClass="form-control alert-info checkbox" Text="Remember me" />
+                                    </div>
+                                    <%--<input type="hidden" class="hide" name="token" id="token" value="">--%>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-footer">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <u><span class="pull-left">
+                                    <asp:HyperLink ID="hlRegister" NavigateUrl="~/Web_Forms/Index.aspx" runat="server" Text="Register"></asp:HyperLink>
+                                </span></u>
+                                <u><span class="pull-right">
+                                    <asp:HyperLink ID="hlForgotPassword" runat="server" NavigateUrl="~/BackEnd/frmForgotPassword.aspx" Text="Forgot Password"></asp:HyperLink>
+                                </span></u>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </form>
 </body>
-
 </html>
-<script type="text/javascript">
-   
-    /*#mydiv {
-       position:absolute;
-       top: 38%;
-       left: 50%;
-       width:30em;
-       height:28em;
-        margin-top: -9em; //*set to a negative number 1/2 of your height
-        margin-left: -15em; //*set to a negative number 1/2 of your width
-        border: 1px solid #ccc;
-        background-image: linear-gradient(to right,#273f7f 0%,#37a0bc 100%);
-       position:absolute;
-       top: 38%;
-       left: 75%;
-       width:20em;
-       height:24em;
-       margin-top: -9em; //set to a negative number 1/2 of your height
-       margin-left: -15em; //set to a negative number 1/2 of your width
-       border: 1px solid #ccc;
-       background-image: linear-gradient(to right,#273f7f 0%,#37a0bc 100%);
-
-    }*/
-</script>

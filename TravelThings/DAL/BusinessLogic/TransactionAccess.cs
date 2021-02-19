@@ -196,5 +196,19 @@ namespace TravelThings.DAL.BusinessLogic
                 throw;
             }
         }
+        public DataTable GetTravelerApprovals(string strUserId)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("usp_Get_Traveler_Approval_Details");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@TD_Traveler_Id", strUserId);
+                return ExecuteReader(cmd);
+            }
+            catch
+            {
+                throw;
+            }
+        }
     }
 }

@@ -21,9 +21,15 @@ namespace TravelThings.BackEnd
             if (Tools.UserId == 0)
                 Response.Redirect("~/BackEnd/frmLogin.aspx");
             if (!IsPostBack)
+            {
                 GetTravelDetails();
-           LinkButton li = (LinkButton)Master.FindControl("lbTraveler");
-            li.CssClass = "Clicked";
+                LinkButton li = (LinkButton)Master.FindControl("lbTraveler");
+                li.CssClass = "Clicked";
+                txtStartDate.Text = DateTime.Today.ToString("yyyy-MM-dd");
+                txtEndDate.Text = DateTime.Today.AddDays(1).ToString("yyyy-MM-dd");
+            }
+
+
         }
 
         protected void btnAddJourney_Click(object sender, EventArgs e)
@@ -43,7 +49,7 @@ namespace TravelThings.BackEnd
                 else
                 {
                     //Response.Write(Tools.Alert(strError));
-                    ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '"+strError+ "', 'warning')", true);
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + strError + "', 'warning')", true);
                 }
 
             }
@@ -62,8 +68,8 @@ namespace TravelThings.BackEnd
                 btnEditJourney.Visible = false;
                 txtFrom.Text = string.Empty;
                 txtTo.Text = string.Empty;
-                txtStartDate.Text = string.Empty;
-                txtEndDate.Text = string.Empty;
+                txtStartDate.Text = DateTime.Today.ToString("yyyy-MM-dd");
+                txtEndDate.Text = DateTime.Today.AddDays(1).ToString("yyyy-MM-dd");
                 ddlTravelBy.SelectedIndex = 0;
                 txtWeightCanCarry.Text = string.Empty;
             }
@@ -121,7 +127,7 @@ namespace TravelThings.BackEnd
                     if (!string.IsNullOrEmpty(row.Cells[7].Text) && row.Cells[7].Text != "&nbsp;")
                         txtWeightCanCarry.Text = row.Cells[7].Text;
                 }
-                else if (e.CommandName == "Delete")
+                else if (e.CommandName == "DeleteItem")
                 {
                     string strTransId = row.Cells[8].Text;
                     bool blnResult = dll.DeleteTransactionDetails(strTransId);
@@ -144,7 +150,7 @@ namespace TravelThings.BackEnd
             try
             {
                 string strError = ValidateFields();
-                if (!string.IsNullOrEmpty(strError))
+                if (string.IsNullOrEmpty(strError))
                 {
                     string strTransId = Session["strTransId"].ToString();
                     if (!string.IsNullOrEmpty(strTransId))
@@ -191,12 +197,23 @@ namespace TravelThings.BackEnd
             else if (string.IsNullOrEmpty(txtStartDate.Text.Trim()) || txtStartDate.Text == "dd-mm-yyyy")
             {
                 txtStartDate.Focus();
-                strError = "Please Select To Start Date";
+                strError = "Please Select Start Date";
             }
             else if (string.IsNullOrEmpty(txtEndDate.Text.Trim()) || txtEndDate.Text == "dd-mm-yyyy")
             {
                 txtEndDate.Focus();
-                strError = "Please Select To End Date";
+                strError = "Please Select End Date";
+            }
+            else if (Convert.ToDateTime(txtStartDate.Text) < Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")))
+            {
+                txtEndDate.Focus();
+                txtStartDate.Text = DateTime.Today.ToString("yyyy-MM-dd");
+                strError = "Start Date Con not be Past Date";
+            }
+            else if (Convert.ToDateTime(txtStartDate.Text) > Convert.ToDateTime(txtEndDate.Text))
+            {
+                txtEndDate.Focus();
+                strError = "End Date Con not be Less then Start Date";
             }
             else if (string.IsNullOrEmpty(txtWeightCanCarry.Text.Trim()))
             {

@@ -42,9 +42,10 @@ namespace TravelThings.BackEnd
                     ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + strErrorMsg + "', 'warning')", true);
                // Response.Write(Tools.Alert(strErrorMsg));
             }
-            catch (Exception ex)
+            catch
             {
-                Response.Write(Tools.Alert(ex.Message));
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', 'Something went Wrong. Wlease try Again!', 'warning')", true);
+                //Response.Write(Tools.Alert(ex.Message));
             }
         }
 

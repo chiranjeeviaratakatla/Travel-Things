@@ -13,13 +13,22 @@ namespace TravelThings.BackEnd {
     public partial class frmLogin {
         
         /// <summary>
-        /// form1 control.
+        /// login control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.HtmlControls.HtmlForm login;
+        
+        /// <summary>
+        /// imgLogo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgLogo;
         
         /// <summary>
         /// txtPhoneNo control.
@@ -58,21 +67,21 @@ namespace TravelThings.BackEnd {
         protected global::System.Web.UI.WebControls.CheckBox chkRemeber;
         
         /// <summary>
-        /// lbCancel control.
+        /// hlRegister control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbCancel;
+        protected global::System.Web.UI.WebControls.HyperLink hlRegister;
         
         /// <summary>
-        /// hlForgotPsw control.
+        /// hlForgotPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlForgotPsw;
+        protected global::System.Web.UI.WebControls.HyperLink hlForgotPassword;
     }
 }

@@ -67,17 +67,23 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BackEnd\Css\Bootstrap_V_3_4_1.css" />
     <Content Include="BackEnd\Css\Chat.css" />
     <Content Include="BackEnd\Css\CommonControls.css" />
     <Content Include="BackEnd\Css\MasterCss.css" />
     <Content Include="BackEnd\Css\pan.txt" />
     <Content Include="BackEnd\Css\styles.css" />
+    <Content Include="BackEnd\Css\SweetAlert.css" />
+    <Content Include="BackEnd\frmForgotPassword.aspx" />
     <Content Include="BackEnd\frmDashboard.aspx" />
     <Content Include="BackEnd\frmLogin.aspx" />
     <Content Include="BackEnd\frmProfile.aspx" />
     <Content Include="BackEnd\frmReceiver.aspx" />
     <Content Include="BackEnd\frmTraveler.aspx" />
     <Content Include="BackEnd\frmSender.aspx" />
+    <Content Include="BackEnd\JavaScript\BootstrapCdnMin.js" />
+    <Content Include="BackEnd\JavaScript\JQuery_V_3_4_1.js" />
+    <Content Include="BackEnd\JavaScript\SweetAlert.js" />
     <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
     <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
     <Content Include="bin\roslyn\csc.exe" />
@@ -103,8 +109,10 @@
     <Content Include="DatePicker\bootstrap-datepicker.min.js" />
     <Content Include="DatePicker\datepicker.css" />
     <Content Include="DatePicker\jquery.min.js" />
+    <Content Include="Images\BlackLogo.png" />
     <Content Include="Images\Dashboard1.jpg" />
     <Content Include="Images\DashBoardLogo.png" />
+    <Content Include="BackEnd\ImgLoading.gif" />
     <Content Include="Images\Profile.jpg" />
     <Content Include="Images\titleLogo.png" />
     <Content Include="Images\titleLogoSmall.png" />
@@ -153,7 +161,9 @@
     <Content Include="Template\img\undraw_svg_2.svg" />
     <Content Include="Template\img\undraw_svg_3.svg" />
     <Content Include="Template\img\undraw_svg_4.svg" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web_Forms\Blog.aspx" />
     <Content Include="Web_Forms\BlogSigle.aspx" />
     <Content Include="Web_Forms\Contact.aspx" />
@@ -170,6 +180,13 @@
     </Compile>
     <Compile Include="BackEnd\BackEnd.Master.designer.cs">
       <DependentUpon>BackEnd.Master</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\frmForgotPassword.aspx.cs">
+      <DependentUpon>frmForgotPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackEnd\frmForgotPassword.aspx.designer.cs">
+      <DependentUpon>frmForgotPassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="BackEnd\frmDashboard.aspx.cs">
       <DependentUpon>frmDashboard.aspx</DependentUpon>

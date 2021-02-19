@@ -42,6 +42,22 @@
     Author: BootstrapMade.com
     Author URL: https://bootstrapmade.com/
   ======================================================= -->
+    <script type="text/javascript">
+        var lastScrollTop = 0;
+
+        // element should be replaced with the actual target element on which you have applied scroll, use window in case of no target element.
+        element.addEventListener("scroll", function () { // or window.addEventListener("scroll"....
+            var st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
+            if (st > lastScrollTop) {
+                document.getElementById('Logo').setAttribute('src', '../Images/DashBoardLogo.png');
+                // downscroll code
+            } else {
+                // upscroll code
+                document.getElementById('Logo').setAttribute('src', '../Images/Profile.jpg');
+            }
+            lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+        }, false);
+    </script>
     <asp:ContentPlaceHolder ID="head" runat="server">
         
     </asp:ContentPlaceHolder>
@@ -71,7 +87,7 @@
                                 <%--<asp:Image ID="Logo" ImageUrl="~/Images/TravelThingsLogo.png" runat="server" />--%>
                                 
                                 <h1 class="mb-0 site-logo">
-                                    <a href="index.html" class="mb-0"><asp:Image ID="Logo" ImageUrl="~/Images/DashBoardLogo.png" Height="70px" Width="150px" runat="server" /></a></h1>
+                                    <a href="index.html" class="mb-0"><asp:Image ID="Logo" ImageUrl="~/Images/BlackLogo.png" Height="70px" Width="150px" runat="server" /></a></h1>
                             </div>
 
                             <div class="col-12 col-md-10 d-none d-lg-block">

@@ -8,12 +8,14 @@
     <link rel="icon" type="image/gif/png" href="../Images/titleLogoSmall.png">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <%-- Bootstrap --%>
+    <link href="Css/Bootstrap_V_3_4_1.css" rel="stylesheet" />
+    <script src="JavaScript/JQuery_V_3_4_1.js" type="text/javascript"></script>
+    <script src="JavaScript/BootstrapCdnMin.js" type="text/javascript"></script>
     <%-- Sweet Alert --%>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.js" type="text/javascript"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css" rel="stylesheet" />
+    <script src="JavaScript/SweetAlert.js" type="text/javascript"></script>
+    <link href="Css/SweetAlert.css" rel="stylesheet" />
+
     <link href="Css/CommonControls.css" rel="stylesheet" />
 
     <asp:ContentPlaceHolder ID="head" runat="server">
@@ -136,75 +138,102 @@
             font-size: 15px;
         }
     </style>
-    
+    <%-- Page Loding status bar --%>
+    <style type="text/css">
+        #load {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            z-index: 9999;
+            background: url("ImgLoading.gif") no-repeat center center rgba(0,0,0,0);
+        }
+    </style>
+    <script type="text/javascript">
+        document.onreadystatechange = function () {
+            var state = document.readyState
+            if (state == 'interactive') {
+                document.getElementById('contents').style.visibility = "hidden";
+            } else if (state == 'complete') {
+                setTimeout(function () {
+                    document.getElementById('interactive');
+                    document.getElementById('load').style.visibility = "hidden";
+                    document.getElementById('contents').style.visibility = "visible";
+                }, 500);
+            }
+        }
+    </script>
+
 </head>
 <body>
-    <form id="form1" runat="server">
-        <div>
-            <nav class="navbar navbar-inverse">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="#">
-                            <asp:Image ID="imgLogo" ImageUrl="~/Images/DashBoardLogo.png" runat="server" Height="40px" Width="100px" AlternateText="Travel Things" />
-                        </a>
-                    </div>
-                    <div class="collapse navbar-collapse" id="myNavbar">
-                        <ul class="nav navbar-nav">
-                            <li>
-                                <asp:LinkButton ID="lbDashboard" CssClass="Initial" Text="Dashboard" runat="server" PostBackUrl="~/BackEnd/frmDashboard.aspx"></asp:LinkButton>
-                                <%--<asp:HyperLink ID="hlDashboard" CssClass="Initial" runat="server" NavigateUrl="~/BackEnd/frmDashboard.aspx">Dashboard</asp:HyperLink></li>--%>
-                            </li>
-                            <li>
-                                <%--<asp:HyperLink ID="hlSender" CssClass="Initial" runat="server" NavigateUrl="~/BackEnd/frmSender.aspx">Send</asp:HyperLink>--%>
-                                <asp:LinkButton ID="lbSender" CssClass="Initial" Text="Send" runat="server" PostBackUrl="~/BackEnd/frmSender.aspx"></asp:LinkButton>
-                            </li>
-                            <li>
-                                <%--<asp:HyperLink ID="hlTraveler" CssClass="Initial" runat="server" NavigateUrl="~/BackEnd/frmTraveler.aspx">Travel</asp:HyperLink>--%>
-                                <asp:LinkButton ID="lbTraveler" CssClass="Initial" Text="Travel" runat="server" PostBackUrl="~/BackEnd/frmTraveler.aspx"></asp:LinkButton>
-                            </li>
-                            <li>
-                                <%--<asp:HyperLink ID="hlReciver" CssClass="Initial" runat="server" NavigateUrl="~/BackEnd/frmReceiver.aspx">Receive</asp:HyperLink>--%>
-                                <asp:LinkButton ID="lbReciver" CssClass="Initial" Text="Receive" runat="server" PostBackUrl="~/BackEnd/frmReceiver.aspx"></asp:LinkButton>
-                            </li>
-                            <%--<li><a href="#">Reoprt</a></li>--%>
-                        </ul>
-                        <ul class="nav navbar-nav navbar-right">
+    <div id="load"></div>
+    <%--<div id="contents">--%>
+        <form id="form1" runat="server">
+            <div>
+                <nav class="navbar navbar-inverse">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#">
+                                <asp:Image ID="imgLogo" ImageUrl="~/Images/DashBoardLogo.png" runat="server" Height="40px" Width="100px" AlternateText="Travel Things" />
+                            </a>
+                        </div>
+                        <div class="collapse navbar-collapse" id="myNavbar">
+                            <ul class="nav navbar-nav">
+                                <li>
+                                    <asp:LinkButton ID="lbDashboard" CssClass="Initial" Text="Dashboard" runat="server" PostBackUrl="~/BackEnd/frmDashboard.aspx"></asp:LinkButton>
+                                    <%--<asp:HyperLink ID="hlDashboard" CssClass="Initial" runat="server" NavigateUrl="~/BackEnd/frmDashboard.aspx">Dashboard</asp:HyperLink></li>--%>
+                                </li>
+                                <li>
+                                    <%--<asp:HyperLink ID="hlSender" CssClass="Initial" runat="server" NavigateUrl="~/BackEnd/frmSender.aspx">Send</asp:HyperLink>--%>
+                                    <asp:LinkButton ID="lbSender" CssClass="Initial" Text="Send" runat="server" PostBackUrl="~/BackEnd/frmSender.aspx"></asp:LinkButton>
+                                </li>
+                                <li>
+                                    <%--<asp:HyperLink ID="hlTraveler" CssClass="Initial" runat="server" NavigateUrl="~/BackEnd/frmTraveler.aspx">Travel</asp:HyperLink>--%>
+                                    <asp:LinkButton ID="lbTraveler" CssClass="Initial" Text="Travel" runat="server" PostBackUrl="~/BackEnd/frmTraveler.aspx"></asp:LinkButton>
+                                </li>
+                                <li>
+                                    <%--<asp:HyperLink ID="hlReciver" CssClass="Initial" runat="server" NavigateUrl="~/BackEnd/frmReceiver.aspx">Receive</asp:HyperLink>--%>
+                                    <asp:LinkButton ID="lbReciver" CssClass="Initial" Text="Receive" runat="server" PostBackUrl="~/BackEnd/frmReceiver.aspx"></asp:LinkButton>
+                                </li>
+                                <%--<li><a href="#">Reoprt</a></li>--%>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">
 
-                            <li>
-                                <asp:LinkButton ID="lbProfile" CssClass="Initial" Text="Profile" runat="server" PostBackUrl="~/BackEnd/frmProfile.aspx"></asp:LinkButton>
-                                <%--<asp:HyperLink ID="hlProfile" NavigateUrl="~/BackEnd/frmProfile.aspx" CssClass="Initial" runat="server"></asp:HyperLink>--%>
-                            </li>
-                            <li>
-                                <%--<asp:HyperLink ID="hlLogout" NavigateUrl="~/Web_Forms/HomePage.aspx" CssClass="Initial" runat="server"><span>Logout</span></asp:HyperLink>--%>
-                                <asp:LinkButton ID="lbLogout" CssClass="Initial" Text="Logout" runat="server" PostBackUrl="~/Web_Forms/Index.aspx"></asp:LinkButton>
-                            </li>
-                            <%--<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>--%>
-                        </ul>
+                                <li>
+                                    <asp:LinkButton ID="lbProfile" CssClass="Initial" Text="Profile" runat="server" PostBackUrl="~/BackEnd/frmProfile.aspx"></asp:LinkButton>
+                                    <%--<asp:HyperLink ID="hlProfile" NavigateUrl="~/BackEnd/frmProfile.aspx" CssClass="Initial" runat="server"></asp:HyperLink>--%>
+                                </li>
+                                <li>
+                                    <%--<asp:HyperLink ID="hlLogout" NavigateUrl="~/Web_Forms/HomePage.aspx" CssClass="Initial" runat="server"><span>Logout</span></asp:HyperLink>--%>
+                                    <asp:LinkButton ID="lbLogout" CssClass="Initial" Text="Logout" runat="server" PostBackUrl="~/Web_Forms/Index.aspx"></asp:LinkButton>
+                                </li>
+                                <%--<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>--%>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            </nav>
-            <div class="container-fluid">
-                <div class="row content">
-                    <%--<asp:ScriptManager ID="scriptmanager1" runat="server">
+                </nav>
+                <div class="container-fluid">
+                    <div class="row content">
+                        <%--<asp:ScriptManager ID="scriptmanager1" runat="server">
                     </asp:ScriptManager>
                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>--%>
-                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                    </asp:ContentPlaceHolder>
-                    <%-- </ContentTemplate>
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                        <%-- </ContentTemplate>
                     </asp:UpdatePanel>--%>
+                    </div>
                 </div>
             </div>
-        </div>
-    </form>
-    <footer class="container-fluid text-center">
-        <p>Footer Text</p>
-    </footer>
+        </form>
+        <footer class="container-fluid text-center">
+            <p>Footer Text</p>
+        </footer>
+    <%--</div>--%>
 </body>
 
 </html>
