@@ -128,7 +128,7 @@
                                 <div class="panel-body">
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
+                                            <span class="input-group-addon"><i class="fa fa-phone fa-1x"></i></span>
                                             <asp:TextBox ID="txtPhoneNo" runat="server" TextMode="Phone" placeholder="Enter Phone No" CssClass="form-control"></asp:TextBox>
                                             <%--<input id="email" name="email" placeholder="email address" class="form-control" type="email">--%>
                                         </div>

@@ -1,28 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BackEnd/BackEnd.Master" AutoEventWireup="true" CodeBehind="frmReceiver.aspx.cs" Inherits="TravelThings.BackEnd.frmReceiver" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    
-    
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
-                $("#success-alert").slideUp(1000);
-            });
-        });
-    </script>
-
-    <style>
-        .alert {
-            width: 40%;
-        }
-    </style>
+      <%-- Sweet Alert --%>
+    <script src="JavaScript/SweetAlert.js" type="text/javascript"></script>
+    <link href="Css/SweetAlert.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <%--<div style="width: 100%; height: 515px; overflow-y: scroll;">--%>
     <div class="col-sm-12">
         <h3>Get your Item</h3>
     </div>
-    <asp:Button ID="ButtonLogin" runat="server" CssClass="form-control" Text="Alert" OnClick="ButtonLogin_Click" />
     <div class="col-sm-12">
         <div style="width: 100%; height: 300px; overflow: auto;">
             <asp:GridView ID="gvReceiver" runat="server" Width="100%" ShowHeaderWhenEmpty="true" EmptyDataText="No Data Found" CssClass="table table-hover" AutoGenerateColumns="false">

@@ -18,40 +18,8 @@ namespace TravelThings.BackEnd
 
         protected void btnSendOtp_Click(object sender, EventArgs e)
         {
-            //pnlSendMail.Visible = false;
-            //pnlResetPassword.Visible = true;
-
-            SendMail();
-
-            //using (SmtpClient smtpClient = new SmtpClient())
-            //{
-            //    var basicCredential = new NetworkCredential("chiranjeeviaratakatla@gmail.com", "Chiru8680#");
-            //    using (MailMessage message = new MailMessage())
-            //    {
-            //        MailAddress fromAddress = new MailAddress("chiranjeeviaratakatla@gmail.com");
-
-            //        smtpClient.Host = "mail.mydomain.com";
-            //        smtpClient.UseDefaultCredentials = false;
-            //        smtpClient.Credentials = basicCredential;
-
-            //        message.From = fromAddress;
-            //        message.Subject = "your subject";
-            //        // Set IsBodyHtml to true means you can send HTML email.
-            //        message.IsBodyHtml = true;
-            //        message.Body = "<h1>your message body</h1>";
-            //        message.To.Add("prmilamohan@gmail.com");
-
-            //        try
-            //        {
-            //            smtpClient.Send(message);
-            //        }
-            //        catch (Exception ex)
-            //        {
-            //            //Error, could not send the message
-            //            Response.Write(ex.Message);
-            //        }
-            //    }
-            //}
+            pnlSendMail.Visible = false;
+            pnlResetPassword.Visible = true;
         }
 
         protected void SendMail()

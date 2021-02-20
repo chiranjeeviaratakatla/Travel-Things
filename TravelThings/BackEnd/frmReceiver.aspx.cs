@@ -33,48 +33,8 @@ namespace TravelThings.BackEnd
             }
             catch (Exception ex)
             {
-                Response.Write(Tools.Alert(ex.Message));
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
             }
         }
-
-        protected void ButtonLogin_Click(object sender, EventArgs e)
-        {
-            //ShowNotification("hello", WarningType.Success);
-            ClientScript.RegisterClientScriptBlock(this.GetType(), "k","swal('Good job!', 'You clicked the button!', 'success')", true);
-        }
-
-        //protected void ShowMessage(string Message, MessageType type)
-        //{
-        //    ScriptManager.RegisterStartupScript(this, this.GetType(), System.Guid.NewGuid().ToString(), "ShowMessage('" + Message + "','" + type + "');", true);
-        //}
-
-
-        public enum WarningType
-        {
-            Success,
-            Info,
-            Warning,
-            Danger
-        }
-
-        public void ShowNotification(string message, WarningType type)
-        {
-            var mainContentHolder = Master.FindControl("ContentPlaceHolder1") as ContentPlaceHolder;
-            Panel notificationPanel = new Panel();
-            {
-                LiteralControl closeButton = new LiteralControl();
-                closeButton.Text = "<a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>";
-
-                Label notificationMessage = new Label() { Text = message };
-
-                notificationPanel.Controls.Add(closeButton);
-                notificationPanel.Controls.Add(notificationMessage);
-            }
-            notificationPanel.CssClass = string.Format("alert alert-{0} alert-dismissable", type.ToString().ToLower());
-            notificationPanel.Attributes.Add("role", "alert");
-            notificationPanel.Attributes.Add("id", "success-alert");
-            mainContentHolder.Controls.AddAt(0, notificationPanel);
-        }
-
     }
 }
