@@ -35,5 +35,13 @@ namespace TravelThings.DAL.BusinessLogic
             cmd.Parameters.AddWithValue("@Strating_Dt", Staritng);
             return ExecuteReader(cmd);
         }
+
+        public DataTable GetDashboardDetails(string strUserId)
+        {
+            SqlCommand cmd = new SqlCommand("usp_Get_Dashboard_Count");
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@User_Id", strUserId);
+            return ExecuteReader(cmd);
+        }
     }
 }

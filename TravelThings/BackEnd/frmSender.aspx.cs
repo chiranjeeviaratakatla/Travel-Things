@@ -306,7 +306,7 @@ namespace TravelThings.BackEnd
         {
             try
             {
-                Tools.ExecuteQuery("DELETE FROM tbl_Item_Transaction_Details WHERE UTD_Sno = '" + lblTrascId.Text.Trim() + "'");
+                Tools.ExecuteNonQuery("DELETE FROM tbl_Item_Transaction_Details WHERE UTD_Sno = '" + lblTrascId.Text.Trim() + "'");
                 foreach (GridViewRow row in gvItemSelection.Rows)
                 {
                     if (row.RowType == DataControlRowType.DataRow)

@@ -199,7 +199,10 @@
                                     <%--<asp:HyperLink ID="hlReciver" CssClass="Initial" runat="server" NavigateUrl="~/BackEnd/frmReceiver.aspx">Receive</asp:HyperLink>--%>
                                     <asp:LinkButton ID="lbReciver" CssClass="Initial" Text="Receive" runat="server" PostBackUrl="~/BackEnd/frmReceiver.aspx"></asp:LinkButton>
                                 </li>
-                                <%--<li><a href="#">Reoprt</a></li>--%>
+                               <li>
+                                    <%--<asp:HyperLink ID="hlReciver" CssClass="Initial" runat="server" NavigateUrl="~/BackEnd/frmReceiver.aspx">Receive</asp:HyperLink>--%>
+                                    <asp:LinkButton ID="lbReports" CssClass="Initial" Text="Reports" runat="server" PostBackUrl="~/BackEnd/frmReports.aspx"></asp:LinkButton>
+                                </li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
 

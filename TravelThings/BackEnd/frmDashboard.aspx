@@ -81,8 +81,8 @@
                 <div class="card bg-c-blue order-card">
                     <div class="card-block">
                         <h3 class="m-b-20 text-shadow">Travel Request's</h3>
-                        <h2 class="text-right text-shadow"><i class="fa fa-credit-card f-left"></i><span>486</span></h2>
-                        <a class="m-b-0">More Details<span class="f-right">351</span></a>
+                        <h2 class="text-right text-shadow"><i class="fa fa-bell f-left"></i><span><asp:Label ID="lblTravelRequest" Text="0" runat="server"></asp:Label></span></h2>
+                        <a class="m-b-0">More Details</a><%--<span class="f-right">351</span>--%>
                     </div>
                 </div>
             </div>
@@ -91,8 +91,8 @@
                 <div class="card bg-c-green order-card">
                     <div class="card-block">
                         <h3 class="m-b-20 text-shadow">Sent Items</h3>
-                        <h2 class="text-right text-shadow"><i class="fa fa-paper-plane f-left"></i><span>486</span></h2>
-                        <a class="m-b-0">More Details<span class="f-right">351</span></a>
+                        <h2 class="text-right text-shadow"><i class="fa fa-paper-plane f-left"></i><span><asp:Label ID="lblSentItems" Text="0" runat="server"></asp:Label></span></h2>
+                        <a class="m-b-0"><asp:LinkButton ID="lbSendItems" Text="More Details" OnClick="lbSendItems_Click" runat="server"></asp:LinkButton> </a><%--<span class="f-right">351</span>--%>
                     </div>
                 </div>
             </div>
@@ -101,8 +101,8 @@
                 <div class="card bg-c-yellow order-card">
                     <div class="card-block">
                         <h3 class="m-b-20 text-shadow">Received Items</h3>
-                        <h2 class="text-right text-shadow"><i class="fa fa-cubes f-left"></i><span>486</span></h2>
-                        <a class="m-b-0">More Details<span class="f-right">351</span></a>
+                        <h2 class="text-right text-shadow"><i class="fa fa-cubes f-left"></i><span><asp:Label ID="lblReceivedItems" Text="0" runat="server"></asp:Label></span></h2>
+                        <a class="m-b-0"><asp:LinkButton ID="lbReceivedItem" Text="More Details" OnClick="lbReceivedItem_Click" runat="server"></asp:LinkButton></a><%--<span class="f-right">351</span>--%>
                     </div>
                 </div>
             </div>
@@ -111,8 +111,8 @@
                 <div class="card bg-c-pink order-card">
                     <div class="card-block">
                         <h3 class="m-b-20 text-shadow">Travel Details</h3>
-                        <h2 class="text-right text-shadow"><i class="fa fa-bicycle f-left"></i><span>486</span></h2>
-                        <a class="m-b-0">More Details<span class="f-right">351</span></a>
+                        <h2 class="text-right text-shadow"><i class="fa fa-bicycle f-left"></i><span><asp:Label ID="lblTravelerDetails" Text="0" runat="server"></asp:Label></span></h2>
+                        <a class="m-b-0"><asp:LinkButton ID="lbTravelDetails" Text="More Details" OnClick="lbTravelDetails_Click" runat="server"></asp:LinkButton></a><%--<span class="f-right">351</span>--%>
                     </div>
                 </div>
             </div>

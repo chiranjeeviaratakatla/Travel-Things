@@ -43,7 +43,8 @@ namespace TravelThings.Web_Forms
                 if (string.IsNullOrEmpty(ErrorMessage = DataValidation()))
                 {
                     IUserAccess dal = new UserAccess();
-                    DataTable dt = dal.InsertUserDetails(txtName.Text.ToUpper().Trim(), txtPhoneNo.Text.Trim(), "", "", "");
+                    string strPassword = Tools.Encryptdata(Tools.CreateRandomPassword());
+                    DataTable dt = dal.InsertUserDetails(txtName.Text.ToUpper().Trim(), txtPhoneNo.Text.Trim(), "", "", strPassword);
                     if (dt.Rows.Count > 0)
                     {
                         if (dt.Rows[0]["USER_TYPE"].ToString() == "EXISTS")
@@ -57,7 +58,6 @@ namespace TravelThings.Web_Forms
                             Tools.UserName = dt.Rows[0]["UD_User_Name"].ToString();
                             Response.Redirect("~/BackEnd/frmProfile.aspx");
                         }
-
                     }
                 }
                 else

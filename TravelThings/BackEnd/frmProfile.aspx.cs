@@ -8,6 +8,8 @@ using System.Data;
 using TravelThings.Helpers;
 using TravelThings.DAL.BusinessLogic;
 using TravelThings.DAL.Interfaces;
+using System.IO;
+using System.Drawing;
 
 namespace TravelThings.BackEnd
 {
@@ -38,11 +40,18 @@ namespace TravelThings.BackEnd
                 dtUserDetails = dll.GettUserDetails(Tools.UserId.ToString());
                 if (dtUserDetails.Rows.Count > 0)
                 {
+                    lblWelUName.Text = dtUserDetails.Rows[0]["UD_User_Name"].ToString();
                     lblUserName.Text = dtUserDetails.Rows[0]["UD_User_Name"].ToString();
                     lblPhoneNo.Text = dtUserDetails.Rows[0]["UD_Phone_No"].ToString();
                     lblAltPhone.Text = dtUserDetails.Rows[0]["UD_Alter_Phone_No"].ToString();
                     lblEmailId.Text = dtUserDetails.Rows[0]["UD_EmailId"].ToString();
                     lblAadharNo.Text = dtUserDetails.Rows[0]["UD_Aadhar_No"].ToString();
+                    lblRevards.Text = dtUserDetails.Rows[0]["P_Paid_Amt"].ToString();
+                    if (!string.IsNullOrEmpty(dtUserDetails.Rows[0]["UD_PhotoPath"].ToString().Trim()))
+                        imgProfilePic.ImageUrl = "~/Images/UserProfilepics/" + dtUserDetails.Rows[0]["UD_PhotoPath"].ToString();
+                    else
+                        imgProfilePic.ImageUrl = "~/Images/Profile.jpg";
+
                     if (!string.IsNullOrEmpty(dtUserDetails.Rows[0]["UD_Address"].ToString()))
                     {
                         string[] strAddress = dtUserDetails.Rows[0]["UD_Address"].ToString().Split('#');
@@ -138,27 +147,6 @@ namespace TravelThings.BackEnd
                     strErrorMessage = "Please Enter Pincode";
                     txtPinCode.Focus();
                 }
-                else if (string.IsNullOrEmpty(txtPassword.Text.Trim()) || string.IsNullOrEmpty(txtConPassword.Text.Trim()))
-                {
-                    if (string.IsNullOrEmpty(txtPassword.Text.Trim()))
-                    {
-                        strErrorMessage = "Please Enter Password";
-                        txtPassword.Focus();
-                    }
-                    else
-                    {
-                        strErrorMessage = "Please Enter Conform Password";
-                        txtConPassword.Focus();
-                    }
-                }
-                else
-                {
-                    if (txtPassword.Text.Trim() != txtConPassword.Text.Trim())
-                    {
-                        strErrorMessage = "Password and Confirm Password Must Match";
-                        txtPassword.Focus();
-                    }
-                }
 
             }
             catch (Exception ex)
@@ -208,19 +196,21 @@ namespace TravelThings.BackEnd
             {
                 if (chkShowPws.Checked)
                 {
-                    txtPassword.TextMode = TextBoxMode.SingleLine;
-                    txtConPassword.TextMode = TextBoxMode.SingleLine;
+                    txtOldPsw.TextMode = TextBoxMode.SingleLine;
+                    txtNewPsw.TextMode = TextBoxMode.SingleLine;
+                    txtConformPsw.TextMode = TextBoxMode.SingleLine;
                 }
                 else
                 {
-                    txtPassword.TextMode = TextBoxMode.Password;
-                    txtConPassword.TextMode = TextBoxMode.Password;
+                    txtOldPsw.TextMode = TextBoxMode.Password;
+                    txtNewPsw.TextMode = TextBoxMode.Password;
+                    txtConformPsw.TextMode = TextBoxMode.Password;
                 }
             }
             catch (Exception ex)
             {
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
-                //Response.Write(Tools.Alert(ex.Message));
+                Response.Write(Tools.Alert(ex.Message));
             }
         }
 
@@ -265,6 +255,7 @@ namespace TravelThings.BackEnd
                 {
                     if (UpdateUserDetails())
                     {
+                        getUserDetails();
                         pnlProfileView.Visible = true;
                         pnlProfileEdit.Visible = false;
                         btnEdit.Visible = false;
@@ -291,8 +282,7 @@ namespace TravelThings.BackEnd
                 strAddress = strAddress + txtCity.Text.Trim() + "#";
                 strAddress = strAddress + txtState.Text.Trim() + "#";
                 strAddress = strAddress + txtPinCode.Text.Trim();
-                string strPassword = Tools.Encryptdata(txtPassword.Text.Trim());
-                blResult = dll.UpdateUserProfile(Tools.UserId.ToString(), strPassword, txtName.Text.Trim(), txtAltPhNo.Text.Trim(), txtAahdar.Text.Trim(), txtEmailId.Text.Trim(), "", strAddress);
+                blResult = dll.UpdateUserProfile(Tools.UserId.ToString(), txtName.Text.Trim(), txtAltPhNo.Text.Trim(), txtAahdar.Text.Trim(), txtEmailId.Text.Trim(), "", strAddress);
             }
             catch (Exception ex)
             {
@@ -312,38 +302,48 @@ namespace TravelThings.BackEnd
                     if (string.IsNullOrEmpty(txtOldPsw.Text.Trim()))
                     {
                         strErrorMessage = "Please Enter Old Password";
-                        txtPassword.Focus();
+                        //txtPassword.Focus();
                     }
                     else if (string.IsNullOrEmpty(txtNewPsw.Text.Trim()))
                     {
                         strErrorMessage = "Please Enter New Password";
-                        txtPassword.Focus();
+                        //txtPassword.Focus();
                     }
                     else
                     {
                         strErrorMessage = "Please Enter Conform Password";
-                        txtConPassword.Focus();
+                        //txtConPassword.Focus();
                     }
+                }
+
+                if (txtNewPsw.Text.Trim() != txtConformPsw.Text.Trim())
+                {
+                    strErrorMessage = "Password and Confirm Password Must Match";
+                    return;
                 }
                 else
                 {
-                    if (txtNewPsw.Text.Trim() != txtConformPsw.Text.Trim())
+                    if (string.IsNullOrEmpty(strErrorMessage))
                     {
-                        strErrorMessage = "Password and Confirm Password Must Match";
-                        return;
-                    }
-                    else
-                    {
-                        if (!string.IsNullOrEmpty(strErrorMessage))
+                        string strOldPassword = Tools.Encryptdata(txtOldPsw.Text.Trim());
+                        int intConf = Convert.ToInt32(Tools.ExecuteScalar("SELECT COUNT(*) FROM tbl_User_Details WHERE UD_User_Id = '" + Tools.UserId.ToString() + "' AND UD_Password ='" + Tools.Encryptdata(txtOldPsw.Text.Trim()) + "'"));
+                        if (intConf == 1)
                         {
                             string strPassword = Tools.Encryptdata(txtNewPsw.Text.Trim());
-                            Tools.ExecuteQuery("UPDATE tbl_User_Details SET UD_Password = '" + strPassword + "' WHERE UD_User_Id = '" + Tools.UserId.ToString() + "'");
+                            Tools.ExecuteNonQuery("UPDATE tbl_User_Details SET UD_Password = '" + strPassword + "' WHERE UD_User_Id = '" + Tools.UserId.ToString() + "'");
+                            ClearPsw();
+                            ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Done!', 'Password Changed Successfully', 'success')", true);
                         }
                         else
-                            ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + strErrorMessage + "', 'warning')", true);
-                        //Response.Redirect(Tools.Alert(strErrorMessage));
+                        {
+                            ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', 'Invalid Old Password', 'warning')", true);
+                        }
                     }
+                    else
+                        ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + strErrorMessage + "', 'warning')", true);
+                    //Response.Redirect(Tools.Alert(strErrorMessage));
                 }
+
 
             }
             catch (Exception ex)
@@ -355,9 +355,110 @@ namespace TravelThings.BackEnd
 
         protected void btnClearPsw_Click(object sender, EventArgs e)
         {
+            ClearPsw();
+        }
+
+        private void ClearPsw()
+        {
             txtOldPsw.Text = string.Empty;
             txtNewPsw.Text = string.Empty;
             txtConformPsw.Text = string.Empty;
+            chkShowPws.Checked = false;
+        }
+
+        protected void btnChangePhoto_Click(object sender, EventArgs e)
+        {
+            pnlUploadProfilePic.Visible = true;
+            pnlProfileView.Visible = false;
+            pnlProfileEdit.Visible = false;
+
+        }
+
+        protected void btnCrop_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string fileName = Path.GetFileName(imgUpload.ImageUrl);
+                string filePath = Path.Combine(Server.MapPath("~/Images/UserProfilepics"), fileName);
+                string cropFileName = "";
+                string cropFilePath = "";
+                if (File.Exists(filePath))
+                {
+                    System.Drawing.Image orgImg = System.Drawing.Image.FromFile(filePath);
+                    if (!string.IsNullOrEmpty(W.Value))
+                    {
+                        Rectangle CropArea = new Rectangle(Convert.ToInt32(X.Value), Convert.ToInt32(Y.Value), Convert.ToInt32(W.Value), Convert.ToInt32(H.Value));
+
+                        Bitmap bitMap = new Bitmap(CropArea.Width, CropArea.Height);
+                        using (Graphics g = Graphics.FromImage(bitMap))
+                        {
+                            g.DrawImage(orgImg, new Rectangle(0, 0, bitMap.Width, bitMap.Height), CropArea, GraphicsUnit.Pixel);
+                        }
+                        cropFileName = "ImgUser_" + fileName;
+                        cropFilePath = Path.Combine(Server.MapPath("~/Images/UserProfilepics"), cropFileName);
+                        bitMap.Save(cropFilePath);
+                        imgProfilePic.ImageUrl = "~/Images/UserProfilepics/" + cropFileName;
+                        Tools.ExecuteNonQuery("UPDATE tbl_User_Details SET UD_PhotoPath = '" + cropFileName + "' WHERE UD_User_Id = " + Tools.UserId.ToString());
+                        pnlProfileView.Visible = true;
+                        pnlProfileEdit.Visible = false;
+                        pnlUploadProfilePic.Visible = false;
+                        btnCrop.Visible = false;
+                        //Response.Redirect("~/Images/UserProfilepics/" + cropFileName, false);
+
+                    }
+                    else
+                        ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', 'Please Corp Image.', 'info')", true);
+                }
+            }
+            catch (Exception ex)
+            {
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
+            }
+
+        }
+
+        protected void btnUpload_Click(object sender, EventArgs e)
+        {
+            string uploadFileName = "";
+            string uploadFilePath = "";
+            if (FileUplod.HasFile)
+            {
+                string ext = Path.GetExtension(FileUplod.FileName).ToLower();
+                if (ext == ".jpg" || ext == ".jpeg" || ext == ".gif" || ext == ".png")
+                {
+                    uploadFileName = Guid.NewGuid().ToString() + ext;
+                    uploadFilePath = Path.Combine(Server.MapPath("~/Images/UserProfilepics"), uploadFileName);
+                    try
+                    {
+                        FileUplod.SaveAs(uploadFilePath);
+                        imgUpload.ImageUrl = "~/Images/UserProfilepics/" + uploadFileName;
+                        panCrop.Visible = true;
+                        btnCrop.Visible = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
+                    }
+                }
+                else
+                {
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', 'Selected file type not allowed!', 'warning')", true);
+                    //lblMsg.Text = "Selected file type not allowed!";
+                }
+            }
+            else
+            {
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', 'Please select file first!', 'warning')", true);
+                //lblMsg.Text = "Please select file first!";
+            }
+        }
+
+        protected void btnCancelImage_Click(object sender, EventArgs e)
+        {
+            pnlProfileView.Visible = true;
+            pnlProfileEdit.Visible = false;
+            pnlUploadProfilePic.Visible = false;
+            getUserDetails();
         }
     }
 }

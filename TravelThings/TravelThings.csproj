@@ -74,11 +74,19 @@
     <Content Include="BackEnd\Css\pan.txt" />
     <Content Include="BackEnd\Css\styles.css" />
     <Content Include="BackEnd\Css\SweetAlert.css" />
+    <Content Include="BackEnd\Css\UploadImg\css\Jcrop.gif" />
+    <Content Include="BackEnd\Css\UploadImg\css\jquery.Jcrop.css" />
+    <Content Include="BackEnd\Css\UploadImg\css\jquery.Jcrop.min.css" />
+    <Content Include="BackEnd\Css\UploadImg\js\jquery.color.js" />
+    <Content Include="BackEnd\Css\UploadImg\js\jquery.Jcrop.js" />
+    <Content Include="BackEnd\Css\UploadImg\js\jquery.Jcrop.min.js" />
+    <Content Include="BackEnd\Css\UploadImg\js\jquery.min.js" />
     <Content Include="BackEnd\frmForgotPassword.aspx" />
     <Content Include="BackEnd\frmDashboard.aspx" />
     <Content Include="BackEnd\frmLogin.aspx" />
     <Content Include="BackEnd\frmProfile.aspx" />
     <Content Include="BackEnd\frmReceiver.aspx" />
+    <Content Include="BackEnd\frmReports.aspx" />
     <Content Include="BackEnd\frmTraveler.aspx" />
     <Content Include="BackEnd\frmSender.aspx" />
     <Content Include="BackEnd\JavaScript\BootstrapCdnMin.js" />
@@ -216,6 +224,13 @@
     <Compile Include="BackEnd\frmReceiver.aspx.designer.cs">
       <DependentUpon>frmReceiver.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BackEnd\frmReports.aspx.cs">
+      <DependentUpon>frmReports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackEnd\frmReports.aspx.designer.cs">
+      <DependentUpon>frmReports.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BackEnd\frmTraveler.aspx.cs">
       <DependentUpon>frmTraveler.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -308,6 +323,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\UserProfilePics\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>

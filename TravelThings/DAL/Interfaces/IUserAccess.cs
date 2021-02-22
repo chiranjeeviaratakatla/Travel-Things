@@ -10,7 +10,7 @@ namespace TravelThings.DAL.Interfaces
     {
         DataTable InsertUserDetails(string UserName, string strPhoneNo,string strAltPhoneNo,string strEmailId,string strPassword);
         DataTable GettUserDetails(string strUserId);
-        bool UpdateUserProfile(string strUserId, string strPassword, string strUserName, string strAltPhoNo, string strAadharNo, string strEmailId,string strPhotoPath,string strAddress);
+        bool UpdateUserProfile(string strUserId, string strUserName, string strAltPhoNo, string strAadharNo, string strEmailId,string strPhotoPath,string strAddress);
         DataTable ConfirmCredentials(string strPhoneNo, string strPassword);
     }
 }

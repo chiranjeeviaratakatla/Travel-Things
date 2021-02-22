@@ -1,6 +1,23 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BackEnd/BackEnd.Master" AutoEventWireup="true" CodeBehind="frmProfile.aspx.cs" Inherits="TravelThings.BackEnd.frmProfile" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link href="Css/UploadImg/css/jquery.Jcrop.css" rel="stylesheet" />
+    <script src="Css/UploadImg/js/jquery.min.js"></script>
+    <script src="Css/UploadImg/js/jquery.Jcrop.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#<%=imgUpload.ClientID%>').Jcrop({
+                onSelect: SelectCropArea
+            });
+        });
+
+        function SelectCropArea(c) {
+            $('#<%=X.ClientID%>').val(parseInt(c.x));
+            $('#<%=Y.ClientID%>').val(parseInt(c.y));
+            $('#<%=W.ClientID%>').val(parseInt(c.w));
+            $('#<%=H.ClientID%>').val(parseInt(c.h));
+        }
+    </script>
     <style>
         @import url("https://fonts.googleapis.com/css?family=Lato:400,400i,700");
 
@@ -23,7 +40,7 @@
         }
 
             .profile-img img {
-                width: 70%;
+                width: 80%;
                 height: 100%;
             }
 
@@ -120,11 +137,46 @@
             font-weight: 600;
             color: #0062cc;
         }
+
         /**/
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <%-- <div style="width: 100%; height: 515px; overflow-y: scroll;">--%>
+    <asp:Panel ID="pnlUploadProfilePic" runat="server" Visible="false">
+        <div class="container emp-profile">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-6">
+                        <asp:FileUpload ID="FileUplod" CssClass="file btn btn-lg btn-primary" runat="server" />
+                    </div>
+                    <div class="col-md-2">
+                        <asp:Button ID="btnUpload" CssClass="btn btn-primary" runat="server" Text="Upload Image" OnClick="btnUpload_Click" />
+                    </div>
+                    <div class="col-md-2">
+                        <asp:Button ID="btnCrop" runat="server" CssClass="btn btn-primary" Visible="false" Text="Crop & Save" OnClick="btnCrop_Click" />
+                    </div>
+                    <div class="col-md-2">
+                        <asp:Button ID="btnCancelImage" runat="server" CssClass="btn btn-danger" Text="Cancel" OnClick="btnCancelImage_Click" />
+                    </div>
+                </div>
+                <div class="col-md-12">
+
+                    <asp:Panel ID="panCrop" runat="server">
+                        <asp:Image ID="imgUpload" runat="server" Height="50%" />
+
+                        <asp:HiddenField ID="X" runat="server" />
+                        <asp:HiddenField ID="Y" runat="server" />
+                        <asp:HiddenField ID="W" runat="server" />
+                        <asp:HiddenField ID="H" runat="server" />
+                    </asp:Panel>
+                </div>
+                <div class="col-md-12">
+                    
+                </div>
+            </div>
+        </div>
+    </asp:Panel>
     <asp:Panel ID="pnlProfileView" runat="server">
         <div class="container emp-profile">
             <div class="row">
@@ -133,16 +185,23 @@
                         <%--<img src="../Images/Profile.jpg" width="100" height="100" />--%>
                         <asp:Image ID="imgProfilePic" runat="server" Height="150px" Width="150px" ImageUrl="~/Images/Profile.jpg" />
                         <div>
-                            <asp:Button ID="btnChangePhoto" CssClass="file btn btn-lg btn-primary" Text="Change Photo" runat="server" />
+                            <asp:Button ID="btnChangePhoto" CssClass="file btn btn-lg btn-primary" OnClick="btnChangePhoto_Click" Text="Change Photo" runat="server" />
                             <%--<input type="file" name="file" />--%>
                         </div>
                     </div>
+
                 </div>
                 <div class="col-md-6">
 
                     <div class="profile-head">
-                        <h3>Welcome : Chiru</h3>
-                        <p class="proile-rating">TOTAL REVARDS : <span>RS 540/-</span></p>
+
+                        <h3>Welcome :
+                            <asp:Label ID="lblWelUName" runat="server"></asp:Label></h3>
+                        <p class="proile-rating">
+                            TOTAL REVARDS : <span>RS
+                            <asp:Label ID="lblRevards" runat="server"></asp:Label>
+                                /-</span>
+                        </p>
                     </div>
                 </div>
                 <div class="col-md-2">
@@ -256,7 +315,7 @@
                                         <label>Old Password</label>
                                     </div>
                                     <div class="col-sm-6">
-                                        <asp:TextBox ID="txtOldPsw" runat="server" CssClass="form-control" placeholder="Ener Old Password"></asp:TextBox>
+                                        <asp:TextBox ID="txtOldPsw" TextMode="Password" runat="server" CssClass="form-control" placeholder="Ener Old Password"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
@@ -265,7 +324,7 @@
                                     </div>
 
                                     <div class="col-sm-6">
-                                        <asp:TextBox ID="txtNewPsw" runat="server" CssClass="form-control" placeholder="Ener New Password"></asp:TextBox>
+                                        <asp:TextBox ID="txtNewPsw" TextMode="Password" runat="server" CssClass="form-control" placeholder="Ener New Password"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
@@ -274,7 +333,7 @@
                                     </div>
 
                                     <div class="col-sm-6">
-                                        <asp:TextBox ID="txtConformPsw" runat="server" CssClass="form-control" placeholder="Ener Conform Password"></asp:TextBox>
+                                        <asp:TextBox ID="txtConformPsw" TextMode="Password" runat="server" CssClass="form-control" placeholder="Ener Conform Password"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
@@ -284,6 +343,7 @@
                                     <div class="col-sm-6">
                                         <asp:Button ID="btnChangePsw" runat="server" CssClass="btn btn-primary" Text="Change Password" OnClick="btnChangePsw_Click" />
                                         <asp:Button ID="btnClearPsw" runat="server" CssClass="btn btn-danger" Text="Clear" OnClick="btnClearPsw_Click" />
+                                        <asp:CheckBox ID="chkShowPws" runat="server" AutoPostBack="true" Text="Show Psw" OnCheckedChanged="chkShowPws_CheckedChanged" />
                                     </div>
                                 </div>
                             </div>
@@ -335,19 +395,7 @@
                 <label>Pin Code:</label>
                 <asp:TextBox ID="txtPinCode" runat="server" MaxLength="6" CssClass="form-control" ToolTip="Enter Your Pincode"></asp:TextBox>
             </div>
-            <div class="form-group col-sm-4 col-md-3">
-                <label>Password:</label>
-                <asp:TextBox ID="txtPassword" runat="server" MaxLength="15" CssClass="form-control" ToolTip="Enter Your Pincode" TextMode="Password"></asp:TextBox>
-            </div>
-            <div class="form-group col-sm-4 col-md-3">
-                <label>Confirm Password:</label>
-                <asp:TextBox ID="txtConPassword" runat="server" MaxLength="15" CssClass="form-control" ToolTip="Enter Your Pincode" TextMode="Password"></asp:TextBox>
-            </div>
-            <div class="form-group col-sm-4 col-md-3">
-                <label>&nbsp;</label>
-                <asp:CheckBox ID="chkShowPws" runat="server" Text="Show Password" CssClass="form-control" AutoPostBack="true" OnCheckedChanged="chkShowPws_CheckedChanged" />
-            </div>
-            <div class="form-group col-sm-4 col-md-3">
+            <div class="form-group col-sm-12 col-md-12">
                 <asp:Button ID="btnSave" runat="server" CssClass="btn btn-primary" OnClick="btnSave_Click" Text="Save" />
                 <asp:Button ID="btnEdit" runat="server" CssClass="btn btn-primary" Visible="false" OnClick="btnEdit_Click" Text="Edit" />
                 <span></span>

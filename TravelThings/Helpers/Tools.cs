@@ -5,13 +5,12 @@ using System.Text;
 using System.Web;
 using System.Data;
 using System.Data.SqlClient;
-using System.Configuration;
 
 namespace TravelThings.Helpers
 {
-    public static class Tools 
+    public static class Tools
     {
-        private static readonly SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["conString"].ConnectionString.ToString());
+        //private static readonly SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["conString"].ConnectionString.ToString());
         public static string Alert(string Message)
         {
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
@@ -95,28 +94,77 @@ namespace TravelThings.Helpers
             return new string(chars);
         }
 
-        public static bool ExecuteQuery(string strQuery)
+        public static bool ExecuteNonQuery(string strQuery)
         {
             bool blnRes = false;
             try
             {
+                DataProcessing dtprc = new DataProcessing();
                 SqlCommand cmd = new SqlCommand();
-                cmd.Connection = connection;
                 cmd.CommandText = strQuery;
                 cmd.CommandType = CommandType.Text;
-                connection.Open();
-                blnRes = Convert.ToBoolean(cmd.ExecuteNonQuery());
+                blnRes = dtprc.ExecuteNonQuery(cmd);
             }
             catch
             {
                 throw;
             }
-            finally
-            {
-                connection.Close();
-            }
             return blnRes;
         }
-       
+
+        public static DataTable ExecuteReader(string strQuery)
+        {
+            DataTable dtRes = new DataTable();
+            try
+            {
+                DataProcessing dtprc = new DataProcessing();
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = strQuery;
+                cmd.CommandType = CommandType.Text;
+                dtRes = dtprc.ExecuteReader(cmd);
+            }
+            catch
+            {
+                throw;
+            }
+            return dtRes;
+        }
+
+        public static object ExecuteScalar(string strQuery)
+        {
+            object objRes = new object();
+            try
+            {
+                DataProcessing dtprc = new DataProcessing();
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = strQuery;
+                cmd.CommandType = CommandType.Text;
+                objRes = dtprc.ExecuteScalar(cmd);
+            }
+            catch
+            {
+                throw;
+            }
+            return objRes;
+        }
+
+        public static DataSet ExecuteAdapter(string strQuery)
+        {
+            DataSet dsRes = new DataSet();
+            try
+            {
+                DataProcessing dtprc = new DataProcessing();
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = strQuery;
+                cmd.CommandType = CommandType.Text;
+                dsRes = dtprc.ExecuteAdapter(cmd);
+            }
+            catch
+            {
+                throw;
+            }
+            return dsRes;
+        }
+
     }
 }

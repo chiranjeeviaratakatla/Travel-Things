@@ -4,8 +4,7 @@
     <title>Travel Things Home</title>
     <link rel="icon" type="image/gif/png" href="../Images/titleLogoSmall.png">
     <script type="text/javascript" language="javascript">
-        function ConformLogin()
-        {
+        function ConformLogin() {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
@@ -15,10 +14,10 @@
         }
     </script>
 
-     
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="TraverlThingMasterContentPlaceHolder" runat="server">
-    
+
     <main id="main">
         <div class="hero-section">
             <div class="wave">
@@ -54,12 +53,12 @@
                                     <div class="row">
                                         <div class="col-md-12 form-group">
                                             <label for="name">Name</label>
-                                            <asp:TextBox runat="server" CssClass="form-control" data-rule="minlen:4" data-msg="Please enter at least 4 chars" ID="txtName" ></asp:TextBox>
+                                            <asp:TextBox runat="server" CssClass="form-control" data-rule="minlen:4" data-msg="Please enter at least 4 chars" ID="txtName"></asp:TextBox>
                                             <div class="validate"></div>
                                         </div>
                                         <div class="col-md-12 form-group">
                                             <label for="name">Phone Number</label>
-                                            <asp:TextBox runat="server" CssClass="form-control" data-rule="minlen:4" data-msg="Please enter at least 4 chars" ID="txtPhoneNo" ></asp:TextBox>
+                                            <asp:TextBox runat="server" CssClass="form-control" data-rule="minlen:4" data-msg="Please enter at least 4 chars" ID="txtPhoneNo"></asp:TextBox>
                                             <div class="validate"></div>
                                         </div>
 
