@@ -121,6 +121,8 @@
     <Content Include="Images\Dashboard1.jpg" />
     <Content Include="Images\DashBoardLogo.png" />
     <Content Include="BackEnd\ImgLoading.gif" />
+    <Content Include="Images\LogoTTHome.png" />
+    <Content Include="Images\LogoTTLogin.png" />
     <Content Include="Images\Profile.jpg" />
     <Content Include="Images\titleLogo.png" />
     <Content Include="Images\titleLogoSmall.png" />

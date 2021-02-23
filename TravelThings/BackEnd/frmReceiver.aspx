@@ -1,72 +1,37 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BackEnd/BackEnd.Master" AutoEventWireup="true" CodeBehind="frmReceiver.aspx.cs" Inherits="TravelThings.BackEnd.frmReceiver" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-      <%-- Sweet Alert --%>
+    <%-- Sweet Alert --%>
     <script src="JavaScript/SweetAlert.js" type="text/javascript"></script>
     <link href="Css/SweetAlert.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <%--<div style="width: 100%; height: 515px; overflow-y: scroll;">--%>
-    <div class="col-sm-12">
-        <h3>Get your Item</h3>
-    </div>
-    <div class="col-sm-12">
-        <div style="width: 100%; height: 300px; overflow: auto;">
-            <asp:GridView ID="gvReceiver" runat="server" Width="100%" ShowHeaderWhenEmpty="true" EmptyDataText="No Data Found" CssClass="table table-hover" AutoGenerateColumns="false">
-                <Columns>
-                    <asp:TemplateField HeaderText="Select">
-                        <ItemTemplate>
-                            <asp:Button ID="gvBtnSelect" runat="server" Text="Select" CssClass="btn btn-primary" CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" data-toggle="modal" data-target="#popAddItems" />
-                            <asp:HiddenField ID="hfTrancId" runat="server" Value='<%# Eval("TD_Sno") %>' />
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:BoundField HeaderText="Sr No" DataField="SNO" />
-                    <asp:BoundField HeaderText="Traveler Name" DataField="Traveler_Name" />
-                    <asp:BoundField HeaderText="Sender Name" DataField="Sender_Name" />
-                    <asp:BoundField HeaderText="Start Date" DataField="TD_Strating_Dt" />
-                    <asp:BoundField HeaderText="End Date" DataField="TD_Ending_Dt" />
-                </Columns>
-                <EmptyDataTemplate>
-                    <span style="font-size: 12px; font-weight: bold; color: Blue;">No Items Receive</span>
-                </EmptyDataTemplate>
-            </asp:GridView>
+        <div class="form-group col-sm-12">
+            <h3>Get your Item</h3>
         </div>
-        <%--<div style="height: 100%; overflow-x: scroll;">
-                <table class="table table-hover">
-                    <thead class="navbar">
-                        <tr>
-                            <th>Select</th>
-                            <th>Firstname</th>
-                            <th>Lastname</th>
-                            <th>Email</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Details</button></td>
-                            <td>John</td>
-                            <td>Doe</td>
-                            <td>john@example.com</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Details</button></td>
-                            <td>Mary</td>
-                            <td>Moe</td>
-                            <td>mary@example.com</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Details</button></td>
-                            <td>July</td>
-                            <td>Dooley</td>
-                            <td>july@example.com</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>--%>
-    </div>
+        <div class="col-sm-12">
+            <div style="width: 100%; height: 300px; overflow: auto;">
+                <asp:GridView ID="gvReceiver" runat="server" Width="100%" ShowHeaderWhenEmpty="true" EmptyDataText="No Data Found" CssClass="table table-hover" AutoGenerateColumns="false">
+                    <Columns>
+                        <asp:TemplateField HeaderText="Select">
+                            <ItemTemplate>
+                                <asp:Button ID="gvBtnSelect" runat="server" Text="Select" CssClass="btn btn-primary" CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" data-toggle="modal" data-target="#popAddItems" />
+                                <asp:HiddenField ID="hfTrancId" runat="server" Value='<%# Eval("TD_Sno") %>' />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:BoundField HeaderText="Sr No" DataField="SNO" />
+                        <asp:BoundField HeaderText="Traveler Name" DataField="Traveler_Name" />
+                        <asp:BoundField HeaderText="Sender Name" DataField="Sender_Name" />
+                        <asp:BoundField HeaderText="Start Date" DataField="TD_Strating_Dt" />
+                        <asp:BoundField HeaderText="End Date" DataField="TD_Ending_Dt" />
+                    </Columns>
+                    <EmptyDataTemplate>
+                        <span style="font-size: 12px; font-weight: bold; color: Blue;">No Items Receive</span>
+                    </EmptyDataTemplate>
+                </asp:GridView>
+            </div>
+        </div>
     <%--</div>--%>
     <!-- Modal -->
     <div class="modal fade" id="myModal" role="dialog">

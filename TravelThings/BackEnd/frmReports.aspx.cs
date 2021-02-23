@@ -11,12 +11,22 @@ namespace TravelThings.BackEnd
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            try
             {
-                LinkButton li = (LinkButton)Master.FindControl("lbReports");
-                li.CssClass = "Clicked";
-                string searchBy = Request.QueryString["Item"].ToString();
-                GetReports(searchBy);
+                if (!IsPostBack)
+                {
+                    LinkButton li = (LinkButton)Master.FindControl("lbReports");
+                    li.CssClass = "Clicked";
+                    if (Request.QueryString["Item"] != null)
+                    {
+                        string searchBy = Request.QueryString["Item"].ToString();
+                        GetReports(searchBy);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
             }
         }
 
@@ -24,7 +34,7 @@ namespace TravelThings.BackEnd
         {
             try
             {
-                if(strSearchBy == "Sender")
+                if (strSearchBy == "Sender")
                 {
                     ddlTransaction.SelectedItem.Text = "Send Item";
                 }

@@ -16,7 +16,15 @@ namespace TravelThings.BackEnd
         IUserAccess dll = new UserAccess();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                if (Request.Cookies["userid"] != null)
+                    txtPhoneNo.Text = Request.Cookies["userid"].Value;
+                if (Request.Cookies["pwd"] != null)
+                    txtPassword.Attributes.Add("value", Request.Cookies["pwd"].Value);
+                if (Request.Cookies["userid"] != null && Request.Cookies["pwd"] != null)
+                    chkRemeber.Checked = true;
+            }
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
@@ -30,6 +38,19 @@ namespace TravelThings.BackEnd
                     DataTable dtUserDetails = dll.ConfirmCredentials(txtPhoneNo.Text.Trim(), strPassword);
                     if (dtUserDetails.Rows[0][0].ToString() != "FALSE")
                     {
+                        if (chkRemeber.Checked == true)
+                        {
+                            Response.Cookies["userid"].Value = txtPhoneNo.Text.Trim();
+                            Response.Cookies["pwd"].Value = txtPassword.Text.Trim();
+                            Response.Cookies["userid"].Expires = DateTime.Now.AddDays(15);
+                            Response.Cookies["pwd"].Expires = DateTime.Now.AddDays(15);
+                        }
+                        else
+                        {
+                            Response.Cookies["userid"].Expires = DateTime.Now.AddDays(-1);
+                            Response.Cookies["pwd"].Expires = DateTime.Now.AddDays(-1);
+                        }
+                        //Response.Redirect("user.aspx");
                         Tools.UserId = Convert.ToInt32(dtUserDetails.Rows[0]["UD_User_Id"].ToString());
                         Tools.UserName = dtUserDetails.Rows[0]["UD_User_Name"].ToString();
                         Response.Redirect("~/BackEnd/frmDashboard.aspx");
@@ -44,7 +65,7 @@ namespace TravelThings.BackEnd
             }
             catch
             {
-                ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', 'Something went Wrong. Wlease try Again!', 'warning')", true);
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', 'Something went Wrong. Please try Again!', 'warning')", true);
                 //Response.Write(Tools.Alert(ex.Message));
             }
         }

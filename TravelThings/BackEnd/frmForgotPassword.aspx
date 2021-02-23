@@ -32,7 +32,7 @@
                                 <div class="text-center">
                                     <h3>
                                         <%--<i class="fa fa-lock fa-4x"></i>--%>
-                                        <asp:Image ID="imgLogo" ImageUrl="~/Images/BlackLogo.png" Width="150px" runat="server" Height="100px" />
+                                        <asp:Image ID="imgLogo" ImageUrl="~/Images/LogoTTLogin.png" Width="200px" runat="server" Height="150px" />
                                     </h3>
                                     <h2 class="text-center">Forgot Password?</h2>
                                     <p>You can reset your password here.</p>
@@ -96,7 +96,7 @@
                                 <div class="text-center">
                                     <h3>
                                         <%--<i class="fa fa-lock fa-4x"></i>--%>
-                                        <asp:Image ID="Image1" ImageUrl="~/Images/BlackLogo.png" Width="150px" runat="server" Height="100px" />
+                                        <asp:Image ID="Image1" ImageUrl="~/Images/LogoTTLogin.png" Width="200px" runat="server" Height="150px" />
                                     </h3>
                                     <!--Section: Block Content-->
                                     <section class="mb-5 text-center">

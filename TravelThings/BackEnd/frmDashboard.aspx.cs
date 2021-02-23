@@ -62,17 +62,60 @@ namespace TravelThings.BackEnd
 
         protected void lbSendItems_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/BackEnd/frmReports.aspx?Item=Sender", true);
+            if (lblSentItems.Text.Trim() != "0")
+                Response.Redirect("~/BackEnd/frmReports.aspx?Item=Sender", true);
+            else
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', 'No Records Found.', 'info')", true);
         }
 
         protected void lbReceivedItem_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/BackEnd/frmReports.aspx?Item=Received", true);
+            if (lblReceivedItems.Text.Trim() != "0")
+                Response.Redirect("~/BackEnd/frmReports.aspx?Item=Received", true);
+            else
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', 'No Records Found.', 'info')", true);
         }
 
         protected void lbTravelDetails_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/BackEnd/frmReports.aspx?Item=Travel", true);
+            if (lblTravelerDetails.Text.Trim() != "0")
+                Response.Redirect("~/BackEnd/frmReports.aspx?Item=Travel", true);
+            else
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', 'No Records Found.', 'info')", true);
+        }
+
+        protected void lbTravelRequest_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (lblTravelRequest.Text.Trim() != "0")
+                {
+                    pnlDashboard.Visible = false;
+                    pnlTravelRequest.Visible = true;
+                    GetDashBoardDetails();
+                }
+                else
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', 'No Records Found.', 'info')", true);
+
+            }
+            catch (Exception ex)
+            {
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
+            }
+        }
+
+        protected void btnBackToDashboard_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                pnlDashboard.Visible = true;
+                pnlTravelRequest.Visible = false;
+                GetDashBoardDetails();
+            }
+            catch (Exception ex)
+            {
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
+            }
         }
     }
 }

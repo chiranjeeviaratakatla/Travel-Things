@@ -282,12 +282,12 @@ namespace TravelThings.BackEnd
                 strAddress = strAddress + txtCity.Text.Trim() + "#";
                 strAddress = strAddress + txtState.Text.Trim() + "#";
                 strAddress = strAddress + txtPinCode.Text.Trim();
-                blResult = dll.UpdateUserProfile(Tools.UserId.ToString(), txtName.Text.Trim(), txtAltPhNo.Text.Trim(), txtAahdar.Text.Trim(), txtEmailId.Text.Trim(), "", strAddress);
+                blResult = dll.UpdateUserProfile(Tools.UserId.ToString(), txtName.Text.Trim(), txtAltPhNo.Text.Trim(), txtAahdar.Text.Trim(), txtEmailId.Text.Trim(), strAddress);
             }
-            catch (Exception ex)
+            catch //(Exception ex)
             {
-                ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
-                //Response.Write(Tools.Alert(ex.Message));
+                throw;
+                //ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
             }
             return blResult;
         }

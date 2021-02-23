@@ -87,7 +87,7 @@
                                 <%--<asp:Image ID="Logo" ImageUrl="~/Images/TravelThingsLogo.png" runat="server" />--%>
                                 
                                 <h1 class="mb-0 site-logo">
-                                    <a href="index.html" class="mb-0"><asp:Image ID="Logo" ImageUrl="~/Images/BlackLogo.png" Height="70px" Width="150px" runat="server" /></a></h1>
+                                    <a href="index.aspx" class="mb-0"><asp:Image ID="Logo" ImageUrl="~/Images/LogoTTHome.png" Height="70px" Width="150px" runat="server" /></a></h1>
                             </div>
 
                             <div class="col-12 col-md-10 d-none d-lg-block">

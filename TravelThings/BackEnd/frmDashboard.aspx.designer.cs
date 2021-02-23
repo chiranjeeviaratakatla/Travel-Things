@@ -13,6 +13,15 @@ namespace TravelThings.BackEnd {
     public partial class frmDashboard {
         
         /// <summary>
+        /// pnlDashboard control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlDashboard;
+        
+        /// <summary>
         /// lblTravelRequest control.
         /// </summary>
         /// <remarks>
@@ -20,6 +29,15 @@ namespace TravelThings.BackEnd {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTravelRequest;
+        
+        /// <summary>
+        /// lbTravelRequest control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbTravelRequest;
         
         /// <summary>
         /// lblSentItems control.
@@ -74,6 +92,24 @@ namespace TravelThings.BackEnd {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lbTravelDetails;
+        
+        /// <summary>
+        /// pnlTravelRequest control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlTravelRequest;
+        
+        /// <summary>
+        /// btnBackToDashboard control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnBackToDashboard;
         
         /// <summary>
         /// gvTravelRequist control.
