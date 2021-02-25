@@ -29,10 +29,10 @@
                 <asp:Button Text="Destination" BorderStyle="None" ID="Tab2" CssClass="Initial" OnClick="Tab2_Click" runat="server" />
             </div>
             <div class="col-xs-6 col-md-3 col-lg-3 col-sm-3">
-                <asp:Button Text="Reciver" BorderStyle="None" ID="Tab3" CssClass="Initial" OnClick="Tab3_Click" runat="server" />
+                <asp:Button Text="Receiver" BorderStyle="None" ID="Tab3" CssClass="Initial" OnClick="Tab3_Click" runat="server" />
             </div>
             <div class="col-xs-6 col-md-3 col-lg-3 col-sm-3">
-                <asp:Button Text="Pyament" BorderStyle="None" ID="btnPayment" CssClass="Initial" OnClick="btnPayment_Click" runat="server" />
+                <asp:Button Text="Payment" BorderStyle="None" ID="btnPayment" CssClass="Initial" OnClick="btnPayment_Click" runat="server" />
             </div>
         </div>
         <asp:MultiView ID="MainView" runat="server">

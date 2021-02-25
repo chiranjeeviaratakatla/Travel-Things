@@ -195,10 +195,10 @@
 
                     <div class="profile-head">
 
-                        <h3>Welcome :
+                        <h3>Welcome 
                             <asp:Label ID="lblWelUName" runat="server"></asp:Label></h3>
                         <p class="proile-rating">
-                            TOTAL REVARDS : <span>RS
+                            TOTAL REWARDS : <span>RS
                             <asp:Label ID="lblRevards" runat="server"></asp:Label>
                                 /-</span>
                         </p>
@@ -217,7 +217,7 @@
                     <div class="form-group col-sm-12 col-xs-12">
 
                         <asp:Button Text="Profile" BorderStyle="None" ID="tabProfile" OnClick="tabProfile_Click" CssClass="Initial" runat="server" />
-                        <asp:Button Text="Adderess" BorderStyle="None" ID="tabAddress" OnClick="tabAddress_Click" CssClass="Initial" runat="server" />
+                        <asp:Button Text="Address" BorderStyle="None" ID="tabAddress" OnClick="tabAddress_Click" CssClass="Initial" runat="server" />
                         <asp:Button Text="Change Password" BorderStyle="None" ID="tabChangePsw" OnClick="tabChangePsw_Click" CssClass="Initial" runat="server" />
                         <%--<asp:Button Text="Pyament" BorderStyle="None" ID="btnPayment" CssClass="Initial" runat="server" />--%>
                     </div>
@@ -252,7 +252,7 @@
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="col-sm-6">
-                                        <label>Aadhar:</label>
+                                        <label>Aadhar No:</label>
                                     </div>
                                     <div class="col-sm-6">
                                         <asp:Label ID="lblAadharNo" runat="server"></asp:Label>
@@ -260,7 +260,7 @@
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="col-sm-6">
-                                        <label>Mail Id:</label>
+                                        <label>Mail ID:</label>
                                     </div>
                                     <div class="col-sm-6">
                                         <asp:Label ID="lblEmailId" runat="server"></asp:Label>
@@ -329,7 +329,7 @@
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="col-sm-6">
-                                        <label>Conform Password</label>
+                                        <label>Confirm Password</label>
                                     </div>
 
                                     <div class="col-sm-6">

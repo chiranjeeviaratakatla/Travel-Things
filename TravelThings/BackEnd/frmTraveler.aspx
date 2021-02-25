@@ -47,6 +47,7 @@
                         <asp:ListItem Text="Bike"></asp:ListItem>
                         <asp:ListItem Text="Bus"></asp:ListItem>
                         <asp:ListItem Text="Car"></asp:ListItem>
+                        <asp:ListItem Text="Train"></asp:ListItem>
                     </asp:DropDownList>
                 </div>
                 <div class="col-sm-4">
