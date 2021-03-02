@@ -58,7 +58,7 @@
                                         </div>
                                         <div class="col-md-12 form-group">
                                             <label for="name">Phone Number</label>
-                                            <asp:TextBox runat="server" CssClass="form-control" data-rule="minlen:4" data-msg="Please enter at least 4 chars" ID="txtPhoneNo"></asp:TextBox>
+                                            <asp:TextBox runat="server" CssClass="form-control" MaxLength="10" data-rule="minlen:4" data-msg="Please enter at least 4 chars" ID="txtPhoneNo"></asp:TextBox>
                                             <div class="validate"></div>
                                         </div>
 

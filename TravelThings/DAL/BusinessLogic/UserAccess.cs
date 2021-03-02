@@ -37,7 +37,7 @@ namespace TravelThings.DAL.BusinessLogic
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@UD_User_Id", strUserId);
             cmd.Parameters.AddWithValue("@UD_User_Name", strUserName);
-            cmd.Parameters.AddWithValue("@UD_Alter_Phone_No", string.IsNullOrEmpty(strAltPhoNo) ? (object)DBNull.Value.ToString() : strAltPhoNo);
+            cmd.Parameters.AddWithValue("@UD_Alter_Phone_No", (strAltPhoNo == "" || strAltPhoNo == null) ? (object)DBNull.Value.ToString() : strAltPhoNo);
             cmd.Parameters.AddWithValue("@UD_Aadhar_No", strAadharNo);
             cmd.Parameters.AddWithValue("@UD_EmailId", strEmailId);
             cmd.Parameters.AddWithValue("@UD_Address", strAddress);

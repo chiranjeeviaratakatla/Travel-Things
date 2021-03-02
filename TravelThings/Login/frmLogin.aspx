@@ -9,13 +9,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <%-- Bootstrap --%>
-    <link href="Css/Bootstrap_V_3_4_1.css" rel="stylesheet" />
-    <script src="JavaScript/JQuery_V_3_4_1.js" type="text/javascript"></script>
-    <script src="JavaScript/BootstrapCdnMin.js" type="text/javascript"></script>
+    <link href="../BackEnd/Css/Bootstrap_V_3_4_1.css" rel="stylesheet" />
+    <script src="../BackEnd/JavaScript/JQuery_V_3_4_1.js" type="text/javascript"></script>
+    <script src="../BackEnd/JavaScript/BootstrapCdnMin.js" type="text/javascript"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
     <%-- Sweet Alert --%>
-    <script src="JavaScript/SweetAlert.js" type="text/javascript"></script>
-    <link href="Css/SweetAlert.css" rel="stylesheet" />
+    <script src="../BackEnd/JavaScript/SweetAlert.js" type="text/javascript"></script>
+    <link href="../BackEnd/Css/SweetAlert.css" rel="stylesheet" />
     <style>
         .form-gap {
             padding-top: 70px;
@@ -72,7 +72,7 @@
                                     <asp:HyperLink ID="hlRegister" NavigateUrl="~/Web_Forms/Index.aspx" runat="server" Text="Register"></asp:HyperLink>
                                 </span></u>
                                 <u><span class="pull-right">
-                                    <asp:HyperLink ID="hlForgotPassword" runat="server" NavigateUrl="~/BackEnd/frmForgotPassword.aspx" Text="Forgot Password"></asp:HyperLink>
+                                    <asp:HyperLink ID="hlForgotPassword" runat="server" NavigateUrl="~/Login/frmForgotPassword.aspx" Text="Forgot Password"></asp:HyperLink>
                                 </span></u>
                             </div>
                         </div>

@@ -9,10 +9,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%-- Bootstrap --%>
-    <link href="Css/Bootstrap_V_3_4_1.css" rel="stylesheet" />
-    <script src="JavaScript/JQuery_V_3_4_1.js" type="text/javascript"></script>
-    <script src="JavaScript/BootstrapCdnMin.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="../BackEnd/Css/Bootstrap_V_3_4_1.css" rel="stylesheet" />
+    <script src="../BackEnd/JavaScript/JQuery_V_3_4_1.js" type="text/javascript"></script>
+    <script src="../BackEnd/JavaScript/BootstrapCdnMin.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
     <style>
         .form-gap {
             padding-top: 70px;
@@ -65,7 +65,7 @@
                                      <div class="d-flex justify-content-between align-items-center mb-2">
                                             <u>
                                                 <span class="pull-left">
-                                                    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/BackEnd/frmLogin.aspx" Text="Back to Log In"></asp:HyperLink>
+                                                    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Login/frmLogin.aspx" Text="Back to Log In"></asp:HyperLink>
                                                 </span>
                                             </u>
 
@@ -123,7 +123,7 @@
                                         <div class="d-flex justify-content-between align-items-center mb-2">
                                             <u>
                                                 <span class="pull-left">
-                                                    <asp:HyperLink ID="hlBackToLogin" runat="server" NavigateUrl="~/BackEnd/frmLogin.aspx" Text="Back to Log In"></asp:HyperLink>
+                                                    <asp:HyperLink ID="hlBackToLogin" runat="server" NavigateUrl="~/Login/frmLogin.aspx" Text="Back to Log In"></asp:HyperLink>
                                                 </span>
                                             </u>
 

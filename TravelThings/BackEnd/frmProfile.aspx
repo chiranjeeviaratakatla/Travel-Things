@@ -137,7 +137,6 @@
             font-weight: 600;
             color: #0062cc;
         }
-
         /**/
     </style>
 </asp:Content>
@@ -360,40 +359,40 @@
             </div>
             <div class="form-group col-sm-4 col-md-3">
                 <label>Name:</label>
-                <asp:TextBox ID="txtName" runat="server" CssClass="form-control" ToolTip="Enter your Name"></asp:TextBox>
+                <asp:TextBox ID="txtName" runat="server" CssClass="form-control" ToolTip="Enter your Name" placeholder="Enter your Name"></asp:TextBox>
             </div>
             <div class="form-group col-sm-4 col-md-3">
                 <label for="usr">Phone No:</label>
-                <asp:TextBox ID="txtPhoneNo" runat="server" MaxLength="10" Enabled="false" CssClass="form-control" ToolTip="Enter Phone No"></asp:TextBox>
+                <asp:TextBox ID="txtPhoneNo" runat="server" MaxLength="10" Enabled="false" CssClass="form-control" ToolTip="Enter Phone No"  placeholder="Enter Phone No"></asp:TextBox>
             </div>
             <div class="form-group col-sm-4 col-md-3">
                 <label>Aternative Phone Number:</label>
-                <asp:TextBox ID="txtAltPhNo" runat="server" MaxLength="10" CssClass="form-control" ToolTip="Optional"></asp:TextBox>
+                <asp:TextBox ID="txtAltPhNo" runat="server" MaxLength="10" CssClass="form-control" ToolTip="Enter Alternative Phone No" placeholder="Optional"></asp:TextBox>
             </div>
             <div class="form-group col-sm-4 col-md-3">
                 <label>Email ID:</label>
-                <asp:TextBox ID="txtEmailId" runat="server" TextMode="Email" CssClass="form-control" ToolTip="Please Enter Email ID"></asp:TextBox>
+                <asp:TextBox ID="txtEmailId" runat="server" TextMode="Email" CssClass="form-control" ToolTip ="Enter Email ID" placeholder="Enter Email ID"></asp:TextBox>
             </div>
             <div class="form-group col-sm-4 col-md-3">
                 <label>Aadhar No:</label>
-                <asp:TextBox ID="txtAahdar" runat="server" MaxLength="12" CssClass="form-control" ToolTip="Enter Aadhar No"></asp:TextBox>
+                <asp:TextBox ID="txtAahdar" runat="server" MaxLength="12" CssClass="form-control" ToolTip="Enter Aadhar No" placeholder="Enter Aadhar No"></asp:TextBox>
             </div>
 
             <div class="form-group col-sm-4 col-md-3">
                 <label>Area:</label>
-                <asp:TextBox ID="txtArea" runat="server" CssClass="form-control" ToolTip="Enter Your Area"></asp:TextBox>
+                <asp:TextBox ID="txtArea" runat="server" CssClass="form-control" ToolTip="Enter Your Area" placeholder="Enter Your Area"></asp:TextBox>
             </div>
             <div class="form-group col-sm-4 col-md-3">
                 <label>City:</label>
-                <asp:TextBox ID="txtCity" runat="server" CssClass="form-control" ToolTip="Enter Your City"></asp:TextBox>
+                <asp:TextBox ID="txtCity" runat="server" CssClass="form-control" ToolTip="Enter Your City" placeholder="Enter Your City"></asp:TextBox>
             </div>
             <div class="form-group col-sm-4 col-md-3">
                 <label>State:</label>
-                <asp:TextBox ID="txtState" runat="server" CssClass="form-control" ToolTip="Enter Your State"></asp:TextBox>
+                <asp:TextBox ID="txtState" runat="server" CssClass="form-control" ToolTip="Enter Your State" placeholder="Enter Your State"></asp:TextBox>
             </div>
             <div class="form-group col-sm-4 col-md-3">
                 <label>Pin Code:</label>
-                <asp:TextBox ID="txtPinCode" runat="server" MaxLength="6" CssClass="form-control" ToolTip="Enter Your Pincode"></asp:TextBox>
+                <asp:TextBox ID="txtPinCode" runat="server" MaxLength="6" CssClass="form-control" placeholder="Enter Your Pincode" ToolTip="Enter Your Pincode"></asp:TextBox>
             </div>
             <div class="form-group col-sm-12 col-md-12">
                 <asp:Button ID="btnSave" runat="server" CssClass="btn btn-primary" OnClick="btnSave_Click" Text="Save" />

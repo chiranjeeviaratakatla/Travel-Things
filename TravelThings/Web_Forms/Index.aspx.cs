@@ -31,6 +31,8 @@ namespace TravelThings.Web_Forms
                 ErrorMessage = "Please Enter Name.";
             else if (string.IsNullOrEmpty(txtPhoneNo.Text))
                 ErrorMessage = "Please Enter Phone Number.";
+            else if (txtPhoneNo.Text.Length != 10)
+                ErrorMessage = "Please Enter Valid 10 Digit Phone Number.";
 
             return ErrorMessage;
         }
@@ -50,13 +52,13 @@ namespace TravelThings.Web_Forms
                         if (dt.Rows[0]["USER_TYPE"].ToString() == "EXISTS")
                         {
                             ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', 'Phone Number Already Registered', 'warning')", true);
-                           // ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "ConformLogin()", true);
+                            // ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "ConformLogin()", true);
                         }
                         else
                         {
                             Tools.UserId = Convert.ToInt32(dt.Rows[0]["UD_User_Id"].ToString());
                             Tools.UserName = dt.Rows[0]["UD_User_Name"].ToString();
-                            Response.Redirect("~/BackEnd/frmProfile.aspx");
+                            Response.Redirect("~/Login/frmSetPassword.aspx");
                         }
                     }
                 }

@@ -81,9 +81,9 @@
     <Content Include="BackEnd\Css\UploadImg\js\jquery.Jcrop.js" />
     <Content Include="BackEnd\Css\UploadImg\js\jquery.Jcrop.min.js" />
     <Content Include="BackEnd\Css\UploadImg\js\jquery.min.js" />
-    <Content Include="BackEnd\frmForgotPassword.aspx" />
+    <Content Include="Login\frmForgotPassword.aspx" />
     <Content Include="BackEnd\frmDashboard.aspx" />
-    <Content Include="BackEnd\frmLogin.aspx" />
+    <Content Include="Login\frmLogin.aspx" />
     <Content Include="BackEnd\frmProfile.aspx" />
     <Content Include="BackEnd\frmReceiver.aspx" />
     <Content Include="BackEnd\frmReports.aspx" />
@@ -114,9 +114,6 @@
     <Content Include="bin\roslyn\VBCSCompiler.exe" />
     <Content Include="bin\TravelThings.dll" />
     <Content Include="bin\TravelThings.pdb" />
-    <Content Include="DatePicker\bootstrap-datepicker.min.js" />
-    <Content Include="DatePicker\datepicker.css" />
-    <Content Include="DatePicker\jquery.min.js" />
     <Content Include="Images\BlackLogo.png" />
     <Content Include="Images\Dashboard1.jpg" />
     <Content Include="Images\DashBoardLogo.png" />
@@ -128,33 +125,7 @@
     <Content Include="Images\titleLogoSmall.png" />
     <Content Include="Images\TravelThingsLogo.jpg" />
     <Content Include="Images\TravelThingsLogo.png" />
-    <Content Include="jquery-ui-1.12.1.custom\AUTHORS.txt" />
-    <Content Include="jquery-ui-1.12.1.custom\external\jquery\jquery.js" />
-    <Content Include="jquery-ui-1.12.1.custom\images\ui-icons_444444_256x240.png" />
-    <Content Include="jquery-ui-1.12.1.custom\images\ui-icons_555555_256x240.png" />
-    <Content Include="jquery-ui-1.12.1.custom\images\ui-icons_777620_256x240.png" />
-    <Content Include="jquery-ui-1.12.1.custom\images\ui-icons_777777_256x240.png" />
-    <Content Include="jquery-ui-1.12.1.custom\images\ui-icons_cc0000_256x240.png" />
-    <Content Include="jquery-ui-1.12.1.custom\images\ui-icons_ffffff_256x240.png" />
-    <Content Include="jquery-ui-1.12.1.custom\index.html" />
-    <Content Include="jquery-ui-1.12.1.custom\jquery-ui.css" />
-    <Content Include="jquery-ui-1.12.1.custom\jquery-ui.js" />
-    <Content Include="jquery-ui-1.12.1.custom\jquery-ui.min.css" />
-    <Content Include="jquery-ui-1.12.1.custom\jquery-ui.min.js" />
-    <Content Include="jquery-ui-1.12.1.custom\jquery-ui.structure.css" />
-    <Content Include="jquery-ui-1.12.1.custom\jquery-ui.structure.min.css" />
-    <Content Include="jquery-ui-1.12.1.custom\jquery-ui.theme.css" />
-    <Content Include="jquery-ui-1.12.1.custom\jquery-ui.theme.min.css" />
-    <Content Include="jquery-ui-1.12.1.custom\LICENSE.txt" />
-    <Content Include="JQueryAutoComplete\images\ui-icons_444444_256x240.png" />
-    <Content Include="JQueryAutoComplete\images\ui-icons_555555_256x240.png" />
-    <Content Include="JQueryAutoComplete\images\ui-icons_777620_256x240.png" />
-    <Content Include="JQueryAutoComplete\images\ui-icons_777777_256x240.png" />
-    <Content Include="JQueryAutoComplete\images\ui-icons_cc0000_256x240.png" />
-    <Content Include="JQueryAutoComplete\images\ui-icons_ffffff_256x240.png" />
-    <Content Include="JQueryAutoComplete\jquery-ui.css" />
-    <Content Include="JQueryAutoComplete\jquery-ui.js" />
-    <Content Include="JQueryAutoComplete\jquery-ui.min.js" />
+    <Content Include="Login\frmSetPassword.aspx" />
     <Content Include="Template\img\apple-touch-icon.png" />
     <Content Include="Template\img\favicon.png" />
     <Content Include="Template\img\hero-bg.jpg" />
@@ -191,11 +162,11 @@
     <Compile Include="BackEnd\BackEnd.Master.designer.cs">
       <DependentUpon>BackEnd.Master</DependentUpon>
     </Compile>
-    <Compile Include="BackEnd\frmForgotPassword.aspx.cs">
+    <Compile Include="Login\frmForgotPassword.aspx.cs">
       <DependentUpon>frmForgotPassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="BackEnd\frmForgotPassword.aspx.designer.cs">
+    <Compile Include="Login\frmForgotPassword.aspx.designer.cs">
       <DependentUpon>frmForgotPassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="BackEnd\frmDashboard.aspx.cs">
@@ -205,11 +176,11 @@
     <Compile Include="BackEnd\frmDashboard.aspx.designer.cs">
       <DependentUpon>frmDashboard.aspx</DependentUpon>
     </Compile>
-    <Compile Include="BackEnd\frmLogin.aspx.cs">
+    <Compile Include="Login\frmLogin.aspx.cs">
       <DependentUpon>frmLogin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="BackEnd\frmLogin.aspx.designer.cs">
+    <Compile Include="Login\frmLogin.aspx.designer.cs">
       <DependentUpon>frmLogin.aspx</DependentUpon>
     </Compile>
     <Compile Include="BackEnd\frmProfile.aspx.cs">
@@ -256,6 +227,13 @@
     <Compile Include="DAL\Interfaces\IUserAccess.cs" />
     <Compile Include="Helpers\DataProcessing.cs" />
     <Compile Include="Helpers\Tools.cs" />
+    <Compile Include="Login\frmSetPassword.aspx.cs">
+      <DependentUpon>frmSetPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login\frmSetPassword.aspx.designer.cs">
+      <DependentUpon>frmSetPassword.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Web_Forms\Blog.aspx.cs">
       <DependentUpon>Blog.aspx</DependentUpon>
@@ -313,7 +291,6 @@
     <Content Include="BackEnd\BackEnd.Master" />
     <Content Include="packages.config" />
     <Content Include="BackEnd\AddressHandler.ashx" />
-    <Content Include="jquery-ui-1.12.1.custom\package.json" />
     <None Include="Properties\PublishProfiles\local.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

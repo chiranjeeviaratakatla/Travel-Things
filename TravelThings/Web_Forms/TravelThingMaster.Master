@@ -113,7 +113,7 @@
                                         <li><asp:HyperLink ID="hlContact" NavigateUrl="~/Web_Forms/Contact.aspx" CssClass="nav-link" runat="server">Contact</asp:HyperLink></li>
                                         <%--<li><a href="contact.html" class="nav-link">Contact</a></li>--%>
                                         <%--<a href="contact.html" class="nav-link">Login</a>--%>
-                                        <li><asp:HyperLink ID="hlLogin" NavigateUrl="~/BackEnd/frmLogin.aspx" CssClass="nav-link" runat="server">Login</asp:HyperLink></li>
+                                        <li><asp:HyperLink ID="hlLogin" NavigateUrl="~/Login/frmLogin.aspx" CssClass="nav-link" runat="server">Login</asp:HyperLink></li>
                                     </ul>
                                 </nav>
                             </div>
