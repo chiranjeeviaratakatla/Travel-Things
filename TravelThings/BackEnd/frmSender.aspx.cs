@@ -19,56 +19,61 @@ namespace TravelThings.BackEnd
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Tools.UserId == 0)
-                Response.Redirect("~/BackEnd/frmLogin.aspx");
+                Response.Redirect("~/Login/frmLogin.aspx");
             if (!this.IsPostBack)
             {
-                Tab1.CssClass = "Clicked";
-                MainView.ActiveViewIndex = 0;
+                tabItem.CssClass = "Clicked";
+                MainViewItem.ActiveViewIndex = 0;
                 Session["TabId"] = "0";
                 getItemDetails(gvItems);
                 LinkButton li = (LinkButton)Master.FindControl("lbSender");
                 li.CssClass = "Clicked";
+                btnPrevious.Visible = false;
             }
         }
 
-        protected void Tab1_Click(object sender, EventArgs e)
+        protected void tabItem_Click(object sender, EventArgs e)
         {
-            Tab1.CssClass = "Clicked";
-            Tab2.CssClass = "Initial";
-            Tab3.CssClass = "Initial";
+            tabItem.CssClass = "Clicked";
+            tabDestination.CssClass = "Initial";
+            tabReceiver.CssClass = "Initial";
             btnPayment.CssClass = "Initial";
-            MainView.ActiveViewIndex = 0;
+            MainViewItem.ActiveViewIndex = 0;
             Session["TabId"] = "0";
+            btnPrevious.Visible = false;
         }
 
-        protected void Tab2_Click(object sender, EventArgs e)
+        protected void tabDestination_Click(object sender, EventArgs e)
         {
-            Tab1.CssClass = "Initial";
-            Tab2.CssClass = "Clicked";
-            Tab3.CssClass = "Initial";
+            tabItem.CssClass = "Initial";
+            tabDestination.CssClass = "Clicked";
+            tabReceiver.CssClass = "Initial";
             btnPayment.CssClass = "Initial";
-            MainView.ActiveViewIndex = 1;
+            MainViewItem.ActiveViewIndex = 1;
             Session["TabId"] = "1";
+            btnPrevious.Visible = true;
         }
 
-        protected void Tab3_Click(object sender, EventArgs e)
+        protected void tabReceiver_Click(object sender, EventArgs e)
         {
-            Tab1.CssClass = "Initial";
-            Tab2.CssClass = "Initial";
-            Tab3.CssClass = "Clicked";
+            tabItem.CssClass = "Initial";
+            tabDestination.CssClass = "Initial";
+            tabReceiver.CssClass = "Clicked";
             btnPayment.CssClass = "Initial";
-            MainView.ActiveViewIndex = 2;
+            MainViewItem.ActiveViewIndex = 2;
             Session["TabId"] = "2";
+            btnPrevious.Visible = true;
         }
 
         protected void btnPayment_Click(object sender, EventArgs e)
         {
-            Tab1.CssClass = "Initial";
-            Tab2.CssClass = "Initial";
-            Tab3.CssClass = "Initial";
+            tabItem.CssClass = "Initial";
+            tabDestination.CssClass = "Initial";
+            tabReceiver.CssClass = "Initial";
             btnPayment.CssClass = "Clicked";
-            MainView.ActiveViewIndex = 3;
+            MainViewItem.ActiveViewIndex = 3;
             Session["TabId"] = "3";
+            btnPrevious.Visible = true;
         }
 
         private void getItemDetails(GridView gv)
@@ -77,11 +82,11 @@ namespace TravelThings.BackEnd
             {
 
                 DataTable dtItemDetails = dllTranc.GetItemDetails(Tools.UserId.ToString());
-                if (dtItemDetails.Rows.Count > 0)
-                {
-                    gv.DataSource = dtItemDetails;
-                    gv.DataBind();
-                }
+                //if (dtItemDetails.Rows.Count > 0)
+                //{
+                gv.DataSource = dtItemDetails;
+                gv.DataBind();
+                //}
             }
             catch (Exception ex)
             {
@@ -107,22 +112,65 @@ namespace TravelThings.BackEnd
 
         protected void btnItemSave_Click(object sender, EventArgs e)
         {
+            SaveItem(false);
+        }
+
+        private void SaveItem(bool blnShowPopUp)
+        {
             try
             {
-                DataTable dtItemDetails = dllTranc.InsertItemDetails(Tools.UserId.ToString(), txtItemName.Text.Trim(), txtItemDesc.Text.Trim(), txtWeight.Text.Trim(), ddlItemType.SelectedItem.Text, txtRemarks.Text.Trim());
-                //if (dtItemDetails.Rows.Count > 0)
-                //{
-                gvItems.DataSource = dtItemDetails;
-                gvItems.DataBind();
-                //ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "HidePopup", "$('#popAddItems').modal('hide')", true);
-
-                //}
+                string strErrorMsg = ValidateItem();
+                if (string.IsNullOrEmpty(strErrorMsg))
+                {
+                    DataTable dtItemDetails = dllTranc.InsertItemDetails(Tools.UserId.ToString(), txtItemName.Text.Trim(), txtItemDesc.Text.Trim(), txtWeight.Text.Trim(), ddlItemType.SelectedItem.Text, txtRemarks.Text.Trim());
+                    gvItems.DataSource = dtItemDetails;
+                    gvItems.DataBind();
+                    ClearItems();
+                    if(!blnShowPopUp)
+                    {
+                        pnlItem.Visible = false;
+                        MainViewItem.Visible = true;
+                        pnlNav.Visible = true;
+                    }
+                }
+                else
+                {
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + strErrorMsg + "', 'warning')", true);
+                }
             }
             catch (Exception ex)
             {
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
-                //Response.Write(Tools.Alert(ex.Message));
             }
+        }
+
+        private string ValidateItem()
+        {
+            string strErrorMsg = string.Empty;
+            try
+            {
+                if (string.IsNullOrEmpty(txtItemName.Text))
+                    strErrorMsg = "Please Enter Item Name";
+                else if (string.IsNullOrEmpty(txtWeight.Text))
+                    strErrorMsg = "Please Enter Item Weight in KG's";
+                else if (ddlItemType.SelectedItem.Text == "Select Item Type")
+                    strErrorMsg = "Please Select Item Type";
+            }
+            catch (Exception ex)
+            {
+                strErrorMsg = ex.Message;
+                throw;
+            }
+            return strErrorMsg;
+        }
+
+        private void ClearItems()
+        {
+            txtItemName.Text = string.Empty;
+            txtItemDesc.Text = string.Empty;
+            txtWeight.Text = string.Empty;
+            ddlItemType.SelectedIndex = 0;
+            txtRemarks.Text = string.Empty;
         }
 
         protected void gvBtnSelect_Click1(object sender, EventArgs e)
@@ -166,61 +214,67 @@ namespace TravelThings.BackEnd
 
         protected void btnPrevious_Click(object sender, EventArgs e)
         {
-            Tab1.CssClass = "Initial";
-            Tab2.CssClass = "Initial";
-            Tab3.CssClass = "Initial";
+            tabItem.CssClass = "Initial";
+            tabDestination.CssClass = "Initial";
+            tabReceiver.CssClass = "Initial";
             btnPayment.CssClass = "Initial";
             int intTabId = Convert.ToInt32(Session["TabId"]);
-            if (intTabId == 0)
+            if (intTabId == 0)//Items add
             {
-                btnPayment.CssClass = "Clicked";
-                MainView.ActiveViewIndex = 3;
-                Session["TabId"] = 3;
+                //btnPayment.CssClass = "Clicked";
+                //MainViewItem.ActiveViewIndex = 3;
+                //Session["TabId"] = 3;
+                btnContinue.Visible = true;
             }
 
-            else if (intTabId == 1)
+            else if (intTabId == 1)//Destination
             {
-                Tab1.CssClass = "Clicked";
-                MainView.ActiveViewIndex = 0;
+                tabItem.CssClass = "Clicked";
+                MainViewItem.ActiveViewIndex = 0;
                 Session["TabId"] = 0;
+                btnPrevious.Visible = false;
             }
-            else if (intTabId == 2)
+            else if (intTabId == 2)//Reciver
             {
-                Tab2.CssClass = "Clicked";
-                MainView.ActiveViewIndex = 1;
+                tabDestination.CssClass = "Clicked";
+                MainViewItem.ActiveViewIndex = 1;
                 Session["TabId"] = 1;
+                btnContinue.Visible = true;
             }
-            if (intTabId == 3)
+            if (intTabId == 3)//Payment
             {
-                Tab3.CssClass = "Clicked";
-                MainView.ActiveViewIndex = 2;
+                tabReceiver.CssClass = "Clicked";
+                MainViewItem.ActiveViewIndex = 2;
                 Session["TabId"] = 2;
                 btnNext.Visible = true;
+                btnContinue.Visible = true;
             }
 
         }
 
         protected void btnNext_Click(object sender, EventArgs e)
         {
-            Tab1.CssClass = "Initial";
-            Tab2.CssClass = "Initial";
-            Tab3.CssClass = "Initial";
+            tabItem.CssClass = "Initial";
+            tabDestination.CssClass = "Initial";
+            tabReceiver.CssClass = "Initial";
             btnPayment.CssClass = "Initial";
             int intTabId = Convert.ToInt32(Session["TabId"]);
             if (intTabId == 0)//Items add
             {
-                Tab2.CssClass = "Clicked";
-                MainView.ActiveViewIndex = 1;
+                tabDestination.CssClass = "Clicked";
+                MainViewItem.ActiveViewIndex = 1;
                 Session["TabId"] = 1;
+                btnPrevious.Visible = true;
             }
 
-            else if (intTabId == 1)//Traveler Avilability
+            else if (intTabId == 1)//Destination
             {
-                Tab3.CssClass = "Clicked";
-                MainView.ActiveViewIndex = 2;
+                tabReceiver.CssClass = "Clicked";
+                MainViewItem.ActiveViewIndex = 2;
                 Session["TabId"] = 2;
                 //AssignTreaveler();
                 AssignItems();
+                btnPrevious.Visible = true;
             }
             else if (intTabId == 2)//Reciver
             {
@@ -230,19 +284,21 @@ namespace TravelThings.BackEnd
                 else
                     return;
                 btnPayment.CssClass = "Clicked";
-                MainView.ActiveViewIndex = 3;
+                MainViewItem.ActiveViewIndex = 3;
                 btnNext.Visible = false;
                 Session["TabId"] = 3;
                 if (!string.IsNullOrEmpty(lblTrascId.Text.Trim()))
                     GetPaymentSummery();
                 else
                     return;
+                btnPrevious.Visible = true;
             }
             else if (intTabId == 3)//Payment
             {
-                Tab1.CssClass = "Clicked";
-                MainView.ActiveViewIndex = 0;
-                Session["TabId"] = 0;
+                //tabItem.CssClass = "Clicked";
+                //MainViewItem.ActiveViewIndex = 0;
+                //Session["TabId"] = 0;
+                btnPrevious.Visible = true;
             }
 
         }
@@ -397,20 +453,25 @@ namespace TravelThings.BackEnd
             {
                 int rowIndex = Convert.ToInt32(e.CommandArgument);
                 GridViewRow row = gvItems.Rows[rowIndex];
-
-                if (e.CommandName == "Select")
+                HiddenField hfItemId = (HiddenField)gvItems.Rows[rowIndex].FindControl("hfSelectedItemId");
+                if (e.CommandName == "EditItem")
                 {
-                    txtItemName.Text = row.Cells[3].Text;
-                    //txtTo.Text = row.Cells[3].Text;
-                    //if (!string.IsNullOrEmpty(row.Cells[4].Text) && row.Cells[4].Text != "&nbsp;")
-                    //    ddlTravelBy.SelectedItem.Text = row.Cells[4].Text;
-                    //txtStartDate.Text = Convert.ToDateTime(row.Cells[5].Text).ToString("yyyy-MM-dd");
-                    //txtEndDate.Text = Convert.ToDateTime(row.Cells[6].Text).ToString("yyyy-MM-dd");
-                    //if (!string.IsNullOrEmpty(row.Cells[7].Text) && row.Cells[7].Text != "&nbsp;")
-                    //    txtWeightCanCarry.Text = row.Cells[7].Text;
+                    pnlItem.Visible = true;
+                    pnlNav.Visible = false;
+                    MainViewItem.Visible = false;
+                    txtItemName.Text = row.Cells[2].Text;
+                    txtItemDesc.Text = row.Cells[3].Text;
+                    txtWeight.Text = row.Cells[4].Text;
+                    ddlItemType.SelectedItem.Text = row.Cells[5].Text;
+                    txtRemarks.Text = row.Cells[6].Text;
                 }
-                else if (e.CommandName == "Delete")
+                else if (e.CommandName == "DeleteItem")
                 {
+                    bool blnResult = Tools.ExecuteNonQuery("DELETE FROM tbl_Item_Details WHERE I_SlNo =" + hfItemId.Value);
+                    if (blnResult)
+                        getItemDetails(gvItems);
+                    else
+                        ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', 'Please Try Again!', 'warning')", true);
 
                 }
             }
@@ -419,6 +480,27 @@ namespace TravelThings.BackEnd
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
                 //Response.Write(Tools.Alert(ex.Message));
             }
+        }
+
+        protected void btnAddItems_Click(object sender, EventArgs e)
+        {
+            pnlItem.Visible = true;
+            MainViewItem.Visible = false;
+            pnlNav.Visible = false;
+        }
+
+        protected void btnCloseModel_Click(object sender, EventArgs e)
+        {
+            pnlItem.Visible = false;
+            MainViewItem.Visible = true;
+            pnlNav.Visible = true;
+            ClearItems();
+        }
+
+        protected void btnContinueItem_Click(object sender, EventArgs e)
+        {
+            SaveItem(true);
+            ClearItems();
         }
     }
 }

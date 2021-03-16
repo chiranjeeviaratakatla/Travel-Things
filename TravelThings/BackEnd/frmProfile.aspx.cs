@@ -19,7 +19,7 @@ namespace TravelThings.BackEnd
         protected void Page_Load(object sender, EventArgs e)
         {
             //MainView.ActiveViewIndex = 0;
-            if (Tools.UserId == 0) { Response.Redirect("~/BackEnd/frmLogin.aspx"); }
+            if (Tools.UserId == 0) { Response.Redirect("~/Login/frmLogin.aspx"); }
             if (!IsPostBack)
             {
                 getUserDetails();

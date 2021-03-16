@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TravelThings.Helpers;
 
 namespace TravelThings.BackEnd
 {
@@ -13,6 +14,8 @@ namespace TravelThings.BackEnd
         {
             try
             {
+                if (Tools.UserId == 0)
+                    Response.Redirect("~/Login/frmLogin.aspx");
                 if (!IsPostBack)
                 {
                     LinkButton li = (LinkButton)Master.FindControl("lbReports");

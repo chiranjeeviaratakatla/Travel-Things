@@ -17,7 +17,7 @@ namespace TravelThings.BackEnd
         IappAccess dllApp = new AppAccess();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Tools.UserId == 0) { Response.Redirect("~/BackEnd/frmLogin.aspx"); }
+            if (Tools.UserId == 0) { Response.Redirect("~/Login/frmLogin.aspx"); }
             if (!IsPostBack)
             {
                 LinkButton li = (LinkButton)Master.FindControl("lbDashboard");

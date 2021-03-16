@@ -17,7 +17,8 @@
     <link href="Css/SweetAlert.css" rel="stylesheet" />
 
     <link href="Css/CommonControls.css" rel="stylesheet" />
-
+    <%-- font-awesome Icons --%>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 
@@ -145,6 +146,7 @@
         }
     </style>
     <script type="text/javascript">
+        // Loading status bar
         document.onreadystatechange = function () {
             var state = document.readyState
             if (state == 'interactive') {
@@ -157,6 +159,27 @@
                 }, 500);
             }
         }
+        // Confirm before delete any record.
+        var object = { status: false, ele: null }
+        function ConfirmDelete(ev) {
+            if (object.status) { return true; }
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this Recored!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButonClass: "btn-danger",
+                confirmButonText: "Yes, delete it!",
+                closeOnConfirm: true
+
+            },
+                function () {
+                    object.status = true;
+                    object.ele = ev;
+                    object.ele.click();
+                });
+            return false;
+        };
     </script>
 
 </head>
@@ -229,7 +252,7 @@
             </div>
         </div>
         <div class="cust-footer">
-             <p>© Copyright Travel Things. All Rights Reserved</p>
+            <p>© Copyright Travel Things. All Rights Reserved</p>
         </div>
     </form>
 </body>

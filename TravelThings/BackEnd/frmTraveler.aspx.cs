@@ -15,11 +15,11 @@ namespace TravelThings.BackEnd
     public partial class frmTraveler : System.Web.UI.Page
     {
         ItransactionAccess dll = new TransactionAccess();
-        private string strTransId;
+        //private string strTransId;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Tools.UserId == 0)
-                Response.Redirect("~/BackEnd/frmLogin.aspx");
+                Response.Redirect("~/Login/frmLogin.aspx");
             if (!IsPostBack)
             {
                 GetTravelDetails();
@@ -27,6 +27,8 @@ namespace TravelThings.BackEnd
                 li.CssClass = "Clicked";
                 txtStartDate.Text = DateTime.Today.ToString("yyyy-MM-dd");
                 txtEndDate.Text = DateTime.Today.AddDays(1).ToString("yyyy-MM-dd");
+                txtStartDate.Attributes["min"] = DateTime.Now.ToString("yyyy-MM-dd");
+                txtEndDate.Attributes["min"] = DateTime.Now.ToString("yyyy-MM-dd");
             }
 
 

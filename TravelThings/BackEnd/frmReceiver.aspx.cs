@@ -16,6 +16,8 @@ namespace TravelThings.BackEnd
         ItransactionAccess dll = new TransactionAccess();
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Tools.UserId == 0)
+                Response.Redirect("~/Login/frmLogin.aspx");
             if (!IsPostBack)
             {
                 LinkButton li = (LinkButton)Master.FindControl("lbReciver");
