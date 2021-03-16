@@ -314,7 +314,7 @@
                                         <label>Old Password</label>
                                     </div>
                                     <div class="col-sm-6">
-                                        <asp:TextBox ID="txtOldPsw" TextMode="Password" runat="server" CssClass="form-control" placeholder="Ener Old Password"></asp:TextBox>
+                                        <asp:TextBox ID="txtOldPsw" TextMode="Password" runat="server" CssClass="form-control" placeholder="Enter Old Password"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
@@ -323,7 +323,7 @@
                                     </div>
 
                                     <div class="col-sm-6">
-                                        <asp:TextBox ID="txtNewPsw" TextMode="Password" runat="server" CssClass="form-control" placeholder="Ener New Password"></asp:TextBox>
+                                        <asp:TextBox ID="txtNewPsw" TextMode="Password" runat="server" CssClass="form-control" placeholder="Enter New Password"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
@@ -332,7 +332,7 @@
                                     </div>
 
                                     <div class="col-sm-6">
-                                        <asp:TextBox ID="txtConformPsw" TextMode="Password" runat="server" CssClass="form-control" placeholder="Ener Conform Password"></asp:TextBox>
+                                        <asp:TextBox ID="txtConformPsw" TextMode="Password" runat="server" CssClass="form-control" placeholder="Enter Confirm Password"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
@@ -363,11 +363,11 @@
             </div>
             <div class="form-group col-sm-4 col-md-3">
                 <label for="usr">Phone No:</label>
-                <asp:TextBox ID="txtPhoneNo" runat="server" MaxLength="10" Enabled="false" CssClass="form-control" ToolTip="Enter Phone No"  placeholder="Enter Phone No"></asp:TextBox>
+                <asp:TextBox ID="txtPhoneNo" runat="server" MaxLength="10" Enabled="false" CssClass="form-control" ToolTip="Enter Phone No"  placeholder="Enter Phone No" onkeypress="return onlyNumbers(event)"></asp:TextBox>
             </div>
             <div class="form-group col-sm-4 col-md-3">
                 <label>Aternative Phone Number:</label>
-                <asp:TextBox ID="txtAltPhNo" runat="server" MaxLength="10" CssClass="form-control" ToolTip="Enter Alternative Phone No" placeholder="Optional"></asp:TextBox>
+                <asp:TextBox ID="txtAltPhNo" runat="server" MaxLength="10" CssClass="form-control" ToolTip="Enter Alternative Phone No" placeholder="Optional" onkeypress="return onlyNumbers(event)"></asp:TextBox>
             </div>
             <div class="form-group col-sm-4 col-md-3">
                 <label>Email ID:</label>
@@ -375,7 +375,7 @@
             </div>
             <div class="form-group col-sm-4 col-md-3">
                 <label>Aadhar No:</label>
-                <asp:TextBox ID="txtAahdar" runat="server" MaxLength="12" CssClass="form-control" ToolTip="Enter Aadhar No" placeholder="Enter Aadhar No"></asp:TextBox>
+                <asp:TextBox ID="txtAahdar" runat="server" MaxLength="12" CssClass="form-control" ToolTip="Enter Aadhar No" placeholder="Enter Aadhar No" onkeypress="return onlyNumbers(event)"></asp:TextBox>
             </div>
 
             <div class="form-group col-sm-4 col-md-3">

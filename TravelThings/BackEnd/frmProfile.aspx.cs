@@ -122,43 +122,13 @@ namespace TravelThings.BackEnd
                     strErrorMessage = "Please Enter Phone No";
                     txtPhoneNo.Focus();
                 }
-                else if (!string.IsNullOrEmpty(txtPhoneNo.Text.Trim()))
-                {
-                    if (txtPhoneNo.Text.Length != 10)
-                    {
-                        strErrorMessage = "Please Enter Valid 10 Digit Phone No";
-                        txtPhoneNo.Focus();
-                    }
-                }
-                else if (!string.IsNullOrEmpty(txtAltPhNo.Text.Trim()))
-                {
-                    if (txtAltPhNo.Text.Length != 10)
-                    {
-                        strErrorMessage = "Please Enter Valid 10 Digit Phone No";
-                        txtAltPhNo.Focus();
-                    }
-                }
+                
                 else if (string.IsNullOrEmpty(txtEmailId.Text))
                 {
                     strErrorMessage = "Please Enter Email Id";
                     txtEmailId.Focus();
                 }
-                else if (!string.IsNullOrEmpty(txtEmailId.Text))
-                {
-                    if (!txtEmailId.Text.Contains('.') || !txtEmailId.Text.Contains('@'))
-                    {
-                        strErrorMessage = "Please Enter Valid Email Id";
-                        txtEmailId.Focus();
-                    }
-                }
-                else if (!string.IsNullOrEmpty(txtAahdar.Text.Trim()))
-                {
-                    if (txtAltPhNo.Text.Length != 12)
-                    {
-                        strErrorMessage = "Please Enter Valid 12 Digit Aadhar No";
-                        txtAltPhNo.Focus();
-                    }
-                }
+                
                 else if (string.IsNullOrEmpty(txtAahdar.Text.Trim()))
                 {
                     strErrorMessage = "Please Enter Aadhar No";
@@ -183,6 +153,38 @@ namespace TravelThings.BackEnd
                 {
                     strErrorMessage = "Please Enter Pincode";
                     txtPinCode.Focus();
+                }
+                if (!string.IsNullOrEmpty(txtPhoneNo.Text.Trim()))
+                {
+                    if (txtPhoneNo.Text.Length != 10)
+                    {
+                        strErrorMessage = "Please Enter Valid 10 Digit Phone No";
+                        txtPhoneNo.Focus();
+                    }
+                }
+                if (!string.IsNullOrEmpty(txtAltPhNo.Text.Trim()))
+                {
+                    if (txtAltPhNo.Text.Length != 10)
+                    {
+                        strErrorMessage = "Please Enter Valid 10 Digit Phone No";
+                        txtAltPhNo.Focus();
+                    }
+                }
+                if (!string.IsNullOrEmpty(txtEmailId.Text))
+                {
+                    if (!txtEmailId.Text.Contains('.') || !txtEmailId.Text.Contains('@'))
+                    {
+                        strErrorMessage = "Please Enter Valid Email Id";
+                        txtEmailId.Focus();
+                    }
+                }
+                if (!string.IsNullOrEmpty(txtAahdar.Text.Trim()))
+                {
+                    if (txtAahdar.Text.Length != 12)
+                    {
+                        strErrorMessage = "Please Enter Valid 12 Digit Aadhar No";
+                        txtAahdar.Focus();
+                    }
                 }
 
             }

@@ -32,7 +32,8 @@ namespace TravelThings.Login
                     {
                         string strPassword = Tools.Encryptdata(txtConfirmPsw.Text.Trim());
                         Tools.ExecuteNonQuery("UPDATE tbl_User_Details SET UD_Password = '" + strPassword + "' WHERE UD_User_Id = '" + Tools.UserId.ToString() + "'");
-                        ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Done!', 'Password Set Successfully', 'success')", true);
+                        //ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Done!', 'Password Set Successfully', 'success')", true);
+                        Response.Redirect("~/BackEnd/frmProfile.aspx");
                     }
                     else
                     {

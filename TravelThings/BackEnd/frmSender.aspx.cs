@@ -126,7 +126,7 @@ namespace TravelThings.BackEnd
                     gvItems.DataSource = dtItemDetails;
                     gvItems.DataBind();
                     ClearItems();
-                    if(!blnShowPopUp)
+                    if (!blnShowPopUp)
                     {
                         pnlItem.Visible = false;
                         MainViewItem.Visible = true;
@@ -149,10 +149,10 @@ namespace TravelThings.BackEnd
             string strErrorMsg = string.Empty;
             try
             {
-                if (string.IsNullOrEmpty(txtItemName.Text))
+                if (string.IsNullOrEmpty(txtItemName.Text.Trim()))
                     strErrorMsg = "Please Enter Item Name";
-                else if (string.IsNullOrEmpty(txtWeight.Text))
-                    strErrorMsg = "Please Enter Item Weight in KG's";
+                else if (string.IsNullOrEmpty(txtWeight.Text.Trim()) || Convert.ToInt32(txtWeight.Text.Trim()) < 0)
+                    strErrorMsg = "Please Enter Valid Item Weight in KG's";
                 else if (ddlItemType.SelectedItem.Text == "Select Item Type")
                     strErrorMsg = "Please Select Item Type";
             }

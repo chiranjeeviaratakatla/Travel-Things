@@ -54,10 +54,10 @@
         </div>
         <div class="col-sm-4">
         </div>
-        <div class="col-sm-4">
+        <%--<div class="col-sm-4">
         </div>
         <div class="col-sm-4">
-        </div>
+        </div>--%>
         <%--<div class="form-group col-sm-4">
                     <label>Travel By:</label>
                   <asp:DropDownList ID="ddlTravelBy" CssClass="btn btn-default dropdown-toggle" Style="width: 100%" runat="server">

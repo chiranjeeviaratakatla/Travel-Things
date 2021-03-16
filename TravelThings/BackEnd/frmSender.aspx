@@ -16,13 +16,7 @@
             });
 
         });
-        function onlyNumbers(event) {
-            var charCode = (event.which) ? event.which : event.keyCode
-            if (charCode > 31 && (charCode < 48 || charCode > 57))
-                return false;
-
-            return true;
-        }
+        
         function HideLabel() {
             document.getElementById('<%= lblError.ClientID %>').style.display = "none";
         }
