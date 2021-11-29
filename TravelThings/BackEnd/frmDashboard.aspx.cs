@@ -92,6 +92,7 @@ namespace TravelThings.BackEnd
                 {
                     pnlDashboard.Visible = false;
                     pnlTravelRequest.Visible = true;
+                    //GetTravelerDetails();
                     GetDashBoardDetails();
                 }
                 else

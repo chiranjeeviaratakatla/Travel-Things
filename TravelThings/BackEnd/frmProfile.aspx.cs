@@ -29,7 +29,17 @@ namespace TravelThings.BackEnd
                 li.CssClass = "Clicked";
                 //pnlProfileEdit.Visible = true;
                 //pnlProfileView.Enabled = false;
+
             }
+            //else if(IsPostBack)
+            //{
+            //    string strOldPsw = txtOldPsw.Text.Trim();
+            //    string strNewPsw = txtNewPsw.Text.Trim();
+            //    string strConformPsw = txtConformPsw.Text.Trim();
+            //    txtOldPsw.Attributes.Add("value", strOldPsw);
+            //    txtNewPsw.Attributes.Add("value", strNewPsw);
+            //    txtConformPsw.Attributes.Add("value", strNewPsw);
+            //}
         }
 
         private void getUserDetails()
@@ -122,13 +132,13 @@ namespace TravelThings.BackEnd
                     strErrorMessage = "Please Enter Phone No";
                     txtPhoneNo.Focus();
                 }
-                
+
                 else if (string.IsNullOrEmpty(txtEmailId.Text))
                 {
                     strErrorMessage = "Please Enter Email Id";
                     txtEmailId.Focus();
                 }
-                
+
                 else if (string.IsNullOrEmpty(txtAahdar.Text.Trim()))
                 {
                     strErrorMessage = "Please Enter Aadhar No";
@@ -335,7 +345,38 @@ namespace TravelThings.BackEnd
         {
             try
             {
-                string strErrorMessage = string.Empty;
+                string strErrorMessage = PswValidation();
+                if (string.IsNullOrEmpty(strErrorMessage))
+                {
+                    string strOldPassword = Tools.Encryptdata(txtOldPsw.Text.Trim());
+                    int intConf = Convert.ToInt32(Tools.ExecuteScalar("SELECT COUNT(*) FROM tbl_User_Details WHERE UD_User_Id = '" + Tools.UserId.ToString() + "' AND UD_Password ='" + Tools.Encryptdata(txtOldPsw.Text.Trim()) + "'"));
+                    if (intConf == 1)
+                    {
+                        string strPassword = Tools.Encryptdata(txtNewPsw.Text.Trim());
+                        Tools.ExecuteNonQuery("UPDATE tbl_User_Details SET UD_Password = '" + strPassword + "' WHERE UD_User_Id = '" + Tools.UserId.ToString() + "'");
+                        ClearPsw();
+                        ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Done!', 'Password Changed Successfully', 'success')", true);
+                    }
+                    else
+                    {
+                        ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', 'Invalid Old Password', 'warning')", true);
+                    }
+                }
+                else
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + strErrorMessage + "', 'warning')", true);
+
+            }
+            catch (Exception ex)
+            {
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
+            }
+        }
+
+        private string PswValidation()
+        {
+            string strErrorMessage = string.Empty;
+            try
+            {
                 if (string.IsNullOrEmpty(txtOldPsw.Text.Trim()) || string.IsNullOrEmpty(txtNewPsw.Text.Trim()) || string.IsNullOrEmpty(txtConformPsw.Text.Trim()))
                 {
                     if (string.IsNullOrEmpty(txtOldPsw.Text.Trim()))
@@ -355,41 +396,22 @@ namespace TravelThings.BackEnd
                     }
                 }
 
-                if (txtNewPsw.Text.Trim() != txtConformPsw.Text.Trim())
+                else if (txtNewPsw.Text.Trim() != txtConformPsw.Text.Trim())
                 {
                     strErrorMessage = "Password and Confirm Password Must Match";
-                    return;
                 }
-                else
+                else if (txtOldPsw.Text.Trim() == txtNewPsw.Text.Trim() || txtOldPsw.Text.Trim() == txtConformPsw.Text.Trim())
                 {
-                    if (string.IsNullOrEmpty(strErrorMessage))
-                    {
-                        string strOldPassword = Tools.Encryptdata(txtOldPsw.Text.Trim());
-                        int intConf = Convert.ToInt32(Tools.ExecuteScalar("SELECT COUNT(*) FROM tbl_User_Details WHERE UD_User_Id = '" + Tools.UserId.ToString() + "' AND UD_Password ='" + Tools.Encryptdata(txtOldPsw.Text.Trim()) + "'"));
-                        if (intConf == 1)
-                        {
-                            string strPassword = Tools.Encryptdata(txtNewPsw.Text.Trim());
-                            Tools.ExecuteNonQuery("UPDATE tbl_User_Details SET UD_Password = '" + strPassword + "' WHERE UD_User_Id = '" + Tools.UserId.ToString() + "'");
-                            ClearPsw();
-                            ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Done!', 'Password Changed Successfully', 'success')", true);
-                        }
-                        else
-                        {
-                            ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', 'Invalid Old Password', 'warning')", true);
-                        }
-                    }
-                    else
-                        ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + strErrorMessage + "', 'warning')", true);
-                    //Response.Redirect(Tools.Alert(strErrorMessage));
+                    strErrorMessage = "Old Password and new password cannot be same";
                 }
-
-
+                
             }
             catch (Exception ex)
             {
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
                 // Response.Write(Tools.Alert(ex.Message));
             }
+            return strErrorMessage;
         }
 
         protected void btnClearPsw_Click(object sender, EventArgs e)

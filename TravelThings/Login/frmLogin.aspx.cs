@@ -77,6 +77,8 @@ namespace TravelThings.BackEnd
             {
                 if (string.IsNullOrEmpty(txtPhoneNo.Text.Trim()))
                     strErrorMessage = "Please Enter Phone No";
+                else if(txtPhoneNo.Text.Length <9 || txtPhoneNo.Text.Length >11)
+                    strErrorMessage = "Please enter 10 digit Phone No";
                 else if (string.IsNullOrEmpty(txtPassword.Text.Trim()))
                     strErrorMessage = "Please Enter Passwords";
             }

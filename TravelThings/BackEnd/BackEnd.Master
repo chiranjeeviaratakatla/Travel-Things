@@ -59,7 +59,10 @@
             background-repeat: no-repeat;
             background-image: linear-gradient(to right,#273f7f 0%,#37a0bc 100%);
             background-blend-mode: normal;
+            position: sticky;
+            top: 0; /* Don't forget this, required for the stickiness */
         }
+         
 
         /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
         .row.content {
@@ -102,6 +105,12 @@
         .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:focus, .navbar-inverse .navbar-nav > .active > a:hover {
             color: #fff;
             background-color: #020f4e;
+        }
+
+        div.overflow {
+            width: 100%;
+            height: 110px;
+            overflow: visible;
         }
     </style>
 

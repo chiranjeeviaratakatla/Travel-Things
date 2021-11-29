@@ -418,13 +418,13 @@ namespace TravelThings.BackEnd {
         protected global::System.Web.UI.WebControls.TextBox txtAahdar;
         
         /// <summary>
-        /// txtArea control.
+        /// txtState control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtArea;
+        protected global::System.Web.UI.WebControls.TextBox txtState;
         
         /// <summary>
         /// txtCity control.
@@ -436,13 +436,13 @@ namespace TravelThings.BackEnd {
         protected global::System.Web.UI.WebControls.TextBox txtCity;
         
         /// <summary>
-        /// txtState control.
+        /// txtArea control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtState;
+        protected global::System.Web.UI.WebControls.TextBox txtArea;
         
         /// <summary>
         /// txtPinCode control.

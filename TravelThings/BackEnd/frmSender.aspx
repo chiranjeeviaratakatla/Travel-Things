@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-
+    
     <script type="text/javascript">
         $(document).ready(function () {
             $('#<%=txtFromAdd.ClientID%>').autocomplete({
@@ -16,7 +16,7 @@
             });
 
         });
-        
+
         function HideLabel() {
             document.getElementById('<%= lblError.ClientID %>').style.display = "none";
         }
@@ -31,14 +31,14 @@
                 showModal();
             });
         });
-       function ItemValidate() {
+        function ItemValidate() {
             if (document.getElementById("<%=txtItemName.ClientID%>").value == "") {
-                //alert("Name Feild can not be blank");
-                document.getElementById("<%=lblError.ClientID%>").value = "Please Enter Item Name."
+               //alert("Name Feild can not be blank");
+               document.getElementById("<%=lblError.ClientID%>").value = "Please Enter Item Name."
                 document.getElementById("<%=lblError.ClientID%>").visibility = "visible";
-                $('#popAddItems').toggle();
-                return false;
-            }
+               $('#popAddItems').toggle();
+               return false;
+           }
             <%--if (document.getElementById("<%=txtEmail.ClientID %>").value == "") {
                 alert("Email id can not be blank");
                 document.getElementById("<%=txtEmail.ClientID %>").focus();
@@ -116,7 +116,7 @@
                             </span>
                         </div>
                         <div class="col-xs-12">
-                            <asp:Label ID="lblError" runat="server" Text="error" CssClass="form-control" Visible="false" ></asp:Label>
+                            <asp:Label ID="lblError" runat="server" Text="error" CssClass="form-control" Visible="false"></asp:Label>
                         </div>
                     </div>
                     <div class="modal-body">
@@ -177,8 +177,8 @@
                 </div>
                 <div class="form-group col-sm-12">
                     <div class="col-sm-12">
-                        <%--<div style="width: 100%; height: 100%; overflow: auto;">--%>
-                        <asp:GridView ID="gvItems" runat="server" OnRowCommand="gvItems_RowCommand" ShowHeaderWhenEmpty="true" EmptyDataText="No Data Found" CssClass="table table-hover" AutoGenerateColumns="false">
+                        <div style="width: 100%; height: 250px; overflow-y: auto;">
+                        <asp:GridView ID="gvItems" runat="server" OnRowCommand="gvItems_RowCommand" ShowHeaderWhenEmpty="true" EmptyDataText="No Data Found" CssClass="table" AutoGenerateColumns="false">
                             <Columns>
                                 <asp:TemplateField HeaderText="Select">
                                     <ItemTemplate>
@@ -202,7 +202,7 @@
                                 <span style="font-size: 12px; font-weight: bold; color: Blue;">No records are available. Click on "Add Items" button to enter new data. </span>
                             </EmptyDataTemplate>
                         </asp:GridView>
-                        <%--</div>--%>
+                        </div>
                     </div>
                 </div>
             </asp:View>

@@ -29,6 +29,7 @@ namespace TravelThings.BackEnd
                 LinkButton li = (LinkButton)Master.FindControl("lbSender");
                 li.CssClass = "Clicked";
                 btnPrevious.Visible = false;
+                btnNext.Visible = true;
             }
         }
 

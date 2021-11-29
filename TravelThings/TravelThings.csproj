@@ -81,6 +81,7 @@
     <Content Include="BackEnd\Css\UploadImg\js\jquery.Jcrop.js" />
     <Content Include="BackEnd\Css\UploadImg\js\jquery.Jcrop.min.js" />
     <Content Include="BackEnd\Css\UploadImg\js\jquery.min.js" />
+    <Content Include="Helpers\LoginValidation.js" />
     <Content Include="Login\frmForgotPassword.aspx" />
     <Content Include="BackEnd\frmDashboard.aspx" />
     <Content Include="Login\frmLogin.aspx" />
@@ -161,6 +162,9 @@
     </Compile>
     <Compile Include="BackEnd\BackEnd.Master.designer.cs">
       <DependentUpon>BackEnd.Master</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\State.ashx.cs">
+      <DependentUpon>State.ashx</DependentUpon>
     </Compile>
     <Compile Include="Login\frmForgotPassword.aspx.cs">
       <DependentUpon>frmForgotPassword.aspx</DependentUpon>
@@ -291,6 +295,7 @@
     <Content Include="BackEnd\BackEnd.Master" />
     <Content Include="packages.config" />
     <Content Include="BackEnd\AddressHandler.ashx" />
+    <Content Include="BackEnd\State.ashx" />
     <None Include="Properties\PublishProfiles\local.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

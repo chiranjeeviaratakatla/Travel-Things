@@ -79,12 +79,14 @@
             color: #6c757d;
             cursor: pointer;
         }
+
+       
     </style>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    
+
     <asp:Panel ID="pnlDashboard" runat="server">
         <div class="container profile">
             <div class="row">
@@ -137,7 +139,7 @@
                     </div>
                 </div>
             </div>
-           <%-- <div class="row">
+            <%-- <div class="row">
                  <div class="col-md-6 col-xl-6 col-xs-12 col-sm-6">
                     <div class="card bg-c-pink order-card">
                         <div class="card-block">

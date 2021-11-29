@@ -17,6 +17,37 @@
             $('#<%=W.ClientID%>').val(parseInt(c.w));
             $('#<%=H.ClientID%>').val(parseInt(c.h));
         }
+        function ShowHidePassword() {
+            var txtOld = $('#<%=txtOldPsw.ClientID%>');
+            var txtNew = $('#<%=txtNewPsw.ClientID%>');
+            var txtConform = $('#<%=txtConformPsw.ClientID%>');
+            if (txtOld.prop("type") == "password") {
+                txtOld.prop("type", "text");
+                txtNew.prop("type", "text");
+                txtConform.prop("type", "text");
+                $("label[for='cbShowHidePassword']").text("Hide Password");
+            }
+            else {
+                txtOld.prop("type", "password");
+                txtNew.prop("type", "password");
+                txtConform.prop("type", "password");
+                $("label[for='cbShowHidePassword']").text("Show Password");
+            }
+        }
+        function ChaingPswValidation() {
+            var txtOld = document.getElementById("txtOldPsw").value;
+            var txtNew = $('#<%=txtNewPsw.ClientID%>');
+            var txtConform = $('#<%=txtConformPsw.ClientID%>');
+            if (txtOld == '') {
+                swal({
+                    title: 'Congratulations!',
+                    text: 'Your message has been succesfully sent',
+                    type: 'success'
+                });
+                return false;
+            }
+
+        }
     </script>
     <style>
         @import url("https://fonts.googleapis.com/css?family=Lato:400,400i,700");
@@ -171,7 +202,6 @@
                     </asp:Panel>
                 </div>
                 <div class="col-md-12">
-                    
                 </div>
             </div>
         </div>
@@ -340,9 +370,15 @@
                                     </div>
 
                                     <div class="col-sm-6">
-                                        <asp:Button ID="btnChangePsw" runat="server" CssClass="btn btn-primary" Text="Change Password" OnClick="btnChangePsw_Click" />
+                                        <asp:Button ID="btnChangePsw" runat="server" CssClass="btn btn-primary" Text="Change Password" OnClientClick="return ChaingPswValidation();" /><%--OnClick="btnChangePsw_Click"--%>
                                         <asp:Button ID="btnClearPsw" runat="server" CssClass="btn btn-danger" Text="Clear" OnClick="btnClearPsw_Click" />
-                                        <asp:CheckBox ID="chkShowPws" runat="server" AutoPostBack="true" Text="Show Psw" OnCheckedChanged="chkShowPws_CheckedChanged" />
+                                        <asp:CheckBox ID="chkShowPws" runat="server" Visible="false" AutoPostBack="true" Text="Show Psw" OnCheckedChanged="chkShowPws_CheckedChanged" />
+                                    </div>
+                                    <div class="col-sm-6">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input id="cbShowHidePassword" type="checkbox" onclick="ShowHidePassword();" />
+                                        <label for='cbShowHidePassword'>Show Password</label>
                                     </div>
                                 </div>
                             </div>
@@ -363,7 +399,7 @@
             </div>
             <div class="form-group col-sm-4 col-md-3">
                 <label for="usr">Phone No:</label>
-                <asp:TextBox ID="txtPhoneNo" runat="server" MaxLength="10" Enabled="false" CssClass="form-control" ToolTip="Enter Phone No"  placeholder="Enter Phone No" onkeypress="return onlyNumbers(event)"></asp:TextBox>
+                <asp:TextBox ID="txtPhoneNo" runat="server" MaxLength="10" Enabled="false" CssClass="form-control" ToolTip="Enter Phone No" placeholder="Enter Phone No" onkeypress="return onlyNumbers(event)"></asp:TextBox>
             </div>
             <div class="form-group col-sm-4 col-md-3">
                 <label>Aternative Phone Number:</label>
@@ -371,24 +407,23 @@
             </div>
             <div class="form-group col-sm-4 col-md-3">
                 <label>Email ID:</label>
-                <asp:TextBox ID="txtEmailId" runat="server" TextMode="Email" CssClass="form-control" ToolTip ="Enter Email ID" placeholder="Enter Email ID"></asp:TextBox>
+                <asp:TextBox ID="txtEmailId" runat="server" TextMode="Email" CssClass="form-control" ToolTip="Enter Email ID" placeholder="Enter Email ID"></asp:TextBox>
             </div>
             <div class="form-group col-sm-4 col-md-3">
                 <label>Aadhar No:</label>
                 <asp:TextBox ID="txtAahdar" runat="server" MaxLength="12" CssClass="form-control" ToolTip="Enter Aadhar No" placeholder="Enter Aadhar No" onkeypress="return onlyNumbers(event)"></asp:TextBox>
             </div>
-
             <div class="form-group col-sm-4 col-md-3">
-                <label>Area:</label>
-                <asp:TextBox ID="txtArea" runat="server" CssClass="form-control" ToolTip="Enter Your Area" placeholder="Enter Your Area"></asp:TextBox>
+                <label>State:</label>
+                <asp:TextBox ID="txtState" runat="server" CssClass="form-control" ToolTip="Enter Your State" placeholder="Enter Your State"></asp:TextBox>
             </div>
             <div class="form-group col-sm-4 col-md-3">
                 <label>City:</label>
                 <asp:TextBox ID="txtCity" runat="server" CssClass="form-control" ToolTip="Enter Your City" placeholder="Enter Your City"></asp:TextBox>
             </div>
             <div class="form-group col-sm-4 col-md-3">
-                <label>State:</label>
-                <asp:TextBox ID="txtState" runat="server" CssClass="form-control" ToolTip="Enter Your State" placeholder="Enter Your State"></asp:TextBox>
+                <label>Area:</label>
+                <asp:TextBox ID="txtArea" runat="server" CssClass="form-control" ToolTip="Enter Your Area" placeholder="Enter Your Area"></asp:TextBox>
             </div>
             <div class="form-group col-sm-4 col-md-3">
                 <label>Pin Code:</label>

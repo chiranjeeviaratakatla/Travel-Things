@@ -12,7 +12,7 @@
     <link href="../BackEnd/Css/Bootstrap_V_3_4_1.css" rel="stylesheet" />
     <script src="../BackEnd/JavaScript/JQuery_V_3_4_1.js" type="text/javascript"></script>
     <script src="../BackEnd/JavaScript/BootstrapCdnMin.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
     <%-- Sweet Alert --%>
     <script src="../BackEnd/JavaScript/SweetAlert.js" type="text/javascript"></script>
     <link href="../BackEnd/Css/SweetAlert.css" rel="stylesheet" />
@@ -25,6 +25,22 @@
             user-select: none;
         }
     </style>
+    <%--<script lang="text/javascript">
+        function PhoneNoErrorMessage() {
+            var Number = document.getElementById("btnLogin");
+            var ErrorMsg = '';
+            var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+            if (!Number.length < 11 || !Number.length < 9) {
+                ErrorMsg = 'Invalid phone number format. Please Check'
+            }
+            else if ((Number.value.match(phoneno)) {
+                ErrorMsg = 'Please enter 10 digit mobile number'
+            }
+            if (ErrorMsg.length = '') {
+                alert(ErrorMsg)
+            }
+        }
+    </script>--%>
 </head>
 <body style="background-image: linear-gradient(to right,#273f7f 0%,#37a0bc 100%)">
     <form id="login" runat="server">
@@ -43,7 +59,7 @@
                                     <div class="form-group">
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="fa fa-phone fa-1x"></i></span>
-                                            <asp:TextBox ID="txtPhoneNo" runat="server" TextMode="Phone" placeholder="Enter Phone No" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox ID="txtPhoneNo" runat="server" MaxLength="10" TextMode="Phone" placeholder="Enter Phone No" CssClass="form-control"></asp:TextBox>
                                             <%--<input id="email" name="email" placeholder="email address" class="form-control" type="email">--%>
                                         </div>
                                     </div>
@@ -55,7 +71,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <asp:Button ID="btnLogin" runat="server" CssClass="btn btn-lg btn-primary btn-block" OnClick="btnLogin_Click" Text="Login" />
+                                        <asp:Button ID="btnLogin" runat="server" CssClass="btn btn-lg btn-primary btn-block" OnClick="btnLogin_Click" OnClientClick="PhoneNoErrorMessage()" Text="Login" />
                                         <%--<asp:Button ID="btnSendOtp" runat="server" CssClass="btn btn-lg btn-primary btn-block" Text="Reset Password" />--%>
                                         <%--<input name="recover-submit" class="btn btn-lg btn-primary btn-block" value="Reset Password" type="submit">--%>
                                     </div>

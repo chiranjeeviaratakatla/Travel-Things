@@ -12,7 +12,7 @@
         <div class="col-sm-4">
             <label>Select Transaction:</label>
             <span></span>
-            <asp:DropDownList ID="ddlTransaction" CssClass="btn btn-default dropdown-toggle" Style="width: 100%" runat="server">
+            <asp:DropDownList ID="ddlTransaction" CssClass="form-control" runat="server">
                 <asp:ListItem Text="Select Item"></asp:ListItem>
                 <asp:ListItem Text="All"></asp:ListItem>
                 <asp:ListItem Text="Send Item"></asp:ListItem>
