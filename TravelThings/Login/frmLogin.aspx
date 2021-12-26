@@ -12,6 +12,7 @@
     <link href="../BackEnd/Css/Bootstrap_V_3_4_1.css" rel="stylesheet" />
     <script src="../BackEnd/JavaScript/JQuery_V_3_4_1.js" type="text/javascript"></script>
     <script src="../BackEnd/JavaScript/BootstrapCdnMin.js" type="text/javascript"></script>
+    <script src="../BackEnd/JavaScript/CommonFunctions.js" type="text/javascript"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
     <%-- Sweet Alert --%>
     <script src="../BackEnd/JavaScript/SweetAlert.js" type="text/javascript"></script>
@@ -25,8 +26,16 @@
             user-select: none;
         }
     </style>
-    <%--<script lang="text/javascript">
-        function PhoneNoErrorMessage() {
+    <script lang="text/javascript">
+         // Only ASCII character in that range allowed
+        function onlyNumbers(event) {
+            var charCode = (event.which) ? event.which : event.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+
+            return true;
+        }
+        <%-- function PhoneNoErrorMessage() {
             var Number = document.getElementById("btnLogin");
             var ErrorMsg = '';
             var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
@@ -39,8 +48,8 @@
             if (ErrorMsg.length = '') {
                 alert(ErrorMsg)
             }
-        }
-    </script>--%>
+        }--%>
+</script>
 </head>
 <body style="background-image: linear-gradient(to right,#273f7f 0%,#37a0bc 100%)">
     <form id="login" runat="server">
@@ -59,7 +68,7 @@
                                     <div class="form-group">
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="fa fa-phone fa-1x"></i></span>
-                                            <asp:TextBox ID="txtPhoneNo" runat="server" MaxLength="10" TextMode="Phone" placeholder="Enter Phone No" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox ID="txtPhoneNo" runat="server" MaxLength="10" TextMode="Phone" placeholder="Enter Phone No" CssClass="form-control" onkeypress="return onlyNumbers(event)"></asp:TextBox>
                                             <%--<input id="email" name="email" placeholder="email address" class="form-control" type="email">--%>
                                         </div>
                                     </div>

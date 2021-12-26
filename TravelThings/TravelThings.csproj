@@ -81,6 +81,7 @@
     <Content Include="BackEnd\Css\UploadImg\js\jquery.Jcrop.js" />
     <Content Include="BackEnd\Css\UploadImg\js\jquery.Jcrop.min.js" />
     <Content Include="BackEnd\Css\UploadImg\js\jquery.min.js" />
+    <Content Include="BackEnd\JavaScript\CommonFunctions.js" />
     <Content Include="Helpers\LoginValidation.js" />
     <Content Include="Login\frmForgotPassword.aspx" />
     <Content Include="BackEnd\frmDashboard.aspx" />

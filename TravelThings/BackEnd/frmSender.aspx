@@ -5,8 +5,18 @@
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-    
+
     <script type="text/javascript">
+
+        //function onlyNumberKey(evt) {
+
+        //// Only ASCII character in that range allowed
+        //var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+        //if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+        //    return false;
+        //return true;
+        //}
+
         $(document).ready(function () {
             $('#<%=txtFromAdd.ClientID%>').autocomplete({
                 source: 'AddressHandler.ashx'
@@ -15,6 +25,7 @@
                 source: 'AddressHandler.ashx'
             });
 
+            
         });
 
         function HideLabel() {
@@ -33,12 +44,12 @@
         });
         function ItemValidate() {
             if (document.getElementById("<%=txtItemName.ClientID%>").value == "") {
-               //alert("Name Feild can not be blank");
-               document.getElementById("<%=lblError.ClientID%>").value = "Please Enter Item Name."
+                //alert("Name Feild can not be blank");
+                document.getElementById("<%=lblError.ClientID%>").value = "Please Enter Item Name."
                 document.getElementById("<%=lblError.ClientID%>").visibility = "visible";
-               $('#popAddItems').toggle();
-               return false;
-           }
+                $('#popAddItems').toggle();
+                return false;
+            }
             <%--if (document.getElementById("<%=txtEmail.ClientID %>").value == "") {
                 alert("Email id can not be blank");
                 document.getElementById("<%=txtEmail.ClientID %>").focus();
@@ -124,7 +135,7 @@
                             <div class="col-sm-6">
                                 <label>Item Name :</label>
 
-                                <asp:TextBox ID="txtItemName" runat="server" CssClass="form-control" placeholder="Enter Item Name"></asp:TextBox>
+                                <asp:TextBox ID="txtItemName" runat="server"  CssClass="form-control" placeholder="Enter Item Name"></asp:TextBox>
                             </div>
                             <div class="col-sm-6">
                                 <label>Description :</label>
@@ -178,30 +189,30 @@
                 <div class="form-group col-sm-12">
                     <div class="col-sm-12">
                         <div style="width: 100%; height: 250px; overflow-y: auto;">
-                        <asp:GridView ID="gvItems" runat="server" OnRowCommand="gvItems_RowCommand" ShowHeaderWhenEmpty="true" EmptyDataText="No Data Found" CssClass="table" AutoGenerateColumns="false">
-                            <Columns>
-                                <asp:TemplateField HeaderText="Select">
-                                    <ItemTemplate>
-                                        <asp:Button ID="gvBtnSelect" runat="server" Text="Edit" CssClass="btn btn-primary" CommandName="EditItem" CommandArgument="<%# Container.DataItemIndex %>" />
-                                        <asp:HiddenField ID="hfSelectedItemId" runat="server" Value='<%# Eval("I_SlNo") %>' />
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:BoundField HeaderText="Sr No" DataField="SNO" />
-                                <asp:BoundField HeaderText="Item Name" DataField="I_Item_Name" />
-                                <asp:BoundField HeaderText="Description" DataField="I_Item_Desc" />
-                                <asp:BoundField HeaderText="Weight" DataField="I_Weight" />
-                                <asp:BoundField HeaderText="Type" DataField="I_Item_Type" />
-                                <asp:BoundField HeaderText="Remarks" DataField="I_Remarks" />
-                                <asp:TemplateField HeaderText="Delete">
-                                    <ItemTemplate>
-                                        <asp:Button ID="btnDeleteItem" runat="server" Text="Delete" CssClass="btn btn-danger" CommandName="DeleteItem" OnClientClick="return ConfirmDelete(this);" CommandArgument="<%# Container.DataItemIndex %>" />
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                            </Columns>
-                            <EmptyDataTemplate>
-                                <span style="font-size: 12px; font-weight: bold; color: Blue;">No records are available. Click on "Add Items" button to enter new data. </span>
-                            </EmptyDataTemplate>
-                        </asp:GridView>
+                            <asp:GridView ID="gvItems" runat="server" OnRowCommand="gvItems_RowCommand" ShowHeaderWhenEmpty="true" EmptyDataText="No Data Found" CssClass="table" AutoGenerateColumns="false">
+                                <Columns>
+                                    <asp:TemplateField HeaderText="Select">
+                                        <ItemTemplate>
+                                            <asp:Button ID="gvBtnSelect" runat="server" Text="Edit" CssClass="btn btn-primary" CommandName="EditItem" CommandArgument="<%# Container.DataItemIndex %>" />
+                                            <asp:HiddenField ID="hfSelectedItemId" runat="server" Value='<%# Eval("I_SlNo") %>' />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:BoundField HeaderText="Sr No" DataField="SNO" />
+                                    <asp:BoundField HeaderText="Item Name" DataField="I_Item_Name" />
+                                    <asp:BoundField HeaderText="Description" DataField="I_Item_Desc" />
+                                    <asp:BoundField HeaderText="Weight" DataField="I_Weight" />
+                                    <asp:BoundField HeaderText="Type" DataField="I_Item_Type" />
+                                    <asp:BoundField HeaderText="Remarks" DataField="I_Remarks" />
+                                    <asp:TemplateField HeaderText="Delete">
+                                        <ItemTemplate>
+                                            <asp:Button ID="btnDeleteItem" runat="server" Text="Delete" CssClass="btn btn-danger" CommandName="DeleteItem" OnClientClick="return ConfirmDelete(this);" CommandArgument="<%# Container.DataItemIndex %>" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                </Columns>
+                                <EmptyDataTemplate>
+                                    <span style="font-size: 12px; font-weight: bold; color: Blue;">No records are available. Click on "Add Items" button to enter new data. </span>
+                                </EmptyDataTemplate>
+                            </asp:GridView>
                         </div>
                     </div>
                 </div>
@@ -358,12 +369,12 @@
                     </div>
                     <div class="col-sm-3">
                         <label>Phone Number:</label>
-                        <asp:TextBox ID="txtRecPhoneNo" runat="server" CssClass="form-control" placeholder="Enter Receiver Phone No"></asp:TextBox>
+                        <asp:TextBox ID="txtRecPhoneNo" runat="server" CssClass="form-control" placeholder="Enter Receiver Phone No" MaxLength="10" onkeypress="return onlyNumbers(event)"></asp:TextBox>
                         <%--<input type="text" class="form-control" id="usr">--%>
                     </div>
                     <div class="col-sm-3">
                         <label>Aternative Phone Number:</label>
-                        <asp:TextBox ID="txtRecAltPhoneNo" runat="server" CssClass="form-control" placeholder="Enter Receiver Alternative Phone No"></asp:TextBox>
+                        <asp:TextBox ID="txtRecAltPhoneNo" runat="server" CssClass="form-control" placeholder="Enter Receiver Alternative Phone No" MaxLength="10" onkeypress="return onlyNumbers(event)"></asp:TextBox>
                         <%--<input type="text" class="form-control" id="pwd">--%>
                     </div>
                     <div class="col-sm-3">
