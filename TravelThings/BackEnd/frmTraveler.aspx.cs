@@ -25,9 +25,9 @@ namespace TravelThings.BackEnd
                 GetTravelDetails();
                 LinkButton li = (LinkButton)Master.FindControl("lbTraveler");
                 li.CssClass = "Clicked";
-                txtStartDate.Text = DateTime.Today.ToString("yyyy-MM-dd");
+                txtStartDate.Text = DateTime.Now.ToString();
                 txtEndDate.Text = DateTime.Today.AddDays(1).ToString("yyyy-MM-dd");
-                txtStartDate.Attributes["min"] = DateTime.Now.ToString("yyyy-MM-dd");
+                txtStartDate.Attributes["min"] = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
                 txtEndDate.Attributes["min"] = DateTime.Now.ToString("yyyy-MM-dd");
             }
 
@@ -72,7 +72,7 @@ namespace TravelThings.BackEnd
                 txtTo.Text = string.Empty;
                 txtStartDate.Text = DateTime.Today.ToString("yyyy-MM-dd");
                 txtEndDate.Text = DateTime.Today.AddDays(1).ToString("yyyy-MM-dd");
-                ddlTravelBy.SelectedIndex = 0;
+                ddlTravelBy.SelectedItem.Text = "Select Travel By Vechicle";
                 txtWeightCanCarry.Text = string.Empty;
             }
             catch (Exception ex)
@@ -115,7 +115,7 @@ namespace TravelThings.BackEnd
                 int rowIndex = Convert.ToInt32(e.CommandArgument);
                 GridViewRow row = gvJourney.Rows[rowIndex];
 
-                if (e.CommandName == "Select")
+                if (e.CommandName == "EditJourney")
                 {
                     btnAddJourney.Visible = false;
                     btnEditJourney.Visible = true;

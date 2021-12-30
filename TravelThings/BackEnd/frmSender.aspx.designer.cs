@@ -94,15 +94,6 @@ namespace TravelThings.BackEnd {
         protected global::System.Web.UI.WebControls.TextBox txtItemDesc;
         
         /// <summary>
-        /// txtWeight control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtWeight;
-        
-        /// <summary>
         /// ddlItemType control.
         /// </summary>
         /// <remarks>
@@ -110,6 +101,15 @@ namespace TravelThings.BackEnd {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlItemType;
+        
+        /// <summary>
+        /// txtWeight control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtWeight;
         
         /// <summary>
         /// txtRemarks control.

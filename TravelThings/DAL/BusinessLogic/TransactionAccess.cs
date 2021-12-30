@@ -49,7 +49,7 @@ namespace TravelThings.DAL.BusinessLogic
             }
         }
 
-        public DataTable InsertItemDetails(string strUserId, string strItemName, string strItemDesc, string strItemWeight, string strItemType, string strRemarks)
+        public DataTable InsertItemDetails(string strUserId, string strItemName, string strItemDesc, string strItemWeight, int strItemTypeId, string strRemarks)
         {
             try
             {
@@ -58,7 +58,7 @@ namespace TravelThings.DAL.BusinessLogic
                 cmd.Parameters.AddWithValue("@I_User_Id", strUserId);
                 cmd.Parameters.AddWithValue("@I_Item_Name", strItemName);
                 cmd.Parameters.AddWithValue("@I_Item_Desc", strItemDesc);
-                cmd.Parameters.AddWithValue("@I_Item_Type", strItemType);
+                cmd.Parameters.AddWithValue("@I_Item_Type_Id", strItemTypeId);
                 cmd.Parameters.AddWithValue("@I_Weight", strItemWeight);
                 cmd.Parameters.AddWithValue("@I_Remarks", strRemarks);
                 return ExecuteReader(cmd);
@@ -203,6 +203,19 @@ namespace TravelThings.DAL.BusinessLogic
                 SqlCommand cmd = new SqlCommand("usp_Get_Traveler_Approval_Details");
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@TD_Traveler_Id", strUserId);
+                return ExecuteReader(cmd);
+            }
+            catch
+            {
+                throw;
+            }
+        }
+        public DataTable GetAllItemTyps()
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("usp_Get_All_Item_Types");
+                cmd.CommandType = CommandType.StoredProcedure;
                 return ExecuteReader(cmd);
             }
             catch

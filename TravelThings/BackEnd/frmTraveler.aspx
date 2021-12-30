@@ -43,7 +43,7 @@
             <label>Travel By:</label>
             <%--<asp:DropDownList ID="DropDownList1" CssClass="btn btn-default dropdown-toggle" Style="width: 100%" runat="server">--%>
             <asp:DropDownList ID="ddlTravelBy" CssClass="form-control"  runat="server">
-                <asp:ListItem Text="Select Travel By Vechicle"></asp:ListItem>
+                <asp:ListItem Text="Select Travel By Vechicle" Value="-1"></asp:ListItem>
                 <asp:ListItem Text="Bike"></asp:ListItem>
                 <asp:ListItem Text="Bus"></asp:ListItem>
                 <asp:ListItem Text="Car"></asp:ListItem>
@@ -69,11 +69,11 @@
                 </div>--%>
         <div class="col-sm-4 col-sm-12 col-lg-4 col-md-4 col-xs-12">
             <label>Starting Date:</label>
-            <asp:TextBox ID="txtStartDate" TextMode="Date" class="form-control" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtStartDate" TextMode="DateTimeLocal" class="form-control" runat="server"></asp:TextBox>
         </div>
         <div class="col-sm-4 col-sm-12 col-lg-4 col-md-4 col-xs-12">
             <label>Ending Date:</label>
-            <asp:TextBox ID="txtEndDate" TextMode="Date" class="form-control" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtEndDate" TextMode="DateTimeLocal" class="form-control" runat="server"></asp:TextBox>
         </div>
         <div class="col-sm-4 col-sm-12 col-lg-4 col-md-4 col-xs-12">
             <label>Weight Can Carry:<span></span>(In KGs)</label>
@@ -97,7 +97,7 @@
                     <Columns>
                         <asp:TemplateField HeaderText="Select">
                             <ItemTemplate>
-                                <asp:Button ID="gvBtnSelect" runat="server" Text="Select" CssClass="btn btn-primary" CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" />
+                                <asp:Button ID="gvBtnEdit" runat="server" Text="Edit" CssClass="btn btn-primary" CommandName="EditJourney" CommandArgument="<%# Container.DataItemIndex %>" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:BoundField HeaderText="Sr No" DataField="SNO" />

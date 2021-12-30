@@ -141,25 +141,15 @@
                                 <label>Description :</label>
                                 <asp:TextBox ID="txtItemDesc" runat="server" CssClass="form-control" placeholder="Description (Optional)"></asp:TextBox>
                             </div>
-                            <div class="col-sm-6">
-                                <label>Weight :</label>
-                                <asp:TextBox ID="txtWeight" runat="server" MaxLength="2" CssClass="form-control" placeholder="Enter Item Weight" onkeypress="return onlyNumbers(event)"></asp:TextBox>
-                            </div>
+                            
                             <div class="col-sm-6">
                                 <label>Item Type :</label>
                                 <asp:DropDownList ID="ddlItemType" class="btn btn-default dropdown-toggle" runat="server" Width="100%">
-                                    <asp:ListItem Text="Select Item Type"></asp:ListItem>
-                                    <asp:ListItem Text="Papers"></asp:ListItem>
-                                    <asp:ListItem Text="Files"></asp:ListItem>
-                                    <asp:ListItem Text="Electronic"></asp:ListItem>
-                                    <asp:ListItem Text="Metal"></asp:ListItem>
-                                    <asp:ListItem Text="Glass"></asp:ListItem>
-                                    <asp:ListItem Text="Plastic"></asp:ListItem>
-                                    <asp:ListItem Text="Clothes"></asp:ListItem>
-                                    <asp:ListItem Text="Sensitive"></asp:ListItem>
-                                    <asp:ListItem Text="Hardware"></asp:ListItem>
-                                    <asp:ListItem Text="Other"></asp:ListItem>
                                 </asp:DropDownList>
+                            </div>
+                            <div class="col-sm-6">
+                                <label>Weight :</label>
+                                <asp:TextBox ID="txtWeight" runat="server" MaxLength="2" CssClass="form-control" placeholder="Enter Item Weight" onkeypress="return onlyNumbers(event)"></asp:TextBox>
                             </div>
                             <div class="col-sm-12">
                                 <label>Remarks :</label>

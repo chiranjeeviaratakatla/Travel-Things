@@ -18,18 +18,47 @@ namespace TravelThings.BackEnd
         IUserAccess dllUser = new UserAccess();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Tools.UserId == 0)
-                Response.Redirect("~/Login/frmLogin.aspx");
-            if (!this.IsPostBack)
+            try
             {
-                tabItem.CssClass = "Clicked";
-                MainViewItem.ActiveViewIndex = 0;
-                Session["TabId"] = "0";
-                getItemDetails(gvItems);
-                LinkButton li = (LinkButton)Master.FindControl("lbSender");
-                li.CssClass = "Clicked";
-                btnPrevious.Visible = false;
-                btnNext.Visible = true;
+                if (Tools.UserId == 0)
+                    Response.Redirect("~/Login/frmLogin.aspx");
+                if (!this.IsPostBack)
+                {
+                    tabItem.CssClass = "Clicked";
+                    MainViewItem.ActiveViewIndex = 0;
+                    Session["TabId"] = "0";
+                    getItemDetails(gvItems);
+                    LinkButton li = (LinkButton)Master.FindControl("lbSender");
+                    li.CssClass = "Clicked";
+                    btnPrevious.Visible = false;
+                    btnNext.Visible = true;
+                    GetItemTypes();
+                }
+            }
+            catch (Exception ex)
+            {
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
+            }
+        }
+
+        private void GetItemTypes()
+        {
+            try
+            {
+                DataTable dtItemTypes = dllTranc.GetAllItemTyps();
+                ddlItemType.DataSource = dtItemTypes;
+                ddlItemType.DataTextField = "I_Description";
+                ddlItemType.DataValueField = "I_Type_ID";
+                ddlItemType.DataBind();
+                ListItem item = new ListItem();
+                item.Text = "Select Item Type";
+                item.Value = "-1";
+
+                this.ddlItemType.Items.Insert(0, item);
+            }
+            catch
+            {
+                throw;
             }
         }
 
@@ -81,13 +110,9 @@ namespace TravelThings.BackEnd
         {
             try
             {
-
                 DataTable dtItemDetails = dllTranc.GetItemDetails(Tools.UserId.ToString());
-                //if (dtItemDetails.Rows.Count > 0)
-                //{
                 gv.DataSource = dtItemDetails;
                 gv.DataBind();
-                //}
             }
             catch (Exception ex)
             {
@@ -123,7 +148,7 @@ namespace TravelThings.BackEnd
                 string strErrorMsg = ValidateItem();
                 if (string.IsNullOrEmpty(strErrorMsg))
                 {
-                    DataTable dtItemDetails = dllTranc.InsertItemDetails(Tools.UserId.ToString(), txtItemName.Text.Trim(), txtItemDesc.Text.Trim(), txtWeight.Text.Trim(), ddlItemType.SelectedItem.Text, txtRemarks.Text.Trim());
+                    DataTable dtItemDetails = dllTranc.InsertItemDetails(Tools.UserId.ToString(), txtItemName.Text.Trim(), txtItemDesc.Text.Trim(), txtWeight.Text.Trim(), Convert.ToInt32(ddlItemType.SelectedValue), txtRemarks.Text.Trim());
                     gvItems.DataSource = dtItemDetails;
                     gvItems.DataBind();
                     ClearItems();
