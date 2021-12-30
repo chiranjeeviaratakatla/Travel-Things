@@ -25,10 +25,12 @@ namespace TravelThings.BackEnd
                 GetTravelDetails();
                 LinkButton li = (LinkButton)Master.FindControl("lbTraveler");
                 li.CssClass = "Clicked";
-                txtStartDate.Text = DateTime.Now.ToString();
-                txtEndDate.Text = DateTime.Today.AddDays(1).ToString("yyyy-MM-dd");
-                txtStartDate.Attributes["min"] = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
-                txtEndDate.Attributes["min"] = DateTime.Now.ToString("yyyy-MM-dd");
+                txtStartDate.Text = DateTime.Now.ToLocalTime().ToString("yyyy-MM-ddTHH:mm");
+                txtEndDate.Text = DateTime.Today.AddDays(1).ToLocalTime().ToString("yyyy-MM-ddTHH:mm");
+                txtStartDate.Attributes["min"] = DateTime.Now.ToLocalTime().ToString("yyyy-MM-ddTHH:mm"); 
+                txtEndDate.Attributes["min"] = DateTime.Now.ToLocalTime().ToString("yyyy-MM-ddTHH:mm");
+                txtStartDate.Attributes["max"] = DateTime.Today.AddDays(90).ToLocalTime().ToString("yyyy-MM-ddTHH:mm");
+                txtEndDate.Attributes["max"] = DateTime.Today.AddDays(90).ToLocalTime().ToString("yyyy-MM-ddTHH:mm");
             }
 
 
