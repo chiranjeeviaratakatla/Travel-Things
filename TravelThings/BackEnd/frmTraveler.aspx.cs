@@ -18,22 +18,28 @@ namespace TravelThings.BackEnd
         //private string strTransId;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Tools.UserId == 0)
-                Response.Redirect("~/Login/frmLogin.aspx");
-            if (!IsPostBack)
+            try
             {
-                GetTravelDetails();
-                LinkButton li = (LinkButton)Master.FindControl("lbTraveler");
-                li.CssClass = "Clicked";
-                txtStartDate.Text = DateTime.Now.ToLocalTime().ToString("yyyy-MM-ddTHH:mm");
-                txtEndDate.Text = DateTime.Today.AddDays(1).ToLocalTime().ToString("yyyy-MM-ddTHH:mm");
-                txtStartDate.Attributes["min"] = DateTime.Now.ToLocalTime().ToString("yyyy-MM-ddTHH:mm"); 
-                txtEndDate.Attributes["min"] = DateTime.Now.ToLocalTime().ToString("yyyy-MM-ddTHH:mm");
-                txtStartDate.Attributes["max"] = DateTime.Today.AddDays(90).ToLocalTime().ToString("yyyy-MM-ddTHH:mm");
-                txtEndDate.Attributes["max"] = DateTime.Today.AddDays(90).ToLocalTime().ToString("yyyy-MM-ddTHH:mm");
+                if (Tools.UserId == 0)
+                    Response.Redirect("~/Login/frmLogin.aspx");
+                if (!IsPostBack)
+                {
+                    GetTravelDetails();
+                    GetVehicleDetails();
+                    LinkButton li = (LinkButton)Master.FindControl("lbTraveler");
+                    li.CssClass = "Clicked";
+                    txtStartDate.Text = DateTime.Now.ToLocalTime().ToString("yyyy-MM-ddTHH:mm");
+                    txtEndDate.Text = DateTime.Today.AddDays(1).ToLocalTime().ToString("yyyy-MM-ddTHH:mm");
+                    txtStartDate.Attributes["min"] = DateTime.Now.ToLocalTime().ToString("yyyy-MM-ddTHH:mm");
+                    txtEndDate.Attributes["min"] = DateTime.Now.ToLocalTime().ToString("yyyy-MM-ddTHH:mm");
+                    txtStartDate.Attributes["max"] = DateTime.Today.AddDays(90).ToLocalTime().ToString("yyyy-MM-ddTHH:mm");
+                    txtEndDate.Attributes["max"] = DateTime.Today.AddDays(90).ToLocalTime().ToString("yyyy-MM-ddTHH:mm");
+                }
             }
-
-
+            catch (Exception ex)
+            {
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
+            }
         }
 
         protected void btnAddJourney_Click(object sender, EventArgs e)
@@ -81,6 +87,31 @@ namespace TravelThings.BackEnd
             {
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
                 //Response.Write(Tools.Alert(ex.Message));
+            }
+        }
+        private void GetVehicleDetails()
+        {
+            try
+            {
+                DataTable dtVehicleDetails = new DataTable();
+                dtVehicleDetails = dll.GetAllVehicle();
+                if (dtVehicleDetails.Rows.Count > 0)
+                {
+                    ddlTravelBy.DataSource = dtVehicleDetails;
+                    ddlTravelBy.DataTextField = "V_Name";
+                    ddlTravelBy.DataValueField = "V_ID";
+
+                    ddlTravelBy.DataBind();
+                    ListItem item = new ListItem();
+                    item.Text = "Select Travel By Vechicle";
+                    item.Value = "-1";
+
+                    this.ddlTravelBy.Items.Insert(0, item);
+                }
+            }
+            catch (Exception ex)
+            {
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
             }
         }
         private void GetTravelDetails()

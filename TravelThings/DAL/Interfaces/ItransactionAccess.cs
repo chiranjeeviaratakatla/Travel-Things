@@ -33,5 +33,8 @@ namespace TravelThings.DAL.Interfaces
         DataTable GetTravelerApprovals(string strUserId);
         
         DataTable GetAllItemTyps();
+
+        DataTable GetAllVehicle();
+        
     }
 }

@@ -25,6 +25,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <%--<asp:UpdatePanel runat="server">
         <ContentTemplate>--%>
+   
     <div class="form-group col-sm-12 col-lg-12 col-md-12">
         <div class="col-sm-12 col-sm-12 col-lg-12 col-md-12 col-xs-12">
             <h3>
@@ -42,12 +43,8 @@
         <div class="col-sm-4 col-sm-12 col-lg-4 col-md-4 col-xs-12">
             <label>Travel By:</label>
             <%--<asp:DropDownList ID="DropDownList1" CssClass="btn btn-default dropdown-toggle" Style="width: 100%" runat="server">--%>
-            <asp:DropDownList ID="ddlTravelBy" CssClass="form-control"  runat="server">
-                <asp:ListItem Text="Select Travel By Vechicle" Value="-1"></asp:ListItem>
-                <asp:ListItem Text="Bike"></asp:ListItem>
-                <asp:ListItem Text="Bus"></asp:ListItem>
-                <asp:ListItem Text="Car"></asp:ListItem>
-                <asp:ListItem Text="Train"></asp:ListItem>
+            <asp:DropDownList ID="ddlTravelBy" CssClass="form-control" runat="server">
+                
             </asp:DropDownList>
         </div>
         <%--<div class="col-sm-4">

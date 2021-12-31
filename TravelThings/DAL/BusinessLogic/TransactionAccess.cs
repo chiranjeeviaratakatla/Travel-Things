@@ -223,5 +223,18 @@ namespace TravelThings.DAL.BusinessLogic
                 throw;
             }
         }
+        public DataTable GetAllVehicle()
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("usp_Get_All_Vehicles");
+                cmd.CommandType = CommandType.StoredProcedure;
+                return ExecuteReader(cmd);
+            }
+            catch
+            {
+                throw;
+            }
+        }
     }
 }
