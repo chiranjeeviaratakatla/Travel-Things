@@ -14,6 +14,7 @@ namespace TravelThings.BackEnd
     public partial class frmLogin : System.Web.UI.Page
     {
         IUserAccess dll = new UserAccess();
+        Tools tools = new Tools();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -38,22 +39,27 @@ namespace TravelThings.BackEnd
                     DataTable dtUserDetails = dll.ConfirmCredentials(txtPhoneNo.Text.Trim(), strPassword);
                     if (dtUserDetails.Rows[0][0].ToString() != "FALSE")
                     {
-                        if (chkRemeber.Checked == true)
+                        if (dtUserDetails.Rows[0]["UD_Status"].ToString() != "FALSE")
                         {
-                            Response.Cookies["userid"].Value = txtPhoneNo.Text.Trim();
-                            Response.Cookies["pwd"].Value = txtPassword.Text.Trim();
-                            Response.Cookies["userid"].Expires = DateTime.Now.AddDays(15);
-                            Response.Cookies["pwd"].Expires = DateTime.Now.AddDays(15);
+                            if (chkRemeber.Checked == true)
+                            {
+                                Response.Cookies["userid"].Value = txtPhoneNo.Text.Trim();
+                                Response.Cookies["pwd"].Value = txtPassword.Text.Trim();
+                                Response.Cookies["userid"].Expires = DateTime.Now.AddDays(15);
+                                Response.Cookies["pwd"].Expires = DateTime.Now.AddDays(15);
+                            }
+                            else
+                            {
+                                Response.Cookies["userid"].Expires = DateTime.Now.AddDays(-1);
+                                Response.Cookies["pwd"].Expires = DateTime.Now.AddDays(-1);
+                            }
+                            //Response.Redirect("user.aspx");
+                            tools.UserId = dtUserDetails.Rows[0]["UD_User_Id"].ToString();
+                            tools.UserName = dtUserDetails.Rows[0]["UD_User_Name"].ToString();
+                            Response.Redirect("~/BackEnd/frmDashboard.aspx");
                         }
                         else
-                        {
-                            Response.Cookies["userid"].Expires = DateTime.Now.AddDays(-1);
-                            Response.Cookies["pwd"].Expires = DateTime.Now.AddDays(-1);
-                        }
-                        //Response.Redirect("user.aspx");
-                        Tools.UserId = Convert.ToInt32(dtUserDetails.Rows[0]["UD_User_Id"].ToString());
-                        Tools.UserName = dtUserDetails.Rows[0]["UD_User_Name"].ToString();
-                        Response.Redirect("~/BackEnd/frmDashboard.aspx");
+                            ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', 'Your account is inactive. Please contact to helpdesk!', 'warning')", true);
                     }
                     else
                         ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', 'Phone Number or Password is Incorrect!', 'warning')", true);
@@ -63,10 +69,10 @@ namespace TravelThings.BackEnd
                     ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + strErrorMsg + "', 'warning')", true);
                // Response.Write(Tools.Alert(strErrorMsg));
             }
-            catch
+            catch (Exception ex)
             {
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', 'Something went Wrong. Please try Again!', 'warning')", true);
-                //Response.Write(Tools.Alert(ex.Message));
+                Response.Write(Tools.Alert(ex.Message));
             }
         }
 

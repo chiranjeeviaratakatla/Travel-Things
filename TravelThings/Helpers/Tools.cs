@@ -5,12 +5,26 @@ using System.Text;
 using System.Web;
 using System.Data;
 using System.Data.SqlClient;
+using System.Web.SessionState;
+using System.Web.UI;
 
 namespace TravelThings.Helpers
 {
-    public static class Tools
+    public class Tools : Page
     {
         //private static readonly SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["conString"].ConnectionString.ToString());
+        public string UserName
+        {
+            get { return Session["UserName"] as string; }
+            set { Session["UserName"] = value; }
+        }
+        public string UserId
+        {
+            get { return Session["UserId"] as string; }
+            set { Session["UserId"] = value; }
+        }
+        
+
         public static string Alert(string Message)
         {
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
@@ -53,8 +67,21 @@ namespace TravelThings.Helpers
             //ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", sb.ToString());
             return sb.ToString();
         }
-        public static string UserName { get; set; }
-        public static int UserId { get; set; }
+        
+        //public static string CurrentUserName { get; set; }
+        //public static string CurrentUserId { get; set; }
+        //public string CurrentUserName
+        //{
+        //    get { return CurrentUserName; }
+        //    set { UserName = CurrentUserName; }
+        //}
+        //public string CurrentUserId
+        //{
+        //    get { return CurrentUserId; }
+        //    set { UserId = CurrentUserId; }
+        //}
+
+
 
         public static string Encryptdata(string password)
         {

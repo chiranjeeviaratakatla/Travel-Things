@@ -15,12 +15,13 @@ namespace TravelThings.BackEnd
     public partial class frmTraveler : System.Web.UI.Page
     {
         ItransactionAccess dll = new TransactionAccess();
+        Tools tools = new Tools();
         //private string strTransId;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
-                if (Tools.UserId == 0)
+                if (string.IsNullOrEmpty(tools.UserId))
                     Response.Redirect("~/Login/frmLogin.aspx");
                 if (!IsPostBack)
                 {
@@ -49,7 +50,7 @@ namespace TravelThings.BackEnd
                 string strError = ValidateFields();
                 if (string.IsNullOrEmpty(strError))
                 {
-                    bool blnResult = dll.InsertTransactionDetails(Tools.UserId.ToString(), txtFrom.Text.Trim(), txtTo.Text.Trim(), Convert.ToInt32(txtWeightCanCarry.Text.Trim()), Convert.ToDateTime(txtStartDate.Text.Trim()), Convert.ToDateTime(txtEndDate.Text.Trim()), ddlTravelBy.SelectedItem.Text);
+                    bool blnResult = dll.InsertTransactionDetails(tools.UserId, txtFrom.Text.Trim(), txtTo.Text.Trim(), Convert.ToInt32(txtWeightCanCarry.Text.Trim()), Convert.ToDateTime(txtStartDate.Text.Trim()), Convert.ToDateTime(txtEndDate.Text.Trim()), ddlTravelBy.SelectedItem.Text);
                     if (blnResult)
                     {
                         ClearContols();
@@ -118,10 +119,10 @@ namespace TravelThings.BackEnd
         {
             try
             {
-                if (Tools.UserId != 0)
+                if (!string.IsNullOrEmpty(tools.UserId))
                 {
                     DataTable dtTravelDetails = new DataTable();
-                    dtTravelDetails = dll.GetITransactionDetails(Tools.UserId.ToString());
+                    dtTravelDetails = dll.GetITransactionDetails(tools.UserId);
                     if (dtTravelDetails.Rows.Count > 0)
                     {
                         gvJourney.DataSource = dtTravelDetails;

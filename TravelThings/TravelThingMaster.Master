@@ -95,22 +95,22 @@
 
                                     <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                                         <%--<li class="active"><a href="index.html" class="nav-link">Home</a></li>--%>
-                                        <li><asp:HyperLink ID="hlHome" NavigateUrl="~/Web_Forms/Index.aspx" CssClass="nav-link" runat="server">Home</asp:HyperLink></li>
-                                        <li><asp:HyperLink ID="hlFeatures" NavigateUrl="~/Web_Forms/Features.aspx" CssClass="nav-link" runat="server">Features</asp:HyperLink></li>
+                                        <li><asp:HyperLink ID="hlHome" NavigateUrl="~/Index.aspx" CssClass="nav-link" runat="server">Home</asp:HyperLink></li>
+                                        <li><asp:HyperLink ID="hlFeatures" NavigateUrl="~/Features.aspx" CssClass="nav-link" runat="server">Features</asp:HyperLink></li>
                                         <%--<li><a href="features.html" class="nav-link">Features</a></li>--%>
                                         <%--<li><a href="pricing.html" class="nav-link">Pricing</a></li>--%>
 
                                         <li class="has-children">
-                                            <%--<asp:HyperLink ID="hlBlogMain" NavigateUrl="~/Web_Forms/Blog.aspx" CssClass="nav-link" runat="server">Blog</asp:HyperLink>--%>
+                                            <%--<asp:HyperLink ID="hlBlogMain" NavigateUrl="~/Blog.aspx" CssClass="nav-link" runat="server">Blog</asp:HyperLink>--%>
                                             <a class="nav-link">Blog</a>
                                             <ul class="dropdown">
-                                                <li><asp:HyperLink ID="hlBlog" NavigateUrl="~/Web_Forms/Blog.aspx" CssClass="nav-link" runat="server">Blog</asp:HyperLink></li>
+                                                <li><asp:HyperLink ID="hlBlog" NavigateUrl="~/Blog.aspx" CssClass="nav-link" runat="server">Blog</asp:HyperLink></li>
                                                 <%--<li><a href="blog.html" class="nav-link">Blog</a></li>--%>
-                                                <li><asp:HyperLink ID="hlBlogSingle" NavigateUrl="~/Web_Forms/Blog.aspx" CssClass="nav-link" runat="server">Blog Sigle</asp:HyperLink></li>
+                                                <li><asp:HyperLink ID="hlBlogSingle" NavigateUrl="~/Blog.aspx" CssClass="nav-link" runat="server">Blog Sigle</asp:HyperLink></li>
                                                 <%--<li><a href="blog-single.html" class="nav-link">Blog Sigle</a></li>--%>
                                             </ul>
                                         </li>
-                                        <li><asp:HyperLink ID="hlContact" NavigateUrl="~/Web_Forms/Contact.aspx" CssClass="nav-link" runat="server">Contact</asp:HyperLink></li>
+                                        <li><asp:HyperLink ID="hlContact" NavigateUrl="~/Contact.aspx" CssClass="nav-link" runat="server">Contact</asp:HyperLink></li>
                                         <%--<li><a href="contact.html" class="nav-link">Contact</a></li>--%>
                                         <%--<a href="contact.html" class="nav-link">Login</a>--%>
                                         <li><asp:HyperLink ID="hlLogin" NavigateUrl="~/Login/frmLogin.aspx" CssClass="nav-link" runat="server">Login</asp:HyperLink></li>

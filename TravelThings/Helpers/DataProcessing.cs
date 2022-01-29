@@ -10,7 +10,23 @@ namespace TravelThings.Helpers
 {
     public class DataProcessing
     {
+        readonly string  Psw = "Password=Chiru5512#";
         private static readonly SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["conString"].ConnectionString.ToString());
+        public DataProcessing()
+        {
+            if (!connection.ConnectionString.Contains(Psw))
+            {
+                connection.ConnectionString = connection.ConnectionString + Psw;
+            }
+        }
+        //~DataProcessing()
+        //{
+        //    if(connection.ConnectionString.Contains(Psw))
+        //    {
+        //        connection.ConnectionString.Replace(Psw, "");
+        //    }
+        //    //connection.ConnectionString = connection.ConnectionString + "Chiru5512#";
+        //}
         internal bool ExecuteNonQuery(SqlCommand cmd)
         {
             bool res = false;
@@ -91,6 +107,6 @@ namespace TravelThings.Helpers
             }
             return res;
         }
-       
+
     }
 }

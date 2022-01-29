@@ -16,10 +16,12 @@ namespace TravelThings.BackEnd
     public partial class frmProfile : System.Web.UI.Page
     {
         IUserAccess dll = new UserAccess();
+        Tools tools = new Tools();
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             //MainView.ActiveViewIndex = 0;
-            if (Tools.UserId == 0) { Response.Redirect("~/Login/frmLogin.aspx"); }
+            if (string.IsNullOrEmpty(tools.UserId)) { Response.Redirect("~/Login/frmLogin.aspx"); }
             if (!IsPostBack)
             {
                 getUserDetails();
@@ -47,7 +49,7 @@ namespace TravelThings.BackEnd
             try
             {
                 DataTable dtUserDetails = new DataTable();
-                dtUserDetails = dll.GettUserDetails(Tools.UserId.ToString());
+                dtUserDetails = dll.GettUserDetails(tools.UserId);
                 if (dtUserDetails.Rows.Count > 0)
                 {
                     lblWelUName.Text = dtUserDetails.Rows[0]["UD_User_Name"].ToString();
@@ -331,7 +333,7 @@ namespace TravelThings.BackEnd
                 strAddress = strAddress + txtCity.Text.Trim() + "#";
                 strAddress = strAddress + txtState.Text.Trim() + "#";
                 strAddress = strAddress + txtPinCode.Text.Trim();
-                blResult = dll.UpdateUserProfile(Tools.UserId.ToString(), txtName.Text.Trim(), txtAltPhNo.Text.Trim(), txtAahdar.Text.Trim(), txtEmailId.Text.Trim(), strAddress);
+                blResult = dll.UpdateUserProfile(tools.UserId, txtName.Text.Trim(), txtAltPhNo.Text.Trim(), txtAahdar.Text.Trim(), txtEmailId.Text.Trim(), strAddress);
             }
             catch //(Exception ex)
             {
@@ -349,11 +351,11 @@ namespace TravelThings.BackEnd
                 if (string.IsNullOrEmpty(strErrorMessage))
                 {
                     string strOldPassword = Tools.Encryptdata(txtOldPsw.Text.Trim());
-                    int intConf = Convert.ToInt32(Tools.ExecuteScalar("SELECT COUNT(*) FROM tbl_User_Details WHERE UD_User_Id = '" + Tools.UserId.ToString() + "' AND UD_Password ='" + Tools.Encryptdata(txtOldPsw.Text.Trim()) + "'"));
+                    int intConf = Convert.ToInt32(Tools.ExecuteScalar("SELECT COUNT(*) FROM tbl_User_Details WHERE UD_User_Id = '" + tools.UserId + "' AND UD_Password ='" + Tools.Encryptdata(txtOldPsw.Text.Trim()) + "'"));
                     if (intConf == 1)
                     {
                         string strPassword = Tools.Encryptdata(txtNewPsw.Text.Trim());
-                        Tools.ExecuteNonQuery("UPDATE tbl_User_Details SET UD_Password = '" + strPassword + "' WHERE UD_User_Id = '" + Tools.UserId.ToString() + "'");
+                        Tools.ExecuteNonQuery("UPDATE tbl_User_Details SET UD_Password = '" + strPassword + "' WHERE UD_User_Id = '" + tools.UserId + "'");
                         ClearPsw();
                         ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Done!', 'Password Changed Successfully', 'success')", true);
                     }
@@ -459,7 +461,7 @@ namespace TravelThings.BackEnd
                         cropFilePath = Path.Combine(Server.MapPath("~/Images/UserProfilepics"), cropFileName);
                         bitMap.Save(cropFilePath);
                         imgProfilePic.ImageUrl = "~/Images/UserProfilepics/" + cropFileName;
-                        Tools.ExecuteNonQuery("UPDATE tbl_User_Details SET UD_PhotoPath = '" + cropFileName + "' WHERE UD_User_Id = " + Tools.UserId.ToString());
+                        Tools.ExecuteNonQuery("UPDATE tbl_User_Details SET UD_PhotoPath = '" + cropFileName + "' WHERE UD_User_Id = " + tools.UserId);
                         pnlProfileView.Visible = true;
                         pnlProfileEdit.Visible = false;
                         pnlUploadProfilePic.Visible = false;

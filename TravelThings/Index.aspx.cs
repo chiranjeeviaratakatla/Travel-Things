@@ -14,12 +14,13 @@ namespace TravelThings.Web_Forms
 {
     public partial class HomePage : System.Web.UI.Page
     {
+        Tools tools = new Tools();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!this.IsPostBack)
             {
-                Tools.UserId = 0;
-                Tools.UserName = string.Empty;
+                tools.UserId = string.Empty;
+                tools.UserName = string.Empty;
             }
 
         }
@@ -56,8 +57,8 @@ namespace TravelThings.Web_Forms
                         }
                         else
                         {
-                            Tools.UserId = Convert.ToInt32(dt.Rows[0]["UD_User_Id"].ToString());
-                            Tools.UserName = dt.Rows[0]["UD_User_Name"].ToString();
+                            tools.UserId = dt.Rows[0]["UD_User_Id"].ToString();
+                            tools.UserName = dt.Rows[0]["UD_User_Name"].ToString();
                             Response.Redirect("~/Login/frmSetPassword.aspx");
                         }
                     }

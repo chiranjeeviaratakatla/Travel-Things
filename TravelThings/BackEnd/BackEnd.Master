@@ -241,6 +241,9 @@
                                 <%--<asp:HyperLink ID="hlReciver" CssClass="Initial" runat="server" NavigateUrl="~/BackEnd/frmReceiver.aspx">Receive</asp:HyperLink>--%>
                                 <asp:LinkButton ID="lbReports" CssClass="Initial" Text="Reports" runat="server" PostBackUrl="~/BackEnd/frmReports.aspx"></asp:LinkButton>
                             </li>
+                            <li>
+                                <asp:LinkButton ID="lbAdmin" CssClass="Initial" Text="Admin" runat="server" PostBackUrl="~/BackEnd/frmAdmin.aspx"></asp:LinkButton>
+                            </li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
 
@@ -249,8 +252,8 @@
                                 <%--<asp:HyperLink ID="hlProfile" NavigateUrl="~/BackEnd/frmProfile.aspx" CssClass="Initial" runat="server"></asp:HyperLink>--%>
                             </li>
                             <li>
-                                <%--<asp:HyperLink ID="hlLogout" NavigateUrl="~/Web_Forms/HomePage.aspx" CssClass="Initial" runat="server"><span>Logout</span></asp:HyperLink>--%>
-                                <asp:LinkButton ID="lbLogout" CssClass="Initial" Text="Logout" runat="server" PostBackUrl="~/Web_Forms/Index.aspx"></asp:LinkButton>
+                                <%--<asp:HyperLink ID="hlLogout" NavigateUrl="~/HomePage.aspx" CssClass="Initial" runat="server"><span>Logout</span></asp:HyperLink>--%>
+                                <asp:LinkButton ID="lbLogout" CssClass="Initial" Text="Logout" runat="server" PostBackUrl="~/Index.aspx"></asp:LinkButton>
                             </li>
                             <%--<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>--%>
                         </ul>

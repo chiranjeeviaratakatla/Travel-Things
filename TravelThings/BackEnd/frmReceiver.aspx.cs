@@ -14,9 +14,10 @@ namespace TravelThings.BackEnd
     public partial class frmReceiver : System.Web.UI.Page
     {
         ItransactionAccess dll = new TransactionAccess();
+        Tools tools = new Tools();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Tools.UserId == 0)
+            if (string.IsNullOrEmpty(tools.UserId))
                 Response.Redirect("~/Login/frmLogin.aspx");
             if (!IsPostBack)
             {
@@ -30,7 +31,7 @@ namespace TravelThings.BackEnd
         {
             try
             {
-                gvReceiver.DataSource = dll.GetReceivingItem(Tools.UserId.ToString());
+                gvReceiver.DataSource = dll.GetReceivingItem(tools.UserId);
                 gvReceiver.DataBind();
             }
             catch (Exception ex)

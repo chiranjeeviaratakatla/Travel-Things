@@ -16,11 +16,12 @@ namespace TravelThings.BackEnd
     {
         ItransactionAccess dllTranc = new TransactionAccess();
         IUserAccess dllUser = new UserAccess();
+        Tools tools = new Tools();
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
-                if (Tools.UserId == 0)
+                if (string.IsNullOrEmpty(tools.UserId))
                     Response.Redirect("~/Login/frmLogin.aspx");
                 if (!this.IsPostBack)
                 {
@@ -110,7 +111,7 @@ namespace TravelThings.BackEnd
         {
             try
             {
-                DataTable dtItemDetails = dllTranc.GetItemDetails(Tools.UserId.ToString());
+                DataTable dtItemDetails = dllTranc.GetItemDetails(tools.UserId);
                 gv.DataSource = dtItemDetails;
                 gv.DataBind();
             }
@@ -125,7 +126,7 @@ namespace TravelThings.BackEnd
         {
             try
             {
-                DataTable dtTravelers = dllTranc.GetAvailableTravelers(Tools.UserId.ToString(), txtFromAdd.Text.Trim(), txtToAdd.Text.Trim(), txtTillDate.Text.Trim());
+                DataTable dtTravelers = dllTranc.GetAvailableTravelers(tools.UserId, txtFromAdd.Text.Trim(), txtToAdd.Text.Trim(), txtTillDate.Text.Trim());
                 gvTravelerAvailablity.DataSource = dtTravelers;
                 gvTravelerAvailablity.DataBind();
             }
@@ -148,7 +149,7 @@ namespace TravelThings.BackEnd
                 string strErrorMsg = ValidateItem();
                 if (string.IsNullOrEmpty(strErrorMsg))
                 {
-                    DataTable dtItemDetails = dllTranc.InsertItemDetails(Tools.UserId.ToString(), txtItemName.Text.Trim(), txtItemDesc.Text.Trim(), txtWeight.Text.Trim(), Convert.ToInt32(ddlItemType.SelectedValue), txtRemarks.Text.Trim());
+                    DataTable dtItemDetails = dllTranc.InsertItemDetails(tools.UserId, txtItemName.Text.Trim(), txtItemDesc.Text.Trim(), txtWeight.Text.Trim(), Convert.ToInt32(ddlItemType.SelectedValue), txtRemarks.Text.Trim());
                     gvItems.DataSource = dtItemDetails;
                     gvItems.DataBind();
                     ClearItems();
@@ -376,7 +377,7 @@ namespace TravelThings.BackEnd
         {
             try
             {
-                dllTranc.AssignTraveler(lblTrascId.Text.Trim(), Tools.UserId.ToString(), strReceiver);
+                dllTranc.AssignTraveler(lblTrascId.Text.Trim(), tools.UserId, strReceiver);
             }
             catch (Exception ex)
             {

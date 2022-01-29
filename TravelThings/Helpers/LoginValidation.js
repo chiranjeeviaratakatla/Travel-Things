@@ -1,6 +1,6 @@
 ﻿function validatePhonenumber(inputtxt) {
     
-    if ()
+    if (inputtxt)
         {
         return true;
     }

@@ -44,9 +44,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=3.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
@@ -81,6 +79,7 @@
     <Content Include="BackEnd\Css\UploadImg\js\jquery.Jcrop.js" />
     <Content Include="BackEnd\Css\UploadImg\js\jquery.Jcrop.min.js" />
     <Content Include="BackEnd\Css\UploadImg\js\jquery.min.js" />
+    <Content Include="BackEnd\frmAdmin.aspx" />
     <Content Include="BackEnd\JavaScript\CommonFunctions.js" />
     <Content Include="Helpers\LoginValidation.js" />
     <Content Include="Login\frmForgotPassword.aspx" />
@@ -147,11 +146,11 @@
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Web_Forms\Blog.aspx" />
-    <Content Include="Web_Forms\BlogSigle.aspx" />
-    <Content Include="Web_Forms\Contact.aspx" />
-    <Content Include="Web_Forms\Features.aspx" />
-    <Content Include="Web_Forms\Index.aspx" />
+    <Content Include="Blog.aspx" />
+    <Content Include="BlogSigle.aspx" />
+    <Content Include="Contact.aspx" />
+    <Content Include="Features.aspx" />
+    <Content Include="Index.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BackEnd\AddressHandler.ashx.cs">
@@ -163,6 +162,13 @@
     </Compile>
     <Compile Include="BackEnd\BackEnd.Master.designer.cs">
       <DependentUpon>BackEnd.Master</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\frmAdmin.aspx.cs">
+      <DependentUpon>frmAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackEnd\frmAdmin.aspx.designer.cs">
+      <DependentUpon>frmAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="BackEnd\State.ashx.cs">
       <DependentUpon>State.ashx</DependentUpon>
@@ -231,7 +237,9 @@
     <Compile Include="DAL\Interfaces\ItransactionAccess.cs" />
     <Compile Include="DAL\Interfaces\IUserAccess.cs" />
     <Compile Include="Helpers\DataProcessing.cs" />
-    <Compile Include="Helpers\Tools.cs" />
+    <Compile Include="Helpers\Tools.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Login\frmSetPassword.aspx.cs">
       <DependentUpon>frmSetPassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -240,46 +248,46 @@
       <DependentUpon>frmSetPassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Web_Forms\Blog.aspx.cs">
+    <Compile Include="Blog.aspx.cs">
       <DependentUpon>Blog.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Web_Forms\Blog.aspx.designer.cs">
+    <Compile Include="Blog.aspx.designer.cs">
       <DependentUpon>Blog.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Web_Forms\BlogSigle.aspx.cs">
+    <Compile Include="BlogSigle.aspx.cs">
       <DependentUpon>BlogSigle.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Web_Forms\BlogSigle.aspx.designer.cs">
+    <Compile Include="BlogSigle.aspx.designer.cs">
       <DependentUpon>BlogSigle.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Web_Forms\Contact.aspx.cs">
+    <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Web_Forms\Contact.aspx.designer.cs">
+    <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Web_Forms\Features.aspx.cs">
+    <Compile Include="Features.aspx.cs">
       <DependentUpon>Features.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Web_Forms\Features.aspx.designer.cs">
+    <Compile Include="Features.aspx.designer.cs">
       <DependentUpon>Features.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Web_Forms\Index.aspx.cs">
+    <Compile Include="Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Web_Forms\Index.aspx.designer.cs">
+    <Compile Include="Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Web_Forms\TravelThingMaster.Master.cs">
+    <Compile Include="TravelThingMaster.Master.cs">
       <DependentUpon>TravelThingMaster.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Web_Forms\TravelThingMaster.Master.designer.cs">
+    <Compile Include="TravelThingMaster.Master.designer.cs">
       <DependentUpon>TravelThingMaster.Master</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -294,9 +302,11 @@
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
     <Content Include="bin\TravelThings.dll.config" />
     <Content Include="BackEnd\BackEnd.Master" />
-    <Content Include="packages.config" />
     <Content Include="BackEnd\AddressHandler.ashx" />
     <Content Include="BackEnd\State.ashx" />
+    <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\local.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -304,12 +314,13 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <Content Include="Web_Forms\TravelThingMaster.Master" />
+    <Content Include="TravelThingMaster.Master" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\UserProfilePics\" />
     <Folder Include="Models\" />
+    <Folder Include="Web_Forms\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

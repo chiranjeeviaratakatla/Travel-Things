@@ -10,11 +10,13 @@ namespace TravelThings.BackEnd
 {
     public partial class frmReports : System.Web.UI.Page
     {
+        Tools tools = new Tools();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
-                if (Tools.UserId == 0)
+                if (string.IsNullOrEmpty(tools.UserId))
                     Response.Redirect("~/Login/frmLogin.aspx");
                 if (!IsPostBack)
                 {

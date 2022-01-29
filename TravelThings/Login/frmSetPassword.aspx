@@ -61,7 +61,7 @@
                                     </u>
                                     <u>
                                         <span class="pull-right">
-                                            <asp:HyperLink ID="HyperLink2" NavigateUrl="~/Web_Forms/Index.aspx" runat="server" Text="Register"></asp:HyperLink>
+                                            <asp:HyperLink ID="HyperLink2" NavigateUrl="~/Index.aspx" runat="server" Text="Register"></asp:HyperLink>
                                         </span>
                                     </u>
                                 </div>

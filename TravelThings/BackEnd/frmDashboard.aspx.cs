@@ -15,9 +15,10 @@ namespace TravelThings.BackEnd
     {
         ItransactionAccess dllTransc = new TransactionAccess();
         IappAccess dllApp = new AppAccess();
+        Tools tools = new Tools();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Tools.UserId == 0) { Response.Redirect("~/Login/frmLogin.aspx"); }
+            if (string.IsNullOrEmpty(tools.UserId)) { Response.Redirect("~/Login/frmLogin.aspx"); }
             if (!IsPostBack)
             {
                 LinkButton li = (LinkButton)Master.FindControl("lbDashboard");
@@ -31,7 +32,7 @@ namespace TravelThings.BackEnd
         {
             try
             {
-                DataTable dtDashBoard = dllApp.GetDashboardDetails(Tools.UserId.ToString());
+                DataTable dtDashBoard = dllApp.GetDashboardDetails(tools.UserId);
                 if (dtDashBoard.Rows.Count > 0)
                 {
                     lblTravelRequest.Text = dtDashBoard.Rows[0]["REQUEST"].ToString();
@@ -50,7 +51,7 @@ namespace TravelThings.BackEnd
         {
             try
             {
-                DataTable dtTravelerApproval = dllTransc.GetTravelerApprovals(Tools.UserId.ToString());
+                DataTable dtTravelerApproval = dllTransc.GetTravelerApprovals(tools.UserId);
                 gvTravelRequist.DataSource = dtTravelerApproval;
                 gvTravelRequist.DataBind();
             }

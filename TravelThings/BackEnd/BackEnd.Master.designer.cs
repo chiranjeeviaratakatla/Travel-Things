@@ -85,6 +85,15 @@ namespace TravelThings.BackEnd {
         protected global::System.Web.UI.WebControls.LinkButton lbReports;
         
         /// <summary>
+        /// lbAdmin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbAdmin;
+        
+        /// <summary>
         /// lbProfile control.
         /// </summary>
         /// <remarks>

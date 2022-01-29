@@ -94,7 +94,7 @@
                         <div class="panel panel-footer">
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <u><span class="pull-left">
-                                    <asp:HyperLink ID="hlRegister" NavigateUrl="~/Web_Forms/Index.aspx" runat="server" Text="Register"></asp:HyperLink>
+                                    <asp:HyperLink ID="hlRegister" NavigateUrl="~/Index.aspx" runat="server" Text="Register"></asp:HyperLink>
                                 </span></u>
                                 <u><span class="pull-right">
                                     <asp:HyperLink ID="hlForgotPassword" runat="server" NavigateUrl="~/Login/frmForgotPassword.aspx" Text="Forgot Password"></asp:HyperLink>

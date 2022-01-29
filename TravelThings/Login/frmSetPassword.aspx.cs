@@ -10,12 +10,13 @@ namespace TravelThings.Login
 {
     public partial class SetPassword : System.Web.UI.Page
     {
+        Tools tools = new Tools();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Tools.UserId == 0) { Response.Redirect("~/BackEnd/frmLogin.aspx"); }
+            if (string.IsNullOrEmpty(tools.UserId)) { Response.Redirect("~/BackEnd/frmLogin.aspx"); }
             if (!IsPostBack)
             {
-                lblWlcmUser.Text = "Welcome " + Tools.UserName;
+                lblWlcmUser.Text = "Welcome " + tools.UserName;
             }
         }
 
@@ -27,11 +28,11 @@ namespace TravelThings.Login
                 if (string.IsNullOrEmpty(strErrorMessage))
                 {
                     string strOldPassword = Tools.Encryptdata(txtPassword.Text.Trim());
-                    int intConf = Convert.ToInt32(Tools.ExecuteScalar("SELECT COUNT(*) FROM tbl_User_Details WHERE UD_User_Id = " + Tools.UserId.ToString()));
+                    int intConf = Convert.ToInt32(Tools.ExecuteScalar("SELECT COUNT(*) FROM tbl_User_Details WHERE UD_User_Id = " + tools.UserId));
                     if (intConf == 1)
                     {
                         string strPassword = Tools.Encryptdata(txtConfirmPsw.Text.Trim());
-                        Tools.ExecuteNonQuery("UPDATE tbl_User_Details SET UD_Password = '" + strPassword + "' WHERE UD_User_Id = '" + Tools.UserId.ToString() + "'");
+                        Tools.ExecuteNonQuery("UPDATE tbl_User_Details SET UD_Password = '" + strPassword + "' WHERE UD_User_Id = '" + tools.UserId + "'");
                         //ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Done!', 'Password Set Successfully', 'success')", true);
                         Response.Redirect("~/BackEnd/frmProfile.aspx");
                     }

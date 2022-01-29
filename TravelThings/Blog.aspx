@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Web_Forms/TravelThingMaster.Master" AutoEventWireup="true" CodeBehind="Blog.aspx.cs" Inherits="TravelThings.Web_Forms.Blog" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TravelThingMaster.Master" AutoEventWireup="true" CodeBehind="Blog.aspx.cs" Inherits="TravelThings.Web_Forms.Blog" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Travel Things Blog</title>
     <link rel="icon" type="image/gif/png" href="../Images/titleLogoSmall.png">

@@ -1,7 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Web_Forms/TravelThingMaster.Master" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="TravelThings.Web_Forms.Contact" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TravelThingMaster.Master" AutoEventWireup="true" CodeBehind="Features.aspx.cs" Inherits="TravelThings.Web_Forms.SenderDetails" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <title>Travel Things Contact</title>
+    <title>Travel Things Features</title>
     <link rel="icon" type="image/gif/png" href="../Images/titleLogoSmall.png">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="TraverlThingMasterContentPlaceHolder" runat="server">
@@ -24,7 +24,7 @@
                     <div class="col-12">
                         <div class="row justify-content-center">
                             <div class="col-md-7 text-center hero-text">
-                                <h1 data-aos="fade-up" data-aos-delay="">Get in touch</h1>
+                                <h1 data-aos="fade-up" data-aos-delay="">SoftLand Features</h1>
                                 <p class="mb-5" data-aos="fade-up" data-aos-delay="100">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                             </div>
                         </div>
@@ -34,78 +34,71 @@
 
         </div>
 
-        <div class="site-section">
+
+
+        <div class="site-section pb-0">
             <div class="container">
-                <div class="row mb-5 align-items-end">
-                    <div class="col-md-6" data-aos="fade-up">
-
-                        <h2>Contact Form</h2>
-                        <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam necessitatibus incidunt ut officiis explicabo inventore.</p>
+                <div class="row align-items-center">
+                    <div class="col-md-4 mr-auto">
+                        <h2 class="mb-4">Seamlessly Communicate</h2>
+                        <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur at reprehenderit optio, laudantium eius quod, eum maxime molestiae porro omnis. Dolores aspernatur delectus impedit incidunt dolore mollitia esse natus beatae.</p>
+                        <p><a href="#">Read More</a></p>
                     </div>
-
-                </div>
-
-                <div class="row">
-                    <div class="col-md-4 ml-auto order-2" data-aos="fade-up">
-                        <ul class="list-unstyled">
-                            <li class="mb-3">
-                                <strong class="d-block mb-1">Address</strong>
-                                <span>203 Fake St. Mountain View, San Francisco, California, USA</span>
-                            </li>
-                            <li class="mb-3">
-                                <strong class="d-block mb-1">Phone</strong>
-                                <span>+1 232 3235 324</span>
-                            </li>
-                            <li class="mb-3">
-                                <strong class="d-block mb-1">Email</strong>
-                                <span>youremail@domain.com</span>
-                            </li>
-                        </ul>
+                    <div class="col-md-6" data-aos="fade-left">
+                        <img src="../Template/img/undraw_svg_2.svg" alt="Image" class="img-fluid">
                     </div>
-
-                    <div class="col-md-6 mb-5 mb-md-0" data-aos="fade-up">
-                        <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-
-                            <div class="row">
-                                <div class="col-md-6 form-group">
-                                    <label for="name">Name</label>
-                                    <input type="text" name="name" class="form-control" id="name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                                    <div class="validate"></div>
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <label for="name">Email</label>
-                                    <input type="email" class="form-control" name="email" id="email" data-rule="email" data-msg="Please enter a valid email" />
-                                    <div class="validate"></div>
-                                </div>
-                                <div class="col-md-12 form-group">
-                                    <label for="name">Subject</label>
-                                    <input type="text" class="form-control" name="subject" id="subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-                                    <div class="validate"></div>
-                                </div>
-                                <div class="col-md-12 form-group">
-                                    <label for="name">Message</label>
-                                    <textarea class="form-control" name="message" cols="30" rows="10" data-rule="required" data-msg="Please write something for us"></textarea>
-                                    <div class="validate"></div>
-                                </div>
-
-
-                                <div class="col-md-12 mb-3">
-                                    <div class="loading">Loading</div>
-                                    <div class="error-message"></div>
-                                    <div class="sent-message">Your message has been sent. Thank you!</div>
-                                </div>
-
-                                <div class="col-md-6 form-group">
-                                    <input type="submit" class="btn btn-primary d-block w-100" value="Send Message">
-                                </div>
-                            </div>
-
-                        </form>
-                    </div>
-
                 </div>
             </div>
         </div>
+        <!-- .site-section -->
+
+        <div class="site-section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-4 ml-auto order-2">
+                        <h2 class="mb-4">Gather Feedback</h2>
+                        <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur at reprehenderit optio, laudantium eius quod, eum maxime molestiae porro omnis. Dolores aspernatur delectus impedit incidunt dolore mollitia esse natus beatae.</p>
+                        <p><a href="#">Read More</a></p>
+                    </div>
+                    <div class="col-md-6" data-aos="fade-right">
+                        <img src="../Template/img/undraw_svg_3.svg" alt="Image" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- .site-section -->
+
+        <div class="site-section pb-0">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-4 mr-auto">
+                        <h2 class="mb-4">Present Designs Inspiration</h2>
+                        <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur at reprehenderit optio, laudantium eius quod, eum maxime molestiae porro omnis. Dolores aspernatur delectus impedit incidunt dolore mollitia esse natus beatae.</p>
+                        <p><a href="#">Read More</a></p>
+                    </div>
+                    <div class="col-md-6" data-aos="fade-left">
+                        <img src="../Template/img/undraw_svg_3.svg" alt="Image" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- .site-section -->
+
+        <div class="site-section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-4 ml-auto order-2">
+                        <h2 class="mb-4">Powerful App Design </h2>
+                        <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur at reprehenderit optio, laudantium eius quod, eum maxime molestiae porro omnis. Dolores aspernatur delectus impedit incidunt dolore mollitia esse natus beatae.</p>
+                        <p><a href="#">Read More</a></p>
+                    </div>
+                    <div class="col-md-6" data-aos="fade-right">
+                        <img src="../Template/img/undraw_svg_4.svg" alt="Image" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- .site-section -->
 
 
         <div class="site-section border-top border-bottom">
@@ -134,7 +127,7 @@
 
 
                                 <p class="review-user">
-                                    <img src="../Template/img/person_1.jpg" alt="Image" class="img-fluid rounded-circle mb-3">
+                                    <img src="img/person_1.jpg" alt="Image" class="img-fluid rounded-circle mb-3">
                                     <span class="d-block">
                                         <span class="text-black">Jean Doe</span>, &mdash; App User
                                     </span>

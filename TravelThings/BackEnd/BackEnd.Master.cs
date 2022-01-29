@@ -10,12 +10,13 @@ namespace TravelThings.BackEnd
 {
     public partial class BackEnd : System.Web.UI.MasterPage
     {
+        Tools tools = new Tools();
         protected void Page_Load(object sender, EventArgs e)
         {
             
             if (!this.IsPostBack)
             {
-                lbProfile.Text = Tools.UserName;
+                lbProfile.Text = tools.UserName;
                 //lbDashboard.CssClass = "Clicked";
             }
             //else
