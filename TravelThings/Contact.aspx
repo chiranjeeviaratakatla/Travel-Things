@@ -24,8 +24,8 @@
                     <div class="col-12">
                         <div class="row justify-content-center">
                             <div class="col-md-7 text-center hero-text">
-                                <h1 data-aos="fade-up" data-aos-delay="">Get in touch</h1>
-                                <p class="mb-5" data-aos="fade-up" data-aos-delay="100">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                <h1 data-aos="fade-up" data-aos-delay="">How can we Help?</h1>
+                                <p class="mb-5" data-aos="fade-up" data-aos-delay="100">Please get in touch and our expert support team will answer all your questions.</p>
                             </div>
                         </div>
                     </div>
@@ -50,15 +50,15 @@
                         <ul class="list-unstyled">
                             <li class="mb-3">
                                 <strong class="d-block mb-1">Address</strong>
-                                <span>203 Fake St. Mountain View, San Francisco, California, USA</span>
+                                <span>413, Priyadharsani Street, Tatipatti, Gajapati, Odisha, India.</span>
                             </li>
                             <li class="mb-3">
                                 <strong class="d-block mb-1">Phone</strong>
-                                <span>+1 232 3235 324</span>
+                                <span>+91 6301295041</span>
                             </li>
                             <li class="mb-3">
                                 <strong class="d-block mb-1">Email</strong>
-                                <span>youremail@domain.com</span>
+                                <span>contact@travelthings.co.in</span>
                             </li>
                         </ul>
                     </div>
@@ -89,11 +89,11 @@
                                 </div>
 
 
-                                <div class="col-md-12 mb-3">
+                              <%--  <div class="col-md-12 mb-3">
                                     <div class="loading">Loading</div>
                                     <div class="error-message"></div>
                                     <div class="sent-message">Your message has been sent. Thank you!</div>
-                                </div>
+                                </div>--%>
 
                                 <div class="col-md-6 form-group">
                                     <input type="submit" class="btn btn-primary d-block w-100" value="Send Message">
@@ -108,7 +108,7 @@
         </div>
 
 
-        <div class="site-section border-top border-bottom">
+        <%--<div class="site-section border-top border-bottom">
             <div class="container">
                 <div class="row justify-content-center text-center mb-5">
                     <div class="col-md-4">
@@ -194,7 +194,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>--%>
 
 
 
@@ -202,7 +202,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-6 mr-auto text-center text-md-left mb-5 mb-md-0">
-                        <h2>Starts Publishing Your Apps</h2>
+                        <h2>Download App</h2>
                     </div>
                     <div class="col-md-5 text-center text-md-right">
                         <p><a href="#" class="btn"><span class="icofont-brand-apple mr-3"></span>App store</a> <a href="#" class="btn"><span class="icofont-ui-play mr-3"></span>Google play</a></p>

@@ -21,6 +21,7 @@ namespace TravelThings.Web_Forms
             {
                 tools.UserId = string.Empty;
                 tools.UserName = string.Empty;
+                RegOtpVisible(Visible.Register);
             }
 
         }
@@ -32,7 +33,7 @@ namespace TravelThings.Web_Forms
                 ErrorMessage = "Please Enter Name.";
             else if (string.IsNullOrEmpty(txtPhoneNo.Text))
                 ErrorMessage = "Please Enter Phone Number.";
-            else if (txtPhoneNo.Text.Length != 10)
+            else if (txtPhoneNo.Text.Trim().Length != 10)
                 ErrorMessage = "Please Enter Valid 10 Digit Phone Number.";
 
             return ErrorMessage;
@@ -42,6 +43,7 @@ namespace TravelThings.Web_Forms
         {
             try
             {
+                //RegOtpVisible(Visible.OTP);
                 string ErrorMessage = string.Empty;
                 if (string.IsNullOrEmpty(ErrorMessage = DataValidation()))
                 {
@@ -53,7 +55,6 @@ namespace TravelThings.Web_Forms
                         if (dt.Rows[0]["USER_TYPE"].ToString() == "EXISTS")
                         {
                             ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', 'Phone Number Already Registered', 'warning')", true);
-                            // ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "ConformLogin()", true);
                         }
                         else
                         {
@@ -70,9 +71,55 @@ namespace TravelThings.Web_Forms
             catch (Exception ex)
             {
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
-                //Response.Write(Tools.Alert(ex.Message));
+            }
+        }
+
+        private void RegOtpVisible(Enum RegOtp)
+        {
+            switch (RegOtp)
+            {
+                case (Visible.Register):
+                    {
+                        lblName.Visible = true;
+                        lblPhoneNo.Visible = true;
+                        txtName.Visible = true;
+                        txtPhoneNo.Visible = true;
+                        btnRegister.Visible = true;
+
+                        txtOTP.Visible = false;
+                        btnCheckOTP.Visible = false;
+                        lblOtpName.Visible = false;
+                        lblMessage.Visible = false;
+                        lblTimeLimit.Visible = false;
+                        btnReSendOtp.Visible = false;
+
+                        break;
+                    }
+                case (Visible.OTP):
+                    {
+                        txtOTP.Visible = true;
+                        btnCheckOTP.Visible = true;
+                        lblOtpName.Visible = true;
+                        lblMessage.Visible = true;
+                        lblTimeLimit.Visible = true;
+                        btnReSendOtp.Visible = true;
+
+                        lblName.Visible = false;
+                        lblPhoneNo.Visible = false;
+                        txtName.Visible = false;
+                        txtPhoneNo.Visible = false;
+                        btnRegister.Visible = false;
+                       
+                        break;
+                    }
             }
 
+        }
+
+        private enum Visible
+        {
+            OTP,
+            Register
         }
     }
 }

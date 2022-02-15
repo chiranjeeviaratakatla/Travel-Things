@@ -1,10 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="frmSetPassword.aspx.cs" Inherits="TravelThings.Login.SetPassword" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="frmCheckOTP.aspx.cs" Inherits="TravelThings.Login.frmCheckOTP" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Set Password - Travel Things </title>
+    <title>Check OTP - Travel Things</title>
     <link rel="icon" type="image/gif/png" href="../Images/titleLogoSmall.png" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -34,23 +34,18 @@
                                 <h3>
                                     <asp:Image ID="imgLogo" ImageUrl="~/Images/LogoTTLogin.png" Width="200px" runat="server" Height="150px" />
                                 </h3>
-                                <h2 class="text-center">Set Password</h2>
-                                <asp:Label ID="lblWlcmUser" runat="server"></asp:Label>
+                                <h2 class="text-center">Please enter the OTP</h2>
+                                <h4 class="text-center"><asp:Label ID="lblMessage" runat="server" Text="Sent to your registered mobile #:973xxxx5643"></asp:Label></h4>
+                                <asp:Label ID="lblTimeLimit" runat="server" Text="This OTP will expire in 5 munites."></asp:Label>
                                 <div class="panel-body">
                                     <div class="form-group">
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="fa fa-lock fa-1x"></i></span>
-                                            <asp:TextBox ID="txtPassword" placeholder="New Password" runat="server" TextMode="Password" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox ID="txtOTP" placeholder="Please Enter OTP" runat="server" TextMode="Number" MaxLength="6" CssClass="form-control"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><i class="fa fa-lock fa-1x"></i></span>
-                                            <asp:TextBox ID="txtConfirmPsw" placeholder="Confirm Password" TextMode="Password" runat="server" CssClass="form-control"></asp:TextBox>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <asp:Button ID="btnSetPassowrd" runat="server" CssClass="btn btn-primary btn-block" Text="Set Password" OnClick="btnSetPassowrd_Click" />
+                                        <asp:Button ID="btnCheckOTP" runat="server" CssClass="btn btn-primary btn-block" Text="Velidate OTP" />
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center mb-2">

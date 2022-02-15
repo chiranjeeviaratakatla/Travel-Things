@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Travel Things </title>
+    <title>Frogot Password - Travel Things </title>
     <link rel="icon" type="image/gif/png" href="../Images/titleLogoSmall.png">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">

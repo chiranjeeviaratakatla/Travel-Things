@@ -83,9 +83,6 @@
                         <div class="row align-items-center">
 
                             <div class="col-6 col-lg-2">
-                                <%--<img src="Images/TravelThingsLogo.png" alt="Smiley face">--%>
-                                <%--<asp:Image ID="Logo" ImageUrl="~/Images/TravelThingsLogo.png" runat="server" />--%>
-                                
                                 <h1 class="mb-0 site-logo">
                                     <a href="index.aspx" class="mb-0"><asp:Image ID="Logo" ImageUrl="~/Images/LogoTTHome.png" Height="70px" Width="150px" runat="server" /></a></h1>
                             </div>
@@ -94,39 +91,26 @@
                                 <nav class="site-navigation position-relative text-right" role="navigation">
 
                                     <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                                        <%--<li class="active"><a href="index.html" class="nav-link">Home</a></li>--%>
                                         <li><asp:HyperLink ID="hlHome" NavigateUrl="~/Index.aspx" CssClass="nav-link" runat="server">Home</asp:HyperLink></li>
                                         <li><asp:HyperLink ID="hlFeatures" NavigateUrl="~/Features.aspx" CssClass="nav-link" runat="server">Features</asp:HyperLink></li>
-                                        <%--<li><a href="features.html" class="nav-link">Features</a></li>--%>
-                                        <%--<li><a href="pricing.html" class="nav-link">Pricing</a></li>--%>
-
-                                        <li class="has-children">
-                                            <%--<asp:HyperLink ID="hlBlogMain" NavigateUrl="~/Blog.aspx" CssClass="nav-link" runat="server">Blog</asp:HyperLink>--%>
+                                        <%--<li class="has-children">
                                             <a class="nav-link">Blog</a>
                                             <ul class="dropdown">
                                                 <li><asp:HyperLink ID="hlBlog" NavigateUrl="~/Blog.aspx" CssClass="nav-link" runat="server">Blog</asp:HyperLink></li>
-                                                <%--<li><a href="blog.html" class="nav-link">Blog</a></li>--%>
                                                 <li><asp:HyperLink ID="hlBlogSingle" NavigateUrl="~/Blog.aspx" CssClass="nav-link" runat="server">Blog Sigle</asp:HyperLink></li>
-                                                <%--<li><a href="blog-single.html" class="nav-link">Blog Sigle</a></li>--%>
                                             </ul>
-                                        </li>
+                                        </li>--%>
                                         <li><asp:HyperLink ID="hlContact" NavigateUrl="~/Contact.aspx" CssClass="nav-link" runat="server">Contact</asp:HyperLink></li>
-                                        <%--<li><a href="contact.html" class="nav-link">Contact</a></li>--%>
-                                        <%--<a href="contact.html" class="nav-link">Login</a>--%>
                                         <li><asp:HyperLink ID="hlLogin" NavigateUrl="~/Login/frmLogin.aspx" CssClass="nav-link" runat="server">Login</asp:HyperLink></li>
                                     </ul>
                                 </nav>
                             </div>
-
-
                             <div class="col-6 d-inline-block d-lg-none ml-md-0 py-3" style="position: relative; top: 3px;">
-
                                 <a href="#" class="burger site-menu-toggle js-menu-toggle" data-toggle="collapse"
                                     data-target="#main-navbar">
                                     <span></span>
                                 </a>
                             </div>
-
                         </div>
                     </div>
 
@@ -140,10 +124,11 @@
                                <footer class="footer" role="contentinfo">
       <div class="container">
         <div class="row">
-          <div class="col-md-4 mb-4 mb-md-0">
-            <h3>About SoftLand</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius ea delectus pariatur, numquam aperiam
-              dolore nam optio dolorem facilis itaque voluptatum recusandae deleniti minus animi.</p>
+          <div class="col-md-6 mb-6 mb-md-0">
+            <h3>About Travel Things</h3>
+            <p>TravelThings is a courier delivery application which simplifies the Parcel hassle-free delivery, where customers can book their package or parcel 
+delivery slot, to be picked up and safely delivered to the recipient within just a few clicks. The application offers  user-friendly features and redefines parcel delivery with simplicity. 
+</p>
             <p class="social">
               <a href="#"><span class="icofont-twitter"></span></a>
               <a href="#"><span class="icofont-facebook"></span></a>
@@ -151,18 +136,20 @@
               <a href="#"><span class="icofont-behance"></span></a>
             </p>
           </div>
-          <div class="col-md-7 ml-auto">
+          <div class="col-md-6 ml-auto">
             <div class="row site-section pt-0">
+               <%-- <div class="col-md-4 mb-4 mb-md-0">
+                    </div>--%>
               <div class="col-md-4 mb-4 mb-md-0">
                 <h3>Navigation</h3>
                 <ul class="list-unstyled">
-                  <li><a href="#">Pricing</a></li>
-                  <li><a href="#">Features</a></li>
-                  <li><a href="#">Blog</a></li>
-                  <li><a href="#">Contact</a></li>
+                  <li><a href="Login/frmLogin.aspx">Login</a></li>
+                  <li><a href="Features.aspx">Features</a></li>
+                  <li><a href="Blog.aspx">Blog</a></li>
+                  <li><a href="Contact.aspx">Contact</a></li>
                 </ul>
               </div>
-              <div class="col-md-4 mb-4 mb-md-0">
+              <%--<div class="col-md-4 mb-4 mb-md-0">
                 <h3>Services</h3>
                 <ul class="list-unstyled">
                   <li><a href="#">Team</a></li>
@@ -170,7 +157,7 @@
                   <li><a href="#">Todos</a></li>
                   <li><a href="#">Events</a></li>
                 </ul>
-              </div>
+              </div>--%>
               <div class="col-md-4 mb-4 mb-md-0">
                 <h3>Downloads</h3>
                 <ul class="list-unstyled">
@@ -184,15 +171,8 @@
 
         <div class="row justify-content-center text-center">
           <div class="col-md-7">
-            <p class="copyright">&copy; Copyright SoftLand. All Rights Reserved</p>
+            <p class="copyright">&copy; Copyright <a href="https://travelthins.co.in/">TravelThings</a>. All Rights Reserved.</p>
             <div class="credits">
-              <!--
-                All the links in the footer should remain intact.
-                You can delete the links only if you purchased the pro version.
-                Licensing information: https://bootstrapmade.com/license/
-                Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=SoftLand
-              -->
-              Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
             </div>
           </div>
         </div>
@@ -202,9 +182,7 @@
                
             </div>
             <!-- .site-wrap -->
-
             <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
-
             <!-- Vendor JS Files -->
             <script src="../Template/vendor/jquery/jquery.min.js"></script>
             <script src="../Template/vendor/jquery/jquery-migrate.min.js"></script>

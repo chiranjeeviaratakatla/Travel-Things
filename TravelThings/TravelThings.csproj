@@ -82,6 +82,8 @@
     <Content Include="BackEnd\frmAdmin.aspx" />
     <Content Include="BackEnd\JavaScript\CommonFunctions.js" />
     <Content Include="Helpers\LoginValidation.js" />
+    <Content Include="Images\LogoTTHome - Copy.png" />
+    <Content Include="Login\frmCheckOTP.aspx" />
     <Content Include="Login\frmForgotPassword.aspx" />
     <Content Include="BackEnd\frmDashboard.aspx" />
     <Content Include="Login\frmLogin.aspx" />
@@ -127,6 +129,10 @@
     <Content Include="Images\TravelThingsLogo.jpg" />
     <Content Include="Images\TravelThingsLogo.png" />
     <Content Include="Login\frmSetPassword.aspx" />
+    <Content Include="Template\css\scss\Readme.txt" />
+    <Content Include="Template\css\style.css" />
+    <Content Include="Template\forms\contact.php" />
+    <Content Include="Template\forms\Readme.txt" />
     <Content Include="Template\img\apple-touch-icon.png" />
     <Content Include="Template\img\favicon.png" />
     <Content Include="Template\img\hero-bg.jpg" />
@@ -143,6 +149,41 @@
     <Content Include="Template\img\undraw_svg_2.svg" />
     <Content Include="Template\img\undraw_svg_3.svg" />
     <Content Include="Template\img\undraw_svg_4.svg" />
+    <Content Include="Template\js\main.js" />
+    <Content Include="Template\vendor\aos\aos.css" />
+    <Content Include="Template\vendor\aos\aos.js" />
+    <Content Include="Template\vendor\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="Template\vendor\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="Template\vendor\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="Template\vendor\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="Template\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="Template\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Template\vendor\bootstrap\js\bootstrap.bundle.js" />
+    <Content Include="Template\vendor\bootstrap\js\bootstrap.bundle.min.js" />
+    <Content Include="Template\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="Template\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Template\vendor\easing\easing.js" />
+    <Content Include="Template\vendor\easing\easing.min.js" />
+    <Content Include="Template\vendor\icofont\icofont.min.css" />
+    <Content Include="Template\vendor\jquery\jquery-migrate.min.js" />
+    <Content Include="Template\vendor\jquery\jquery.min.js" />
+    <Content Include="Template\vendor\line-awesome\css\line-awesome.css" />
+    <Content Include="Template\vendor\line-awesome\css\line-awesome.min.css" />
+    <Content Include="Template\vendor\line-awesome\fonts\la-brands-400.svg" />
+    <Content Include="Template\vendor\line-awesome\fonts\la-regular-400.svg" />
+    <Content Include="Template\vendor\line-awesome\fonts\la-solid-900.svg" />
+    <Content Include="Template\vendor\owlcarousel\assets\ajax-loader.gif" />
+    <Content Include="Template\vendor\owlcarousel\assets\owl.carousel.css" />
+    <Content Include="Template\vendor\owlcarousel\assets\owl.carousel.min.css" />
+    <Content Include="Template\vendor\owlcarousel\assets\owl.theme.default.css" />
+    <Content Include="Template\vendor\owlcarousel\assets\owl.theme.default.min.css" />
+    <Content Include="Template\vendor\owlcarousel\assets\owl.theme.green.css" />
+    <Content Include="Template\vendor\owlcarousel\assets\owl.theme.green.min.css" />
+    <Content Include="Template\vendor\owlcarousel\assets\owl.video.play.png" />
+    <Content Include="Template\vendor\owlcarousel\owl.carousel.js" />
+    <Content Include="Template\vendor\owlcarousel\owl.carousel.min.js" />
+    <Content Include="Template\vendor\php-email-form\validate.js" />
+    <Content Include="Template\vendor\sticky\sticky.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -172,6 +213,13 @@
     </Compile>
     <Compile Include="BackEnd\State.ashx.cs">
       <DependentUpon>State.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Login\frmCheckOTP.aspx.cs">
+      <DependentUpon>frmCheckOTP.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login\frmCheckOTP.aspx.designer.cs">
+      <DependentUpon>frmCheckOTP.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login\frmForgotPassword.aspx.cs">
       <DependentUpon>frmForgotPassword.aspx</DependentUpon>
@@ -308,6 +356,31 @@
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\local.pubxml" />
+    <Content Include="Template\vendor\bootstrap\css\bootstrap-grid.css.map" />
+    <Content Include="Template\vendor\bootstrap\css\bootstrap-grid.min.css.map" />
+    <Content Include="Template\vendor\bootstrap\css\bootstrap-reboot.css.map" />
+    <Content Include="Template\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Template\vendor\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Template\vendor\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Template\vendor\bootstrap\js\bootstrap.bundle.js.map" />
+    <Content Include="Template\vendor\bootstrap\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Template\vendor\bootstrap\js\bootstrap.js.map" />
+    <Content Include="Template\vendor\bootstrap\js\bootstrap.min.js.map" />
+    <Content Include="Template\vendor\icofont\fonts\icofont.woff" />
+    <Content Include="Template\vendor\icofont\fonts\icofont.woff2" />
+    <Content Include="Template\vendor\line-awesome\fonts\la-brands-400.eot" />
+    <Content Include="Template\vendor\line-awesome\fonts\la-brands-400.ttf" />
+    <Content Include="Template\vendor\line-awesome\fonts\la-brands-400.woff" />
+    <Content Include="Template\vendor\line-awesome\fonts\la-brands-400.woff2" />
+    <Content Include="Template\vendor\line-awesome\fonts\la-regular-400.eot" />
+    <Content Include="Template\vendor\line-awesome\fonts\la-regular-400.ttf" />
+    <Content Include="Template\vendor\line-awesome\fonts\la-regular-400.woff" />
+    <Content Include="Template\vendor\line-awesome\fonts\la-regular-400.woff2" />
+    <Content Include="Template\vendor\line-awesome\fonts\la-solid-900.eot" />
+    <Content Include="Template\vendor\line-awesome\fonts\la-solid-900.ttf" />
+    <Content Include="Template\vendor\line-awesome\fonts\la-solid-900.woff" />
+    <Content Include="Template\vendor\line-awesome\fonts\la-solid-900.woff2" />
+    <Content Include="Template\vendor\owlcarousel\LICENSE" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
