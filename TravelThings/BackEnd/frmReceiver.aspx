@@ -1,9 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BackEnd/BackEnd.Master" AutoEventWireup="true" CodeBehind="frmReceiver.aspx.cs" Inherits="TravelThings.BackEnd.frmReceiver" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <%-- Sweet Alert --%>
-    <script src="JavaScript/SweetAlert.js" type="text/javascript"></script>
-    <link href="Css/SweetAlert.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <%--<div style="width: 100%; height: 515px; overflow-y: scroll;">--%>

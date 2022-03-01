@@ -129,6 +129,8 @@
     <Content Include="Images\TravelThingsLogo.jpg" />
     <Content Include="Images\TravelThingsLogo.png" />
     <Content Include="Login\frmSetPassword.aspx" />
+    <Content Include="Template\css\jquery-ui.css" />
+    <Content Include="Template\js\jquery-ui.js" />
     <Content Include="Template\css\scss\Readme.txt" />
     <Content Include="Template\css\style.css" />
     <Content Include="Template\forms\contact.php" />
@@ -149,6 +151,7 @@
     <Content Include="Template\img\undraw_svg_2.svg" />
     <Content Include="Template\img\undraw_svg_3.svg" />
     <Content Include="Template\img\undraw_svg_4.svg" />
+    <Content Include="Template\js\jquery-1.9.1.js" />
     <Content Include="Template\js\main.js" />
     <Content Include="Template\vendor\aos\aos.css" />
     <Content Include="Template\vendor\aos\aos.js" />
@@ -214,6 +217,9 @@
     <Compile Include="BackEnd\State.ashx.cs">
       <DependentUpon>State.ashx</DependentUpon>
     </Compile>
+    <Compile Include="DAL\BusinessLogic\Helper.cs" />
+    <Compile Include="DAL\Interfaces\IHelper.cs" />
+    <Compile Include="Helpers\Constants.cs" />
     <Compile Include="Login\frmCheckOTP.aspx.cs">
       <DependentUpon>frmCheckOTP.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -355,6 +361,7 @@
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
     <None Include="Properties\PublishProfiles\local.pubxml" />
     <Content Include="Template\vendor\bootstrap\css\bootstrap-grid.css.map" />
     <Content Include="Template\vendor\bootstrap\css\bootstrap-grid.min.css.map" />
@@ -413,8 +420,7 @@
           <IISUrl>http://localhost:51129/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
+          <CustomServerUrl>http://travelthings.co.in/</CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>

@@ -221,9 +221,7 @@
 
                 </div>
                 <div class="col-md-6">
-
                     <div class="profile-head">
-
                         <h3>Welcome 
                             <asp:Label ID="lblWelUName" runat="server"></asp:Label></h3>
                         <p class="proile-rating">
@@ -233,157 +231,155 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-2 col-xs-12">
                     <asp:Button ID="btnEditProfile" runat="server" Text="Edit Profile" class="profile-edit-btn" OnClick="btnEditProfile_Click" />
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="profile-work">
-                    </div>
+               <div class="col-md-2 col-xs-12">
                 </div>
                 <div class="col-md-8">
-                    <div class="form-group col-sm-12 col-xs-12">
-
+                    <div class="col-sm-12 col-xs-12">
                         <asp:Button Text="Profile" BorderStyle="None" ID="tabProfile" OnClick="tabProfile_Click" CssClass="Initial" runat="server" />
                         <asp:Button Text="Address" BorderStyle="None" ID="tabAddress" OnClick="tabAddress_Click" CssClass="Initial" runat="server" />
                         <asp:Button Text="Change Password" BorderStyle="None" ID="tabChangePsw" OnClick="tabChangePsw_Click" CssClass="Initial" runat="server" />
                         <%--<asp:Button Text="Pyament" BorderStyle="None" ID="btnPayment" CssClass="Initial" runat="server" />--%>
                     </div>
-                    <asp:MultiView ID="MainViewProfile" runat="server">
-                        <asp:View runat="server" ID="viewProfile">
-                            <div class="form-group col-sm-12">
-                                <div class="col-sm-12">
-                                    <div class="col-sm-6">
-                                        <label>Name:</label>
+                    <div class="col-sm-12 col-xs-12">
+
+                        <asp:MultiView ID="MainViewProfile" runat="server">
+                            <asp:View runat="server" ID="viewProfile">
+                                <div class="form-group col-sm-12">
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-6">
+                                            <label>Name:</label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <asp:Label ID="lblUserName" runat="server"></asp:Label>
+                                        </div>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <asp:Label ID="lblUserName" runat="server"></asp:Label>
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-6">
+                                            <label>User Name:</label>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <asp:Label ID="lblPhoneNo" runat="server"></asp:Label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-6">
+                                            <label>Alternative Phone:</label>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <asp:Label ID="lblAltPhone" runat="server"></asp:Label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-6">
+                                            <label>Aadhar No:</label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <asp:Label ID="lblAadharNo" runat="server"></asp:Label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-6">
+                                            <label>Mail ID:</label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <asp:Label ID="lblEmailId" runat="server"></asp:Label>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-12">
-                                    <div class="col-sm-6">
-                                        <label>User Name:</label>
+                            </asp:View>
+
+                            <asp:View runat="server" ID="viewAddress">
+                                <div class="form-group col-sm-12">
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-6">
+                                            <label>Area:</label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <asp:Label ID="lblArea" runat="server"></asp:Label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-6">
+                                            <label>City:</label>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <asp:Label ID="lblCity" runat="server"></asp:Label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-6">
+                                            <label>State</label>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <asp:Label ID="lblState" runat="server"></asp:Label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-6">
+                                            <label>Pin Code</label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <asp:Label ID="lblPinCode" runat="server"></asp:Label>
+                                        </div>
                                     </div>
 
-                                    <div class="col-sm-6">
-                                        <asp:Label ID="lblPhoneNo" runat="server"></asp:Label>
-                                    </div>
                                 </div>
-                                <div class="col-sm-12">
-                                    <div class="col-sm-6">
-                                        <label>Alternative Phone:</label>
+                            </asp:View>
+                            <asp:View runat="server" ID="viewChangePsw">
+                                <div class="form-group col-sm-12">
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-6">
+                                            <label>Old Password</label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <asp:TextBox ID="txtOldPsw" TextMode="Password" runat="server" CssClass="form-control" placeholder="Enter Old Password"></asp:TextBox>
+                                        </div>
                                     </div>
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-6">
+                                            <label>New Password</label>
+                                        </div>
 
-                                    <div class="col-sm-6">
-                                        <asp:Label ID="lblAltPhone" runat="server"></asp:Label>
+                                        <div class="col-sm-6">
+                                            <asp:TextBox ID="txtNewPsw" TextMode="Password" runat="server" CssClass="form-control" placeholder="Enter New Password"></asp:TextBox>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-sm-12">
-                                    <div class="col-sm-6">
-                                        <label>Aadhar No:</label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <asp:Label ID="lblAadharNo" runat="server"></asp:Label>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12">
-                                    <div class="col-sm-6">
-                                        <label>Mail ID:</label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <asp:Label ID="lblEmailId" runat="server"></asp:Label>
-                                    </div>
-                                </div>
-                            </div>
-                        </asp:View>
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-6">
+                                            <label>Confirm Password</label>
+                                        </div>
 
-                        <asp:View runat="server" ID="viewAddress">
-                            <div class="form-group col-sm-12">
-                                <div class="col-sm-12">
-                                    <div class="col-sm-6">
-                                        <label>Area:</label>
+                                        <div class="col-sm-6">
+                                            <asp:TextBox ID="txtConformPsw" TextMode="Password" runat="server" CssClass="form-control" placeholder="Enter Confirm Password"></asp:TextBox>
+                                        </div>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <asp:Label ID="lblArea" runat="server"></asp:Label>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12">
-                                    <div class="col-sm-6">
-                                        <label>City:</label>
-                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-6">
+                                        </div>
 
-                                    <div class="col-sm-6">
-                                        <asp:Label ID="lblCity" runat="server"></asp:Label>
+                                        <div class="col-sm-6">
+                                            <asp:Button ID="btnChangePsw" runat="server" CssClass="btn btn-primary" Text="Change Password" OnClientClick="return ChaingPswValidation();" /><%--OnClick="btnChangePsw_Click"--%>
+                                            <asp:Button ID="btnClearPsw" runat="server" CssClass="btn btn-danger" Text="Clear" OnClick="btnClearPsw_Click" />
+                                            <asp:CheckBox ID="chkShowPws" runat="server" Visible="false" AutoPostBack="true" Text="Show Psw" OnCheckedChanged="chkShowPws_CheckedChanged" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input id="cbShowHidePassword" type="checkbox" onclick="ShowHidePassword();" />
+                                            <label for='cbShowHidePassword'>Show Password</label>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-12">
-                                    <div class="col-sm-6">
-                                        <label>State</label>
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                        <asp:Label ID="lblState" runat="server"></asp:Label>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12">
-                                    <div class="col-sm-6">
-                                        <label>Pin Code</label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <asp:Label ID="lblPinCode" runat="server"></asp:Label>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </asp:View>
-                        <asp:View runat="server" ID="viewChangePsw">
-                            <div class="form-group col-sm-12">
-                                <div class="col-sm-12">
-                                    <div class="col-sm-6">
-                                        <label>Old Password</label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <asp:TextBox ID="txtOldPsw" TextMode="Password" runat="server" CssClass="form-control" placeholder="Enter Old Password"></asp:TextBox>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12">
-                                    <div class="col-sm-6">
-                                        <label>New Password</label>
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                        <asp:TextBox ID="txtNewPsw" TextMode="Password" runat="server" CssClass="form-control" placeholder="Enter New Password"></asp:TextBox>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12">
-                                    <div class="col-sm-6">
-                                        <label>Confirm Password</label>
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                        <asp:TextBox ID="txtConformPsw" TextMode="Password" runat="server" CssClass="form-control" placeholder="Enter Confirm Password"></asp:TextBox>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12">
-                                    <div class="col-sm-6">
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                        <asp:Button ID="btnChangePsw" runat="server" CssClass="btn btn-primary" Text="Change Password" OnClientClick="return ChaingPswValidation();" /><%--OnClick="btnChangePsw_Click"--%>
-                                        <asp:Button ID="btnClearPsw" runat="server" CssClass="btn btn-danger" Text="Clear" OnClick="btnClearPsw_Click" />
-                                        <asp:CheckBox ID="chkShowPws" runat="server" Visible="false" AutoPostBack="true" Text="Show Psw" OnCheckedChanged="chkShowPws_CheckedChanged" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input id="cbShowHidePassword" type="checkbox" onclick="ShowHidePassword();" />
-                                        <label for='cbShowHidePassword'>Show Password</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </asp:View>
-                    </asp:MultiView>
+                            </asp:View>
+                        </asp:MultiView>
+                    </div>
                 </div>
             </div>
         </div>

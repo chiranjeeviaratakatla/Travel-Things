@@ -16,10 +16,12 @@ namespace TravelThings.BackEnd
         {
             try
             {
-                if (string.IsNullOrEmpty(tools.UserId))
-                    Response.Redirect("~/Login/frmLogin.aspx");
+                
                 if (!IsPostBack)
                 {
+                    HiddenField UserID = (HiddenField)Master.FindControl("hfUserID");
+                    if (string.IsNullOrEmpty(UserID.Value)) { UserID.Value = tools.UserId; }
+                    if (string.IsNullOrEmpty(UserID.Value)) { Response.Redirect("~/Login/frmLogin.aspx"); }
                     LinkButton li = (LinkButton)Master.FindControl("lbReports");
                     li.CssClass = "Clicked";
                     if (Request.QueryString["Item"] != null)

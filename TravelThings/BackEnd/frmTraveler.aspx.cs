@@ -9,6 +9,7 @@ using System.Data.SqlClient;
 using TravelThings.DAL.Interfaces;
 using TravelThings.DAL.BusinessLogic;
 using TravelThings.Helpers;
+using System.Globalization;
 
 namespace TravelThings.BackEnd
 {
@@ -16,15 +17,15 @@ namespace TravelThings.BackEnd
     {
         ItransactionAccess dll = new TransactionAccess();
         Tools tools = new Tools();
-        //private string strTransId;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
-                if (string.IsNullOrEmpty(tools.UserId))
-                    Response.Redirect("~/Login/frmLogin.aspx");
                 if (!IsPostBack)
                 {
+                    HiddenField UserID = (HiddenField)Master.FindControl("hfUserID");
+                    if (string.IsNullOrEmpty(UserID.Value)) { UserID.Value = tools.UserId; }
+                    if (string.IsNullOrEmpty(UserID.Value)) { Response.Redirect("~/Login/frmLogin.aspx"); }
                     GetTravelDetails();
                     GetVehicleDetails();
                     LinkButton li = (LinkButton)Master.FindControl("lbTraveler");
@@ -50,6 +51,7 @@ namespace TravelThings.BackEnd
                 string strError = ValidateFields();
                 if (string.IsNullOrEmpty(strError))
                 {
+                    
                     bool blnResult = dll.InsertTransactionDetails(tools.UserId, txtFrom.Text.Trim(), txtTo.Text.Trim(), Convert.ToInt32(txtWeightCanCarry.Text.Trim()), Convert.ToDateTime(txtStartDate.Text.Trim()), Convert.ToDateTime(txtEndDate.Text.Trim()), ddlTravelBy.SelectedItem.Text);
                     if (blnResult)
                     {
@@ -79,8 +81,12 @@ namespace TravelThings.BackEnd
                 btnEditJourney.Visible = false;
                 txtFrom.Text = string.Empty;
                 txtTo.Text = string.Empty;
-                txtStartDate.Text = DateTime.Today.ToString("yyyy-MM-dd");
-                txtEndDate.Text = DateTime.Today.AddDays(1).ToString("yyyy-MM-dd");
+                txtStartDate.Text = DateTime.Now.ToLocalTime().ToString("yyyy-MM-ddTHH:mm");
+                txtEndDate.Text = DateTime.Today.AddDays(1).ToLocalTime().ToString("yyyy-MM-ddTHH:mm");
+                txtStartDate.Attributes["min"] = DateTime.Now.ToLocalTime().ToString("yyyy-MM-ddTHH:mm");
+                txtEndDate.Attributes["min"] = DateTime.Now.ToLocalTime().ToString("yyyy-MM-ddTHH:mm");
+                txtStartDate.Attributes["max"] = DateTime.Today.AddDays(90).ToLocalTime().ToString("yyyy-MM-ddTHH:mm");
+                txtEndDate.Attributes["max"] = DateTime.Today.AddDays(90).ToLocalTime().ToString("yyyy-MM-ddTHH:mm");
                 ddlTravelBy.SelectedItem.Text = "Select Travel By Vechicle";
                 txtWeightCanCarry.Text = string.Empty;
             }
@@ -158,8 +164,8 @@ namespace TravelThings.BackEnd
                     txtTo.Text = row.Cells[3].Text;
                     if (!string.IsNullOrEmpty(row.Cells[4].Text) && row.Cells[4].Text != "&nbsp;")
                         ddlTravelBy.SelectedItem.Text = row.Cells[4].Text;
-                    txtStartDate.Text = Convert.ToDateTime(row.Cells[5].Text).ToString("yyyy-MM-dd");
-                    txtEndDate.Text = Convert.ToDateTime(row.Cells[6].Text).ToString("yyyy-MM-dd");
+                    txtStartDate.Text = DateTime.ParseExact(row.Cells[5].Text, "yyyy-MM-dd H:mm:ss tt", CultureInfo.InvariantCulture).ToLocalTime().ToString("yyyy-MM-ddTHH:mm");
+                    txtEndDate.Text = Convert.ToDateTime(row.Cells[6].Text).ToLocalTime().ToString("yyyy-MM-ddTHH:mm");
                     if (!string.IsNullOrEmpty(row.Cells[7].Text) && row.Cells[7].Text != "&nbsp;")
                         txtWeightCanCarry.Text = row.Cells[7].Text;
                 }
@@ -214,16 +220,27 @@ namespace TravelThings.BackEnd
 
         private string ValidateFields()
         {
+            
             string strError = string.Empty;
             if (string.IsNullOrEmpty(txtFrom.Text.Trim()))
             {
                 txtFrom.Focus();
                 strError = "Please Enter From Address";
             }
+            else if (!Tools.CheckAddressExists(txtFrom.Text.Trim()))
+            {
+                txtFrom.Focus();
+                strError = "Invalid From Address";
+            }
             else if (string.IsNullOrEmpty(txtTo.Text.Trim()))
             {
                 txtTo.Focus();
                 strError = "Please Enter To Address";
+            }
+            else if (!Tools.CheckAddressExists(txtTo.Text.Trim()))
+            {
+                txtFrom.Focus();
+                strError = "Invalid To Address";
             }
             else if (ddlTravelBy.SelectedItem.Text == "Select Travel By Vechicle")
             {

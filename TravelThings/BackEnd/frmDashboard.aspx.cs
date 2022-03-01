@@ -18,9 +18,12 @@ namespace TravelThings.BackEnd
         Tools tools = new Tools();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(tools.UserId)) { Response.Redirect("~/Login/frmLogin.aspx"); }
             if (!IsPostBack)
             {
+
+                HiddenField UserID = (HiddenField)Master.FindControl("hfUserID");
+                if (string.IsNullOrEmpty(UserID.Value)) { UserID.Value = tools.UserId; }
+                if (string.IsNullOrEmpty(UserID.Value)) { Response.Redirect("~/Login/frmLogin.aspx"); }
                 LinkButton li = (LinkButton)Master.FindControl("lbDashboard");
                 li.CssClass = "Clicked";
                 GetTravelerDetails();

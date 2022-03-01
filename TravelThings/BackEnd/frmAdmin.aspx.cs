@@ -15,10 +15,11 @@ namespace TravelThings.BackEnd
         {
             try
             {
-                if (string.IsNullOrEmpty(tools.UserId))
-                    Response.Redirect("~/Login/frmLogin.aspx");
                 if (!this.IsPostBack)
                 {
+                    HiddenField UserID = (HiddenField)Master.FindControl("hfUserID");
+                    if (string.IsNullOrEmpty(UserID.Value)) { UserID.Value = tools.UserId; }
+                    if (string.IsNullOrEmpty(UserID.Value)) { Response.Redirect("~/Login/frmLogin.aspx"); }
                     tabUser.CssClass = "Clicked";
                     MainViewItem.ActiveViewIndex = 0;
                     Session["TabId"] = "0";

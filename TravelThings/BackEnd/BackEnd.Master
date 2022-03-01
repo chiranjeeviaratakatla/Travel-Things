@@ -20,6 +20,12 @@
     <link href="Css/CommonControls.css" rel="stylesheet" />
     <%-- font-awesome Icons --%>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+
+     <%-- JQuery --%> 
+    <link href="../Template/css/jquery-ui.css" rel="stylesheet" />
+    <script src="../Template/js/jquery-1.9.1.js"></script>
+    <script src="../Template/js/jquery-ui.js"></script>
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 
@@ -207,6 +213,7 @@
     <%--<div id="contents">--%>
     <form id="form1" runat="server">
         <div>
+            <asp:HiddenField ID="hfUserID" runat="server" />
             <nav class="navbar navbar-inverse">
                 <div class="container-fluid">
                     <div class="navbar-header">
@@ -222,16 +229,16 @@
                     <div class="collapse navbar-collapse" id="myNavbar">
                         <ul class="nav navbar-nav">
                             <li>
-                                <asp:LinkButton ID="lbDashboard" CssClass="Initial" Text="Dashboard" runat="server" PostBackUrl="~/BackEnd/frmDashboard.aspx"></asp:LinkButton>
+                                <asp:LinkButton ID="lbDashboard" CssClass="Initial" Text="Dashboard" runat="server" OnClick="lbDashboard_Click"></asp:LinkButton>
                                 <%--<asp:HyperLink ID="hlDashboard" CssClass="Initial" runat="server" NavigateUrl="~/BackEnd/frmDashboard.aspx">Dashboard</asp:HyperLink></li>--%>
                             </li>
                             <li>
                                 <%--<asp:HyperLink ID="hlSender" CssClass="Initial" runat="server" NavigateUrl="~/BackEnd/frmSender.aspx">Send</asp:HyperLink>--%>
-                                <asp:LinkButton ID="lbSender" CssClass="Initial" Text="Send" runat="server" PostBackUrl="~/BackEnd/frmSender.aspx"></asp:LinkButton>
+                                <asp:LinkButton ID="lbSender" CssClass="Initial" Text="Send" runat="server" OnClick="lbSender_Click"></asp:LinkButton>
                             </li>
                             <li>
                                 <%--<asp:HyperLink ID="hlTraveler" CssClass="Initial" runat="server" NavigateUrl="~/BackEnd/frmTraveler.aspx">Travel</asp:HyperLink>--%>
-                                <asp:LinkButton ID="lbTraveler" CssClass="Initial" Text="Travel" runat="server" PostBackUrl="~/BackEnd/frmTraveler.aspx"></asp:LinkButton>
+                                <asp:LinkButton ID="lbTraveler" CssClass="Initial" Text="Travel" runat="server" OnClick="lbTraveler_Click"></asp:LinkButton>
                             </li>
                             <li>
                                 <%--<asp:HyperLink ID="hlReciver" CssClass="Initial" runat="server" NavigateUrl="~/BackEnd/frmReceiver.aspx">Receive</asp:HyperLink>--%>
@@ -239,21 +246,21 @@
                             </li>
                             <li>
                                 <%--<asp:HyperLink ID="hlReciver" CssClass="Initial" runat="server" NavigateUrl="~/BackEnd/frmReceiver.aspx">Receive</asp:HyperLink>--%>
-                                <asp:LinkButton ID="lbReports" CssClass="Initial" Text="Reports" runat="server" PostBackUrl="~/BackEnd/frmReports.aspx"></asp:LinkButton>
+                                <asp:LinkButton ID="lbReports" CssClass="Initial" Text="Reports" runat="server" OnClick="lbReports_Click"></asp:LinkButton>
                             </li>
                             <li>
-                                <asp:LinkButton ID="lbAdmin" CssClass="Initial" Text="Admin" runat="server" PostBackUrl="~/BackEnd/frmAdmin.aspx"></asp:LinkButton>
+                                <asp:LinkButton ID="lbAdmin" CssClass="Initial" Text="Admin" runat="server" OnClick="lbAdmin_Click"></asp:LinkButton>
                             </li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
 
                             <li>
-                                <asp:LinkButton ID="lbProfile" CssClass="Initial" Text="Profile" runat="server" PostBackUrl="~/BackEnd/frmProfile.aspx"></asp:LinkButton>
+                                <asp:LinkButton ID="lbProfile" CssClass="Initial" Text="Profile" runat="server" OnClick="lbProfile_Click"></asp:LinkButton>
                                 <%--<asp:HyperLink ID="hlProfile" NavigateUrl="~/BackEnd/frmProfile.aspx" CssClass="Initial" runat="server"></asp:HyperLink>--%>
                             </li>
                             <li>
                                 <%--<asp:HyperLink ID="hlLogout" NavigateUrl="~/HomePage.aspx" CssClass="Initial" runat="server"><span>Logout</span></asp:HyperLink>--%>
-                                <asp:LinkButton ID="lbLogout" CssClass="Initial" Text="Logout" runat="server" PostBackUrl="~/Index.aspx"></asp:LinkButton>
+                                <asp:LinkButton ID="lbLogout" CssClass="Initial" Text="Logout" runat="server" OnClick="lbLogout_Click"></asp:LinkButton>
                             </li>
                             <%--<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>--%>
                         </ul>

@@ -13,9 +13,9 @@ namespace TravelThings.Login
         Tools tools = new Tools();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(tools.UserId)) { Response.Redirect("~/BackEnd/frmLogin.aspx"); }
             if (!IsPostBack)
             {
+                if (string.IsNullOrEmpty(tools.UserId)) { Response.Redirect("~/Login/frmLogin.aspx"); }
                 lblWlcmUser.Text = "Welcome " + tools.UserName;
             }
         }
@@ -67,7 +67,7 @@ namespace TravelThings.Login
                         strErrorMessage = "Please Enter Conform Password";
                     }
                 }
-                else if (txtPassword.Text.Trim() != txtConfirmPsw.Text.Trim())
+                else if (!string.Equals( txtPassword.Text.Trim(), txtConfirmPsw.Text.Trim()))
                 {
                     strErrorMessage = "Password and Confirm Password Must Match";
                 }

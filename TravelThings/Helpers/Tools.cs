@@ -7,12 +7,13 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Web.SessionState;
 using System.Web.UI;
+using TravelThings.DAL.Interfaces;
+using TravelThings.DAL.BusinessLogic;
 
 namespace TravelThings.Helpers
 {
     public class Tools : Page
     {
-        //private static readonly SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["conString"].ConnectionString.ToString());
         public string UserName
         {
             get { return Session["UserName"] as string; }
@@ -24,65 +25,6 @@ namespace TravelThings.Helpers
             set { Session["UserId"] = value; }
         }
         
-
-        public static string Alert(string Message)
-        {
-            System.Text.StringBuilder sb = new System.Text.StringBuilder();
-            sb.Append("<script type = 'text/javascript'>");
-            sb.Append("window.onload=function(){");
-            sb.Append("alert('");
-            sb.Append(Message);
-            sb.Append("')};");
-            sb.Append("</script>");
-            //ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", sb.ToString());
-            return sb.ToString();
-        }
-
-        //if (confirm('Are you sure you want to save this thing into the database?')) {
-        //  // Save it!
-        //  console.log('Thing was saved to the database.');
-        //} else {
-        //  // Do nothing!
-        //  console.log('Thing was not saved to the database.');
-        //}
-
-        //<script type = "text/javascript" language="javascript"> 
-        //function confirm_user()
-        //{
-        //    if (confirm("Are you sure you want to go home ?") == true)
-        //        return true;
-        //    else
-        //        return false;
-        //}
-        //</script>
-        public static string AlertConform(string Message)
-        {
-            System.Text.StringBuilder sb = new System.Text.StringBuilder();
-            sb.Append("<script type = 'text/javascript'>");
-            sb.Append("window.onload=function(){");
-            sb.Append("if (confirm('");
-            sb.Append(Message);
-            sb.Append("')){}};");
-            sb.Append("</script>");
-            //ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", sb.ToString());
-            return sb.ToString();
-        }
-        
-        //public static string CurrentUserName { get; set; }
-        //public static string CurrentUserId { get; set; }
-        //public string CurrentUserName
-        //{
-        //    get { return CurrentUserName; }
-        //    set { UserName = CurrentUserName; }
-        //}
-        //public string CurrentUserId
-        //{
-        //    get { return CurrentUserId; }
-        //    set { UserId = CurrentUserId; }
-        //}
-
-
-
         public static string Encryptdata(string password)
         {
             string strmsg = string.Empty;
@@ -119,6 +61,33 @@ namespace TravelThings.Helpers
                 chars[i] = validChars[random.Next(0, validChars.Length)];
             }
             return new string(chars);
+        }
+
+        public static bool CheckAddressExists(string strAddress)
+        {
+            bool IsExists = false;
+            try
+            {
+                IHelper Dll = new Helper();
+                string[] Address = splitAreaAndCity(strAddress);
+                if (Address.Length == 2)
+                    IsExists = Dll.CheckAddressExists(Address[0].ToString().Trim(), Address[1].ToString().Trim());
+                else
+                    IsExists = false;
+            }
+            catch
+            {
+                throw;
+            }
+            return IsExists;
+        }
+
+        private static string[] splitAreaAndCity(string strAddress)
+        {
+            string[] Address = strAddress.Split('(');
+            if (Address.Length > 1)
+                Address[1] = Address[1].Replace(")", "");
+            return Address;
         }
 
         public static bool ExecuteNonQuery(string strQuery)

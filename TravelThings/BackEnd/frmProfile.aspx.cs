@@ -21,9 +21,12 @@ namespace TravelThings.BackEnd
         {
             
             //MainView.ActiveViewIndex = 0;
-            if (string.IsNullOrEmpty(tools.UserId)) { Response.Redirect("~/Login/frmLogin.aspx"); }
+            
             if (!IsPostBack)
             {
+                HiddenField UserID = (HiddenField)Master.FindControl("hfUserID");
+                if (string.IsNullOrEmpty(UserID.Value)) { UserID.Value = tools.UserId; }
+                if (string.IsNullOrEmpty(UserID.Value)) { Response.Redirect("~/Login/frmLogin.aspx"); }
                 getUserDetails();
                 tabProfile.CssClass = "Clicked";
                 MainViewProfile.ActiveViewIndex = 0;
@@ -261,7 +264,6 @@ namespace TravelThings.BackEnd
             catch (Exception ex)
             {
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ex.Message + "', 'warning')", true);
-                Response.Write(Tools.Alert(ex.Message));
             }
         }
 

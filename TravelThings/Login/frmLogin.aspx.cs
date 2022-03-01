@@ -56,7 +56,7 @@ namespace TravelThings.BackEnd
                             //Response.Redirect("user.aspx");
                             tools.UserId = dtUserDetails.Rows[0]["UD_User_Id"].ToString();
                             tools.UserName = dtUserDetails.Rows[0]["UD_User_Name"].ToString();
-                            Response.Redirect("~/BackEnd/frmDashboard.aspx");
+                            Response.Redirect("~/BackEnd/frmDashboard.aspx",false);
                         }
                         else
                             ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', 'Your account is inactive. Please contact to helpdesk!', 'warning')", true);
@@ -72,7 +72,6 @@ namespace TravelThings.BackEnd
             catch (Exception ex)
             {
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', 'Something went Wrong. Please try Again!', 'warning')", true);
-                Response.Write(Tools.Alert(ex.Message));
             }
         }
 

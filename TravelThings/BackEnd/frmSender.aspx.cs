@@ -21,10 +21,12 @@ namespace TravelThings.BackEnd
         {
             try
             {
-                if (string.IsNullOrEmpty(tools.UserId))
-                    Response.Redirect("~/Login/frmLogin.aspx");
+
                 if (!this.IsPostBack)
                 {
+                    HiddenField UserID = (HiddenField)Master.FindControl("hfUserID");
+                    if (string.IsNullOrEmpty(UserID.Value)) { UserID.Value = tools.UserId; }
+                    if (string.IsNullOrEmpty(UserID.Value)) { Response.Redirect("~/Login/frmLogin.aspx"); }
                     tabItem.CssClass = "Clicked";
                     MainViewItem.ActiveViewIndex = 0;
                     Session["TabId"] = "0";
@@ -33,6 +35,7 @@ namespace TravelThings.BackEnd
                     li.CssClass = "Clicked";
                     btnPrevious.Visible = false;
                     btnNext.Visible = true;
+                    txtTillDate.Text = DateTime.Now.ToLocalTime().ToString("yyyy-MM-dd");
                     GetItemTypes();
                 }
             }
@@ -126,6 +129,28 @@ namespace TravelThings.BackEnd
         {
             try
             {
+                string ErrorMsg = string.Empty;
+                if (string.IsNullOrEmpty(txtFromAdd.Text.Trim()))
+                {
+                    ErrorMsg = Constants.EnterFromAddress;
+                }
+                else if (string.IsNullOrEmpty(txtToAdd.Text.Trim()))
+                {
+                    ErrorMsg = Constants.EnterToAddress;
+                }
+                else if (!Tools.CheckAddressExists(txtFromAdd.Text.Trim()))
+                {
+                    ErrorMsg = Constants.FromAddressError;
+                }
+                else if (!Tools.CheckAddressExists(txtToAdd.Text.Trim()))
+                {
+                    ErrorMsg = Constants.ToAddressError;
+                }
+                if (!string.IsNullOrEmpty(ErrorMsg))
+                {
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + ErrorMsg + "', 'warning')", true);
+                    return;
+                }
                 DataTable dtTravelers = dllTranc.GetAvailableTravelers(tools.UserId, txtFromAdd.Text.Trim(), txtToAdd.Text.Trim(), txtTillDate.Text.Trim());
                 gvTravelerAvailablity.DataSource = dtTravelers;
                 gvTravelerAvailablity.DataBind();
