@@ -31,6 +31,7 @@ namespace TravelThings.BackEnd
                     MainViewItem.ActiveViewIndex = 0;
                     Session["TabId"] = "0";
                     getItemDetails(gvItems);
+                    GridMobileView();
                     LinkButton li = (LinkButton)Master.FindControl("lbSender");
                     li.CssClass = "Clicked";
                     btnPrevious.Visible = false;
@@ -177,6 +178,7 @@ namespace TravelThings.BackEnd
                     DataTable dtItemDetails = dllTranc.InsertItemDetails(tools.UserId, txtItemName.Text.Trim(), txtItemDesc.Text.Trim(), txtWeight.Text.Trim(), Convert.ToInt32(ddlItemType.SelectedValue), txtRemarks.Text.Trim());
                     gvItems.DataSource = dtItemDetails;
                     gvItems.DataBind();
+                    GridMobileView();
                     ClearItems();
                     if (!blnShowPopUp)
                     {
@@ -553,6 +555,19 @@ namespace TravelThings.BackEnd
         {
             SaveItem(true);
             ClearItems();
+        }
+
+        private void GridMobileView()
+        {
+            gvItems.HeaderRow.Cells[1].Attributes["data-class"] = "expand";
+
+            //Attribute to hide column in Phone.
+            gvItems.HeaderRow.Cells[0].Attributes["data-hide"] = "phone";
+            gvItems.HeaderRow.Cells[2].Attributes["data-hide"] = "phone";
+            gvItems.HeaderRow.Cells[5].Attributes["data-hide"] = "phone";
+            gvItems.HeaderRow.Cells[4].Attributes["data-hide"] = "phone";
+            //Adds THEAD and TBODY to GridView.
+            gvItems.HeaderRow.TableSection = TableRowSection.TableHeader;
         }
     }
 }

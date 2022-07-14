@@ -10,6 +10,9 @@ using TravelThings.DAL.Interfaces;
 using TravelThings.DAL.BusinessLogic;
 using TravelThings.Helpers;
 using System.Globalization;
+using System.Net;
+using System.IO;
+using System.Text;
 
 namespace TravelThings.BackEnd
 {
@@ -27,6 +30,19 @@ namespace TravelThings.BackEnd
                     if (string.IsNullOrEmpty(UserID.Value)) { UserID.Value = tools.UserId; }
                     if (string.IsNullOrEmpty(UserID.Value)) { Response.Redirect("~/Login/frmLogin.aspx"); }
                     GetTravelDetails();
+                    gvJourney.HeaderRow.Cells[2].Attributes["data-class"] = "expand";
+
+                    //Attribute to hide column in Phone.
+                    gvJourney.HeaderRow.Cells[1].Attributes["data-hide"] = "phone";
+                    gvJourney.HeaderRow.Cells[0].Attributes["data-hide"] = "phone";
+                    gvJourney.HeaderRow.Cells[3].Attributes["data-hide"] = "phone";
+                    gvJourney.HeaderRow.Cells[4].Attributes["data-hide"] = "phone";
+                    gvJourney.HeaderRow.Cells[5].Attributes["data-hide"] = "phone";
+                    gvJourney.HeaderRow.Cells[6].Attributes["data-hide"] = "phone";
+                    gvJourney.HeaderRow.Cells[7].Attributes["data-hide"] = "phone";
+                    //Adds THEAD and TBODY to GridView.
+                    gvJourney.HeaderRow.TableSection = TableRowSection.TableHeader;
+
                     GetVehicleDetails();
                     LinkButton li = (LinkButton)Master.FindControl("lbTraveler");
                     li.CssClass = "Clicked";
@@ -48,22 +64,23 @@ namespace TravelThings.BackEnd
         {
             try
             {
-                string strError = ValidateFields();
-                if (string.IsNullOrEmpty(strError))
-                {
-                    
-                    bool blnResult = dll.InsertTransactionDetails(tools.UserId, txtFrom.Text.Trim(), txtTo.Text.Trim(), Convert.ToInt32(txtWeightCanCarry.Text.Trim()), Convert.ToDateTime(txtStartDate.Text.Trim()), Convert.ToDateTime(txtEndDate.Text.Trim()), ddlTravelBy.SelectedItem.Text);
-                    if (blnResult)
-                    {
-                        ClearContols();
-                        GetTravelDetails();
-                    }
-                }
-                else
-                {
-                    //Response.Write(Tools.Alert(strError));
-                    ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + strError + "', 'warning')", true);
-                }
+                DataTable dt = GetCoordinates(txtFrom.Text);
+                //string strError = ValidateFields();
+                //if (string.IsNullOrEmpty(strError))
+                //{
+
+                //    bool blnResult = dll.InsertTransactionDetails(tools.UserId, txtFrom.Text.Trim(), txtTo.Text.Trim(), Convert.ToInt32(txtWeightCanCarry.Text.Trim()), Convert.ToDateTime(txtStartDate.Text.Trim()), Convert.ToDateTime(txtEndDate.Text.Trim()), ddlTravelBy.SelectedItem.Text);
+                //    if (blnResult)
+                //    {
+                //        ClearContols();
+                //        GetTravelDetails();
+                //    }
+                //}
+                //else
+                //{
+                //    //Response.Write(Tools.Alert(strError));
+                //    ClientScript.RegisterClientScriptBlock(this.GetType(), "k", "swal('Opps!', '" + strError + "', 'warning')", true);
+                //}
 
             }
             catch (Exception ex)
@@ -274,6 +291,32 @@ namespace TravelThings.BackEnd
                 strError = "Please Enter Weight";
             }
             return strError;
+        }
+        private DataTable GetCoordinates(string address)
+        {
+            string url = "http://maps.google.com/maps/api/geocode/xml?address=" + address + "&sensor=false";
+            WebRequest request = WebRequest.Create(url);
+            DataTable dtCoordinates = new DataTable();
+            using (WebResponse response = (HttpWebResponse)request.GetResponse())
+            {
+                using (StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.UTF8))
+                {
+                    DataSet dsResult = new DataSet();
+                    dsResult.ReadXml(reader);
+                    
+                    dtCoordinates.Columns.AddRange(new DataColumn[4] { new DataColumn("Id", typeof(int)),
+                    new DataColumn("Address", typeof(string)),
+                    new DataColumn("Latitude",typeof(string)),
+                    new DataColumn("Longitude",typeof(string)) });
+                    foreach (DataRow row in dsResult.Tables["result"].Rows)
+                    {
+                        string geometry_id = dsResult.Tables["geometry"].Select("result_id = " + row["result_id"].ToString())[0]["geometry_id"].ToString();
+                        DataRow location = dsResult.Tables["location"].Select("geometry_id = " + geometry_id)[0];
+                        dtCoordinates.Rows.Add(row["result_id"], row["formatted_address"], location["lat"], location["lng"]);
+                    }
+                }
+                return dtCoordinates;
+            }
         }
     }
 }

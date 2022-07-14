@@ -16,6 +16,15 @@
         });
 
     </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-footable/0.1.0/css/footable.min.css"
+        rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-footable/0.1.0/js/footable.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('[id*=gvJourney]').footable();
+        });
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="form-group col-sm-12 col-lg-12 col-md-12">
@@ -63,14 +72,9 @@
 
         <div class="form-group col-sm-12">
             <div class="col-sm-12">
-                <div style="width: 100%; height: 250px; overflow: auto;">
-                    <asp:GridView ID="gvJourney" OnRowCommand="gvJourney_RowCommand" runat="server" Width="100%" CssClass="table table-hover" AutoGenerateColumns="false">
+                <div style="overflow: auto;">
+                    <asp:GridView ID="gvJourney" OnRowCommand="gvJourney_RowCommand" runat="server" Width="100%" AutoGenerateColumns="false" CssClass="footable">
                         <Columns>
-                            <asp:TemplateField HeaderText="Select">
-                                <ItemTemplate>
-                                    <asp:Button ID="gvBtnEdit" runat="server" Text="Edit" CssClass="btn btn-primary" CommandName="EditJourney" CommandArgument="<%# Container.DataItemIndex %>" />
-                                </ItemTemplate>
-                            </asp:TemplateField>
                             <asp:BoundField HeaderText="Sr No" DataField="SNO" />
                             <asp:BoundField HeaderText="From Address" DataField="TD_Item_From" />
                             <asp:BoundField HeaderText="To Address" DataField="TD_Item_To" />
@@ -80,9 +84,16 @@
                             <asp:BoundField HeaderText="Weight" DataField="TD_Item_Weight" />
                             <%--<asp:BoundField HeaderText="TD_Sno" DataField="TD_Sno"/>--%>
                             <asp:BoundField HeaderText="TrasId" DataField="TD_Sno" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol"></asp:BoundField>
+                            <asp:TemplateField HeaderText="Select">
+                                <ItemTemplate>
+                                    <asp:ImageButton ID="gvBtnEdit" runat="server" ImageUrl="~/Images/Icons/edit.png" CommandName="EditJourney" CommandArgument="<%# Container.DataItemIndex %>" />
+                                    <%--<asp:Button ID="gvBtnEdit" runat="server" Text="Edit" CssClass="btn btn-primary" CommandName="EditJourney" CommandArgument="<%# Container.DataItemIndex %>" />--%>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                             <asp:TemplateField HeaderText="Delete">
                                 <ItemTemplate>
-                                    <asp:Button ID="btnDeleteJoureny" runat="server" Text="Delete" CssClass="btn btn-danger" CommandName="DeleteItem" OnClientClick="return ConfirmDelete(this);" CommandArgument="<%# Container.DataItemIndex %>" />
+                                    <asp:ImageButton ID="btnDeleteJoureny" runat="server" ImageUrl="~/Images/Icons/delete.png" CommandName="DeleteItem" OnClientClick="return ConfirmDelete(this);" CommandArgument="<%# Container.DataItemIndex %>" />
+                                    <%--<asp:Button ID="btnDeleteJoureny" runat="server" Text="Delete" CssClass="btn btn-danger" CommandName="DeleteItem" OnClientClick="return ConfirmDelete(this);" CommandArgument="<%# Container.DataItemIndex %>" />--%>
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>

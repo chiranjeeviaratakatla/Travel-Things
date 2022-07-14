@@ -81,7 +81,11 @@
     <Content Include="BackEnd\Css\UploadImg\js\jquery.min.js" />
     <Content Include="BackEnd\frmAdmin.aspx" />
     <Content Include="BackEnd\JavaScript\CommonFunctions.js" />
+    <Content Include="BackEnd\WebForm.aspx" />
+    <Content Include="BackEnd\Wf.aspx" />
     <Content Include="Helpers\LoginValidation.js" />
+    <Content Include="Images\Icons\delete.png" />
+    <Content Include="Images\Icons\edit.png" />
     <Content Include="Images\LogoTTHome - Copy.png" />
     <Content Include="Login\frmCheckOTP.aspx" />
     <Content Include="Login\frmForgotPassword.aspx" />
@@ -216,6 +220,20 @@
     </Compile>
     <Compile Include="BackEnd\State.ashx.cs">
       <DependentUpon>State.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\WebForm.aspx.cs">
+      <DependentUpon>WebForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackEnd\WebForm.aspx.designer.cs">
+      <DependentUpon>WebForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\Wf.aspx.cs">
+      <DependentUpon>Wf.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackEnd\Wf.aspx.designer.cs">
+      <DependentUpon>Wf.aspx</DependentUpon>
     </Compile>
     <Compile Include="DAL\BusinessLogic\Helper.cs" />
     <Compile Include="DAL\Interfaces\IHelper.cs" />

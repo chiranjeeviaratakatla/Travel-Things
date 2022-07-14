@@ -26,6 +26,8 @@
     <script src="../Template/js/jquery-1.9.1.js"></script>
     <script src="../Template/js/jquery-ui.js"></script>
 
+    <%-- Grid view mobile auto hide columns --%>
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 
@@ -57,18 +59,18 @@
             color: #ffffff;
             text-decoration: none;
         }*/
-        th {
-            color: #ffffff;
+        /*th {
+            color: #ffffff;*/
             /*text-decoration: none;
             background-image: linear-gradient(to right,#37a0bc 0%,#273f7f 100%);*/
-            margin-bottom: 0;
+            /*margin-bottom: 0;
             border-radius: 0;
             background-repeat: no-repeat;
             background-image: linear-gradient(to right,#273f7f 0%,#37a0bc 100%);
             background-blend-mode: normal;
-            position: sticky;
-            top: 0; /* Don't forget this, required for the stickiness */
-        }
+            position: sticky;*/
+            /*top: 0;*/ /* Don't forget this, required for the stickiness */
+        /*}*/
          
 
         /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
@@ -88,7 +90,7 @@
         /* Set black background color, white text and some padding */
         .cust-footer {
             padding: 15px;
-            position: fixed;
+            position: sticky;
             left: 0;
             bottom: 0;
             width: 100%;
